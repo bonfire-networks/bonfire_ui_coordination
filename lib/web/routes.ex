@@ -8,9 +8,8 @@ defmodule Bonfire.UI.Coordination.Routes do
       # pages anyone can view
       scope "/", Bonfire.UI.Coordination do
         pipe_through :browser
-        live "/resource/:id", ResourceLive
-        live "/process/:id", ProcessLive
-        live "/process/:id/:tab", ProcessLive
+        live "/list/:id", ProcessLive
+        live "/list/:id/task/:task_id", TaskLive
       end
 
     end

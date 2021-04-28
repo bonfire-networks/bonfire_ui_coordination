@@ -1,4 +1,4 @@
-<main id="reflow-app" role="main">
+<main id="coordination-app" role="main">
   <% info = get_flash(@conn, :info) %>
   <% error = get_flash(@conn, :error) %>
   <%= if info || error do %>

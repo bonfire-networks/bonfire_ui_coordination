@@ -1,0 +1,151 @@
+<div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+    <!--
+      Modal panel, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        To: "opacity-100 translate-y-0 sm:scale-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100 translate-y-0 sm:scale-100"
+        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+    -->
+    <div style="height: 80vh" class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:align-middle sm:w-full sm:p-6">
+      <div class="pb-4 h-full overflow-y-auto">
+        <div class="bg-white pb-2 flex sticky top-0 items-center">
+          <div class="flex-1">
+            <div class="text-lg font-bold text-gray-800">Task name</div>
+            <span class="mt-1 text-gray-700 text-sm">In list <a class="underline" href="#">Process ABC</a></span>
+          </div>
+          <div class="flex items-center mr-1">
+            <button class="btn-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+              </svg>
+              Subscribe
+            </button>
+            <div
+              x-cloak
+              x-data="{ open_task_dropdown: false }"
+              @keydown.escape.stop="open_task_dropdown = false"
+              @click.away="open_task_dropdown = false"
+               class="ml-3 relative inline-block text-left">
+              <div>
+                <button
+                  type="button"
+                  class="-my-2 p-2 rounded-full bg-white flex items-center text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="menu-0-button" x-ref="button"
+                  @click="open_task_dropdown = !open_task_dropdown"
+                  @keyup.space.prevent="onButtonEnter()"
+                  @keydown.enter.prevent="onButtonEnter()"
+                  aria-expanded="true"
+                  aria-haspopup="true"
+                  @keydown.arrow-up.prevent="onArrowUp()"
+                  @keydown.arrow-down.prevent="onArrowDown()">
+                  <span class="sr-only">Open options</span>
+                  <svg class="h-5 w-5" x-description="Heroicon name: solid/dots-vertical" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div
+                x-description="Usr profile dropdown menu, show/hide based on menu state."
+                x-show="open_task_dropdown"
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="origin-top-left absolute right-0 mt-4 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="user-profile-menu">
+                <div class="py-1" role="none">
+                  <a href="#" class="text-gray-700 group flex items-center px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">
+                    <!-- Heroicon name: solid/pencil-alt -->
+                    <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                      <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                    </svg>
+                    Edit
+                  </a>
+                </div>
+                <div class="py-1" role="none">
+                  <a href="#" class="text-gray-700 group flex items-center px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">
+                    <!-- Heroicon name: solid/archive -->
+                    <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
+                      <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                    Archive
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center space-x-4">
+
+          <div class="cursor-pointer">
+            <span class="block uppercase text-gray-600 text-xs tracking-wide">Likes</span>
+            <div class="h-9 flex items-center text-xs text-medium bg-blueGray-200 mt-2 rounded py-1.5 px-2.5 text-gray-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+              </svg>
+              <div>12 likes</div>
+            </div>
+          </div>
+
+          <div class="">
+            <span class="block uppercase text-gray-600 text-xs tracking-wide">Assigned to</span>
+            <div class="h-9 flex items-center text-xs text-medium bg-blueGray-200 mt-2 rounded py-1.5 px-2.5 text-gray-600">
+              <img class="inline-block h-5 w-5 mr-1 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=zBd4LgsYUu&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              <span class="">Tom Cook</span>
+              <div class="h-9 ml-3 flex items-center place-content-center bg-blueGray-300 hover:bg-blueGray-400 cursor-pointer -mr-2.5 px-2 rounded-r">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <span class="block uppercase text-gray-600 text-xs tracking-wide">Due on</span>
+            <div class="h-9 flex items-center text-xs text-medium bg-blueGray-200 mt-2 rounded py-1.5 px-2.5 text-gray-600">
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
+                <span>18 May</span>
+              </div>
+              <div class="h-9 ml-3 flex items-center place-content-center bg-blueGray-300 hover:bg-blueGray-400 cursor-pointer -mr-2.5 px-2 rounded-r">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <div class="text-sm font-bold text-gray-700">Description</div>
+          <div class="mt-1.5 propse prose-sm w-full">
+            <p>Provides similar capabilities to Phoenix's built-in live_patch/2 function. When navigating to the current LiveView, handle_params/3 is immediately invoked to handle the change of params and URL state. Then the new state is pushed to the client, without reloading the whole page. For live redirects to another LiveView, use LiveRedirect instead.</p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <div class="text-sm font-bold text-gray-700">Activities</div>
+           <%# Thread should go here %>
+        </div>
+      </div>
+      <div class="text-center flex items-center place-content-center fixed left-0 right-0 bottom-0 bg-green-200 text-green-700 hover:bg-green-300 hover:text-green-800 cursor-pointer font-bold text-sm p-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-700 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        <span>Set as completed</span>
+      </div>
+    </div>
+  </div>
+</div>
