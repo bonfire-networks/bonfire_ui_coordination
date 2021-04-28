@@ -1,0 +1,16 @@
+<div class="flex items-center">
+  <Bonfire.UI.ValueFlows.LikeItemLive />  
+  <LivePatch to="/list/123/task/1" class="flex-1">
+    <div class="shadow hover:bg-gray-50 cursor-pointer bg-white rounded-lg">
+      <div class="px-3 pt-2">
+        <div class="text-base font-regular text-gray-700">Task title</div>
+      </div>
+      <div class="rounded-b-lg">
+        <div class="px-3 py-2 flex items-center space-x-2">
+          <Bonfire.UI.ValueFlows.DueItemLive date="28 May" />
+          <Bonfire.UI.ValueFlows.AssignedItemLive />
+        </div>
+      </div>
+    </div>
+  </LivePatch>
+</div>
