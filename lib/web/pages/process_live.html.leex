@@ -2,9 +2,6 @@
   <section class="w-center min-h-screen border-l border-r">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
-      name: e(@current_user, :profile, :name, "Anonymous"),
-      user_image: avatar_url(@current_user),
-      username: e(@current_user, :character, :username, ""),
       page_title: @page_title,
       page: @page,
       smart_input: @smart_input,
@@ -15,15 +12,13 @@
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
     <%= live_component(@socket, Bonfire.UI.ValueFlows.ProcessHeroLive, assigns_clean(assigns)) %>
-    <%= live_component(@socket, Bonfire.UI.ValueFlows.CreateIntentLive, user_image: avatar_url(@current_user))%>
+    <%= live_component(@socket, Bonfire.UI.ValueFlows.CreateIntentLive, assigns_clean(assigns))%>
     <div class="bg-blueGray-100 py-5">
       <%= live_component(@socket, Bonfire.UI.Coordination.ListNavigationLive, assigns_clean(assigns)) %>
       <div class="flex flex-col space-y-3 px-3 mt-3">
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskItemLive, assigns_clean(assigns)) %>
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskItemLive, assigns_clean(assigns)) %>
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskItemLive, assigns_clean(assigns)) %>
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskItemLive, assigns_clean(assigns)) %>
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskItemLive, assigns_clean(assigns)) %>
+        <%= for task <- @process.intended_outputs do %>
+          <%= live_component(@socket, Bonfire.UI.Coordination.TaskItemLive, assigns_merge(assigns, task: task)) %>
+        <% end %>
       </div>
     </div>
   </section>

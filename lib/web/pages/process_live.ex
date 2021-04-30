@@ -23,8 +23,8 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
 
   defp mounted(%{"id"=> id} = _params, _session, socket) do
 
-    # resource = economic_resource(%{id: id}, socket)
-    # IO.inspect(resource)
+    process = process(%{id: id}, socket)
+    IO.inspect(process)
 
     {:ok, socket
     |> assign(
@@ -32,10 +32,36 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
       page: "process",
       selected_tab: "events",
       smart_input: false,
-      process: "1234",
-      # resource: resource,
+      process: process
     )}
   end
+
+
+  @graphql """
+    query($id: ID) {
+      process(id: $id) {
+        id
+        name
+        note
+        finished
+        intended_inputs {
+          id
+          name
+          note
+          provider
+          due
+        }
+        intended_outputs {
+          id
+          name
+          note
+          provider
+          due
+        }
+      }
+    }
+  """
+  def process(params \\ %{}, socket), do: liveql(socket, :process, params)
 
 
   defdelegate handle_params(params, attrs, socket), to: Bonfire.Web.LiveHandler
