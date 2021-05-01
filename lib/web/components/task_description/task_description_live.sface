@@ -28,11 +28,11 @@
     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
     class="mt-1.5 propse prose-sm w-full">
     <form>
-      <label for="task_note" class="sr-only">Type a description for the task</label>
+      <label for="task_note" class="sr-only">Edit the description of the task</label>
       <textarea id="task_note" class="block w-full h-20 text-sm transition-all duration-300 ease-in-out border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
       <div class="flex mt-2 items-center space-x-3 justify-end">
         <button type="button" @click = "toggle_edit_description = false" class="btn-secondary">Cancel</button>
-        <button type="submit" class="btn-primary">Create</button>
+        <button type="submit" class="btn-primary">Update</button>
       </div>
     </form>
 

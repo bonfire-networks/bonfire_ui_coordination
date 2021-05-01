@@ -44,8 +44,16 @@ defmodule Bonfire.UI.Coordination.TaskLive do
         id
         name
         note
-        provider
         due
+        finished
+
+        provider {
+          id
+          name
+          display_username
+          image
+        }
+
         output_of {
           id
           name

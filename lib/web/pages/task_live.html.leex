@@ -9,7 +9,7 @@
         <%= live_component(@socket, Bonfire.UI.Coordination.TaskDescriptionLive, task: @task) %>
         <%= live_component(@socket, Bonfire.UI.Coordination.TaskThreadLive, task: @task) %>
       </div>
-      <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive) %>
+      <%= if !@task.finished, do: live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive, task_id: @task.id, redirect_after: "/task/") %>
     </div>
   </div>
 </div>

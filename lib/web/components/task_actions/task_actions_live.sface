@@ -1,14 +1,14 @@
 <div class="mt-3 flex items-center space-x-4">
   <div>
-    <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Likes</span>
+    <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Priority</span>
     <Bonfire.UI.ValueFlows.LikeItemHorizontalLive is_editable={{true}} />
   </div>
   <div>
     <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Assigned to</span>
-    <Bonfire.UI.ValueFlows.AssignedItemLive is_editable={{true}} />
+    <Bonfire.UI.ValueFlows.AssignedItemLive is_editable={{true}} agent={{@task.provider}} />
   </div>
   <div>
-    <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Due on</span>
-    <Bonfire.UI.ValueFlows.DueItemLive date="28 May" is_editable={{true}} />
+    <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Due</span>
+    <Bonfire.UI.ValueFlows.DueItemLive date={{@task.due}} is_editable={{true}} />
   </div>
 </div>

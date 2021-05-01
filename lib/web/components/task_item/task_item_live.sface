@@ -7,7 +7,7 @@
       </div>
       <div class="rounded-b-lg">
         <div class="px-3 py-2 flex items-center space-x-2">
-          <Bonfire.UI.ValueFlows.DueItemLive date="{{@task.due}}" />
+          <Bonfire.UI.ValueFlows.DueItemLive date={{ if @task.finished, do: "Done", else: @task.due }} />
           <Bonfire.UI.ValueFlows.AssignedItemLive agent={{@task.provider}} />
         </div>
       </div>

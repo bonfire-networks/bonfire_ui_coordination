@@ -48,15 +48,31 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
           id
           name
           note
-          provider
+
           due
+          finished
+
+          provider {
+            id
+            name
+            display_username
+            image
+          }
         }
         intended_outputs {
           id
           name
           note
-          provider
+
           due
+          finished
+
+          provider {
+            id
+            name
+            display_username
+            image
+          }
         }
       }
     }
