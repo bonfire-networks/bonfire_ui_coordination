@@ -23,8 +23,8 @@ defmodule Bonfire.UI.Coordination.TaskLive do
 
   defp mounted(%{"id"=> id} = _params, _session, socket) do
 
-    # resource = economic_resource(%{id: id}, socket)
-    # IO.inspect(resource)
+    intent = intent(%{id: id}, socket)
+    IO.inspect(intent)
 
     {:ok, socket
     |> assign(
@@ -32,10 +32,32 @@ defmodule Bonfire.UI.Coordination.TaskLive do
       page: "task",
       selected_tab: "events",
       smart_input: false,
-      task: "1234",
+      task: intent,
       # resource: resource,
     )}
   end
+
+
+  @graphql """
+    query($id: ID) {
+      intent(id: $id) {
+        id
+        name
+        note
+        provider
+        due
+        output_of {
+          id
+          name
+        }
+        input_of {
+          id
+          name
+        }
+      }
+    }
+  """
+  def intent(params \\ %{}, socket), do: liveql(socket, :intent, params)
 
 
   defdelegate handle_params(params, attrs, socket), to: Bonfire.Web.LiveHandler

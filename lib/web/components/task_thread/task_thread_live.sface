@@ -1,4 +1,9 @@
 <div class="mt-4">
   <div class="text-sm font-bold text-gray-700">Activities</div>
 
+  {{ live_component(@socket,
+      Bonfire.UI.Social.ThreadLive,
+      thread_id: e(@task, :id, ""),
+      smart_input_placeholder: "Post a comment..."
+  ) }}
 </div>

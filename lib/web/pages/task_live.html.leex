@@ -4,10 +4,10 @@
     <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
     <div style="height: 80vh" class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:align-middle sm:w-full sm:p-6">
       <div class="pb-4 h-full overflow-y-auto">
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskHeroLive) %>
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive) %>
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskDescriptionLive) %>
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskThreadLive) %>
+        <%= live_component(@socket, Bonfire.UI.Coordination.TaskHeroLive, task: @task) %>
+        <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, task: @task) %>
+        <%= live_component(@socket, Bonfire.UI.Coordination.TaskDescriptionLive, task: @task) %>
+        <%= live_component(@socket, Bonfire.UI.Coordination.TaskThreadLive, task: @task) %>
       </div>
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive) %>
     </div>

@@ -1,7 +1,14 @@
 <div class="bg-white pb-2 flex sticky top-0 items-center">
   <div class="flex-1">
-    <div class="text-lg font-bold text-gray-800">Task name</div>
-    <span class="mt-1 text-gray-700 text-sm">In list <a class="underline" href="#">Process ABC</a></span>
+    <div class="text-lg font-bold text-gray-800">{{@task.name}}</div>
+    <span class="mt-1 text-gray-700 text-sm">
+      Task in
+      <LivePatch
+      to={{"/list/"<>@task.output_of.id}}
+      class="underline">
+        {{@task.output_of.name}}
+      </LivePatch>
+    </span>
   </div>
   <div class="flex items-center mr-1">
     <button class="btn-secondary">

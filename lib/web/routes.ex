@@ -9,7 +9,7 @@ defmodule Bonfire.UI.Coordination.Routes do
       scope "/", Bonfire.UI.Coordination do
         pipe_through :browser
         live "/list/:id", ProcessLive
-        live "/list/:id/task/:task_id", TaskLive
+        live "/task/:id", TaskLive
       end
 
     end

@@ -1,6 +1,6 @@
 <div class="flex items-center">
   <Bonfire.UI.ValueFlows.LikeItemLive />
-  <LivePatch to="/list/123/task/1" class="flex-1">
+  <LivePatch to="/task/{{@task.id}}" class="flex-1">
     <div class="shadow hover:bg-gray-50 cursor-pointer bg-white rounded-lg">
       <div class="px-3 pt-2">
         <div class="text-base font-regular text-gray-700">{{@task.name}}</div>
