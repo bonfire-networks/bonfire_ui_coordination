@@ -1,9 +1,10 @@
-<div class="mt-4">
-  <div class="text-sm font-bold text-gray-700">Activities</div>
-
+<div class="mt-4 px-4">
+  <div class="text-xs font-regular uppercase text-gray-700 mb-2">Activities</div>
+  <div class="-mx-3">
   {{ live_component(@socket,
       Bonfire.UI.Social.ThreadLive,
       thread_id: e(@task, :id, ""),
       smart_input_placeholder: "Post a comment..."
   ) }}
+</div>
 </div>

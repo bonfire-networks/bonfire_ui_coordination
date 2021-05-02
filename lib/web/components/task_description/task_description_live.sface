@@ -1,8 +1,8 @@
 <div
   x-data="{ toggle_edit_description: false }"
-  class="mt-8">
+  class="mt-4 px-4">
   <div class="flex items-center">
-    <div class="text-sm font-bold text-gray-700">Description</div>
+    <div class="text-xs font-regular uppercase text-gray-700">Description</div>
     <button
       @keydown.window.escape="toggle_edit_description = false"
       x-show="!toggle_edit_description"
