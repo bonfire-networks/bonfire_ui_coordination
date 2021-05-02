@@ -1,16 +1,10 @@
-<div class="flex items-center">
-  <Bonfire.UI.ValueFlows.LikeItemLive />
-  <LivePatch to="/task/{{@task.id}}" class="flex-1">
-    <div class="shadow hover:bg-gray-50 cursor-pointer bg-white rounded-lg">
-      <div class="px-3 pt-2">
-        <div class="text-base font-regular text-gray-700">{{@task.name}}</div>
-      </div>
-      <div class="rounded-b-lg">
-        <div class="px-3 py-2 flex items-center space-x-2">
-          <Bonfire.UI.ValueFlows.DueItemLive date={{ if @task.finished, do: "Done", else: @task.due }} />
-          <Bonfire.UI.ValueFlows.AssignedItemLive agent={{@task.provider}} />
-        </div>
-      </div>
+<div class="flex p-3 items-center hover:bg-gray-50 cursor-pointer bg-white">
+  <LivePatch to="/task/{{@task.id}}" class="flex-1 w-full">
+    <div class="text-sm font-semibold text-gray-800">{{@task.name}}</div>
+    <div class="py-2 flex items-center space-x-2">
+      <Bonfire.UI.ValueFlows.LikeItemHorizontalLive />
+      <Bonfire.UI.ValueFlows.DueItemLive date={{ if @task.finished, do: "Done", else: @task.due }} />
+      <Bonfire.UI.ValueFlows.AssignedItemLive agent={{@task.provider}} />
     </div>
   </LivePatch>
 </div>
