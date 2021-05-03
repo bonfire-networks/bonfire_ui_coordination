@@ -1,6 +1,6 @@
 <div class="flex p-3 items-center hover:bg-gray-50 cursor-pointer bg-white">
   <LivePatch to="/task/{{@task.id}}" class="flex-1 w-full">
-    <div class="text-sm font-semibold text-gray-800">{{@task.name}}</div>
+    <div class="text-sm font-medium text-gray-800">{{@task.name}}</div>
     <div class="py-2 flex items-center space-x-2">
       <Bonfire.UI.ValueFlows.LikeItemHorizontalLive />
       <Bonfire.UI.ValueFlows.DueItemLive date={{ if @task.finished, do: "Done", else: @task.due }} />
