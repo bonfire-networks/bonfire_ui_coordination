@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="w-center min-h-screen border-l border-r">
+  <section class="w-center min-h-screen border-l border-r mb-24">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
       page_title: @page_title,
@@ -22,7 +22,7 @@
 
          <%= if @current_user do %>
           <div class="pb-5">
-            <h5 class="text-base font-bold text-gray-700 mb-2">Notification</h5>
+            <h5 class="text-sm font-medium text-gray-700 mb-2">Notification</h5>
             <div class="flex flex-col space-y-3">
               <%= live_component(@socket, Bonfire.UI.Social.FollowButtonLive, following: e(assigns, :following, []), id: e(@task, :id, nil), label: "the task", class: "rounded-md shadow-sm w-full flex flex-1 text-left btn-secondary") %>
             </div>
