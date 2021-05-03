@@ -12,22 +12,40 @@
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskHeroLive, task: @task) %>
-      <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, task: @task) %>
-      <%= live_component(@socket, Bonfire.UI.Coordination.TaskDescriptionLive, task: @task) %>
+      <div class="lg:hidden">
+        <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, task: @task) %>
+      </div>
+      <div class="mt-2 px-4">
+        <%= live_component(@socket, Bonfire.UI.Coordination.TaskDescriptionLive, task: @task) %>
+      </div>
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskThreadLive, task: @task) %>
 
     </section>
-    <aside class="flex-1 hidden pt-2 bg-gray-100 lg:flex md:flex-shrink-0">
+    <aside class="flex-1 hidden pt-2 bg-blueGray-50 lg:flex md:flex-shrink-0">
       <div class="h-full px-3 w-full">
-
-         <%= if @current_user do %>
-          <div class="pb-5">
-            <h5 class="text-sm font-medium text-gray-700 mb-2">Notification</h5>
-            <div class="flex flex-col space-y-3">
-              <%= live_component(@socket, Bonfire.UI.Social.FollowButtonLive, following: e(assigns, :following, []), id: e(@task, :id, nil), label: "the task", class: "rounded-md shadow-sm w-full flex flex-1 text-left btn-secondary") %>
+          <div class="mt-4 flex-col flex space-y-4">
+            <%= if @current_user do %>
+            <div class="">
+              <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Notifications</span>
+              <div class="flex flex-col space-y-3">
+                <%= live_component(@socket, Bonfire.UI.Social.FollowButtonLive, following: e(assigns, :following, []), id: e(@task, :id, nil), label: "the task", class: "rounded-md shadow-sm w-full flex flex-1 text-left btn-secondary") %>
+              </div>
+            </div>
+            <% end %>
+            <div>
+              <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Priority</span>
+               <%= live_component(@socket, Bonfire.UI.ValueFlows.LikeItemHorizontalLive, is_editable: true) %>
+            </div>
+            <div>
+              <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Assigned to</span>
+               <%= live_component(@socket, Bonfire.UI.ValueFlows.AssignedItemLive, is_editable: true, agent: @task.provider) %>
+            </div>
+            <div>
+              <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Due</span>
+               <%= live_component(@socket, Bonfire.UI.ValueFlows.DueItemLive, date: @task.due, is_editable: true ) %>
             </div>
           </div>
-          <% end %>
+
 
       </div>
     </aside>

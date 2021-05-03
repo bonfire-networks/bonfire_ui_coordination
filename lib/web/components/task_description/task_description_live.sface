@@ -1,6 +1,6 @@
 <div
   x-data="{ toggle_edit_description: false }"
-  class="mt-4 px-4">
+  class="">
   <div class="flex items-center">
     <div class="text-xs font-regular uppercase text-gray-700">Description</div>
     <button
