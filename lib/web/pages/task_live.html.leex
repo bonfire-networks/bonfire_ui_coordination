@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="w-center min-h-screen border-l border-r mb-24">
+  <section class="w-center min-h-screen border mt-4 mb-24">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
       page_title: @page_title,
@@ -21,10 +21,11 @@
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskThreadLive, task: @task) %>
 
     </section>
-    <aside class="flex-1 hidden pt-2 bg-blueGray-50 lg:flex md:flex-shrink-0">
-      <div class="h-full px-3 w-full">
+    <aside class="flex-1 hidden mt-4 mx-3 rounded-lg lg:flex md:flex-shrink-0">
+      <div class="bg-blueGray-100 h-full px-4 w-full">
           <div class="mt-4 flex-col flex space-y-4">
             <%= if @current_user do %>
+            <%# Bonfire.UI.Coordination.TaskSetStatusLive :if={{!@task.finished}} redirect_after={{"/task/"}} task_id={{@task.id}}  /> %>
             <div class="">
               <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Notifications</span>
               <div class="flex flex-col space-y-3">

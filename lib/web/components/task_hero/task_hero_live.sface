@@ -11,7 +11,9 @@
     </span>
   </div>
   <div class="flex items-center mr-1">
-  <Bonfire.UI.Coordination.TaskSetStatusLive :if={{!@task.finished}} redirect_after={{"/task/"}} task_id={{@task.id}}  />
+    <div class="lg:hidden">
+      <Bonfire.UI.Coordination.TaskSetStatusLive :if={{!@task.finished}} redirect_after={{"/task/"}} task_id={{@task.id}}  />
+    </div>
     <div
       x-cloak
       x-data="{ open_task_dropdown: false }"
