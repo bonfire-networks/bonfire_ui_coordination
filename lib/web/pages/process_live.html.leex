@@ -22,7 +22,7 @@
       <%= live_component(@socket, Bonfire.UI.Coordination.ListNavigationLive, assigns_merge(assigns,
         output_of_id: @process.id,
         provider_id: @current_user.id,
-        provider: @current_user,
+        current_user: @current_user,
         action: "work",
         intent_url: "/task/"
       )) %>

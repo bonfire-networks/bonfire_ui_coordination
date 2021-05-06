@@ -13,7 +13,7 @@
       smart_input_text: e(assigns, :smart_input_text, "") )%>
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskHeroLive, task: @task) %>
       <div class="lg:hidden">
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, task: @task) %>
+        <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, current_user: @current_user, task: @task) %>
       </div>
       <div class="mt-2 px-4">
         <%= live_component(@socket, Bonfire.UI.Coordination.TaskDescriptionLive, task: @task) %>
