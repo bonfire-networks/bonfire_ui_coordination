@@ -32,7 +32,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
       page: "task",
       selected_tab: "events",
       smart_input: false,
-      task: intent,
+      intent: intent,
       # resource: resource,
     )}
   end
