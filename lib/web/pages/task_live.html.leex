@@ -12,7 +12,7 @@
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskHeroLive, task: @intent) %>
-      <div class="lg:hidden">
+      <div class="lg:hidden mt-2 px-4 flex items-center space-x-4">
         <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, current_user: @current_user, task: @intent) %>
       </div>
       <div class="mt-2 px-4">
@@ -33,18 +33,9 @@
               </div>
             </div>
             <% end %>
-            <div>
-              <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Priority</span>
-               <%= live_component(@socket, Bonfire.UI.ValueFlows.LikeItemHorizontalLive, is_editable: true) %>
-            </div>
-            <div>
-              <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Assigned to</span>
-               <%= live_component(@socket, Bonfire.UI.ValueFlows.AssignedItemLive, is_editable: true, agent: @intent.provider, pick_event: "ValueFlows.Planning.Intent:assign:select") %>
-            </div>
-            <div>
-              <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Due</span>
-               <%= live_component(@socket, Bonfire.UI.ValueFlows.DueItemLive, date: @intent.due, is_editable: true ) %>
-            </div>
+
+            <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, current_user: @current_user, task: @intent) %>
+
           </div>
 
 

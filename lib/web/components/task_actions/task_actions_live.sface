@@ -1,16 +1,14 @@
-<Context put={{ current_user: @current_user }}>
-<div class="mt-2 px-4 flex items-center space-x-4">
+ <Context put={{ current_user: @current_user }}>
   <div>
     <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Priority</span>
     <Bonfire.UI.ValueFlows.LikeItemHorizontalLive is_editable={{true}} />
   </div>
   <div>
     <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Assigned to</span>
-    <Bonfire.UI.ValueFlows.AssignedItemLive is_editable={{true}} agent={{@task.provider}} pick_event="ValueFlows.Planning.Intent:assign:select" />
+    <Bonfire.UI.ValueFlows.AssignedItemLive is_editable={{true}} agent={{@task.provider}} pick_event="ValueFlows.Planning.Intent:assign:select" remove_event="" />
   </div>
   <div>
     <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Due</span>
     <Bonfire.UI.ValueFlows.DueItemLive date={{@task.due}} is_editable={{true}} />
   </div>
-</div>
 </Context>
