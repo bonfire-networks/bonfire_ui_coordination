@@ -1,12 +1,12 @@
 <div class="bg-white p-4 flex items-center">
   <div class="flex-1">
-    <div class="text-lg font-bold text-gray-800">{{@task.name}}</div>
+    <div class="text-lg font-bold text-gray-800">{{rich @task.name}}</div>
     <span :if={{@task.output_of}} class="mt-1 text-gray-700 text-sm">
       Task in
       <LivePatch
       to={{"/list/"<>@task.output_of.id}}
       class="underline">
-        {{@task.output_of.name}}
+        {{rich @task.output_of.name}}
       </LivePatch>
     </span>
   </div>
