@@ -1,10 +1,27 @@
-<div class="flex p-3 items-center hover:bg-gray-50 cursor-pointer bg-white">
-  <LivePatch to="/task/{{@task.id}}" class="flex-1 w-full">
-    <div class="text-sm font-medium text-gray-800">{{@task.name}}</div>
-    <div class="py-2 flex items-center space-x-2">
-      <Bonfire.UI.ValueFlows.LikeItemHorizontalLive />
-      <Bonfire.UI.ValueFlows.DueItemLive date={{ if @task.finished, do: "Done", else: @task.due }} />
-      <Bonfire.UI.ValueFlows.AssignedItemLive agent={{@task.provider}} />
+<div class="flex p-3 items-center hover:bg-gray-50 bg-white">
+  <div class="flex-1 flex items-center">
+    <input type="checkbox" class="mr-2" />
+    <LivePatch to="/task/{{@task.id}}" class="cursor-pointer">
+      <div class="text-sm font-medium text-gray-800 hover:text-pink-600">{{@task.name}}</div>
+    </LivePatch>
+  </div>
+
+  <div class="flex items-center space-x-6">  
+    <div class="flex items-center text-xs text-medium text-gray-700">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 mr-1" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+      </svg>
+      <span>12 likes</span>
     </div>
-  </LivePatch>
+    <div class="flex items-center text-xs text-medium text-gray-700">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 mr-1" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+      </svg>
+      <span>{{if @task.finished, do: "Done", else: @task.due || "Anytime"}}</span>
+    </div>
+
+    <div class="">
+      <img :if={{@task.provider}} class="inline-block ring-2 ring-gray-100 h-6 w-6 mr-1 rounded-full" src="{{avatar_url(@task.provider)}}" alt="">
+    </div>
+  </div>
 </div>

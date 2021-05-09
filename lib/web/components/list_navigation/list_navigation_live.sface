@@ -1,7 +1,5 @@
 <Context put={{current_user: @current_user}}>
 <div>
-<div class="p-1 bg-blueGray-200 sm:flex sm:items-center sm:justify-between">
-</div>
   <div class="p-3 border-b flex items-center">
     <div class="flex-1 flex space-x-2">
       <div class="flex w-80  rounded-md shadow-sm">
