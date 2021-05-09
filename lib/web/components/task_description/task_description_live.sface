@@ -15,7 +15,7 @@
   <div
     x-show="!toggle_edit_description"
     class="mt-1.5 propse prose-sm w-full">
-    <p>{{@task.note}}</p>
+    <p>{{rich @task.note}}</p>
   </div>
   <div
     x-show="toggle_edit_description"
