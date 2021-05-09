@@ -4,7 +4,7 @@
     <div class="py-2 flex items-center space-x-2">
       <Bonfire.UI.ValueFlows.LikeItemHorizontalLive />
       <Bonfire.UI.ValueFlows.DueItemLive date={{ if @task.finished, do: "Done", else: @task.due }} />
-      <Bonfire.UI.ValueFlows.AssignedItemLive agent={{@task.provider}} />
+      <Bonfire.UI.ValueFlows.AssignedItemLive agent={{@task.provider}} current_user={{e(assigns, :current_user, nil)}} />
     </div>
   </LivePatch>
 </div>
