@@ -44,11 +44,16 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
         name
         note
         finished
+        has_end
+        working_agents {
+          id
+          name
+          image
+        }
         intended_inputs {
           id
           name
           note
-
           due
           finished
 

@@ -5,15 +5,12 @@
       Task in
       <LivePatch
       to={{"/list/"<>@task.output_of.id}}
-      class="underline">
+      class="underline inline_flex">
         {{rich @task.output_of.name}}
       </LivePatch>
     </span>
   </div>
   <div class="flex items-center mr-1">
-    <div>
-      <Bonfire.UI.Coordination.TaskSetStatusLive :if={{!@task.finished}} redirect_after={{"/task/"}} task_id={{@task.id}}  />
-    </div>
     <div
       x-cloak
       x-data="{ open_task_dropdown: false }"
