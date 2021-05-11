@@ -43,6 +43,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
         id
         name
         note
+        has_end
         finished
         has_end
         working_agents {
