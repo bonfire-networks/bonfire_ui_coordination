@@ -10,7 +10,7 @@
     </LivePatch>
   </div>
 
-  <div class="flex items-center space-x-6">  
+  <div class="flex items-center space-x-6">
     <div class="flex items-center text-xs text-medium text-gray-700">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 mr-1" viewBox="0 0 20 20" fill="currentColor">
         <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
@@ -62,11 +62,11 @@
             role="menu"
             aria-orientation="vertical">
               <div class="py-1" role="none">
-                <div :if={{@task.finished}} class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
+               <!-- <div :if={{!@task.finished}} class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
                   Set in progress
-                </div>
-                <div :if={{!@task.finished}} class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
-                  Set completed
+                </div> -->
+                <div :if={{!@task.finished}} :on-click="ValueFlows.Planning.Intent:status:finished" phx-value-id={{@task.id}} class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
+                  Set as completed
                 </div>
                 <div class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
                   Archive
@@ -80,7 +80,7 @@
 
 
 
-<!-- 
+<!--
 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
       </svg> -->

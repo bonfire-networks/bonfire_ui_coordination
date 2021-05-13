@@ -3,4 +3,5 @@ defmodule Bonfire.UI.Coordination.TaskSetStatusLive do
 
   prop task_id, :string
   prop redirect_after, :string
+  prop finished, :boolean
 end

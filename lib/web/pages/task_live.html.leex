@@ -25,7 +25,7 @@
       <div class="bg-blueGray-100 h-full px-4 w-full">
           <div class="flex-col flex space-y-4">
             <%= if @current_user do %>
-            <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive, redirect_after: "/task/", task_id: @intent.id) %>
+            <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive, redirect_after: "/task/", task_id: @intent.id, finished: @intent.finished) %>
             <div class="">
               <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Notifications</span>
               <div class="flex flex-col space-y-3">
