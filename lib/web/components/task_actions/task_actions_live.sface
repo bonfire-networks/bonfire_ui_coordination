@@ -1,7 +1,7 @@
  <Context put={{ current_user: @current_user }}>
   <div>
     <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Assigned to</span>
-    <Bonfire.UI.ValueFlows.AssignedItemLive is_editable={{true}} agent={{@task.provider}} current_user={{@current_user}} pick_event="ValueFlows.Planning.Intent:assign:select" remove_event="" />
+    <Bonfire.UI.ValueFlows.AssignedItemLive field_name="provider" is_editable={{true}} agent={{@task.provider}} pick_event="ValueFlows.Planning.Intent:assign:select" remove_event="" />
   </div>
   <div>
     <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Due</span>
