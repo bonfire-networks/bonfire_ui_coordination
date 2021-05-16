@@ -30,7 +30,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
     |> assign(
       page_title: "process",
       page: "process",
-      selected_tab: "events",
+      selected_tab: "tasks",
       smart_input: false,
       process: process
     )}
