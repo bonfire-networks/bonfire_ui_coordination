@@ -22,7 +22,7 @@
 
     </section>
     <aside class="flex-1 hidden mt-4 mx-3 rounded-lg lg:flex md:flex-shrink-0">
-      <div class="bg-blueGray-100 h-full px-4 w-full">
+      <div class="h-full px-4 w-full">
           <div class="flex-col flex space-y-4">
             <%= if @current_user do %>
             <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive, redirect_after: "/task/", task_id: @intent.id, finished: @intent.finished) %>
