@@ -46,7 +46,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
         note
         due
         finished
-
+        in_scope_of
         provider {
           id
           name

@@ -3,7 +3,17 @@
   <div class="flex items-center space-x-3">
     <Bonfire.UI.ValueFlows.LikeItemLive is_editable={{true}} />
     <div>
-      <div class="text-lg font-bold text-gray-800">{{rich @task.name}}</div>
+      <div class="text-lg font-bold text-gray-800">
+
+      <span :if={{length(e(@task, :in_scope_of, []))>0}}>
+        <LiveRedirect :for={{scope <- @task.in_scope_of}} to="/task/{{scope.id}}" class="cursor-pointer text-sm font-medium text-gray-600 hover:underline">
+          {{e(scope, :name, "")}} :&nbsp;
+        </LiveRedirect>
+      </span>
+
+        {{rich @task.name}}
+
+      </div>
       <span :if={{@task.output_of}} class="mt-1 flex  text-gray-700 text-sm">
         Task in
         <LivePatch

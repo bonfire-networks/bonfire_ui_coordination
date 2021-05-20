@@ -1,4 +1,4 @@
-defmodule Bonfire.UI.Coordination.TaskItemLive do
+defmodule Bonfire.UI.Coordination.TaskActionsMenuLive do
   use Bonfire.Web, :stateless_component
   alias Surface.Components.LivePatch
 

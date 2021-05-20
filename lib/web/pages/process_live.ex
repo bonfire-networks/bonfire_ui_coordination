@@ -57,7 +57,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
           note
           due
           finished
-
+          in_scope_of
           provider {
             id
             name
@@ -69,10 +69,9 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
           id
           name
           note
-
           due
           finished
-
+          in_scope_of
           provider {
             id
             name

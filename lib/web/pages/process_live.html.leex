@@ -32,7 +32,7 @@
       )) %>
       <div class="flex flex-col divide-y">
         <%= for task <- @process.intended_outputs do %>
-          <%= live_component(@socket, Bonfire.UI.Coordination.TaskItemLive, assigns_merge(assigns, task: task)) %>
+          <%= live_component(@socket, Bonfire.UI.Social.Activity.IntentTaskLive, object: task, show_likes: true) %>
         <% end %>
       </div>
     </div>
