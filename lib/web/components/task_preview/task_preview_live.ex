@@ -1,4 +1,4 @@
-defmodule Bonfire.UI.Social.Activity.IntentTaskLive do
+defmodule Bonfire.UI.Coordination.TaskPreviewLive do
   use Bonfire.Web, :stateless_component
   alias Surface.Components.LivePatch
   import Bonfire.UI.Social.Integration
