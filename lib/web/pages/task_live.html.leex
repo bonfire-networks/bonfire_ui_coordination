@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="w-center min-h-screen shadow-tick bg-white mt-4 rounded-lg mb-24">
+  <section class="min-h-screen bg-white w-center shadow-tick">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
       page_title: @page_title,
@@ -12,22 +12,22 @@
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskHeroLive, task: @intent) %>
-      <div class="lg:hidden mt-2 px-4 flex items-center space-x-4">
+      <div class="flex items-center px-4 mt-2 space-x-4 lg:hidden">
         <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, current_user: @current_user, task: @intent) %>
       </div>
-      <div class="mt-2 px-4">
+      <div class="px-4 mt-2">
         <%= live_component(@socket, Bonfire.UI.ValueFlows.EditDescriptionLive, item: @intent) %>
       </div>
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskThreadLive, task: @intent) %>
 
     </section>
-    <aside class="flex-1 hidden mt-4 mx-3 rounded-lg lg:flex md:flex-shrink-0">
-      <div class="h-full px-4 w-full">
-          <div class="flex-col flex space-y-4">
+    <aside class="flex-1 hidden mx-3 mt-4 rounded-lg lg:flex md:flex-shrink-0">
+      <div class="w-full h-full px-4">
+          <div class="flex flex-col space-y-4">
             <%= if @current_user do %>
             <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive, redirect_after: "/task/", task_id: @intent.id, finished: @intent.finished) %>
             <div class="">
-              <span class="block uppercase text-gray-600 text-xs mb-2 tracking-wide">Notifications</span>
+              <span class="block mb-2 text-xs tracking-wide text-gray-600 uppercase">Notifications</span>
               <div class="flex flex-col space-y-3">
                 <%= live_component(@socket, Bonfire.UI.Social.FollowButtonLive, following: e(assigns, :following, []), id: e(@intent, :id, nil), label: "the task", class: "rounded-md shadow-sm w-full flex flex-1 place-content-center text-left btn-secondary") %>
               </div>
