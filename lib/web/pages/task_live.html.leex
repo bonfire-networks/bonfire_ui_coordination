@@ -23,22 +23,20 @@
     </section>
     <aside class="flex-1 hidden mx-3 mt-4 rounded-lg lg:flex md:flex-shrink-0">
       <div class="w-full h-full px-4">
-          <div class="flex flex-col space-y-4">
-            <%= if @current_user do %>
-            <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive, redirect_after: "/task/", task_id: @intent.id, finished: @intent.finished) %>
-            <div class="">
-              <span class="block mb-2 text-xs tracking-wide text-gray-600 uppercase">Notifications</span>
-              <div class="flex flex-col space-y-3">
-                <%= live_component(@socket, Bonfire.UI.Social.FollowButtonLive, following: e(assigns, :following, []), id: e(@intent, :id, nil), label: "the task", class: "rounded-md shadow-sm w-full flex flex-1 place-content-center text-left btn-secondary") %>
-              </div>
+        <div class="flex flex-col space-y-4">
+          <%= if @current_user do %>
+          <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive, redirect_after: "/task/", task_id: @intent.id, finished: @intent.finished) %>
+          <div class="relative pt-4 text-sm text-gray-600 border-t">
+            <div class="flex items-center justify-between mb-2">
+              <span class="block text-sm font-semibold tracking-wide text-gray-500">Notifications</span>
             </div>
-            <% end %>
+              <%= live_component(@socket, Bonfire.UI.Social.FollowButtonLive, following: e(assigns, :following, []), id: e(@intent, :id, nil), label: "the task", class: "rounded-md shadow-sm w-full flex flex-1 place-content-center text-left btn-secondary") %>
+            </div>
+          <% end %>
 
-            <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, current_user: @current_user, task: @intent) %>
+          <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, current_user: @current_user, task: @intent) %>
 
-          </div>
-
-
+        </div>
       </div>
     </aside>
   </main>
