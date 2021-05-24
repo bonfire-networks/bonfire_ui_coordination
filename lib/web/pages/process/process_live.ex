@@ -25,14 +25,13 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
 
     process = process(%{id: id}, socket)
     IO.inspect(process)
-
     {:ok, socket
     |> assign(
       page_title: "process",
       page: "process",
       selected_tab: "tasks",
       smart_input: false,
-      process: process
+      process: process,
     )}
   end
 
