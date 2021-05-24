@@ -42,7 +42,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
       name
       note
       has_end
-      intendedOutputs {
+      intended_outputs {
         finished
       }
     }

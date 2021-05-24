@@ -11,14 +11,14 @@
       reply_to_thread_id: nil,
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
-      
+
     <div class="">
       <%= live_component(@socket, Bonfire.UI.Coordination.ListsNavigationLive, assigns_merge(assigns,
         intent_url: "/list/"
       )) %>
       <div class="flex flex-col divide-y">
         <%= for list <- @processes do %>
-         <%= live_component(@socket, Bonfire.UI.Social.Activity.ListLive, object: list) %>
+         <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessListLive, object: list) %>
         <% end %>
       </div>
     </div>
