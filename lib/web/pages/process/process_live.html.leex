@@ -31,6 +31,13 @@
         intent_url: "/task/"
       )) %>
       <div class="flex flex-col divide-y">
+
+        <%= live_component(@socket, Bonfire.UI.ValueFlows.CreateTaskLive, assigns_merge(assigns,
+        output_of_id: @process.id,
+        action: "work",
+        intent_url: "/task/"
+      )) %>
+
         <%= for task <- @process.intended_outputs do %>
           <%= live_component(@socket, Bonfire.UI.Coordination.TaskPreviewLive, object: task, show_likes: true) %>
         <% end %>
