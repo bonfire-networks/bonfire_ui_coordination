@@ -1,4 +1,4 @@
 defmodule Bonfire.UI.Coordination.MyTasksLive do
-  use Bonfire.Web, :stateless_component
+  use Bonfire.Web, :live_view
 
 end

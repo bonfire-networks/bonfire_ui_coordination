@@ -9,7 +9,7 @@ defmodule Bonfire.UI.Coordination.Routes do
         live "/list/:id", ProcessLive
         live "/lists", ProcessesLive
         live "/task/:id", TaskLive
-        live "/my-tasks", MyTasks
+        live "/my-tasks", MyTasksLive
       end
 
     end
