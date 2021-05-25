@@ -18,7 +18,7 @@
       )) %>
       <div class="flex flex-col divide-y">
         <%= for list <- @processes do %>
-         <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessListLive, object: list) %>
+         <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessListLive, object: list, within_feed: false) %>
         <% end %>
       </div>
     </div>
