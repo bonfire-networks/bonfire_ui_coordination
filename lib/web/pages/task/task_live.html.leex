@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="min-h-screen bg-white w-center shadow-tick">
+  <section class="min-h-screen bg-white w-center shadow-tick <%= if !@current_user, do: "rounded-lg border-t" %>">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       current_user: @current_user,
       page_title: @page_title,
@@ -16,7 +16,7 @@
         <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, current_user: @current_user, task: @intent) %>
       </div>
       <div class="px-4 mt-2">
-        <%= live_component(@socket, Bonfire.UI.ValueFlows.EditDescriptionLive, item: @intent) %>
+        <%= live_component(@socket, Bonfire.UI.ValueFlows.EditDescriptionLive, item: @intent, current_user: @current_user) %>
       </div>
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskThreadLive, task: @intent) %>
 

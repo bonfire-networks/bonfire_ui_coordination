@@ -1,5 +1,5 @@
 <div class="px-4 pt-8">
-  <div class="mb-2 text-sm font-medium text-gray-700">Discussion</div>
+  <div class="text-xs text-gray-700 uppercase font-regular">Discussion</div>
   <div class="-mx-3">
   {{ live_component(@socket,
       Bonfire.UI.Social.ThreadLive,
