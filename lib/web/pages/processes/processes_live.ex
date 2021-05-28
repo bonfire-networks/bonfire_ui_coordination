@@ -28,7 +28,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
 
     {:ok, socket
     |> assign(
-      page_title: "All lists",
+      page_title: "All processes",
       page: "processes",
       smart_input: false,
       processes: processes
