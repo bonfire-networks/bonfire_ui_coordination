@@ -5,8 +5,8 @@
     <div>
       <div class="text-lg font-bold text-gray-800">
 
-      <span :if={{length(e(@task, :in_scope_of, []))>0}}>
-        <LiveRedirect :for={{scope <- @task.in_scope_of}} to="/task/{{scope.id}}" class="text-sm font-medium text-gray-600 cursor-pointer hover:underline">
+      <span :if={{length(e(@task, :context, []))>0}}>
+        <LiveRedirect :for={{scope <- @task.context}} to="/task/{{scope.id}}" class="text-sm font-medium text-gray-600 cursor-pointer hover:underline">
           {{e(scope, :name, "")}} :&nbsp;
         </LiveRedirect>
       </span>

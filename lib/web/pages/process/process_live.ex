@@ -24,7 +24,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
   defp mounted(%{"id"=> id} = _params, _session, socket) do
 
     process = process(%{id: id}, socket)
-    IO.inspect(process)
+    # IO.inspect(process)
     {:ok, socket
     |> assign(
       page_title: "process",
@@ -56,7 +56,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
           note
           due
           finished
-          in_scope_of
+          context: in_scope_of
           provider {
             id
             name
@@ -70,7 +70,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
           note
           due
           finished
-          in_scope_of
+          context: in_scope_of
           provider {
             id
             name
