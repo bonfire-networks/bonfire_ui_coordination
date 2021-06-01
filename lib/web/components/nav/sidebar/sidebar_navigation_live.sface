@@ -36,7 +36,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_browse">Direct Messages</span>
     </LivePatch>
 
-    <LivePatch :if={{@current_user}} to={{"/user/" <> e(@current_user, :character, :username, "anon")}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "profile"}}>
+    <LivePatch :if={{@current_user}} to={{path(@current_user)}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "profile"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"
