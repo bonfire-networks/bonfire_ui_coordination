@@ -82,6 +82,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
     resource_inventoried_as #{@resource_fields}
   }
   """
+  def intent_fields, do: @intent_fields
 
   @graphql """
     query($id: ID) {
