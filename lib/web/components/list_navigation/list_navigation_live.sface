@@ -1,6 +1,6 @@
 <Context put={{current_user: @current_user}}>
   <div>
-    <div class="flex items-center p-3 border-b">
+    <div class="flex items-center p-3 border-b dark:border-gray-600">
       <div
         x-cloak
         x-data="{ open: false }"
