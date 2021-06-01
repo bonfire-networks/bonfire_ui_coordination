@@ -1,4 +1,4 @@
-efmodule Bonfire.UI.Coordination.ProcessLive do
+defmodule Bonfire.UI.Coordination.ProcessLive do
   use Bonfire.Web, :live_view
   # use Surface.LiveView
   use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
