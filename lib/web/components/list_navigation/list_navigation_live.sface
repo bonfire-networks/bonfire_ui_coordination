@@ -34,18 +34,22 @@
           role="menu"
           aria-orientation="vertical">
             <div class="py-1" role="none">
-              <div class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
+              <LivePatch class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100"
+                  to="?filter=open">
                 Open
-              </div>
-              <div class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
+              </LivePatch>
+              <LivePatch class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100"
+                  to="?filter=in_progress">
                 In progress
-              </div>
-              <div class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
+              </LivePatch>
+              <LivePatch class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100"
+                  to="?filter=closed">
                 Closed
-              </div>
-              <div class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
+              </LivePatch>
+              <LivePatch class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100"
+                  to="?filter=tbd">
                 TBD
-              </div>
+              </LivePatch>
             </div>
         </div>
       </div>
