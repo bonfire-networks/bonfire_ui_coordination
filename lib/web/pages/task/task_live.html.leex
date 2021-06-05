@@ -1,29 +1,29 @@
 <main class="lg:flex">
-  <section class="min-h-screen bg-white dark:bg-gray-700 w-center shadow <%= if !@current_user, do: "rounded-lg border-t" %>">
+  <section class="min-h-screen bg-white dark:bg-gray-700 w-center shadow <%= if !e(assigns, :current_user, nil), do: "rounded-lg border-t" %>">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
-      current_user: @current_user,
+
       page_title: @page_title,
       page: @page,
       smart_input: @smart_input,
-      smart_input_private: e(assigns, :smart_input_private, false),
-      create_activity_type: e(assigns, :create_activity_type, nil ),
+
+
       reply_to_id: nil,
       reply_to_thread_id: nil,
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )%>
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskHeroLive, task: @intent) %>
       <div class="flex items-center px-4 mt-2 space-x-4 lg:hidden">
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, current_user: @current_user, task: @intent) %>
+        <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive,  task: @intent) %>
       </div>
       <div class="px-4 mt-2">
-        <%= live_component(@socket, Bonfire.UI.ValueFlows.EditDescriptionLive, item: @intent, current_user: @current_user) %>
+        <%= live_component(@socket, Bonfire.UI.ValueFlows.EditDescriptionLive, item: @intent) %>
       </div>
       <%= live_component(@socket, Bonfire.UI.Coordination.TaskThreadLive, task: @intent) %>
     </section>
     <aside class="flex-1 hidden mx-3 mt-4 rounded-lg lg:flex md:flex-shrink-0">
       <div class="w-full h-full px-4">
         <div class="flex flex-col space-y-4">
-          <%= if @current_user do %>
+          <%= if e(assigns, :current_user, nil) do %>
           <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive, redirect_after: "/task/", task_id: @intent.id, finished: @intent.finished) %>
           <div class="relative pt-4 text-sm text-gray-600 border-t dark:text-gray-400 dark:border-gray-600">
             <div class="flex items-center justify-between mb-2">
@@ -33,7 +33,7 @@
             </div>
           <% end %>
 
-          <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive, current_user: @current_user, task: @intent) %>
+          <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive,  task: @intent) %>
 
         </div>
       </div>

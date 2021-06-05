@@ -1,7 +1,7 @@
-<Context put={{current_user: @current_user}}>
+
   <div>
     <div class="flex items-center p-3 border-b">
-     
+
     <div class="flex flex-1 space-x-2">
       <div class="flex rounded-md shadow-sm w-80">
         <label class="sr-only">Search tasks</label>
@@ -66,7 +66,7 @@
           </div>
       </div>
     </div>
-    
+
     <div class="flex items-center ml-4 space-x-2">
       <div x-data="{ open: false }" @keydown.window.escape="open = false">
         <button @click="open=true" type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -85,4 +85,3 @@
     </div>
   </div>
 </div>
-</Context>
