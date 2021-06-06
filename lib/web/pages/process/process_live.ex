@@ -127,15 +127,15 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
   def process_filtered(params \\ %{}, socket), do: liveql(socket, :process, params)
 
 
-  # defdelegate handle_params(params, attrs, socket), to: Bonfire.Web.LiveHandler
+  # defdelegate handle_params(params, attrs, socket), to: Bonfire.Common.LiveHandlers
   def handle_params(%{"filter" => status}, _, %{assigns: %{process: process}} = socket) do
     # process = process_filtered(%{id: process.id, filters: status})
     # IO.inspect(process)
     # {:noreply, socket |> assign(process: process)}
     {:noreply, socket}
   end
-  def handle_params(params, attrs, socket), do: Bonfire.Web.LiveHandler.handle_params(params, attrs, socket)
+  def handle_params(params, attrs, socket), do: Bonfire.Common.LiveHandlers.handle_params(params, attrs, socket)
 
-  def handle_event(action, attrs, socket), do: Bonfire.Web.LiveHandler.handle_event(action, attrs, socket, __MODULE__)
-  def handle_info(info, socket), do: Bonfire.Web.LiveHandler.handle_info(info, socket, __MODULE__)
+  def handle_event(action, attrs, socket), do: Bonfire.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
+  def handle_info(info, socket), do: Bonfire.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 end
