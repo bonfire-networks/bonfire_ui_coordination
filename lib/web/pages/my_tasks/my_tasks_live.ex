@@ -39,7 +39,7 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
   @intent_fields Bonfire.UI.Coordination.ProcessLive.intent_fields()
   @graphql """
   {
-    intents(filter:{provider: "me", finished: false}, limit: 200)
+    intents(filter:{provider: "me", status: "open"}, limit: 200)
       #{@intent_fields}
   }
   """
