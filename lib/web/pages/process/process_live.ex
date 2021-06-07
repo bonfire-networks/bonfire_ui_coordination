@@ -85,7 +85,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
   def intent_fields, do: @intent_fields
 
   @graphql """
-  query($id: ID, $filters: IntentSearchParams) {
+  query($id: ID, $intent_filter: IntentSearchParams) {
     process(id: $id) {
       id
       name
@@ -97,27 +97,30 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
         name
         image
       }
-      intended_inputs_filtered(filters: $filters) #{@intent_fields}
-      intended_outputs_filtered(filters: $filters) #{@intent_fields}
+      intended_inputs(filter: $intent_filter) #{@intent_fields}
+      intended_outputs(filter: $intent_filter) #{@intent_fields}
     }
   }
   """
 
-  def process(params \\ %{}, socket), do: liveql(socket, :process, params) |> compat()
-  def process_filtered(params \\ %{}, socket), do: liveql(socket, :process, params) |> compat()
-
-  defp compat(%{intended_inputs_filtered: inputs, intended_outputs_filtered: outputs} = process) do
-    Map.merge(process, %{intended_inputs: inputs, intended_outputs: outputs})
-  end
-
+  def process(params \\ %{}, socket), do: liveql(socket, :process, params)
+  def process_filtered(params \\ %{}, socket), do: liveql(socket, :process, params)
 
   # defdelegate handle_params(params, attrs, socket), to: Bonfire.Common.LiveHandlers
   def handle_params(%{"filter" => status}, _, %{assigns: %{process: process}} = socket) do
-    process = process_filtered(%{id: process.id, filters: %{"status" => status}}, socket)
-    IO.inspect(process)
+    process = process_filtered(%{id: process.id, intent_filter: %{"status" => status}}, socket)
     {:noreply, socket |> assign(process: process)}
   end
   def handle_params(params, attrs, socket), do: Bonfire.Common.LiveHandlers.handle_params(params, attrs, socket, __MODULE__)
+
+  def handle_event("search", %{"key" => "Enter", "value" => search_term} = attrs, %{assigns: %{process: process}} = socket) do
+    process = process_filtered(%{id: process.id, intent_filter: %{"searchString" => search_term}}, socket)
+    {:noreply, socket |> assign(process: process)}
+  end
+
+  def handle_event("search", attrs, socket) do
+    {:noreply, socket}
+  end
 
   def handle_event(action, attrs, socket), do: Bonfire.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
   def handle_info(info, socket), do: Bonfire.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
