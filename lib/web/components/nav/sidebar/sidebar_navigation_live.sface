@@ -13,7 +13,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_browse">browse</span>
     </LivePatch>
 
-    <LivePatch :if={{e(assigns, :current_user, nil)}} to={{path(:notifications)}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "notifications"}}>
+    <LivePatch :if={{current_user(assigns)}} to={{path(:notifications)}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "notifications"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
         <svg
           aria-labelledby="navigation_notification"
@@ -24,7 +24,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_notification">Notification</span>
     </LivePatch>
 
-    <LivePatch :if={{e(assigns, :current_user, nil)}} to={{path(:private)}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "private"}}>
+    <LivePatch :if={{current_user(assigns)}} to={{path(:private)}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "private"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_private"
@@ -35,7 +35,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_browse">Direct Messages</span>
     </LivePatch>
 
-    <LivePatch :if={{e(assigns, :current_user, nil)}} to={{path(e(assigns, :current_user, nil))}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "profile"}}>
+    <LivePatch :if={{current_user(assigns)}} to={{path(current_user(assigns))}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "profile"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
       <svg
         aria-labelledby="navigation_profile"
@@ -49,7 +49,7 @@
     </LivePatch>
 
 
-    <LivePatch :if={{e(assigns, :current_user, nil)}} to={{"/my-tasks"}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "my_tasks"}}>
+    <LivePatch :if={{current_user(assigns)}} to={{"/my-tasks"}} class={{"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200 dark:hover:bg-gray-700 dark:text-gray-200 focus:outline-none focus:text-gray-900 focus:bg-gray-50 text-gray-600", "bg-blueGray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200": @page == "my_tasks"}}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
         <svg
           xmlns="http://www.w3.org/2000/svg"

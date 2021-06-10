@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="min-h-screen bg-white dark:bg-gray-700 w-center shadow <%= if !e(assigns, :current_user, nil), do: "rounded-lg border-t" %>">
+  <section class="min-h-screen bg-white dark:bg-gray-700 w-center shadow <%= if !current_user(assigns), do: "rounded-lg border-t" %>">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
 
       page_title: @page_title,
@@ -23,7 +23,7 @@
     <aside class="flex-1 hidden mx-3 mt-4 rounded-lg lg:flex md:flex-shrink-0">
       <div class="w-full h-full px-4">
         <div class="flex flex-col space-y-4">
-          <%= if e(assigns, :current_user, nil) do %>
+          <%= if current_user(assigns) do %>
           <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive, redirect_after: "/task/", task_id: @intent.id, finished: @intent.finished) %>
           <div class="relative pt-4 text-sm text-gray-600 border-t dark:text-gray-400 dark:border-gray-600">
             <div class="flex items-center justify-between mb-2">
