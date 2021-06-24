@@ -23,17 +23,21 @@ defmodule Bonfire.UI.Coordination.TaskLive do
   defp mounted(%{"id"=> id} = _params, _session, socket) do
 
     intent = intent(%{id: id}, socket)
-    IO.inspect(intent)
+    # IO.inspect(intent)
 
-    {:ok, socket
-    |> assign(
-      page_title: "task",
-      page: "task",
-      selected_tab: "events",
-      smart_input: false,
-      intent: intent,
-      # resource: resource,
-    )}
+    if !intent || intent == %{intent: nil} do
+      {:error, :not_found}
+    else
+      {:ok, socket
+      |> assign(
+        page_title: "task",
+        page: "task",
+        selected_tab: "events",
+        smart_input: false,
+        intent: intent,
+        # resource: resource,
+      )}
+    end
   end
 
 

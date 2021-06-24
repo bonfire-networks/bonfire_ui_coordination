@@ -1,25 +1,25 @@
 <div class="flex items-center p-4">
   <div class="flex-1">
   <div class="flex items-center space-x-3">
-    <Bonfire.UI.ValueFlows.LikeItemLive is_editable={{true}} />
+    <Bonfire.UI.ValueFlows.LikeItemLive is_editable={true} />
     <div>
       <div class="text-lg font-bold text-gray-800 dark:text-gray-100">
 
-      <span :if={{length(e(@task, :context, []))>0}}>
-        <LiveRedirect :for={{scope <- @task.context}} to="/task/{{scope.id}}" class="text-sm font-medium text-gray-600 cursor-pointer dark:text-gray-400 hover:underline">
-          {{e(scope, :name, "")}} :&nbsp;
+      <span :if={length(e(@task, :context, []))>0}>
+        <LiveRedirect :for={scope <- @task.context} to={"/task/#{scope.id}"} class="text-sm font-medium text-gray-600 cursor-pointer dark:text-gray-400 hover:underline">
+          {e(scope, :name, "")} :&nbsp;
         </LiveRedirect>
       </span>
 
-        {{rich @task.name}}
+        {rich @task.name}
 
       </div>
-      <span :if={{@task.output_of}} class="flex mt-1 text-sm text-gray-700 dark:text-gray-200">
+      <span :if={@task.output_of} class="flex mt-1 text-sm text-gray-700 dark:text-gray-200">
         Task in
         <LivePatch
-        to={{"/list/"<>@task.output_of.id}}
+        to={"/list/"<>@task.output_of.id}
         class="ml-1 underline inline_flex">
-          {{rich @task.output_of.name}}
+          {rich @task.output_of.name}
         </LivePatch>
       </span>
     </div>
@@ -73,16 +73,12 @@
           </a>
         </div>
         <div class="py-1" role="none">
-          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 group" role="menuitem" tabindex="-1" id="menu-item-2">
-            <!-- Heroicon name: solid/archive -->
-            <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
-              <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd" />
-            </svg>
-            Archive
-          </a>
+          <div :on-click="ValueFlows.Planning.Intent:delete" phx-value-id={@task.id} phx-value-redirect_after={"/list/"<>e(@task, :output_of, :id, "")} class="flex items-center px-4 py-2 text-sm text-gray-700 group" role="menuitem" tabindex="-1" id="menu-item-2">
+            <Solid.TrashIcon/>
+            Delete
+          </div>
         </div>
-      </div>
+      </div> 
     </div>
   </div>
 </div>

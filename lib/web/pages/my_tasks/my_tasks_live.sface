@@ -1,6 +1,6 @@
 <main class="lg:flex">
   <section class="w-full min-h-screen mb-4 bg-white rounded-lg shadow dark:bg-gray-700">
-    {{ live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
+    {live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
 
       page_title: @page_title,
       page: @page,
@@ -11,7 +11,7 @@
       reply_to_thread_id: nil,
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
       smart_input_text: e(assigns, :smart_input_text, "") )
-    }}
+    }
       <div class="">
         <div class="block">
           <div class="px-5 border-b dark:border-gray-600 ">
@@ -36,8 +36,8 @@
         intent_url="/task/"
     />
 
-        <span :for={{task <- @intents}}>
-          <Bonfire.UI.Coordination.TaskPreviewLive object={{task}} show_likes={{true}} />
+        <span :for={task <- @intents}>
+          <Bonfire.UI.Coordination.TaskPreviewLive object={task} show_likes={true} />
         </span>
       </div>
     </div>

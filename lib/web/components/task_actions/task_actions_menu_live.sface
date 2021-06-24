@@ -31,17 +31,23 @@
         role="menu"
         aria-orientation="vertical">
           <div class="py-1" role="none">
-            <div :if={{!e(@task, :provider, :id, nil) || e(@task, :provider, :id, nil) != e(assigns, :current_user, :id, nil)}} phx-click="ValueFlows.Planning.Intent:assign:select" class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100" phx-value-id="me" phx-value-name="Me" phx-value-context_id="{{@task.id}}" phx-value-field="provider">
+            <div :if={(!e(@task, :provider, :id, nil) && !e(@task, :provider_id, nil)) || e(@task, :provider, :id, nil) != e(assigns, :current_user, :id, nil)} phx-click="ValueFlows.Planning.Intent:assign:select" class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100" phx-value-id="me" phx-value-name="Me" phx-value-context_id={"#{@task.id}"} phx-value-field="provider">
               Assign to myself
             </div>
             <!-- <div :if={{!@task.finished}} class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
               Set in progress
             </div> -->
-            <div :if={{!@task.finished}} :on-click="ValueFlows.Planning.Intent:status:finished" phx-value-id={{@task.id}} class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
+            
+            <div :if={!@task.finished} :on-click="ValueFlows.Planning.Intent:status:finished" phx-value-id={@task.id} class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
               Set as completed
             </div>
-            <div class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
-              Archive
+            
+            <div :if={@task.finished} :on-click="ValueFlows.Planning.Intent:status:open" phx-value-id={@task.id} class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
+              Re-open
+            </div>
+
+            <div :on-click="ValueFlows.Planning.Intent:delete" phx-value-id={@task.id} class="block w-full px-4 py-2 text-sm text-left text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100">
+              Delete
             </div>
           </div>
       </div>
