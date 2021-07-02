@@ -1,12 +1,9 @@
 <main class="lg:flex">
   <section class="w-full min-h-screen bg-white shadow">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
-
       page_title: @page_title,
       page: @page,
       smart_input: @smart_input,
-
-
       reply_to_id: nil,
       reply_to_thread_id: nil,
       smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
@@ -19,7 +16,7 @@
       )) %>
       <div class="flex flex-col divide-y">
         <%= for list <- @processes do %>
-         <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessListLive, object: list, within_feed: false) %>
+         <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessListLive, assigns_merge(assigns, object: list, within_feed: false)) %>
         <% end %>
       </div>
     </div>

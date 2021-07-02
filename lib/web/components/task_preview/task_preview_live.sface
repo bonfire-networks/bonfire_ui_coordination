@@ -1,11 +1,11 @@
 <div class="flex items-center p-3 bg-white dark:bg-gray-700 dark:hover:bg-gray-600 hover:bg-gray-50">
   <div class="flex items-center flex-1">
     <div class="mr-2">
-     {live_component(@socket, Bonfire.UI.Social.LikeActionWithoutLabelLive,
-        object_id: @object.id,
-        my_like: nil,
-        like_count: nil
-      )}
+      <Bonfire.UI.Social.LikeActionWithoutLabelLive
+        id={@object.id}
+        current_user={current_user(assigns)}
+        object_id={@object.id}
+        />
     </div>
 
     <span :if={length(e(@object, :context, []))>0}>
