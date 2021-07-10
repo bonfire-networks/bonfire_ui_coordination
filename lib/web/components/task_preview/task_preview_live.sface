@@ -2,7 +2,6 @@
   <div class="flex items-center flex-1">
     <div class="mr-2">
       <Bonfire.UI.Social.LikeActionWithoutLabelLive
-        id={"like:"<>@object.id}
         object_id={@object.id}
         current_user={current_user(assigns)}
         />
