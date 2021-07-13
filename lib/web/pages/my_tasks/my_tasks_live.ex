@@ -27,8 +27,8 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
 
     {:ok, socket
     |> assign(
-      page_title: "task",
-      page: "task",
+      page_title: "My tasks",
+      page: "my_tasks",
       selected_tab: "events",
       smart_input: false,
       intents: intents,

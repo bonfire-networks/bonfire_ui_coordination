@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class="w-full min-h-screen bg-white shadow">
+  <section class="min-h-screen bg-white shadow w-center dark:bg-gray-700">
     <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
       page_title: @page_title,
       page: @page,
@@ -14,7 +14,7 @@
         intent_url: "/list/",
         process_url: "/list/"
       )) %>
-      <div class="flex flex-col divide-y">
+      <div class="flex flex-col divide-y dark:divide-gray-600">
         <%= for list <- @processes do %>
          <%= live_component(@socket, Bonfire.UI.Social.Activity.ProcessListLive, assigns_merge(assigns, object: list, within_feed: false)) %>
         <% end %>

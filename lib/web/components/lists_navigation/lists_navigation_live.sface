@@ -1,6 +1,6 @@
 
   <div>
-    <div class="flex items-center p-3 border-b">
+    <div class="flex items-center p-3 border-b dark:border-gray-600">
 
     <div class="flex flex-1 space-x-2">
       <div class="flex rounded-md shadow-sm w-80">
