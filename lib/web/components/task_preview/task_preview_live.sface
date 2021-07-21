@@ -22,7 +22,7 @@
     </LivePatch>
   </div>
 
-  <div class="flex items-center space-x-6">
+  <div class="flex items-center ml-4 space-x-6">
 
     <LivePatch
     :if={e(@object, :provider, :id, nil)}
