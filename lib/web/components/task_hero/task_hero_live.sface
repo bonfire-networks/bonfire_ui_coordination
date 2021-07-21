@@ -15,7 +15,7 @@
 
       </div>
       <span :if={@task.output_of} class="flex mt-1 text-sm text-gray-700 dark:text-gray-200">
-        Task in
+        {l "Task in"}
         <LivePatch
         to={"/list/"<>@task.output_of.id}
         class="ml-1 underline inline_flex">
@@ -69,13 +69,13 @@
               <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
               <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
             </svg>
-            Edit
+            {l "Edit"}
           </a>
         </div>
         <div class="py-1" role="none">
           <div :on-click="ValueFlows.Planning.Intent:delete" phx-value-id={@task.id} phx-value-redirect_after={"/list/"<>e(@task, :output_of, :id, "")} class="flex items-center px-4 py-2 text-sm text-gray-700 group" role="menuitem" tabindex="-1" id="menu-item-2">
             <Solid.TrashIcon/>
-            Delete
+            {l "Delete"}
           </div>
         </div>
       </div> 
