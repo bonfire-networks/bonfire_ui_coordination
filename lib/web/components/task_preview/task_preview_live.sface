@@ -2,6 +2,7 @@
   <div class="flex items-center flex-1">
     <div class="mr-2">
       <Bonfire.UI.Social.LikeActionWithoutLabelLive
+          id={ComponentID.new(Bonfire.UI.Social.LikeActionWithoutLabelLive, @object)} 
         object_id={@object.id}
         current_user={current_user(assigns)}
         />
@@ -26,7 +27,7 @@
 
     <LivePatch
     :if={e(@object, :provider, :id, nil)}
-    to={"/user/"<>e(@object, :provider, :display_username, e(@object, :provider, :character, :username, ""))}
+    to={path(e(@object, :provider, nil))}
     class="flex items-center text-xs text-gray-700 text-medium">
       <img class="inline-block w-6 h-6 bg-gray-200 rounded-full" src={"#{avatar_url(@object.provider)}"} alt="">
     </LivePatch>
