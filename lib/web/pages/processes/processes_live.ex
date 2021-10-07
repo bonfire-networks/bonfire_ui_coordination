@@ -49,6 +49,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
   }
   """
   def processes(params \\ %{}, socket), do: liveql(socket, :processes, params)
+
   defdelegate handle_params(params, attrs, socket), to: Bonfire.Common.LiveHandlers
   def handle_event(action, attrs, socket), do: Bonfire.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
   def handle_info(info, socket), do: Bonfire.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
