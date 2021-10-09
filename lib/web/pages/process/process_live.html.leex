@@ -32,7 +32,7 @@
       )) %>
       <div class="flex flex-col divide-y dark:divide-gray-600">
 
-        <%= live_component(@socket, Bonfire.UI.ValueFlows.CreateTaskLive, assigns_merge(assigns,
+        <%= live_component(@socket, Bonfire.UI.Coordination.CreateTaskLive, assigns_merge(assigns,
         output_of_id: @process.id,
         action: "work",
         intent_url: "/task/"
