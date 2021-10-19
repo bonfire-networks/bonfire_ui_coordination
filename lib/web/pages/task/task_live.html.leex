@@ -26,7 +26,7 @@
             <div class="flex items-center justify-between mb-2">
               <span class="block text-sm font-semibold tracking-wide text-gray-500 dark:text-gray-400">Notifications</span>
             </div>
-              <%= live_component(@socket, Bonfire.UI.Social.FollowButtonLive, following: e(assigns, :following, []), object_id: e(@intent, :id, nil), id: ComponentID.new(Bonfire.UI.Social.FollowButtonLive, e(@intent, :id, "")), label: "the task", class: "rounded-md shadow-sm w-full flex flex-1 place-content-center text-left btn-secondary") %>
+              <%= live_component(@socket, Bonfire.UI.Social.FollowButtonLive, following: e(assigns, :following, []), object_id: e(@intent, :id, nil), id: ComponentID.new(Bonfire.UI.Social.FollowButtonLive, e(@intent, :id, "")), label: "the task", class: "rounded-md shadow-sm w-full flex flex-1 place-content-center text-left btn btn-secondary") %>
             </div>
           <% end %>
 
