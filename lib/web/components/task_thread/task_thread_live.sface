@@ -1,11 +1,11 @@
 <div class="px-4 pt-6">
   <div class="mb-2 text-xs text-gray-700 uppercase dark:text-gray-300 font-regular">{l "Discussion"}</div>
   <div class="-mx-3">
-  {live_component(@socket,
-      Bonfire.UI.Social.ThreadLive,
-      id: e(@task, :id, ""),
-      thread_id: e(@task, :id, ""),
-      smart_input_placeholder: "Post a comment..."
-  )}
+  <Bonfire.UI.Social.ThreadLive 
+      id={e(@task, :id, "")}
+      thread_id={e(@task, :id, "")}
+      smart_input_placeholder={l "Post a comment..."}
+    />
+
 </div>
 </div>
