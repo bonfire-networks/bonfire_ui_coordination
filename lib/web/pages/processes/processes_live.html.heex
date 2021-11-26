@@ -1,0 +1,30 @@
+<main class="lg:flex">
+  <section class="min-h-screen bg-white shadow w-center dark:bg-gray-700">
+    <Bonfire.UI.Social.PageHeaderLive.render
+      page_title={@page_title}
+      page={@page}
+      smart_input={@smart_input}
+      reply_to_id={nil}
+      reply_to_thread_id={nil}
+      smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
+      smart_input_text={e(assigns, :smart_input_text, "")} 
+    />
+
+    <div class="">
+      <Bonfire.UI.Coordination.ListsNavigationLive.render
+        intent_url="/list/",  
+        process_url="/list/"
+      />
+      
+      <div class="flex flex-col divide-y dark:divide-gray-600">
+        <%= for list <- @processes do %>
+          <Bonfire.UI.Social.Activity.ProcessListLive.render
+            object={list} 
+            showing_within={:process}
+          />
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+</main>

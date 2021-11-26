@@ -1,27 +1,36 @@
 <main class="lg:flex">
   <section class="min-h-screen bg-white dark:bg-gray-700 w-center shadow <%= if !current_user(assigns), do: "rounded-lg border-t" %>">
-    <%= live_component(@socket, Bonfire.UI.Social.PageHeaderLive,
-      page_title: @page_title,
-      page: @page,
-      smart_input: @smart_input,
-      reply_to_id: nil,
-      reply_to_thread_id: nil,
-      smart_input_placeholder: e(assigns, :smart_input_placeholder, ""),
-      smart_input_text: e(assigns, :smart_input_text, "") )%>
-      <%= live_component(@socket, Bonfire.UI.Coordination.TaskHeroLive, task: @intent) %>
+    <Bonfire.UI.Social.PageHeaderLive
+      page_title={@page_title}
+      page={@page}
+      smart_input={@smart_input}
+      reply_to_id={nil}
+      reply_to_thread_id={nil}
+      smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
+      smart_input_text={e(assigns, :smart_input_text, "")} 
+    />
+    <Bonfire.UI.Coordination.TaskHeroLive
+      task={@intent} />
       <div class="flex items-center px-4 mt-2 space-x-4 lg:hidden">
-        <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive,  task: @intent) %>
+        <Bonfire.UI.Coordination.TaskActionsLive
+          task={@intent} />
       </div>
       <div class="px-4 mt-2">
-        <%= live_component(@socket, Bonfire.UI.ValueFlows.EditDescriptionLive, item: @intent) %>
+        <Bonfire.UI.Coordination.EditDescriptionLive
+          item={@intent} />
       </div>
-      <%= live_component(@socket, Bonfire.UI.Coordination.TaskThreadLive, task: @intent) %>
+      <Bonfire.UI.Coordination.TaskThreadLive
+          task={@intent} />
     </section>
     <aside class="flex-1 hidden mx-3 mt-4 rounded-lg lg:flex md:flex-shrink-0">
       <div class="w-full h-full px-4">
         <div class="flex flex-col space-y-4">
           <%= if current_user(assigns) do %>
-          <%= live_component(@socket, Bonfire.UI.Coordination.TaskSetStatusLive, redirect_after: "/task/", task_id: @intent.id, finished: @intent.finished) %>
+          <Bonfire.UI.Coordination.TaskSetStatusLive
+          redirect_after="/task/"
+          task_id={@intent.id}
+          finished={@intent.finished} 
+          />
           <div class="relative pt-4 text-sm text-gray-600 border-t dark:text-gray-400 dark:border-gray-600">
             <div class="flex items-center justify-between mb-2">
               <span class="block text-sm font-semibold tracking-wide text-gray-500 dark:text-gray-400">Notifications</span>
@@ -30,7 +39,8 @@
             </div>
           <% end %>
 
-          <%= live_component(@socket, Bonfire.UI.Coordination.TaskActionsLive,  task: @intent) %>
+          <Bonfire.UI.Coordination.TaskActionsLive
+          task={@intent} />
 
         </div>
       </div>

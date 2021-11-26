@@ -5,6 +5,7 @@ defmodule Bonfire.UI.Coordination.TaskPreviewLive do
 
   prop object, :map, required: true
 
+  # FIXME! update no longer works in stateless
   def update(assigns, socket) do
     # TODO: run these preloads when fetching the feed, rather than n+1
     {:ok, socket |>
