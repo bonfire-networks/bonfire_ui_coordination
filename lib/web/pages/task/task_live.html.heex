@@ -1,6 +1,6 @@
 <main class="lg:flex">
-  <section class="min-h-screen bg-white dark:bg-gray-700 w-center shadow <%= if !current_user(assigns), do: "rounded-lg border-t" %>">
-    <Bonfire.UI.Social.PageHeaderLive
+  <section class={"min-h-screen bg-white dark:bg-gray-700 w-center shadow "<> if !current_user(assigns), do: "rounded-lg border-t", else: ""}>
+    <Bonfire.UI.Social.PageHeaderLive.render
       page_title={@page_title}
       page={@page}
       smart_input={@smart_input}
@@ -9,24 +9,24 @@
       smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
       smart_input_text={e(assigns, :smart_input_text, "")} 
     />
-    <Bonfire.UI.Coordination.TaskHeroLive
+    <Bonfire.UI.Coordination.TaskHeroLive.render
       task={@intent} />
       <div class="flex items-center px-4 mt-2 space-x-4 lg:hidden">
-        <Bonfire.UI.Coordination.TaskActionsLive
+        <Bonfire.UI.Coordination.TaskActionsLive.render
           task={@intent} />
       </div>
       <div class="px-4 mt-2">
-        <Bonfire.UI.Coordination.EditDescriptionLive
+        <Bonfire.UI.Coordination.EditDescriptionLive.render
           item={@intent} />
       </div>
-      <Bonfire.UI.Coordination.TaskThreadLive
+      <Bonfire.UI.Coordination.TaskThreadLive.render
           task={@intent} />
     </section>
     <aside class="flex-1 hidden mx-3 mt-4 rounded-lg lg:flex md:flex-shrink-0">
       <div class="w-full h-full px-4">
         <div class="flex flex-col space-y-4">
           <%= if current_user(assigns) do %>
-          <Bonfire.UI.Coordination.TaskSetStatusLive
+          <Bonfire.UI.Coordination.TaskSetStatusLive.render
           redirect_after="/task/"
           task_id={@intent.id}
           finished={@intent.finished} 
@@ -39,7 +39,7 @@
             </div>
           <% end %>
 
-          <Bonfire.UI.Coordination.TaskActionsLive
+          <Bonfire.UI.Coordination.TaskActionsLive.render
           task={@intent} />
 
         </div>
