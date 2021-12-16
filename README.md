@@ -1,4 +1,4 @@
-# Bonfire:UI:Coordination
+# Bonfire.UI.Coordination
 
 An extension for [Bonfire](https://bonfire.cafe/) that handles:
 
