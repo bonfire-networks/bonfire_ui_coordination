@@ -30,7 +30,7 @@
       x-cloak
       x-data="{ open_task_dropdown: false }"
       @keydown.escape.stop="open_task_dropdown = false"
-      @click.away="open_task_dropdown = false"
+      @click.outside="open_task_dropdown = false"
         class="relative inline-block ml-3 text-left">
       <div>
         <button
