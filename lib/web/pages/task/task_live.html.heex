@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class={"min-h-screen bg-white dark:bg-gray-700 w-center shadow "<> if !current_user(assigns), do: "rounded-lg border-t", else: ""}>
+  <section class={"min-h-screen bg-base-100 dark:bg-neutral-700 w-center shadow "<> if !current_user(assigns), do: "rounded-lg border-t", else: ""}>
     <Bonfire.UI.Social.PageHeaderLive.render
       page_title={@page_title}
       page={@page}
@@ -31,9 +31,9 @@
           task_id={@intent.id}
           finished={@intent.finished} 
           />
-          <div class="relative pt-4 text-sm text-gray-600 border-t dark:text-gray-400 dark:border-gray-600">
+          <div class="relative pt-4 text-sm text-primary-content-600 border-t dark:text-primary-content-400 dark:border-gray-600">
             <div class="flex items-center justify-between mb-2">
-              <span class="block text-sm font-semibold tracking-wide text-gray-500 dark:text-gray-400">Notifications</span>
+              <span class="block text-sm font-semibold tracking-wide text-primary-content-500 dark:text-primary-content-400">Notifications</span>
             </div>
               <%= live_component(@socket, Bonfire.UI.Social.FollowButtonLive, following: e(assigns, :following, []), object_id: e(@intent, :id, nil), id: ComponentID.new(Bonfire.UI.Social.FollowButtonLive, e(@intent, :id, "")), label: "the task", class: "rounded-md shadow-sm w-full flex flex-1 place-content-center text-left btn btn-secondary") %>
             </div>
