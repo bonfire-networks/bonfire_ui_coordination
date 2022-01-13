@@ -1,4 +1,4 @@
-<div class="flex items-center p-3 bg-base-100   hover:bg-neutral">
+<div class="flex items-center p-3 bg-base-100   hover:bg-neutral hover:bg-opacity-30 ">
   <div class="flex items-center flex-1">
     <div class="mr-2">
       <Bonfire.UI.Social.LikeActionWithoutLabelLive
