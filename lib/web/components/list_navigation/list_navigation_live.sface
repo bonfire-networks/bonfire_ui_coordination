@@ -1,5 +1,5 @@
   <div>
-    <div class="flex items-center p-3 border-b dark:border-gray-600">
+    <div class="flex items-center p-3 border-b ">
       <div
         x-cloak
         x-data="{ open: false }"
@@ -12,7 +12,7 @@
           x-bind:aria-expanded="open"
           aria-expanded="true"
           type="button"
-          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-primary-content-700 border border-gray-300 rounded-md bg-neutral-50 hover:bg-neutral-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-primary-content-700 border border-gray-300 rounded-md bg-neutral hover:bg-neutral focus:outline-none focus:ring-1 focus:ring-secondary-500 focus:border-indigo-500">
 
           <span class="">{l "Filter"}</span>
 
@@ -33,11 +33,11 @@
           role="menu"
           aria-orientation="vertical">
             <div class="py-1" role="none">
-              <LivePatch class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral-100"
+              <LivePatch class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral"
                   to="?filter=open">
                 {l "Open"}
               </LivePatch>
-              <LivePatch class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral-100"
+              <LivePatch class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral"
                   to="?filter=closed">
                 {l "Closed"}
               </LivePatch>
@@ -54,7 +54,7 @@
               <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
             </svg>
           </div>
-          <input type="text" class="w-full pl-10 border-gray-300 rounded-none rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:block sm:text-sm" placeholder="Search tasks" phx-window-keyup="search" phx-throttle="250">
+          <input type="text" class="w-full pl-10 border-gray-300 rounded-none rounded-md focus:ring-secondary-500 focus:border-indigo-500 sm:block sm:text-sm" placeholder="Search tasks" phx-window-keyup="search" phx-throttle="250">
         </div>
       </div>
       <div
@@ -70,7 +70,7 @@
           x-bind:aria-expanded="open"
           aria-expanded="true"
           type="button"
-          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-primary-content-700 border border-gray-300 rounded-md bg-neutral-50 hover:bg-neutral-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-primary-content-700 border border-gray-300 rounded-md bg-neutral hover:bg-neutral focus:outline-none focus:ring-1 focus:ring-secondary-500 focus:border-indigo-500">
           <svg class="w-5 h-5 text-primary-content-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a1 1 0 102 0v-5.586l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 101.414 1.414L13 10.414V16z" />
           </svg>
@@ -92,16 +92,16 @@
             role="menu"
             aria-orientation="vertical">
               <div class="py-1" role="none">
-                <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral-100">
+                <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral">
                   {l "Newest"}
                 </div>
-                <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral-100">
+                <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral">
                   {l "Oldest"}
                 </div>
-                <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral-100">
+                <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral">
                   {l "Most voted"}
                 </div>
-                <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral-100">
+                <div class="block w-full px-4 py-2 text-sm text-left text-primary-content-700 transition duration-150 ease-in-out hover:bg-neutral">
                   {l "Most discussed"}
                 </div>
               </div>
