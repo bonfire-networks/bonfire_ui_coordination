@@ -8,12 +8,14 @@
       reply_to_thread_id={nil}
       smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
       smart_input_text={e(assigns, :smart_input_text, "")} 
+      __context__={%{}}
     />
 
     <div class="">
       <Bonfire.UI.Coordination.ListsNavigationLive.render
-        intent_url="/list/",  
+        intent_url="/list/" 
         process_url="/list/"
+        __context__={%{}}
       />
       
       <div class="flex flex-col divide-y dark:divide-gray-600">
@@ -21,6 +23,7 @@
           <Bonfire.UI.Social.Activity.ProcessListLive.render
             object={list} 
             showing_within={:process}
+            __context__={%{}}
           />
         <% end %>
       </div>

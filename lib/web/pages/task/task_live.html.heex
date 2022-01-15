@@ -8,39 +8,56 @@
       reply_to_thread_id={nil}
       smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
       smart_input_text={e(assigns, :smart_input_text, "")} 
+      __context__={%{}}
     />
     <Bonfire.UI.Coordination.TaskHeroLive.render
       task={@intent} />
       <div class="flex items-center px-4 mt-2 space-x-4 lg:hidden">
         <Bonfire.UI.Coordination.TaskActionsLive.render
-          task={@intent} />
+          task={@intent}
+          __context__={%{}} />
       </div>
       <div class="px-4 mt-2">
         <Bonfire.UI.ValueFlows.EditDescriptionLive.render
-          item={@intent} />
+          item={@intent}
+          __context__={%{}} />
       </div>
       <Bonfire.UI.Coordination.TaskThreadLive.render
-          task={@intent} />
+          task={@intent}
+          __context__={%{}} />
     </section>
     <aside class="flex-1 hidden mx-3 mt-4 rounded-lg lg:flex md:flex-shrink-0">
       <div class="w-full h-full px-4">
         <div class="flex flex-col space-y-4">
+
           <%= if current_user(assigns) do %>
-          <Bonfire.UI.Coordination.TaskSetStatusLive.render
-          redirect_after="/task/"
-          task_id={@intent.id}
-          finished={@intent.finished} 
-          />
-          <div class="relative pt-4 text-sm text-primary-content-600 border-t  ">
-            <div class="flex items-center justify-between mb-2">
-              <span class="block text-sm font-semibold tracking-wide text-primary-content-500 ">Notifications</span>
-            </div>
-              <%= live_component(@socket, Bonfire.UI.Social.FollowButtonLive, following: e(assigns, :following, []), object_id: e(@intent, :id, nil), id: ComponentID.new(Bonfire.UI.Social.FollowButtonLive, e(@intent, :id, "")), label: "the task", class: "rounded-md shadow-sm w-full flex flex-1 place-content-center text-left btn btn-secondary") %>
+            <Bonfire.UI.Coordination.TaskSetStatusLive.render
+            redirect_after="/task/"
+            task_id={@intent.id}
+            finished={@intent.finished} 
+            __context__={%{}}
+            />
+
+            <div class="relative pt-4 text-sm text-primary-content-600 border-t  ">
+
+              <div class="flex items-center justify-between mb-2">
+                <span class="block text-sm font-semibold tracking-wide text-primary-content-500 ">Notifications</span>
+              </div>
+
+              <Bonfire.UI.Social.FollowButtonLive.render 
+                following={e(assigns, :following, [])}
+                object_id={e(@intent, :id, nil)}
+                id={ComponentID.new(Bonfire.UI.Social.FollowButtonLive, e(@intent, :id, ""))}
+                label={l "the task"}
+                class="rounded-md shadow-sm w-full flex flex-1 place-content-center text-left btn btn-secondary"
+                __context__={%{}}
+              />
             </div>
           <% end %>
 
           <Bonfire.UI.Coordination.TaskActionsLive.render
-          task={@intent} />
+          task={@intent}
+          __context__={%{}} />
 
         </div>
       </div>

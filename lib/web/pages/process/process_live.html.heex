@@ -8,12 +8,14 @@
       reply_to_thread_id={nil}
       smart_input_placeholder={e(assigns, :smart_input_placeholder, "")}
       smart_input_text={e(assigns, :smart_input_text, "")} 
+      __context__={%{}}
     /> 
 
       <div class="">
 
         <Bonfire.UI.ValueFlows.ProcessHeroLive.render
           process={@process}
+          __context__={%{}}
           />
 
         <div class="block">
@@ -32,6 +34,7 @@
         output_of_id={e(@process, :id, nil)}
         action="work"
         intent_url="/task/"
+        __context__={%{}}
        />
       <div class="flex flex-col divide-y dark:divide-gray-600">
 
@@ -39,12 +42,14 @@
         output_of_id={e(@process, :id, nil)}
         action="work"
         intent_url="/task/"
+        __context__={%{}}
        />
 
         <%= for task <- e(@process, :intended_outputs, []) do %>
            <Bonfire.UI.Coordination.TaskPreviewLive.render
             object={task}
             show_likes={true}
+            __context__={%{}}
           />
         <% end %>
       </div>
