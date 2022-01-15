@@ -1,3 +1,3 @@
 defmodule Bonfire.UI.Coordination.LayoutView do
-  use Bonfire.Web, :view
+  use Bonfire.Web, {:layout_view, [namespace: Bonfire.UI.Coordination]}
 end
