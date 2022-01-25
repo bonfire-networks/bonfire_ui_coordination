@@ -45,9 +45,8 @@
               </div>
 
               <Bonfire.UI.Social.FollowButtonLive.render 
-                following={e(assigns, :following, [])}
                 object={e(@intent, nil)}
-                id={ComponentID.new(Bonfire.UI.Social.FollowButtonLive, e(@intent, :id, ""))}
+                id={ComponentID.new(Bonfire.UI.Social.FollowButtonLive, @intent)}
                 label={l "the task"}
                 class="rounded-md shadow-sm w-full flex flex-1 place-content-center text-left btn btn-secondary"
                 __context__={%{}}
