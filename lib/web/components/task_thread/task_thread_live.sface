@@ -4,7 +4,7 @@
   <Bonfire.UI.Social.ThreadLive 
       id={e(@task, :id, "")}
       thread_id={e(@task, :id, "")}
-      smart_input_placeholder={l "Post a comment..."}
+      smart_input_prompt={l "Post a comment..."}
     />
 
 </div>
