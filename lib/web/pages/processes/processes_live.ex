@@ -24,7 +24,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
   defp mounted(_params, _session, socket) do
 
     processes = processes(socket)
-    # IO.inspect(processes)
+    # debug(processes)
 
     {:ok, socket
     |> assign(

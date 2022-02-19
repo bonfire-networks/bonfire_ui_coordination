@@ -23,7 +23,7 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
   defp mounted(_params, _session, socket) do
 
     intents = intents(%{filters: %{provider: "me"}}, socket)
-    IO.inspect(intents)
+    debug(intents)
 
     {:ok, socket
     |> assign(

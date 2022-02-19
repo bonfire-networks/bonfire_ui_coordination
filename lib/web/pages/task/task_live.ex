@@ -23,7 +23,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
   defp mounted(%{"id"=> id} = _params, _session, socket) do
 
     intent = intent(%{id: id}, socket)
-    # IO.inspect(intent)
+    # debug(intent)
 
     if !intent || intent == %{intent: nil} do
       {:error, :not_found}

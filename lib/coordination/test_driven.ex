@@ -5,19 +5,19 @@ defmodule Bonfire.UI.Coordination.TestDrivenCoordination do
   def init(opts), do: {:ok, opts}
 
   def handle_cast({:suite_started, _opts}, config) do
-    IO.inspect(config, label: "Tests started, with config:")
+    debug(config, label: "Tests started, with config:")
 
     {:noreply, config}
   end
 
   def handle_cast({:module_finished, %{tests: tests} = tested_module}, config) do
-    # IO.inspect(tested_module, label: "Test for module done")
+    # debug(tested_module, label: "Test for module done")
     Enum.each(tests, &handle_test(&1, config))
     {:noreply, config}
   end
 
   def handle_cast(event, config) do
-    # IO.inspect(event, label: "Test event")
+    # debug(event, label: "Test event")
     {:noreply, config}
   end
 
