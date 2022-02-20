@@ -1,6 +1,7 @@
 defmodule Bonfire.UI.Coordination.TestDrivenCoordination do
   @moduledoc false
   use GenServer
+  use Bonfire.Common.Utils, only: []
 
   def init(opts), do: {:ok, opts}
 
