@@ -1,7 +1,7 @@
 defmodule Bonfire.UI.Coordination.MyTasksLive do
   use Bonfire.Web, :surface_view
 
-  use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
+  use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
   alias Bonfire.UI.ValueFlows.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
   alias Bonfire.Web.LivePlugs
