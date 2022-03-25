@@ -48,6 +48,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
 
   @resource_fields """
   {
+    __typename
     id
     name
     note
@@ -59,6 +60,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
 
   @intent_fields """
   {
+    __typename
     id
     name
     note
@@ -88,12 +90,14 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
   @graphql """
   query($id: ID, $intent_filter: IntentSearchParams) {
     process(id: $id) {
-      id
+     __typename
+     id
       name
       note
       has_end
       finished
       working_agents {
+        __typename
         id
         name
         image

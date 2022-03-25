@@ -11,7 +11,9 @@
       __context__={%{}}
     />
     <Bonfire.UI.Coordination.TaskHeroLive.render
-      task={@intent} />
+      task={@intent}
+      __context__={%{}}
+     />
       <div class="flex items-center px-4 mt-2 space-x-4 lg:hidden">
         <Bonfire.UI.Coordination.TaskActionsLive.render
           task={@intent}
@@ -32,7 +34,7 @@
 
           <%= if current_user(assigns) do %>
             <Bonfire.UI.Coordination.TaskSetStatusLive.render
-            redirect_after="/task/"
+            redirect_after="/coordination/task/"
             task_id={@intent.id}
             finished={@intent.finished} 
             __context__={%{}}
@@ -44,13 +46,13 @@
                 <span class="block text-sm font-semibold tracking-wide text-primary-content-500 ">Notifications</span>
               </div>
 
-              <Bonfire.UI.Social.FollowButtonLive.render 
+              <%# <Bonfire.UI.Social.FollowButtonLive 
                 object={e(@intent, nil)}
                 id={ComponentID.new(Bonfire.UI.Social.FollowButtonLive, @intent)}
                 label={l "the task"}
                 class="rounded-md shadow-sm w-full flex flex-1 place-content-center text-left btn btn-secondary"
                 __context__={%{}}
-              />
+              /> %>
             </div>
           <% end %>
 

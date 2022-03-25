@@ -44,6 +44,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
   @graphql """
     query($id: ID) {
       intent(id: $id) {
+        __typename
         id
         name
         note
@@ -51,6 +52,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
         finished
         context: in_scope_of
         provider {
+          __typename
           id
           name
           display_username
@@ -58,10 +60,12 @@ defmodule Bonfire.UI.Coordination.TaskLive do
         }
 
         output_of {
+          __typename
           id
           name
         }
         input_of {
+          __typename
           id
           name
         }

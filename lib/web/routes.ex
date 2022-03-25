@@ -4,12 +4,12 @@ defmodule Bonfire.UI.Coordination.Routes do
     quote do
 
       # pages anyone can view
-      scope "/", Bonfire.UI.Coordination do
+      scope "/coordination/", Bonfire.UI.Coordination do
         pipe_through :browser
+        live "/", ProcessesLive, as: ValueFlows.Process
         live "/list/:id", ProcessLive, as: ValueFlows.Process
-        live "/lists", ProcessesLive, as: ValueFlows.Process
         live "/task/:id", TaskLive, as: ValueFlows.Planning.Intent
-        live "/my-tasks", MyTasksLive
+        live "/me", MyTasksLive
       end
 
     end

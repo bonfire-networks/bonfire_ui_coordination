@@ -6,7 +6,7 @@
       <div class="text-lg font-bold text-primary-content-800 ">
 
       <span :if={length(e(@task, :context, []))>0}>
-        <LiveRedirect :for={scope <- @task.context} to={"/task/#{scope.id}"} class="text-sm font-medium text-primary-content-600 cursor-pointer  hover:underline">
+        <LiveRedirect :for={scope <- e(@task, :context, [])} to={"/coordination/task/#{scope.id}"} class="text-sm font-medium text-primary-content-600 cursor-pointer  hover:underline">
           {e(scope, :name, "")} :&nbsp;
         </LiveRedirect>
       </span>
@@ -17,7 +17,7 @@
       <span :if={@task.output_of} class="flex mt-1 text-sm text-primary-content-700 ">
         {l "Task in"}
         <LivePatch
-        to={"/list/"<>@task.output_of.id}
+        to={"/coordination/list/"<>@task.output_of.id}
         class="ml-1 underline inline_flex">
           {rich @task.output_of.name}
         </LivePatch>
@@ -73,7 +73,7 @@
           </a>
         </div>
         <div class="py-1" role="none">
-          <div :on-click="ValueFlows.Planning.Intent:delete" phx-value-id={@task.id} phx-value-redirect_after={"/list/"<>e(@task, :output_of, :id, "")} class="flex items-center px-4 py-2 text-sm text-primary-content-700 group" role="menuitem" tabindex="-1" id="menu-item-2">
+          <div :on-click="ValueFlows.Planning.Intent:delete" phx-value-id={@task.id} phx-value-redirect_after={"/coordination/list/"<>e(@task, :output_of, :id, "")} class="flex items-center px-4 py-2 text-sm text-primary-content-700 group" role="menuitem" tabindex="-1" id="menu-item-2">
             <Solid.TrashIcon/>
             {l "Delete"}
           </div>

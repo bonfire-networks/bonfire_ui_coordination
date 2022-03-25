@@ -13,8 +13,8 @@
 
     <div class="">
       <Bonfire.UI.Coordination.ListsNavigationLive.render
-        intent_url="/list/" 
-        process_url="/list/"
+        intent_url="/coordination/task/" 
+        process_url="/coordination/list/"
         __context__={%{}}
       />
       
@@ -22,6 +22,7 @@
         <%= for list <- @processes do %>
           <Bonfire.UI.Social.Activity.ProcessListLive.render
             object={list} 
+            process_url="/coordination/list/"
             showing_within={:process}
             __context__={%{}}
           />

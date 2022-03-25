@@ -38,6 +38,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
   @graphql """
   {
     processes {
+      __typename
       id
       name
       note

@@ -15,7 +15,7 @@
       <span class="text-sm font-semibold capitalize" id="navigation_profile">{l "My tasks"}</span>
     </LivePatch>
 
-     <LivePatch to={"/lists"} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200   focus:outline-none focus:text-primary-content-900  text-primary-content-600", "bg-blueGray-200 text-primary-content-800  ": @page == "processes"}>
+     <LivePatch to={path(Bonfire.UI.Coordination.ProcessesLive)} class={"rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group hover:bg-blueGray-200   focus:outline-none focus:text-primary-content-900  text-primary-content-600", "bg-blueGray-200 text-primary-content-800  ": @page == "processes"}>
       <span class="flex items-center w-8 h-8 mr-3 rounded-full place-content-center bg-blueGray-200 group-hover:bg-blueGray-300">
         <svg
           aria-labelledby="navigation_lists"
