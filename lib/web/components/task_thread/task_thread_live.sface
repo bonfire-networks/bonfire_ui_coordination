@@ -1,5 +1,5 @@
 <div class="px-4 pt-6">
-  <div class="mb-2 text-xs text-primary-content-700 uppercase  font-regular">{l "Discussion"}</div>
+  <div class="mb-2 text-xs text-base-content-700 uppercase  font-regular">{l "Discussion"}</div>
   <div class="-mx-3">
   <Bonfire.UI.Social.ThreadLive 
       id={e(@task, :id, "")}
