@@ -1,6 +1,6 @@
-  <div class="relative pt-4 text-sm text-base-content-600 border-t  ">
+  <div class="relative pt-4 text-sm text-base-content opacity-60 border-t  ">
     <div class="flex items-center justify-between mb-2">
-      <span class="block text-sm font-semibold tracking-wide text-base-content-500 ">{l "Assigned to"}</span>
+      <span class="block text-sm font-semibold tracking-wide text-base-content opacity-60 ">{l "Assigned to"}</span>
     </div>
     <Bonfire.UI.ValueFlows.AssignedItemLive 
       field_name="provider" 
