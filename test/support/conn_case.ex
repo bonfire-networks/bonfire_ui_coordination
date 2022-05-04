@@ -26,7 +26,7 @@ defmodule Bonfire.UI.Coordination.ConnCase do
       import Bonfire.UI.Common.Testing.Helpers
 
       import Phoenix.LiveViewTest
-      import Bonfire.UI.Coordination.ConnCase
+      # import Bonfire.UI.Coordination.ConnCase
       import Bonfire.UI.Coordination.Test.ConnHelpers
       import Bonfire.UI.Coordination.Test.FakeHelpers
       # alias Bonfire.UI.Coordination.Fake
