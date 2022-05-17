@@ -1,8 +1,8 @@
 <div class="flex items-center p-3 bg-base-100   hover:bg-neutral hover:bg-opacity-30 ">
   <div class="flex items-center flex-1">
     <div class="mr-2">
-      <Bonfire.UI.Social.LikeActionWithoutLabelLive
-          id={ComponentID.new(Bonfire.UI.Social.LikeActionWithoutLabelLive, @object)} 
+      <Bonfire.UI.Common.LikeActionWithoutLabelLive
+          id={ComponentID.new(Bonfire.UI.Common.LikeActionWithoutLabelLive, @object)} 
         object={@object}
         current_user={current_user(assigns)}
         />

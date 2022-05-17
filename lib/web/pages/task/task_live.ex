@@ -4,9 +4,9 @@ defmodule Bonfire.UI.Coordination.TaskLive do
 
   alias Bonfire.UI.Social.{HashtagsLive, ParticipantsLive}
   alias Bonfire.UI.ValueFlows.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
-  alias Bonfire.Me.Web.LivePlugs
+  alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Me.Users
-  alias Bonfire.Me.Web.CreateUserLive
+  alias Bonfire.UI.Me.CreateUserLive
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   def mount(params, session, socket) do
