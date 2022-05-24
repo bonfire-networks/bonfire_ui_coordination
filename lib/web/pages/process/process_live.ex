@@ -113,11 +113,20 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
   def process_filtered(params \\ %{}, socket), do: liveql(socket, :process, params)
 
   # defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
-  def handle_params(%{"filter" => status}, _, %{assigns: %{process: process}} = socket) do
+  def do_handle_params(%{"filter" => status}, _, %{assigns: %{process: process}} = socket) do
     process = process_filtered(%{id: process.id, intent_filter: %{"status" => status}}, socket)
     {:noreply, socket |> assign(process: process)}
   end
-  def handle_params(params, attrs, socket), do: Bonfire.UI.Common.LiveHandlers.handle_params(params, attrs, socket, __MODULE__)
+  def do_handle_params(params, attrs, socket), do: {:noreply, socket}
+
+  def handle_params(params, uri, socket) do
+    # poor man's hook I guess
+    with {_, socket} <- Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
+      undead_params(socket, fn ->
+        do_handle_params(params, uri, socket)
+      end)
+    end
+  end
 
   def handle_event("search", %{"key" => "Enter", "value" => search_term} = attrs, %{assigns: %{process: process}} = socket) do
     process = process_filtered(%{id: process.id, intent_filter: %{"searchString" => search_term}}, socket)
