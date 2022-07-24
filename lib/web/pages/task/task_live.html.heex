@@ -1,5 +1,5 @@
 <main class="lg:flex">
-  <section class={"min-h-screen bg-base-100  w-center shadow "<> if !current_user(assigns), do: "rounded-lg border-t", else: ""}>
+  <section class={"min-h-screen bg-base-100  w-center shadow "<> if !current_user(@__context__), do: "rounded-lg border-t", else: ""}>
     <Bonfire.UI.Common.PageHeaderLive.render
       page_title={@page_title}
       page={@page}
@@ -32,7 +32,7 @@
       <div class="w-full h-full px-4">
         <div class="flex flex-col space-y-4">
 
-          <%= if current_user(assigns) do %>
+          <%= if current_user(@__context__) do %>
             <Bonfire.UI.Coordination.TaskSetStatusLive.render
             redirect_after="/coordination/task/"
             task_id={@intent.id}
