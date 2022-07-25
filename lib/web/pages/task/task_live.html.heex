@@ -1,15 +1,6 @@
 <main class="lg:flex">
   <section class={"min-h-screen bg-base-100  w-center shadow "<> if !current_user(@__context__), do: "rounded-lg border-t", else: ""}>
-    <Bonfire.UI.Common.PageHeaderLive.render
-      page_title={@page_title}
-      page={@page}
-      smart_input={@smart_input}
-      reply_to_id={nil}
-      thread_id={nil}
-      smart_input_prompt={e(assigns, :smart_input_prompt, nil)}
-      smart_input_text={e(assigns, :smart_input_text, nil)} 
-      __context__={%{}}
-    />
+
     <Bonfire.UI.Coordination.TaskHeroLive.render
       task={@intent}
       __context__={%{}}

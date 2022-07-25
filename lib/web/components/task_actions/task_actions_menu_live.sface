@@ -31,7 +31,7 @@
         role="menu"
         aria-orientation="vertical">
           <div class="py-1" role="none">
-            <div :if={(!e(@task, :provider, :id, nil) && !e(@task, :provider_id, nil)) || e(@task, :provider, :id, nil) != e(current_user(@__context__), :id, nil)} phx-click="ValueFlows.Planning.Intent:assign:select" class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 " phx-value-id="me" phx-value-name="Me" phx-value-context_id={"#{@task.id}"} phx-value-field="provider">
+            <div :if={(!e(@task, :provider, :id, nil) && !e(@task, :provider_id, nil)) || e(@task, :provider, :id, nil) != ulid(current_user(@__context__))} phx-click="ValueFlows.Planning.Intent:assign:select" class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 " phx-value-id="me" phx-value-name="Me" phx-value-context_id={"#{@task.id}"} phx-value-field="provider">
               {l "Assign to myself"}
             </div>
             <!-- <div :if={{!@task.finished}} class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 ">
