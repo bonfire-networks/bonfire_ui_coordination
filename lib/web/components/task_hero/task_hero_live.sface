@@ -74,7 +74,7 @@
         </div>
         <div class="py-1" role="none">
           <div :on-click="ValueFlows.Planning.Intent:delete" phx-value-id={@task.id} phx-value-redirect_after={"/coordination/list/"<>e(@task, :output_of, :id, "")} class="flex items-center px-4 py-2 text-sm text-base-content opacity-70 group" role="menuitem" tabindex="-1" id="menu-item-2">
-            <Solid.TrashIcon/>
+            <Icon solid="Trash"/>
             {l "Delete"}
           </div>
         </div>
