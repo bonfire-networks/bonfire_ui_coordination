@@ -31,7 +31,8 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
     |> assign(
       page_title: "All processes",
       page: "processes",
-      smart_input: false,
+      create_activity_type: :task,
+      smart_input_prompt: l("Add a task"),
       processes: processes
     )}
   end

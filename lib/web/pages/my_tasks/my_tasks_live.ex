@@ -23,7 +23,7 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
 
   defp mounted(_params, _session, socket) do
 
-    intents = intents(%{filters: %{provider: "me"}}, socket)
+    intents = intents(%{filters: %{agent: "me"}}, socket)
     debug(intents)
 
     {:ok, socket
@@ -31,7 +31,8 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
       page_title: "My tasks",
       page: "my_tasks",
       selected_tab: "events",
-      smart_input: false,
+      create_activity_type: :task,
+      smart_input_prompt: l("Add a task"),
       intents: intents,
       # resource: resource,
     )}
@@ -40,7 +41,7 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
   @intent_fields Bonfire.UI.Coordination.ProcessLive.intent_fields()
   @graphql """
   {
-    intents(filter:{provider: "me", status: "open"}, limit: 200)
+    intents(filter:{agent: "me", status: "open"}, limit: 200)
       #{@intent_fields}
   }
   """

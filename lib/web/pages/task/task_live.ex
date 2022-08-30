@@ -34,7 +34,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
         page_title: "task",
         page: "task",
         selected_tab: "events",
-        smart_input: false,
+        create_activity_type: :task,
         intent: intent,
         # resource: resource,
       )}
