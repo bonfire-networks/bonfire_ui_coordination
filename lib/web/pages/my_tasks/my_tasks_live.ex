@@ -9,6 +9,9 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
   alias Bonfire.UI.Me.CreateUserLive
   # alias Bonfire.UI.Coordination.ResourceWidget
 
+
+  declare_extension("Coordination", icon: "fa-solid:tasks")
+
   def mount(params, session, socket) do
 
     live_plug params, session, socket, [
@@ -33,7 +36,7 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
       selected_tab: "events",
       create_activity_type: :task,
       smart_input_prompt: l("Add a task"),
-      intents: intents,
+      intents: intents
       # resource: resource,
     )}
   end
