@@ -10,7 +10,13 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
   # alias Bonfire.UI.Coordination.ResourceWidget
 
 
-  declare_extension("Coordination", icon: "fa-solid:tasks")
+  declare_extension("Coordination", icon: "fa-solid:tasks", default_nav: [
+    Bonfire.UI.Coordination.MyTasksLive,
+    Bonfire.UI.Coordination.ProcessesLive
+  ])
+
+  declare_nav_link(l("My tasks"), icon: "heroicons-solid:newspaper")
+
 
   def mount(params, session, socket) do
 

@@ -16,21 +16,21 @@
       </div> -->
 
     <div class="">
-      <Bonfire.UI.Coordination.ListNavigationLive
+      <!-- <Bonfire.UI.Coordination.ListNavigationLive
         action="work"
         intent_url="/coordination/task/"
-       />
-      <div class="flex flex-col divide-y divide-base-content/30">
+       /> -->
+      <ul class="p-2 menu">
 
     <!-- <Bonfire.UI.Coordination.CreateTaskContainerLive
         action="work"
         intent_url="/coordination/task/"
     /> -->
 
-        <span :for={task <- @intents}>
-          <Bonfire.UI.Coordination.TaskPreviewLive object={task} show_likes={true} />
-        </span>
-      </div>
+          <Bonfire.UI.Coordination.TaskPreviewLive 
+            :for={task <- @intents}
+            object={task} show_likes={true} />
+      </ul>
     </div>
   </section>
 

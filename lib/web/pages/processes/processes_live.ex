@@ -10,6 +10,9 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
   alias Bonfire.UI.Me.CreateUserLive
   # alias Bonfire.UI.Coordination.ResourceWidget
 
+  declare_nav_link(l("Processes"), icon: "heroicons-solid:newspaper")
+
+
   def mount(params, session, socket) do
 
     live_plug params, session, socket, [
