@@ -1,0 +1,20 @@
+  <section class="shadow-xl rounded-xl bg-base-100 ">
+
+    <div class="">
+      <Bonfire.UI.Coordination.ListsNavigationLive
+        intent_url="/coordination/task/" 
+        process_url="/coordination/list/"
+      />
+      
+      <div class="flex flex-col divide-y divide-base-content/30">
+          <Bonfire.UI.Social.Activity.ProcessListLive
+            :for={list <- @processes}
+            object={list} 
+            process_url="/coordination/list/"
+            showing_within={:process}
+  
+          />
+      </div>
+    </div>
+  </section>
+

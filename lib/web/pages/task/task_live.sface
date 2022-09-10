@@ -1,0 +1,19 @@
+<section class={"min-h-screen bg-base-100  w-center shadow "<> if !current_user(@__context__), do: "rounded-lg border-t", else: ""}>
+
+  <Bonfire.UI.Coordination.TaskHeroLive
+    task={@intent}
+  />
+    <div class="flex items-center px-4 mt-2 space-x-4 lg:hidden">
+      <Bonfire.UI.Coordination.TaskActionsLive
+        task={@intent}
+      />
+    </div>
+    <div class="px-4 mt-2">
+      <Bonfire.UI.ValueFlows.EditDescriptionLive
+        item={@intent}
+      />
+    </div>
+    <Bonfire.UI.Coordination.TaskThreadLive
+      task={@intent}
+    />
+</section>

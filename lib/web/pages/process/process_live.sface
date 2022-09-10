@@ -1,0 +1,22 @@
+<main class="">
+  <section class="flex flex-col">
+    <Bonfire.UI.ValueFlows.ProcessHeroLive
+      process={@process}
+    />  
+    <div class="flex-1 h-full shadow bg-base-100 rounded-xl">
+      <!-- <Bonfire.UI.Coordination.ListNavigationLive
+        output_of_id={e(@process, :id, nil)}
+        action="work"
+        intent_url="/coordination/task/"
+       /> -->
+      <ul class="p-2 menu">
+        <Bonfire.UI.Coordination.TaskPreviewLive
+          :for={task <- e(@process, :intended_outputs, [])}
+          object={task}
+          show_likes={true}
+        />
+      </ul>
+    </div>
+  </section>
+
+</main>

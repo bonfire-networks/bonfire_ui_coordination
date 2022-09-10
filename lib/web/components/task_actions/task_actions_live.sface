@@ -1,4 +1,4 @@
-  <div class="relative pt-4 text-sm text-base-content opacity-60 border-t  ">
+  <div class="relative pt-4 text-sm border-t text-base-content/70 border-base-content/30 ">
     <div class="flex items-center justify-between mb-2">
       <span class="block text-sm font-semibold tracking-wide text-base-content opacity-60 ">{l "Assigned to"}</span>
     </div>

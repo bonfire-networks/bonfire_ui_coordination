@@ -1,5 +1,5 @@
 defmodule Bonfire.UI.Coordination.TaskLive do
-  use Bonfire.UI.Common.Web, :live_view
+  use Bonfire.UI.Common.Web, :surface_live_view
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
   alias Bonfire.UI.Social.{HashtagsLive, ParticipantsLive}
@@ -35,6 +35,14 @@ defmodule Bonfire.UI.Coordination.TaskLive do
         page: "task",
         selected_tab: "events",
         create_activity_type: :task,
+        without_sidebar: true, 
+        sidebar_widgets: [
+          users: [
+            secondary: [
+              {Bonfire.UI.Coordination.WidgetTaskActionsLive, [intent: intent]},
+            ]
+          ]
+        ],
         intent: intent,
         # resource: resource,
       )}

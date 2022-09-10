@@ -1,32 +1,31 @@
-<main class="lg:flex">
-  <section class="min-h-screen bg-base-100 shadow w-center ">
+  <section class="bg-base-100 ">
 
-      <div class="">
+      <!-- <div class="">
         <div class="block">
-          <div class="px-5 border-b  ">
+          <div class="px-5 border-b ">
             <nav class="flex -mb-px space-x-8" aria-label="Tabs">
-              <LiveRedirect to="/coordination" class="px-1 py-4 text-sm font-medium  border-b-2 border-pink-500 whitespace-nowrap" aria-current="page">
+              <LiveRedirect to="/coordination" class="px-1 py-4 text-sm font-medium border-b-2 border-pink-500 whitespace-nowrap" aria-current="page">
                 {l "Lists"}
               </LiveRedirect>
-              <LiveRedirect to="/coordination/me" class="px-1 py-4 text-sm font-medium  border-b-2 border-pink-500 whitespace-nowrap" aria-current="page">
+              <LiveRedirect to="/coordination/me" class="px-1 py-4 text-sm font-medium border-b-2 border-pink-500 whitespace-nowrap" aria-current="page">
                 {l "My Tasks"}
               </LiveRedirect>
             </nav>
           </div>
         </div>
-      </div>
+      </div> -->
 
     <div class="">
       <Bonfire.UI.Coordination.ListNavigationLive
         action="work"
         intent_url="/coordination/task/"
        />
-      <div class="flex flex-col divide-y dark:divide-gray-600">
+      <div class="flex flex-col divide-y divide-base-content/30">
 
-    <Bonfire.UI.Coordination.CreateTaskContainerLive
+    <!-- <Bonfire.UI.Coordination.CreateTaskContainerLive
         action="work"
         intent_url="/coordination/task/"
-    />
+    /> -->
 
         <span :for={task <- @intents}>
           <Bonfire.UI.Coordination.TaskPreviewLive object={task} show_likes={true} />
@@ -35,4 +34,3 @@
     </div>
   </section>
 
-</main>
