@@ -1,6 +1,5 @@
-  <section class="bg-base-100 ">
-
-      <!-- <div class="">
+<section class="bg-base-100">
+  <!-- <div class="">
         <div class="block">
           <div class="px-5 border-b ">
             <nav class="flex -mb-px space-x-8" aria-label="Tabs">
@@ -15,22 +14,18 @@
         </div>
       </div> -->
 
-    <div class="">
-      <!-- <Bonfire.UI.Coordination.ListNavigationLive
+  <div class="">
+    <!-- <Bonfire.UI.Coordination.ListNavigationLive
         action="work"
         intent_url="/coordination/task/"
        /> -->
-      <ul class="p-2 menu">
-
-    <!-- <Bonfire.UI.Coordination.CreateTaskContainerLive
+    <ul class="p-2 menu">
+      <!-- <Bonfire.UI.Coordination.CreateTaskContainerLive
         action="work"
         intent_url="/coordination/task/"
     /> -->
 
-          <Bonfire.UI.Coordination.TaskPreviewLive 
-            :for={task <- @intents}
-            object={task} show_likes={true} />
-      </ul>
-    </div>
-  </section>
-
+      <Bonfire.UI.Coordination.TaskPreviewLive :for={task <- @intents} object={task} show_likes />
+    </ul>
+  </div>
+</section>

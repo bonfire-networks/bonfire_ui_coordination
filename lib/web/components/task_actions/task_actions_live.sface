@@ -1,13 +1,13 @@
-  <div class="relative pt-4 text-sm border-t text-base-content/70 border-base-content/30 ">
-    <div class="flex items-center justify-between mb-2">
-      <span class="block text-sm font-semibold tracking-wide text-base-content opacity-60 ">{l "Assigned to"}</span>
-    </div>
-    <Bonfire.UI.ValueFlows.AssignedItemLive 
-      field_name="provider" 
-      is_editable={true} 
-      agent={@task.provider} 
-      pick_event="ValueFlows.Planning.Intent:assign:select" 
-      remove_event="" 
-      />
+<div class="relative pt-4 text-sm border-t text-base-content/70 border-base-content/30">
+  <div class="flex items-center justify-between mb-2">
+    <span class="block text-sm font-semibold tracking-wide text-base-content opacity-60">{l("Assigned to")}</span>
   </div>
-  <Bonfire.UI.ValueFlows.DueItemLive date={@task.due} is_editable={true} />
+  <Bonfire.UI.ValueFlows.AssignedItemLive
+    field_name="provider"
+    is_editable
+    agent={@task.provider}
+    pick_event="ValueFlows.Planning.Intent:assign:select"
+    remove_event=""
+  />
+</div>
+<Bonfire.UI.ValueFlows.DueItemLive date={@task.due} is_editable />

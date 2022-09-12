@@ -3,39 +3,45 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
   # use Surface.LiveView
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
-  alias Bonfire.UI.Social.{HashtagsLive, ParticipantsLive}
-  alias Bonfire.UI.ValueFlows.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
+  alias Bonfire.UI.Social.HashtagsLive
+  alias Bonfire.UI.Social.ParticipantsLive
+
+  alias Bonfire.UI.ValueFlows.IntentCreateActivityLive
+  alias Bonfire.UI.ValueFlows.CreateMilestoneLive
+  alias Bonfire.UI.ValueFlows.ProposalFeedLive
+  alias Bonfire.UI.ValueFlows.FiltersLive
+
   alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.UI.Me.CreateUserLive
+
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   def mount(params, session, socket) do
-
-    live_plug params, session, socket, [
+    live_plug(params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
       Bonfire.UI.Common.LivePlugs.StaticChanged,
       Bonfire.UI.Common.LivePlugs.Csrf,
       Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3,
-    ]
+      &mounted/3
+    ])
   end
 
-  defp mounted(%{"id"=> id} = _params, _session, socket) do
-
+  defp mounted(%{"id" => id} = _params, _session, socket) do
     process = process(%{id: id}, socket)
     debug(process: process)
 
-    {:ok, socket
-    |> assign(
-      page_title: "process",
-      page: "process",
-      selected_tab: "tasks",
-      create_activity_type: :task,
-      smart_input_prompt: l("Add a task"),
-      process: process,
-    )}
+    {:ok,
+     socket
+     |> assign(
+       page_title: "process",
+       page: "process",
+       selected_tab: "tasks",
+       create_activity_type: :task,
+       smart_input_prompt: l("Add a task"),
+       process: process
+     )}
   end
 
   @quantity_fields """
@@ -118,6 +124,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
     process = process_filtered(%{id: process.id, intent_filter: %{"status" => status}}, socket)
     {:noreply, socket |> assign(process: process)}
   end
+
   def do_handle_params(params, attrs, socket), do: {:noreply, socket}
 
   def handle_params(params, uri, socket) do
@@ -129,8 +136,14 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
     end
   end
 
-  def handle_event("search", %{"key" => "Enter", "value" => search_term} = attrs, %{assigns: %{process: process}} = socket) do
-    process = process_filtered(%{id: process.id, intent_filter: %{"searchString" => search_term}}, socket)
+  def handle_event(
+        "search",
+        %{"key" => "Enter", "value" => search_term} = attrs,
+        %{assigns: %{process: process}} = socket
+      ) do
+    process =
+      process_filtered(%{id: process.id, intent_filter: %{"searchString" => search_term}}, socket)
+
     {:noreply, socket |> assign(process: process)}
   end
 
@@ -138,6 +151,9 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
     {:noreply, socket}
   end
 
-  def handle_event(action, attrs, socket), do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
-  def handle_info(info, socket), do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+  def handle_event(action, attrs, socket),
+    do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
+
+  def handle_info(info, socket),
+    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 end

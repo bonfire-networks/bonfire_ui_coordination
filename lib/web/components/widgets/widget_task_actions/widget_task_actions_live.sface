@@ -1,19 +1,13 @@
-
-<Bonfire.UI.Common.WidgetBlockLive 
-  widget_title={e(@widget_title, "About")}
->
+<Bonfire.UI.Common.WidgetBlockLive widget_title={e(@widget_title, "About")}>
   <div class="w-full h-full p-4">
-    <div 
-      :if={current_user(@__context__)}
-      class="flex flex-col space-y-4">
-        <Bonfire.UI.Coordination.TaskSetStatusLive
-          redirect_after="/coordination/task/"
-          task_id={@intent.id}
-          finished={@intent.finished} 
-        />
+    <div :if={current_user(@__context__)} class="flex flex-col space-y-4">
+      <Bonfire.UI.Coordination.TaskSetStatusLive
+        redirect_after="/coordination/task/"
+        task_id={@intent.id}
+        finished={@intent.finished}
+      />
 
       <Bonfire.UI.Coordination.TaskActionsLive task={@intent} />
-
     </div>
   </div>
 </Bonfire.UI.Common.WidgetBlockLive>

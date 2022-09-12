@@ -1,11 +1,10 @@
 <div class="px-4 pt-6">
-  <div class="mb-2 text-xs text-base-content opacity-70 uppercase  font-regular">{l "Discussion"}</div>
+  <div class="mb-2 text-xs text-base-content opacity-70 uppercase  font-regular">{l("Discussion")}</div>
   <div class="-mx-3">
-  <Bonfire.UI.Social.ThreadLive 
+    <Bonfire.UI.Social.ThreadLive
       id={e(@task, :id, "")}
       thread_id={e(@task, :id, "")}
-      smart_input_prompt={l "Post a comment..."}
+      smart_input_prompt={l("Post a comment...")}
     />
-
-</div>
+  </div>
 </div>

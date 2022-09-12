@@ -38,12 +38,10 @@ defmodule Bonfire.UI.Coordination.ConnCase do
   end
 
   setup tags do
-
     import Bonfire.UI.Coordination.Integration
 
     Bonfire.Common.Test.Interactive.setup_test_repo(tags)
 
     {:ok, []}
   end
-
 end

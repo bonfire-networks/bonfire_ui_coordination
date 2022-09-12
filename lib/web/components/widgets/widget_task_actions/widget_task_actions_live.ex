@@ -3,7 +3,4 @@ defmodule Bonfire.UI.Coordination.WidgetTaskActionsLive do
 
   prop intent, :any
   prop widget_title, :string
-
-
-
 end

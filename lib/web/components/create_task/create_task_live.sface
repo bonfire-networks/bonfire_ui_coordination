@@ -1,8 +1,7 @@
-
 <Bonfire.UI.ValueFlows.CreateIntentLive
   output_of_id={@output_of_id}
   title="Create a new task"
-  action={"work"}
-  intent_url={"/coordination/task/"}
-  default_tag={Bonfire.UI.Coordination.Integration.remote_tag_id}
+  action="work"
+  intent_url="/coordination/task/"
+  default_tag={Bonfire.UI.Coordination.Integration.remote_tag_id()}
 />

@@ -1,29 +1,29 @@
 <div class="flex items-center p-4">
   <div class="flex-1">
-  <div class="flex items-center space-x-3">
-    <Bonfire.UI.ValueFlows.LikeItemLive is_editable={true} />
-    <div>
-      <div class="text-lg font-bold text-base-content opacity-80 ">
+    <div class="flex items-center space-x-3">
+      <Bonfire.UI.ValueFlows.LikeItemLive is_editable />
+      <div>
+        <div class="text-lg font-bold text-base-content opacity-80">
+          <span :if={length(e(@task, :context, [])) > 0}>
+            <LiveRedirect
+              :for={scope <- e(@task, :context, [])}
+              to={"/coordination/task/#{scope.id}"}
+              class="text-sm font-medium text-base-content opacity-60 cursor-pointer  hover:underline"
+            >
+              {e(scope, :name, "")} :&nbsp;
+            </LiveRedirect>
+          </span>
 
-      <span :if={length(e(@task, :context, []))>0}>
-        <LiveRedirect :for={scope <- e(@task, :context, [])} to={"/coordination/task/#{scope.id}"} class="text-sm font-medium text-base-content opacity-60 cursor-pointer  hover:underline">
-          {e(scope, :name, "")} :&nbsp;
-        </LiveRedirect>
-      </span>
-
-        {rich @task.name}
-
+          {rich(@task.name)}
+        </div>
+        <span :if={@task.output_of} class="flex mt-1 text-sm text-base-content opacity-70">
+          {l("Task in")}
+          <LivePatch to={"/coordination/list/" <> @task.output_of.id} class="ml-1 underline inline_flex">
+            {rich(@task.output_of.name)}
+          </LivePatch>
+        </span>
       </div>
-      <span :if={@task.output_of} class="flex mt-1 text-sm text-base-content opacity-70 ">
-        {l "Task in"}
-        <LivePatch
-        to={"/coordination/list/"<>@task.output_of.id}
-        class="ml-1 underline inline_flex">
-          {rich @task.output_of.name}
-        </LivePatch>
-      </span>
     </div>
-  </div>
   </div>
   <div class="flex items-center mr-1">
     <div
@@ -31,21 +31,32 @@
       x-data="{ open_task_dropdown: false }"
       @keydown.escape.stop="open_task_dropdown = false"
       @click.outside="open_task_dropdown = false"
-        class="relative inline-block ml-3 text-left">
+      class="relative inline-block ml-3 text-left"
+    >
       <div>
         <button
           type="button"
-          class="flex items-center p-2 -my-2 text-base-content opacity-60 bg-base-100 rounded-full  hover:text-base-content opacity-60 focus:outline-none focus:ring-2 focus:ring-secondary-500" id="menu-0-button" x-ref="button"
+          class="flex items-center p-2 -my-2 text-base-content opacity-60 bg-base-100 rounded-full  hover:text-base-content opacity-60 focus:outline-none focus:ring-2 focus:ring-secondary-500"
+          id="menu-0-button"
+          x-ref="button"
           @click="open_task_dropdown = !open_task_dropdown"
           @keyup.space.prevent="onButtonEnter()"
           @keydown.enter.prevent="onButtonEnter()"
           aria-expanded="true"
           aria-haspopup="true"
           @keydown.arrow-up.prevent="onArrowUp()"
-          @keydown.arrow-down.prevent="onArrowDown()">
+          @keydown.arrow-down.prevent="onArrowDown()"
+        >
           <span class="sr-only">Open options</span>
-          <svg class="w-5 h-5" x-description="Heroicon name: solid/dots-vertical" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path>
+          <svg
+            class="w-5 h-5"
+            x-description="Heroicon name: solid/dots-vertical"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
           </svg>
         </button>
       </div>
@@ -61,24 +72,49 @@
         class="absolute right-0 w-56 mt-4 origin-top-left bg-base-100 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
         role="menu"
         aria-orientation="vertical"
-        aria-labelledby="user-profile-menu">
+        aria-labelledby="user-profile-menu"
+      >
         <div class="py-1" role="none">
-          <a href="#" class="flex items-center px-4 py-2 text-sm text-base-content opacity-70 group" role="menuitem" tabindex="-1" id="menu-item-0">
+          <a
+            href="#"
+            class="flex items-center px-4 py-2 text-sm text-base-content opacity-70 group"
+            role="menuitem"
+            tabindex="-1"
+            id="menu-item-0"
+          >
             <!-- Heroicon name: solid/pencil-alt -->
-            <svg class="w-5 h-5 mr-3 text-base-content opacity-60 group-hover:text-base-content opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <svg
+              class="w-5 h-5 mr-3 text-base-content opacity-60 group-hover:text-base-content opacity-60"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
               <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-              <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+              <path
+                fill-rule="evenodd"
+                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                clip-rule="evenodd"
+              />
             </svg>
-            {l "Edit"}
+            {l("Edit")}
           </a>
         </div>
         <div class="py-1" role="none">
-          <div :on-click="ValueFlows.Planning.Intent:delete" phx-value-id={@task.id} phx-value-redirect_after={"/coordination/list/"<>e(@task, :output_of, :id, "")} class="flex items-center px-4 py-2 text-sm text-base-content opacity-70 group" role="menuitem" tabindex="-1" id="menu-item-2">
-            <Icon solid="Trash"/>
-            {l "Delete"}
+          <div
+            :on-click="ValueFlows.Planning.Intent:delete"
+            phx-value-id={@task.id}
+            phx-value-redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
+            class="flex items-center px-4 py-2 text-sm text-base-content opacity-70 group"
+            role="menuitem"
+            tabindex="-1"
+            id="menu-item-2"
+          >
+            <Icon solid="Trash" />
+            {l("Delete")}
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
 </div>
