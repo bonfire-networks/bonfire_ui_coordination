@@ -15,14 +15,16 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   declare_extension("Coordination",
-    icon: "fa-solid:tasks",
+    icon: "heroicons-solid:bolt",
     default_nav: [
+      Bonfire.UI.Social.FeedsLive,
       Bonfire.UI.Coordination.MyTasksLive,
-      Bonfire.UI.Coordination.ProcessesLive
+      Bonfire.UI.Coordination.ProcessesLive,
+      Bonfire.UI.Social.Feeds.LikesLive
     ]
   )
 
-  declare_nav_link(l("My tasks"), icon: "heroicons-solid:newspaper")
+  declare_nav_link(l("My tasks"), icon: "heroicons-solid:lightning-bolt")
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
@@ -47,8 +49,14 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
        selected_tab: "events",
        create_activity_type: :task,
        smart_input_prompt: l("Add a task"),
-       intents: intents
-
+       intents: intents,
+       sidebar_widgets: [
+        users: [
+          secondary: [
+            {Bonfire.UI.Coordination.TasksFilterLive , []},
+          ]
+        ]
+      ]
        # resource: resource,
      )}
   end

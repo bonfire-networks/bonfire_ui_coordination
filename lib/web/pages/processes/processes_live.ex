@@ -17,7 +17,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
 
   # alias Bonfire.UI.Coordination.ResourceWidget
 
-  declare_nav_link(l("Processes"), icon: "heroicons-solid:newspaper")
+  declare_nav_link(l("Processes"), icon: "heroicons-solid:archive")
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [

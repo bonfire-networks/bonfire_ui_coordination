@@ -1,7 +1,7 @@
 <main class="">
   <section class="flex flex-col">
     <Bonfire.UI.ValueFlows.ProcessHeroLive process={@process} />
-    <div class="flex-1 h-full shadow bg-base-100 rounded-xl">
+    <div class="flex-1 h-full ">
       <!-- <Bonfire.UI.Coordination.ListNavigationLive
         output_of_id={e(@process, :id, nil)}
         action="work"

@@ -1,4 +1,4 @@
-<section class="bg-base-100">
+<section class="">
   <!-- <div class="">
         <div class="block">
           <div class="px-5 border-b ">
@@ -19,7 +19,7 @@
         action="work"
         intent_url="/coordination/task/"
        /> -->
-    <ul class="p-2 menu">
+    <ul class="space-y-3 menu">
       <!-- <Bonfire.UI.Coordination.CreateTaskContainerLive
         action="work"
         intent_url="/coordination/task/"
