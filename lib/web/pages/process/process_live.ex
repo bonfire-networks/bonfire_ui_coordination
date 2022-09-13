@@ -8,7 +8,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
 
   alias Bonfire.UI.ValueFlows.IntentCreateActivityLive
   alias Bonfire.UI.ValueFlows.CreateMilestoneLive
-  alias Bonfire.UI.ValueFlows.ProposalFeedLive
+
   alias Bonfire.UI.ValueFlows.FiltersLive
 
   alias Bonfire.UI.Me.LivePlugs
@@ -35,7 +35,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
     {:ok,
      socket
      |> assign(
-       page_title: "process",
+       page_title: e(process, :name, nil) || l("List"),
        page: "process",
        selected_tab: "tasks",
        create_activity_type: :task,

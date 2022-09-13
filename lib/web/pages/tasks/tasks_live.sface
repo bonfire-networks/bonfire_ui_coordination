@@ -6,7 +6,7 @@
               <LiveRedirect to="/coordination" class="px-1 py-4 text-sm font-medium border-b-2 border-pink-500 whitespace-nowrap" aria-current="page">
                 {l "Lists"}
               </LiveRedirect>
-              <LiveRedirect to="/coordination/me" class="px-1 py-4 text-sm font-medium border-b-2 border-pink-500 whitespace-nowrap" aria-current="page">
+              <LiveRedirect to="/coordination/tasks/me" class="px-1 py-4 text-sm font-medium border-b-2 border-pink-500 whitespace-nowrap" aria-current="page">
                 {l "My Tasks"}
               </LiveRedirect>
             </nav>
@@ -25,7 +25,7 @@
         intent_url="/coordination/task/"
     /> -->
 
-      <Bonfire.UI.Coordination.TaskPreviewLive :for={task <- @intents} object={task} show_likes />
+      <Bonfire.UI.Coordination.TaskPreviewLive :for={task <- @intents || []} object={task} show_likes />
     </ul>
   </div>
 </section>

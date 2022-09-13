@@ -1,66 +1,90 @@
-<Bonfire.UI.Common.WidgetBlockLive widget_title={"Advanced filters"}>
+<Bonfire.UI.Common.WidgetBlockLive widget_title="Advanced filters">
   <div class="p-3">
-    <fieldset>
-      <legend class="text-sm font-normal text-base-content/70">{l "Search for"}</legend>
-      <input type="search" class="w-full mt-2 input input-bordered" placeholder="Search task..." />
-    </fieldset>
-    <fieldset class="mt-4">
-      <legend class="text-sm font-normal text-base-content/70">{l "Status"}</legend>
-      <div class="flex items-center mt-2 border rounded-lg border-base-content/10 bg-base-100 ">
-        <div class="flex items-center flex-1 p-3 ">
-          <input
-            id="all"
-            name="status"
-            type="radio"
-            checked
-            class="w-5 h-5 radio"
-          />
-          <label
-            for="all"
-            class="block ml-3 text-sm text-base-content/70"
-          >
-            {l "All"}
-          </label>
-        </div>
-        <div class="flex items-center flex-1 p-3 border-l border-base-content/10">
-          <input
-            id="open"
-            name="status"
-            type="radio"
-            class="w-5 h-5 radio"
-          />
-          <label
-            for="open"
-            class="block ml-3 text-sm text-base-content/70"
-          >
-            {l "Open"}
-          </label>
-        </div>
-        <div class="flex items-center flex-1 p-3 border-l border-base-content/10">
-          <input
-            id="closed"
-            name="status"
-            type="radio"
-            class="w-5 h-5 radio"
-          />
-          <label
-            for="closed"
-            class="block ml-3 text-sm text-base-content/70"
-          >
-            {l "Closed"}
-          </label>
-        </div>
+    <form action="?" phx-submit="search" method="get">
+      <fieldset>
+        <legend class="text-sm font-normal text-base-content/70">{l("Search for")}</legend>
+        <input
+          name="search_string"
+          value={e(@filters, "search_string", nil)}
+          type="search"
+          class="w-full mt-2 input input-bordered"
+          placeholder="Search task..."
+        />
+      </fieldset>
 
-      </div>
-    </fieldset>
+      <fieldset class="mt-4">
+        <label for="provider" class="text-sm font-normal text-base-content opacity-70">
+          {l("Assignee")}
+        </label>
+        <div class="flex mt-1 rounded-md">
+          <span class="inline-flex items-center px-3 text-sm border border-r-0 border-base-content/30 text-base-content/60 rounded-l-md bg-base-100 bg-opacity-30">
+            <Icon solid="UserCircle" />
+          </span>
+          <input
+            value={e(@filters, "provider", nil)}
+            type="text"
+            name="provider"
+            id="provider"
+            class="w-full rounded-md rounded-l-none input input-bordered"
+          />
+        </div>
+      </fieldset>
+    </form>
 
-    <fieldset class="mt-4">
+    <form action="?" phx-change="filter" method="get">
+      <fieldset class="mt-4">
+        <legend class="text-sm font-normal text-base-content/70">{l("Status")}</legend>
+        <div class="flex items-center mt-2 border rounded-lg border-base-content/10 bg-base-100">
+          <div class="flex items-center flex-1 p-3">
+            <input
+              id="all"
+              name="status"
+              checked={if !e(@filters, "status", nil), do: "checked"}
+              value=""
+              type="radio"
+              class="w-5 h-5 radio"
+            />
+            <label for="all" class="block ml-3 text-sm text-base-content/70">
+              {l("Any")}
+            </label>
+          </div>
+          <div class="flex items-center flex-1 p-3 border-l border-base-content/10">
+            <input
+              id="open"
+              name="status"
+              value="open"
+              checked={if e(@filters, "status", nil) == "open", do: "checked"}
+              type="radio"
+              class="w-5 h-5 radio"
+            />
+            <label for="open" class="block ml-3 text-sm text-base-content/70">
+              {l("Open")}
+            </label>
+          </div>
+          <div class="flex items-center flex-1 p-3 border-l border-base-content/10">
+            <input
+              id="closed"
+              name="status"
+              value="closed"
+              checked={if e(@filters, "status", nil) == "closed", do: "checked"}
+              type="radio"
+              class="w-5 h-5 radio"
+            />
+            <label for="closed" class="block ml-3 text-sm text-base-content/70">
+              {l("Closed")}
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- <fieldset class="mt-4">
       <legend class="text-sm font-normal text-base-content/70">{l "Sort by"}</legend>
       <div class="mt-2 border rounded-lg border-base-content/10 bg-base-100 ">
         <div class="flex items-center p-3 ">
           <input
             id="newest"
             name="sort"
+            value=""
             type="radio"
             checked
             class="w-5 h-5 radio"
@@ -74,22 +98,9 @@
         </div>
         <div class="flex items-center p-3 border-t border-base-content/10">
           <input
-            id="oldest"
-            name="sort"
-            type="radio"
-            class="w-5 h-5 radio"
-          />
-          <label
-            for="oldest"
-            class="block ml-3 text-sm text-base-content/70"
-          >
-            {l "Oldest"}
-          </label>
-        </div>
-        <div class="flex items-center p-3 border-t border-base-content/10">
-          <input
             id="due"
             name="sort"
+            value="due"
             type="radio"
             class="w-5 h-5 radio"
           />
@@ -105,6 +116,7 @@
           <input
             id="liked"
             name="sort"
+            value="liked"
             type="radio"
             class="w-5 h-5 radio"
           />
@@ -117,9 +129,9 @@
         </div>
 
       </div>
-    </fieldset>
+    </fieldset> -->
 
-    <fieldset class="mt-4">
+      <!-- <fieldset class="mt-4">
       <legend class="text-sm font-normal text-base-content/70">{l "From"}</legend>
       <div class="flex items-center mt-2 border rounded-lg border-base-content/10 bg-base-100 ">
         <div class="flex items-center flex-1 p-3 ">
@@ -152,25 +164,7 @@
           </label>
         </div>
       </div>
-    </fieldset>
-    
-    <fieldset class="mt-4">
-      <label for="milestone" class="text-sm font-normal text-base-content opacity-70">
-        {l "Assignee"}
-      </label>
-      <div class="flex mt-1 rounded-md ">
-        <span class="inline-flex items-center px-3 text-sm border border-r-0 border-base-content/30 text-base-content/60 rounded-l-md bg-base-100 bg-opacity-30">
-          <Icon solid="UserCircle" />
-        </span>
-        <input
-          value="Anyone"
-          type="text"
-          name="milestone"
-          id="milestone"
-          class="w-full rounded-md rounded-l-none input input-bordered"
-        />
-      </div>
-    </fieldset>
-    
+    </fieldset> -->
+    </form>
   </div>
 </Bonfire.UI.Common.WidgetBlockLive>

@@ -7,7 +7,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
 
   alias Bonfire.UI.ValueFlows.IntentCreateActivityLive
   alias Bonfire.UI.ValueFlows.CreateMilestoneLive
-  alias Bonfire.UI.ValueFlows.ProposalFeedLive
+
   alias Bonfire.UI.ValueFlows.FiltersLive
 
   alias Bonfire.UI.Me.LivePlugs
@@ -38,11 +38,11 @@ defmodule Bonfire.UI.Coordination.TaskLive do
       {:ok,
        socket
        |> assign(
-         page_title: "task",
+         page_title: e(intent, :name, nil) || l("Task"),
          page: "task",
          selected_tab: "events",
          create_activity_type: :task,
-         without_sidebar: true,
+         #  without_sidebar: true,
          sidebar_widgets: [
            users: [
              secondary: [

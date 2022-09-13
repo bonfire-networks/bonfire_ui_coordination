@@ -8,7 +8,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
 
   alias Bonfire.UI.ValueFlows.IntentCreateActivityLive
   alias Bonfire.UI.ValueFlows.CreateMilestoneLive
-  alias Bonfire.UI.ValueFlows.ProposalFeedLive
+
   alias Bonfire.UI.ValueFlows.FiltersLive
 
   alias Bonfire.UI.Me.LivePlugs
@@ -17,7 +17,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
 
   # alias Bonfire.UI.Coordination.ResourceWidget
 
-  declare_nav_link(l("Processes"), icon: "heroicons-solid:archive")
+  declare_nav_link(l("Lists"), icon: "heroicons-solid:archive")
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
@@ -38,7 +38,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
     {:ok,
      socket
      |> assign(
-       page_title: "All processes",
+       page_title: "All lists",
        page: "processes",
        create_activity_type: :task,
        smart_input_prompt: l("Add a task"),
