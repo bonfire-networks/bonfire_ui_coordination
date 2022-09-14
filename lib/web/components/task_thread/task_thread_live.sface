@@ -1,9 +1,16 @@
 <div class="px-4 pt-6">
-  <div class="mb-2 text-xs text-base-content opacity-70 uppercase  font-regular">{l("Discussion")}</div>
+  <div class="mb-2 text-xs text-base-content opacity-70 uppercase  font-regular">
+    {l("Discussion")}
+    <Bonfire.UI.Social.Activity.ReplyLive
+      permalink={path(@task)}
+      object_id={ulid(@task)}
+      reply_to_text={e(@task, :name, nil)}
+    />
+  </div>
   <div class="-mx-3">
     <Bonfire.UI.Social.ThreadLive
-      id={e(@task, :id, "")}
-      thread_id={e(@task, :id, "")}
+      id={ulid!(@task)}
+      thread_id={ulid(@task)}
       smart_input_prompt={l("Post a comment...")}
     />
   </div>
