@@ -97,9 +97,10 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   def do_handle_params(%{"tab" => "me" = tab} = params, _url, socket) do
     intents =
       %{filters: Map.merge(filter_filters(params), %{"action" => "work", "agent" => "me"})}
-      |> debug()
+      # |> debug()
       |> intents(socket)
-      |> debug()
+
+    # |> debug()
 
     {:noreply,
      socket
@@ -121,9 +122,10 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   def do_handle_params(params, _url, socket) do
     intents =
       %{filters: Map.merge(filter_filters(params), %{"action" => "work"})}
-      |> debug()
+      # |> debug()
       |> intents(socket)
-      |> debug()
+
+    # |> debug()
 
     {:noreply,
      socket
@@ -169,7 +171,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
         {name, _} when name in @filters -> true
         _ -> false
       end)
-      |> debug()
+      # |> debug()
       |> URI.encode_query()
 
     {:noreply, patch_to(socket, current_url(socket) <> "?" <> params)}
