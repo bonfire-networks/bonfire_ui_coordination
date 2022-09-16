@@ -3,7 +3,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Social.Feeds.LiveHandler
 
-  declare_nav_link(l("Recent activities"), icon: "heroicons-solid:newspaper")
+  declare_nav_link(l("Recent"), icon: "heroicons-solid:newspaper")
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [

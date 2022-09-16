@@ -15,7 +15,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   declare_extension("Coordination",
-    icon: "heroicons-solid:bolt",
+    icon: "noto:high-voltage",
     default_nav: [
       Bonfire.UI.Coordination.FeedLive,
       Bonfire.UI.Coordination.TasksLive,
