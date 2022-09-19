@@ -25,7 +25,7 @@
             type="text"
             name="provider"
             id="provider"
-            class="w-full rounded-md rounded-l-none input input-bordered"
+            class="input w-full rounded-md rounded-l-none input-bordered"
           />
         </div>
       </fieldset>
