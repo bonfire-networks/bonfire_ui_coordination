@@ -8,9 +8,16 @@
   <span>{l("Set as completed")}</span>
 </div>
 
-<div
-  :if={@finished}
-  class="items-center cursor-pointer btn btn-primary full place-content-center"
->
+<div :if={@finished} class="items-center full place-content-center">
   <span>{l("Task was completed")}</span>
+
+  <button
+    :on-click="ValueFlows.Planning.Intent:status:unfinished"
+    phx-value-id={@task_id}
+    phx-value-redirect_after={@redirect_after}
+    type="button"
+    class="items-center w-full cursor-pointer btn btn-primary place-content-center"
+  >
+    {l("Re-open")}
+  </button>
 </div>

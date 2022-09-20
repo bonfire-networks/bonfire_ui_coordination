@@ -2,12 +2,31 @@
   <div class="flex items-center justify-between mb-2">
     <span class="block text-sm font-semibold tracking-wide text-base-content opacity-60">{l("Assigned to")}</span>
   </div>
-  <Bonfire.UI.ValueFlows.AssignedItemLive
-    field_name="provider"
+  <Bonfire.UI.ValueFlows.AssignItemLive
+    field_name={:provider}
     is_editable
-    agent={@task.provider}
+    agent={e(@intent, :provider, nil)}
+    context_id={ulid(@intent)}
     pick_event="ValueFlows.Planning.Intent:assign:select"
-    remove_event=""
+    remove_event="ValueFlows.Planning.Intent:assign:unset"
+    event_target="body"
   />
 </div>
-<Bonfire.UI.ValueFlows.DueItemLive date={@task.due} is_editable />
+
+<div class="relative pt-4 text-sm border-t text-base-content/70 border-base-content/30">
+  <div class="flex items-center justify-between mb-2">
+    <span class="block text-sm font-semibold tracking-wide text-base-content opacity-60">{l("In list")}</span>
+  </div>
+  <Bonfire.UI.ValueFlows.SelectProcessLive
+    field_name={:output_of_id}
+    is_editable
+    selected_options={if e(@intent, :output_of_id, nil),
+      do: [{e(@intent, :output_of, :name, "Unknown"), e(@intent, :output_of_id, nil)}]}
+    context_id={ulid(@intent)}
+    pick_event="ValueFlows.Planning.Intent:update:output_of"
+    remove_event="ValueFlows.Planning.Intent:update:output_of"
+    event_target="body"
+  />
+</div>
+
+<Bonfire.UI.ValueFlows.DueItemLive date={e(@intent, :due, nil)} is_editable />

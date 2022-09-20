@@ -7,7 +7,7 @@
         finished={@intent.finished}
       />
 
-      <Bonfire.UI.Coordination.TaskActionsLive task={@intent} />
+      <Bonfire.UI.Coordination.TaskActionsLive intent={@intent} />
     </div>
   </div>
 </Bonfire.UI.Common.WidgetBlockLive>

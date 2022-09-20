@@ -14,17 +14,6 @@ defmodule Bonfire.UI.Coordination.TasksLive do
 
   # alias Bonfire.UI.Coordination.ResourceWidget
 
-  declare_extension("Coordination",
-    icon: "noto:high-voltage",
-    default_nav: [
-      Bonfire.UI.Coordination.FeedLive,
-      Bonfire.UI.Coordination.TasksLive,
-      Bonfire.UI.Coordination.LikesLive,
-      Bonfire.UI.Coordination.ProcessesLive,
-      {Bonfire.UI.ValueFlows.ProcessesListLive, process_url: "/coordination/list"}
-    ]
-  )
-
   declare_nav_link([
     {l("To do"), href: "/coordination/tasks/me?provider=me", icon: "arcticons:pomotodo"},
     {l("My tasks"), href: "/coordination/tasks/me", icon: "emojione-monotone:eyes"},
@@ -49,7 +38,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
        page_title: l("Tasks"),
        page: "tasks",
        selected_tab: nil,
-       create_activity_type: :task,
+       create_object_type: :task,
        smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
          users: [

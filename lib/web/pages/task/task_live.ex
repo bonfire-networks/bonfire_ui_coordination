@@ -35,13 +35,18 @@ defmodule Bonfire.UI.Coordination.TaskLive do
     if !intent || intent == %{intent: nil} do
       {:error, :not_found}
     else
+      id = ulid(intent)
+
       {:ok,
        socket
        |> assign(
          page_title: e(intent, :name, nil) || l("Task"),
          page: "task",
          selected_tab: "events",
-         create_activity_type: :task,
+         #  create_object_type: :task, # TODO: ability to reply to a task with a task
+         context_id: id,
+         #  reply_to_id: id,
+         smart_input_prompt: l("Reply to this task"),
          #  without_sidebar: true,
          sidebar_widgets: [
            users: [
@@ -53,8 +58,15 @@ defmodule Bonfire.UI.Coordination.TaskLive do
          intent: intent
 
          # resource: resource,
+       )
+       |> assign_global(
+         my_processes: Bonfire.UI.ValueFlows.ProcessesListLive.my_processes(current_user(socket))
        )}
     end
+  end
+
+  defp mounted(_, %{"params" => params} = _session, socket) do
+    mounted(params, nil, socket)
   end
 
   @graphql """
@@ -90,7 +102,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
   """
   def intent(params \\ %{}, socket), do: liveql(socket, :intent, params)
 
-  defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
+  # defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
 
   def handle_event(action, attrs, socket),
     do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)

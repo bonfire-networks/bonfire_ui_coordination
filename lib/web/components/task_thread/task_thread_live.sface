@@ -1,11 +1,11 @@
 <div class="px-4 pt-6">
   <div class="mb-2 text-xs text-base-content opacity-70 uppercase  font-regular">
     {l("Discussion")}
-    <Bonfire.UI.Social.Activity.ReplyLive
+    <!-- <Bonfire.UI.Social.Activity.ReplyLive
       permalink={path(@task)}
       object_id={ulid(@task)}
       reply_to_text={e(@task, :name, nil)}
-    />
+    /> -->
   </div>
   <div class="-mx-3">
     <Bonfire.UI.Social.ThreadLive

@@ -27,7 +27,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
        loading: false,
        page: "likes",
        page_title: l("My Favourites"),
-       create_activity_type: :task,
+       create_object_type: :task,
        smart_input_prompt: l("Add a task")
      )}
   end

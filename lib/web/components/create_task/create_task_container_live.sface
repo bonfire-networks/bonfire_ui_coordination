@@ -27,10 +27,10 @@
               d="M12 6v6m0 0v6m0-6h6m-6 0H6"
             />
           </svg>
-          <div class="text-sm font-semibold">{l("Add a new task")}</div>
+          <div class="text-sm font-semibold">{if @context_id, do: l("Add a new task in this list"), else: l("Add a task")}</div>
         </div>
         <div class="p-3" x-show="open">
-          <Bonfire.UI.Coordination.CreateTaskLive output_of_id={@output_of_id} />
+          <Bonfire.UI.Coordination.CreateTaskLive context_id={@context_id} />
         </div>
       </div>
     </div>

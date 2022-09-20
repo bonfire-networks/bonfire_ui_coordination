@@ -3,6 +3,17 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Social.Feeds.LiveHandler
 
+  declare_extension("Coordination",
+    icon: "noto:high-voltage",
+    default_nav: [
+      Bonfire.UI.Coordination.FeedLive,
+      Bonfire.UI.Coordination.TasksLive,
+      Bonfire.UI.Coordination.LikesLive,
+      Bonfire.UI.Coordination.ProcessesLive,
+      {Bonfire.UI.ValueFlows.ProcessesListLive, process_url: "/coordination/list"}
+    ]
+  )
+
   declare_nav_link(l("Recent"), icon: "heroicons-solid:newspaper")
 
   def mount(params, session, socket) do
@@ -33,7 +44,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        feedback_title: l("Your feed is empty"),
        feedback_message:
          l("You can start by following some people, or writing adding some tasks yourself."),
-       create_activity_type: :task,
+       create_object_type: :task,
        smart_input_prompt: l("Add a task")
      )}
   end
