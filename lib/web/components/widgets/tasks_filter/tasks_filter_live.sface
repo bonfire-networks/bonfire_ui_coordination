@@ -1,15 +1,25 @@
 <Bonfire.UI.Common.WidgetBlockLive widget_title="Advanced filters">
   <div class="p-3">
-    <form action="?" phx-submit="search" method="get">
+    <Form for={:filter} submit="search" change="filter" method="get">
       <fieldset>
-        <legend class="text-sm font-normal text-base-content/70">{l("Search for")}</legend>
-        <input
-          name="search_string"
-          value={e(@filters, "search_string", nil)}
-          type="search"
-          class="w-full mt-2 input input-bordered"
-          placeholder="Search task..."
-        />
+        <!-- <legend class="text-sm font-normal text-base-content/70">{l("Search for")}</legend> -->
+        <div class="relative w-full rounded">
+          <input
+            type="search"
+            name="search_string"
+            autocomplete="off"
+            value={e(@filters, "search_string", nil)}
+            placeholder={l("Search tasks...")}
+            phx-debounce="300"
+            class="w-full h-9 pr-8 text-base rounded-full input bg-base-content/5 text-base-content placeholder-base-content placeholder-opacity-80"
+          />
+          <button
+            type="submit"
+            class="absolute top-[2px] right-[8px] z-30 flex items-center pl-1  cursor-pointer btn  btn-sm w-[32px] h-[32px] btn-ghost btn-circle"
+          >
+            <Icon solid="Search" class="w-5 h-5 text-base-content text-opacity-80" />
+          </button>
+        </div>
       </fieldset>
 
       <fieldset class="mt-4">
@@ -20,18 +30,24 @@
           <span class="inline-flex items-center px-3 text-sm border border-r-0 border-base-content/30 text-base-content/60 rounded-l-md bg-base-100 bg-opacity-30">
             <Icon solid="UserCircle" />
           </span>
-          <input
+          <!-- <input
             value={e(@filters, "provider", nil)}
             type="text"
             name="provider"
             id="provider"
             class="input w-full rounded-md rounded-l-none input-bordered"
+          /> -->
+          <Bonfire.UI.ValueFlows.AssignItemLive
+            field_name={:provider}
+            is_editable
+            agent={e(@filters, "provider", nil)}
+            event_target="body"
+            class="input w-full rounded-md rounded-l-none input-bordered"
+            pick_event="filter"
           />
         </div>
       </fieldset>
-    </form>
 
-    <form action="?" phx-change="filter" method="get">
       <fieldset class="mt-4">
         <legend class="text-sm font-normal text-base-content/70">{l("Status")}</legend>
         <div class="flex items-center mt-2 border rounded-lg border-base-content/10 bg-base-100">
@@ -165,6 +181,6 @@
         </div>
       </div>
     </fieldset> -->
-    </form>
+    </Form>
   </div>
 </Bonfire.UI.Common.WidgetBlockLive>

@@ -83,9 +83,14 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   """
   def intents(params \\ %{}, socket), do: liveql(socket, :intents, params)
 
+  defp merge_filters(params, extra) do
+    Map.merge(filter_filters(params), extra)
+    |> debug()
+  end
+
   def do_handle_params(%{"tab" => "me" = tab} = params, _url, socket) do
     intents =
-      %{filters: Map.merge(filter_filters(params), %{"action" => "work", "agent" => "me"})}
+      %{filters: merge_filters(params, %{"action" => "work", "agent" => "me"})}
       # |> debug()
       |> intents(socket)
 
@@ -110,7 +115,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
 
   def do_handle_params(params, _url, socket) do
     intents =
-      %{filters: Map.merge(filter_filters(params), %{"action" => "work"})}
+      %{filters: merge_filters(params, %{"action" => "work"})}
       # |> debug()
       |> intents(socket)
 
@@ -152,7 +157,19 @@ defmodule Bonfire.UI.Coordination.TasksLive do
     end
   end
 
-  def handle_event(action, attrs, socket) when action in ["search", "filter"] do
+  defp do_filter(
+         %{
+           "field" => field,
+           "id" => value
+         } = attrs,
+         socket
+       ) do
+    do_filter(Map.put(%{}, field, value), socket)
+  end
+
+  defp do_filter(attrs, socket) do
+    debug(attrs)
+
     params =
       attrs
       |> Map.filter(fn
@@ -164,6 +181,19 @@ defmodule Bonfire.UI.Coordination.TasksLive do
       |> URI.encode_query()
 
     {:noreply, patch_to(socket, current_url(socket) <> "?" <> params)}
+  end
+
+  def handle_event("filter", %{"_target" => ["search_string"]} = attrs, socket) do
+    debug("ignore")
+    {:noreply, socket}
+  end
+
+  def handle_event("filter", attrs, socket) do
+    do_filter(attrs, socket)
+  end
+
+  def handle_event("search", attrs, socket) do
+    do_filter(attrs, socket)
   end
 
   def handle_event(action, attrs, socket),
