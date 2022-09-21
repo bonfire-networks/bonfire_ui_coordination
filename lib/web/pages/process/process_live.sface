@@ -1,14 +1,15 @@
 <main class="">
   <section class="flex flex-col">
     <Bonfire.UI.ValueFlows.ProcessHeroLive process={@process} />
-    <Bonfire.UI.Coordination.CreateTaskContainerLive context_id={ulid(@process)} />
+    <!-- <Bonfire.UI.Coordination.CreateTaskContainerLive context_id={ulid(@process)} /> -->
     <div class="flex-1 h-full">
       <!-- <Bonfire.UI.Coordination.ListNavigationLive
         output_of_id={e(@process, :id, nil)}
         action="work"
         intent_url="/coordination/task/"
        /> -->
-      <ul class="p-2 menu">
+      <ul class="flex-col space-y-2 fle">
+        <div class="text-sm font-bold uppercase text-base-content/70">{l "Tasks"}</div>
         <Bonfire.UI.Coordination.TaskPreviewLive
           :for={task <- e(@process, :intended_outputs, [])}
           object={task}
