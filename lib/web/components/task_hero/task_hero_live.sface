@@ -24,9 +24,9 @@
         </div>
         <span :if={@task.output_of} class="flex mt-3 text-sm text-base-content opacity-70">
           {l("Task in")}
-          <LivePatch to={"/coordination/list/" <> @task.output_of.id} class="ml-1 underline inline_flex">
+          <LiveRedirect to={"/coordination/list/" <> @task.output_of.id} class="ml-1 underline inline_flex">
             {rich(@task.output_of.name)}
-          </LivePatch>
+          </LiveRedirect>
         </span>
       </div>
     </div>
