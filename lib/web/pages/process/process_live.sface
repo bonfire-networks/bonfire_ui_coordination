@@ -9,7 +9,7 @@
         intent_url="/coordination/task/"
        /> -->
       <ul class="flex-col space-y-2 fle">
-        <div class="text-sm font-bold uppercase text-base-content/70">{l "Tasks"}</div>
+        <div class="text-sm font-bold uppercase text-base-content/70">{l("Tasks")}</div>
         <Bonfire.UI.Coordination.TaskPreviewLive
           :for={task <- e(@process, :intended_outputs, [])}
           object={task}

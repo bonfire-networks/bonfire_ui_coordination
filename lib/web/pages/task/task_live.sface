@@ -1,10 +1,13 @@
-<section class={"bg-base-100 rounded-md shadow"}>
+<section class="bg-base-100 rounded-md shadow">
   <Bonfire.UI.Coordination.TaskHeroLive task={@intent} />
   <div class="flex items-center px-4 mt-2 space-x-4 lg:hidden">
     <Bonfire.UI.Coordination.TaskActionsLive task={@intent} />
   </div>
   <div class="px-4 mt-2">
-    <Bonfire.UI.ValueFlows.EditDescriptionLive item={@intent} />
+    <Bonfire.UI.ValueFlows.EditDescriptionLive
+      item={@intent}
+      submit_event="ValueFlows.Planning.Intent:update"
+    />
   </div>
   <Bonfire.UI.Coordination.TaskThreadLive task={@intent} />
 </section>

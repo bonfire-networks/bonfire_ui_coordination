@@ -3,9 +3,7 @@
     <div class="flex items-center space-x-3">
       <div>
         <div class="flex items-center gap-3 text-lg font-bold text-base-content/80">
-          <a
-            aria-label="Navigate to the previous page"
-            href="javascript:window.history.back()">
+          <a aria-label="Navigate to the previous page" href="javascript:window.history.back()">
             <span class="btn btn-sm btn-circle">
               <Icon outline="ChevronLeft" class="w-4 h-4" />
             </span>
@@ -53,7 +51,7 @@
           @keydown.arrow-up.prevent="onArrowUp()"
           @keydown.arrow-down.prevent="onArrowDown()"
         >
-          <span class="sr-only">{l "Open options"}</span>
+          <span class="sr-only">{l("Open options")}</span>
           <Icon outline="DotsVertical" class="w-5 h-5" />
         </button>
       </div>
@@ -72,38 +70,35 @@
         aria-labelledby="user-profile-menu"
       >
         <div class="py-1" role="none">
-        <!-- DELETE THE TASK -->
-        <Bonfire.UI.Common.OpenModalLive
-        id={Pointers.ULID.generate()}
-        open_btn_class={"cursor-pointer w-full p-3 hover:bg-base-content/10 rounded-lg "}
-        title_text={l("Delete this task")}
-      >
-        <!-- -->
-        <!-- {rich l "You may be able to undo this deletion *in some cases*, but in any case the data will eventually be permanently deleted from this instance."} -->
-        {l("A request will be sent to remote instances to delete it as well.")}
-        <:open_btn>
-          <div class="flex items-center text-sm cursor-pointer text-neutral-content">
-            <Icon solid="Trash" class="w-4 h-4 mr-2 shrink-0 text-neutral-content/70" />
-            <span class="truncate ellipsis">
-              {l("Delete this task")}
-            </span>
-          </div>
-        </:open_btn>
-        <:action_btns>
-          <button
-            :on-click="ValueFlows.Planning.Intent:delete"
-            phx-value-id={@task.id}
-            phx-value-redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
-            class="normal-case btn btn-error btn-sm"
+          <!-- DELETE THE TASK -->
+          <Bonfire.UI.Common.OpenModalLive
+            id={Pointers.ULID.generate()}
+            open_btn_class="cursor-pointer w-full p-3 hover:bg-base-content/10 rounded-lg"
+            title_text={l("Delete this task")}
           >
-            <Icon solid="Trash" class="w-4 h-4 mr-2 shrink-0" />
-            <span class="truncate ellipsis">{l("Delete this task")}</span>
-          </button>
-        </:action_btns>
-      </Bonfire.UI.Common.OpenModalLive>
-
-
-          
+            <!--  -->
+            <!-- {rich l "You may be able to undo this deletion *in some cases*, but in any case the data will eventually be permanently deleted from this instance."} -->
+            {l("A request will be sent to remote instances to delete it as well.")}
+            <:open_btn>
+              <div class="flex items-center text-sm cursor-pointer text-neutral-content">
+                <Icon solid="Trash" class="w-4 h-4 mr-2 shrink-0 text-neutral-content/70" />
+                <span class="truncate ellipsis">
+                  {l("Delete this task")}
+                </span>
+              </div>
+            </:open_btn>
+            <:action_btns>
+              <button
+                :on-click="Bonfire.Social.Objects:delete"
+                phx-value-id={@task.id}
+                phx-value-redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
+                class="normal-case btn btn-error btn-sm"
+              >
+                <Icon solid="Trash" class="w-4 h-4 mr-2 shrink-0" />
+                <span class="truncate ellipsis">{l("Delete this task")}</span>
+              </button>
+            </:action_btns>
+          </Bonfire.UI.Common.OpenModalLive>
         </div>
       </div>
     </div>

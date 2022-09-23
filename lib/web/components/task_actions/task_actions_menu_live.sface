@@ -34,11 +34,11 @@
       x-show="open"
       x-transition:enter="transition ease-out duration-100"
       x-transition:enter-start="transform opacity-0 scale-95"
-      x-transition:enter-end="transform opacity-60 scale-100"
+      x-transition:enter-end="transform opacity-90 scale-100"
       x-transition:leave="transition ease-in duration-75"
-      x-transition:leave-start="transform opacity-60 scale-100"
+      x-transition:leave-start="transform opacity-90 scale-100"
       x-transition:leave-end="transform opacity-0 scale-95"
-      class="absolute right-0 z-20 w-56 mt-2 origin-top-left bg-base-100 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+      class="absolute right-0 z-200 w-56 mt-2 origin-top-left bg-base-100 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
       role="menu"
       aria-orientation="vertical"
     >
@@ -74,16 +74,38 @@
           phx-value-id={@task.id}
           class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30"
         >
-          l {"Re-open"}
+          {l("Re-open")}
         </div>
 
-        <div
-          :on-click="ValueFlows.Planning.Intent:delete"
-          phx-value-id={@task.id}
-          class="block w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30"
+        <!-- DELETE THE TASK -->
+        <Bonfire.UI.Common.OpenModalLive
+          id={Pointers.ULID.generate()}
+          open_btn_class="cursor-pointer w-full p-3 hover:bg-base-content/10 rounded-lg"
+          title_text={l("Delete this task")}
         >
-          {l("Delete")}
-        </div>
+          <!--  -->
+          <!-- {rich l "You may be able to undo this deletion *in some cases*, but in any case the data will eventually be permanently deleted from this instance."} -->
+          {l("A request will be sent to remote instances to delete it as well.")}
+          <:open_btn>
+            <div class="flex w-full px-4 py-2 text-sm text-left text-base-content opacity-70 transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30">
+              <Icon solid="Trash" class="w-4 h-4 mr-2 shrink-0 text-neutral-content/70" />
+              <span class="truncate ellipsis">
+                {l("Delete this task")}
+              </span>
+            </div>
+          </:open_btn>
+          <:action_btns>
+            <button
+              :on-click="Bonfire.Social.Objects:delete"
+              phx-value-id={@task.id}
+              phx-value-redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
+              class="normal-case btn btn-error btn-sm"
+            >
+              <Icon solid="Trash" class="w-4 h-4 mr-2 shrink-0" />
+              <span class="truncate ellipsis">{l("Delete this task")}</span>
+            </button>
+          </:action_btns>
+        </Bonfire.UI.Common.OpenModalLive>
       </div>
     </div>
   </div>

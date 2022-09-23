@@ -19,7 +19,7 @@
         action="work"
         intent_url="/coordination/task/"
        /> -->
-    <ul class="space-y-3 menu">
+    <ul class="space-y-3">
       <!-- <Bonfire.UI.Coordination.CreateTaskContainerLive /> -->
 
       <Bonfire.UI.Coordination.TaskPreviewLive :for={task <- @intents || []} object={task} show_likes />
