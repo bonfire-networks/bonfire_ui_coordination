@@ -1,5 +1,5 @@
-<div class="px-4 pt-6">
-  <div class="mb-2 text-xs text-base-content opacity-70 uppercase  font-regular">
+<div class="px-4 pt-6 mt-6 border-t border-base-content/10">
+  <div class="mb-2 text-xs uppercase text-base-content opacity-70 font-regular">
     {l("Discussion")}
     <!-- <Bonfire.UI.Social.Activity.ReplyLive
       permalink={path(@task)}
