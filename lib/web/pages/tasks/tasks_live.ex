@@ -16,7 +16,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
 
   declare_nav_link([
     {l("To do"),
-     href: "/coordination/tasks/me?provider=me", icon: "heroicons:clipboard-document-check-solid"},
+     href: "/coordination/tasks?provider=me", icon: "heroicons:clipboard-document-check-solid"},
     {l("My tasks"), href: "/coordination/tasks/me", icon: "heroicons:hand-raised-20-solid"},
     {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
   ])
