@@ -2,7 +2,7 @@
   <div class="flex-1">
     <div class="flex items-center space-x-3">
       <div>
-        <div class="flex items-center gap-3 text-lg font-bold text-base-content/80">
+        <div class="flex items-start gap-3 text-lg font-bold text-base-content/80">
           <a aria-label="Navigate to the previous page" href="javascript:window.history.back()">
             <span class="btn btn-outline btn-sm btn-circle">
               <Icon outline="ChevronLeft" class="w-4 h-4" />
