@@ -11,19 +11,16 @@
 
       <ul class="flex flex-col space-y-2">
         {#if length(e(@process, :intended_outputs, [])) > 0}
-        <Bonfire.UI.Coordination.TaskPreviewLive
-          :for={task <- e(@process, :intended_outputs, [])}
-          object={task}
-          show_likes
-        />
-        {#else}
-        <li id="list-without-task" class="flex items-center place-content-center">
-          <Bonfire.UI.Common.EmptyFeed
-            feedback_title={ l("This list has no tasks yet")}
+          <Bonfire.UI.Coordination.TaskPreviewLive
+            :for={task <- e(@process, :intended_outputs, [])}
+            object={task}
+            show_likes
           />
-        </li>
+        {#else}
+          <li id="list-without-task" class="flex items-center place-content-center">
+            <Bonfire.UI.Common.EmptyFeed feedback_title={l("This list has no tasks yet")} />
+          </li>
         {/if}
-
       </ul>
     </div>
   </section>

@@ -1,11 +1,14 @@
 <div class="relative p-4 md:rounded-t-xl bg-base-100">
-
   <div class="flex z-50  items-start justify-between h-[56px]">
-   <div class="flex items-center gap-3">
-      <a aria-label="Navigate to the previous page" href="javascript:window.history.back()" class="btn btn-ghost btn-sm btn-circle">
+    <div class="flex items-center gap-3">
+      <a
+        aria-label="Navigate to the previous page"
+        href="javascript:window.history.back()"
+        class="btn btn-ghost btn-sm btn-circle"
+      >
         <Icon outline="ArrowLeft" class="w-4 h-4 text-base-content" />
       </a>
-      <span class="text-base capitalize text-base-content/80">{l "List"}</span>
+      <span class="text-base capitalize text-base-content/80">{l("List")}</span>
     </div>
     <div class="flex items-center gap-4">
       <div
@@ -14,7 +17,7 @@
         @keydown.escape.stop="open_task_dropdown = false"
         @click.outside="open_task_dropdown = false"
         class="relative inline-block ml-3 text-left"
-        >
+      >
         <div>
           <button
             type="button"
