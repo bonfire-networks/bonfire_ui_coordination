@@ -47,6 +47,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
          context_id: id,
          #  reply_to_id: id,
          smart_input_prompt: l("Reply to this task"),
+         without_mobile_logged_header: true,
          without_sidebar: true,
          sidebar_widgets: [
            users: [
