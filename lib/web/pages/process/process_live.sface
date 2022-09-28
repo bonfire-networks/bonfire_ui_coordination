@@ -8,6 +8,30 @@
         action="work"
         intent_url="/coordination/task/"
        /> -->
+        <div class="mb-3 btn-group">
+          <button class="normal-case border-base-content/30 btn btn-sm btn-active">
+            <svg class="mr-2" width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="6" stroke="#e2e2e2" stroke-width="2" fill="none" /><path
+              fill="#e2e2e2"
+              stroke="none"
+              d="M 3.5,3.5 L3.5,0 A3.5,3.5 0 0,1 3.5, 0 z"
+              transform="translate(3.5,3.5)"
+            /></svg>
+            {l "Open"}</button>
+          <button class="normal-case border-base-content/30 btn btn-sm btn-outline">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 mr-2 text-green-500"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            {l "Completed"}</button>
+        </div>
 
       <ul class="flex flex-col space-y-2">
         {#if length(e(@process, :intended_outputs, [])) > 0}

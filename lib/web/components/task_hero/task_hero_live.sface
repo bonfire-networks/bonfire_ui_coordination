@@ -8,7 +8,7 @@
       >
         <Icon outline="ArrowLeft" class="w-4 h-4 text-base-content" />
       </a>
-      <span class="text-base capitalize text-base-content/80">{l("List")}</span>
+      <span class="text-base capitalize text-base-content/80">{l("Task")}</span>
     </div>
     <div class="flex items-center gap-4">
       <div
