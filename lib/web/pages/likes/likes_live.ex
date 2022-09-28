@@ -33,7 +33,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
   end
 
   def do_handle_params(_params, _url, socket) do
-    current_user = current_user(socket)
+    current_user = current_user_required(socket)
 
     %{edges: feed, page_info: page_info} =
       Bonfire.Social.Likes.list_my(
