@@ -27,7 +27,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
     ])
   end
 
-  defp mounted(%{"id" => id} = _params, _session, socket) do
+  defp mounted(%{"id" => id} = params, _session, socket) do
     intent = intent(%{id: id}, socket)
 
     # debug(intent)
@@ -43,6 +43,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
          page_title: e(intent, :name, nil) || l("Task"),
          page: "task",
          selected_tab: "events",
+         showing_within: e(params, "showing_within", nil) || :task,
          #  create_object_type: :task, # TODO: ability to reply to a task with a task
          context_id: id,
          #  reply_to_id: id,
