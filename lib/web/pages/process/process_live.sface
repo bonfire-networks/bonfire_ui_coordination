@@ -8,7 +8,7 @@
         action="work"
         intent_url="/coordination/task/"
        /> -->
-      <div class="mb-3 btn-group">
+      <!-- <div class="mb-3 btn-group">
         <button class="normal-case border-base-content/30 btn btn-sm btn-active">
           <svg class="mr-2" width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="6" stroke="#e2e2e2" stroke-width="2" fill="none" /><path
               fill="#e2e2e2"
@@ -31,7 +31,7 @@
             />
           </svg>
           {l("Completed")}</button>
-      </div>
+      </div> -->
 
       <ul class="flex flex-col space-y-2">
         {#if length(e(@process, :intended_outputs, [])) > 0}
