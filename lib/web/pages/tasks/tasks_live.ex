@@ -15,10 +15,10 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   declare_nav_link([
-    {l("To do"),
-     href: "/coordination/tasks?provider=me", icon: "heroicons:clipboard-document-check-solid"},
-    {l("My tasks"), href: "/coordination/tasks/me", icon: "heroicons:hand-raised-20-solid"},
-    {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
+    {l("Assigned to me"),
+     href: "/coordination/tasks?provider=me", icon: "heroicons:hand-raised-20-solid"},
+    # {l("My tasks"), href: "/coordination/tasks/me", icon: "heroicons:hand-raised-20-solid"},
+    # {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
   ])
 
   def mount(params, session, socket) do

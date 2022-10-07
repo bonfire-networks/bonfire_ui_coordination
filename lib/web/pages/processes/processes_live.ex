@@ -40,8 +40,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
      |> assign(
        page_title: "All lists",
        page: "processes",
-       create_object_type: :process,
-       smart_input_prompt: l("Create a list"),
+       hide_smart_input: true,
        processes: processes
      )}
   end

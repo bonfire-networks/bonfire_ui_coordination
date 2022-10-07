@@ -1,4 +1,4 @@
-<div class="bg-base-100">
+<div class="mb-2 rounded-md shadow bg-base-100">
   <div class="flex items-start">
     <div class="flex flex-col flex-1 space-y-2">
       <div
@@ -9,28 +9,18 @@
         @click.outside="open=false"
       >
         <div
-          x-show="!open"
-          class="flex items-center p-3 m-2 space-x-3 rounded cursor-pointer place-content-center"
-          @click="open = true"
+          class="flex items-center justify-start p-3 m-2 space-x-3 rounded cursor-pointer"
+          @click="open = ! open"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
-          <div class="text-sm font-semibold">{if @context_id, do: l("Add a new task in this list"), else: l("Add a task")}</div>
+          <Icon outline="Plus" class="w-4 h-4" />
+          <div class="text-sm font-semibold">{if @context_id, do: l("Add a task")}</div>
         </div>
-        <div class="p-3" x-show="open">
-          <Bonfire.UI.Coordination.CreateTaskLive context_id={@context_id} />
+        <div class="" 
+          x-collapse
+          x-show="open">
+          <Bonfire.UI.Coordination.CreateTaskLive 
+            to_boundaries={[]}
+            context_id={@context_id} />
         </div>
       </div>
     </div>

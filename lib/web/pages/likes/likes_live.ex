@@ -2,8 +2,8 @@ defmodule Bonfire.UI.Coordination.LikesLive do
   use Bonfire.UI.Common.Web, :surface_live_view
   alias Bonfire.UI.Me.LivePlugs
 
-  declare_nav_link(l("Favourites"), icon: "bi:stars")
-
+  declare_nav_link(l("Important"), icon: "bi:stars")
+  
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
       LivePlugs.LoadCurrentAccount,
@@ -26,7 +26,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
        showing_within: :likes,
        loading: false,
        page: "likes",
-       page_title: l("My Favourites"),
+       page_title: l("Important tasks"),
        create_object_type: :task,
        smart_input_prompt: l("Add a task")
      )}
@@ -38,7 +38,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
     %{edges: feed, page_info: page_info} =
       Bonfire.Social.Likes.list_my(
         current_user: current_user,
-        object_type: [ValueFlows.Process, ValueFlows.Planning.Intent, ValueFlows.Proposal]
+        object_type: [ValueFlows.Planning.Intent, ValueFlows.Proposal]
       )
 
     # |> debug()
