@@ -1,8 +1,9 @@
+<Bonfire.UI.Common.PageTitleLive page_title={@page_title} />
 <section class="shadow-xl rounded-xl bg-base-100">
-  <Bonfire.UI.Coordination.ListsNavigationLive
+  <!-- <Bonfire.UI.Coordination.ListsNavigationLive
     intent_url="/coordination/task/"
     process_url="/coordination/list/"
-  />
+  /> -->
 
   <div class="flex flex-col divide-y divide-base-content/10 rounded-b-xl">
     <Bonfire.UI.Social.Activity.ProcessListLive
