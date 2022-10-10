@@ -47,17 +47,17 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        create_object_type: :task,
        smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
-        users: [
-          secondary: [
-            {Bonfire.Tag.Web.WidgetTagsLive, []}
-          ]
-        ],
-        guests: [
-          secondary: [
-            {Bonfire.Tag.Web.WidgetTagsLive, []}
-          ]
-        ]
-      ]
+         users: [
+           secondary: [
+             {Bonfire.Tag.Web.WidgetTagsLive, []}
+           ]
+         ],
+         guests: [
+           secondary: [
+             {Bonfire.Tag.Web.WidgetTagsLive, []}
+           ]
+         ]
+       ]
      )}
   end
 

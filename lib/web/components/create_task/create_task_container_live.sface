@@ -15,12 +15,8 @@
           <Icon outline="Plus" class="w-4 h-4" />
           <div class="text-sm font-semibold">{if @context_id, do: l("Add a task")}</div>
         </div>
-        <div class="" 
-          x-collapse
-          x-show="open">
-          <Bonfire.UI.Coordination.CreateTaskLive 
-            to_boundaries={[]}
-            context_id={@context_id} />
+        <div class="" x-collapse x-show="open">
+          <Bonfire.UI.Coordination.CreateTaskLive to_boundaries={[]} context_id={@context_id} />
         </div>
       </div>
     </div>

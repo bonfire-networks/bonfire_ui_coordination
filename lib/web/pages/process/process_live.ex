@@ -40,7 +40,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        selected_tab: "tasks",
        create_object_type: :task,
        without_mobile_logged_header: true,
-      #  without_sidebar: true,
+       #  without_sidebar: true,
        smart_input_prompt: l("Add task to list"),
        process: process,
        context_id: ulid(process)

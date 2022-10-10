@@ -3,7 +3,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
   alias Bonfire.UI.Me.LivePlugs
 
   declare_nav_link(l("Important"), icon: "bi:stars")
-  
+
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
       LivePlugs.LoadCurrentAccount,
