@@ -2,7 +2,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
   use Bonfire.UI.Common.Web, :surface_live_view
   alias Bonfire.UI.Me.LivePlugs
 
-  declare_nav_link(l("Important"), icon: "bi:stars")
+  declare_nav_link(l("Starred"), icon: "bi:stars")
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [

@@ -15,9 +15,8 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   declare_nav_link([
-    {l("Assigned to me"),
-     href: "/coordination/tasks?provider=me", icon: "heroicons:hand-raised-20-solid"}
-    # {l("My tasks"), href: "/coordination/tasks/me", icon: "heroicons:hand-raised-20-solid"},
+    {l("Assigned to me"), href: "/coordination/tasks?provider=me", icon: "eva:clipboard-outline"},
+    {l("Watching"), href: "/coordination/tasks/me", icon: "fluent:bookmark-search-20-filled"}
     # {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
   ])
 
