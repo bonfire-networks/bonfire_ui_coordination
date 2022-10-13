@@ -46,34 +46,13 @@
         >
           <div class="py-1" role="none">
             <!-- DELETE THE TASK -->
-            <Bonfire.UI.Common.OpenModalLive
-              id={Pointers.ULID.generate()}
-              open_btn_class="cursor-pointer w-full p-3 hover:bg-base-content/10 rounded-lg"
-              title_text={l("Delete this task")}
-            >
-              <!--  -->
-              <!-- {rich l "You may be able to undo this deletion *in some cases*, but in any case the data will eventually be permanently deleted from this instance."} -->
-              {l("A request will be sent to remote instances to delete it as well.")}
-              <:open_btn>
-                <div class="flex items-center text-sm cursor-pointer text-neutral-content">
-                  <Icon solid="Trash" class="w-4 h-4 mr-2 shrink-0 text-neutral-content/70" />
-                  <span class="truncate ellipsis">
-                    {l("Delete this task")}
-                  </span>
-                </div>
-              </:open_btn>
-              <:action_btns>
-                <button
-                  :on-click="Bonfire.Social.Objects:delete"
-                  phx-value-id={@task.id}
-                  phx-value-redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
-                  class="normal-case btn btn-error btn-sm"
-                >
-                  <Icon solid="Trash" class="w-4 h-4 mr-2 shrink-0" />
-                  <span class="truncate ellipsis">{l("Delete this task")}</span>
-                </button>
-              </:action_btns>
-            </Bonfire.UI.Common.OpenModalLive>
+            <Bonfire.UI.Social.Activity.DeleteObjectLive
+              object={@task}
+              creator_id={e(@task, :provider, :id, nil) || e(@task, :receiver, :id, nil)}
+              object_type_readable={l("task")}
+              open_btn_class="flex items-center text-sm cursor-pointer text-neutral-content"
+              redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
+            />
           </div>
         </div>
       </div>
