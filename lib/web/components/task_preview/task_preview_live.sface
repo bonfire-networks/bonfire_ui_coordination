@@ -111,8 +111,8 @@
         </div>
       </div>
 
-      <Bonfire.UI.Common.LikeActionWithoutLabelLive
-        id={ComponentID.new(Bonfire.UI.Common.LikeActionWithoutLabelLive, @object)}
+      <Bonfire.UI.Common.LikeActionLive
+        id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, @object)}
         object={@object}
       />
       <Bonfire.UI.Coordination.TaskActionsMenuLive
