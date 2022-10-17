@@ -46,7 +46,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
     {:noreply,
      socket
      |> assign(
-       feed: Bonfire.Social.Feeds.LiveHandler.preloads(feed, socket) |> dump("clikes"),
+       feed: Bonfire.Social.Feeds.LiveHandler.preloads(feed, socket),
        page_info: page_info
      )}
   end
