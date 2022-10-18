@@ -57,7 +57,8 @@ defmodule Bonfire.UI.Coordination.TaskLive do
              ]
            ]
          ],
-         intent: intent
+         intent: intent,
+         reply_to_id: intent
 
          # resource: resource,
        )
