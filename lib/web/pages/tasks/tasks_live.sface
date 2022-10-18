@@ -1,18 +1,15 @@
-<section class="">
-  <div class="">
-    <ul class="space-y-3">
-      <!-- <Bonfire.UI.Coordination.CreateTaskContainerLive /> -->
-
-      <Bonfire.UI.Coordination.TaskPreviewLive
-        :if={length(@intents) > 0}
-        :for={task <- @intents || []}
-        object={task}
-        show_likes
-      />
-      <Bonfire.UI.Common.EmptyFeed
-        :if={length(@intents) == 0}
-        feedback_title={l("No tasks have been found")}
-      />
-    </ul>
-  </div>
+<section class="mt-6">
+<div class="mb-3 text-sm font-semibold text-base-content/70">{@page_title}</div>
+  <ul class="space-y-3">
+   <Bonfire.UI.Coordination.TaskPreviewLive
+      :if={length(@intents) > 0}
+      :for={task <- @intents || []}
+      object={task}
+      show_likes
+    />
+    <Bonfire.UI.Common.EmptyFeed
+      :if={length(@intents) == 0}
+      feedback_title={l("No tasks have been found")}
+    />
+  </ul>
 </section>

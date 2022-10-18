@@ -1,4 +1,4 @@
-<section class="rounded-md shadow bg-base-100">
+<section class="mt-6 rounded-md shadow bg-base-100">
   <Bonfire.UI.Coordination.TaskHeroLive task={@intent} showing_within={@showing_within} />
   <div class="flex items-start px-4 mt-4 mb-8 space-x-8 lg:hidden">
     <Bonfire.UI.Coordination.TaskActionsLive task={@intent} />

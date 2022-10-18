@@ -22,7 +22,10 @@
           <div class="flex flex-col gap-2">
             <LiveRedirect
               to={"/coordination/task/#{e(@object, :id, "")}"}
-              class="text-base font-medium cursor-pointer text-base-content hover:underline"
+              class={
+                "text-base font-medium cursor-pointer link link-hover",
+                "line-through decoration-base-content/70": e(@object, :finished, nil)
+              }
             >{e(@object, :name, e(@object, :note, l("Untitled task")))}
             </LiveRedirect>
             <div class="flex items-center gap-4">
@@ -32,7 +35,7 @@
                   <LiveRedirect
                     :if={e(scope, :id, nil)}
                     to={"/coordination/task/#{e(scope, :id, "")}"}
-                    class="flex items-center text-sm cursor-pointer text-base-content/60font-regular hover:underline"
+                    class="flex items-center text-sm cursor-pointer text-base-content/60 font-regular hover:underline"
                   >
                     {e(scope, :name, "")}
                   </LiveRedirect>
