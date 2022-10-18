@@ -1,24 +1,10 @@
-<!-- <div class="mt-6 rounded-lg shadow bg-base-100">
-  <div class="w-full pt-3 border-b tabs border-base-content/10">
-    <a class="tab tab-bordered tab-active">{l "Pinned discussions"}</a> 
-  </div>
-  <div  style="overflow-x: scroll; width: 680px;" class="flex items-center gap-4 p-4">
-    <div 
-      class="relative p-6 h-[200px] border rounded-lg border-base-content/10 min-w-[260px] w-[260px]"
-      :for={%{edge: %{object: %{post_content: %{name: _} = p}}} <-
-      Bonfire.Social.Pins.list_instance_pins(
-        object_type: [ValueFlows.Process],
-        current_user: @current_user
-      )
-      |> e(:edges, [])
-      |> debug("pinningy")}>
-      <Icon iconify="bi:pin-angle-fill" class="absolute w-5 h-5 text-base-content/30 right-3 top-3" />
-      <LiveRedirect to={path(p)} class="text-xl font-bold tracking-wider link link-hover">{e(p, :name, "Without title")}</LiveRedirect>
-      <div class="mt-2 text-sm line-clamp-3">{rich(e(p, :html_body, ""))}</div>
-    </div>
-  </div>
-</div> -->
-<div class="mt-6 mb-3 text-sm font-semibold text-base-content/70">{l "Recent coordination activities"}</div>
+<Bonfire.UI.Common.InstancePinnedLive
+  object_types={@object_types}
+  load_pointer
+  title={l("Pinned")}
+/>
+
+<div class="mt-6 mb-3 text-sm font-semibold text-base-content/70">{l("Recent coordination activities")}</div>
 <Bonfire.UI.Social.FeedLive
   id={e(@feed_id, :my)}
   feed_id={@feed_id}

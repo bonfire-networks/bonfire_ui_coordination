@@ -30,6 +30,8 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   end
 
   defp mounted(params, _session, socket) do
+    object_types = [ValueFlows.Process, ValueFlows.Planning.Intent, ValueFlows.Proposal]
+
     {:ok,
      socket
      |> assign(
@@ -37,8 +39,9 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        page: "feed",
        page_title: l("My coordination feed"),
        feed_id: nil,
+       object_types: object_types,
        feed_filters: [
-         object_type: [ValueFlows.Process, ValueFlows.Planning.Intent, ValueFlows.Proposal]
+         object_type: object_types
        ],
        feed_ids: nil,
        feedback_title: l("Your feed is empty"),

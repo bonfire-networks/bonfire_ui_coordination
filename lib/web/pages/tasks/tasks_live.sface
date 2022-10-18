@@ -1,7 +1,7 @@
 <section class="mt-6">
-<div class="mb-3 text-sm font-semibold text-base-content/70">{@page_title}</div>
+  <div class="mb-3 text-sm font-semibold text-base-content/70">{@page_title}</div>
   <ul class="space-y-3">
-   <Bonfire.UI.Coordination.TaskPreviewLive
+    <Bonfire.UI.Coordination.TaskPreviewLive
       :if={length(@intents) > 0}
       :for={task <- @intents || []}
       object={task}
