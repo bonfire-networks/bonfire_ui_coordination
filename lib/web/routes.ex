@@ -9,7 +9,7 @@ defmodule Bonfire.UI.Coordination.Routes do
 
         live("/", FeedLive)
         live("/:tab", FeedLive)
-        
+
         live("/favourites", LikesLive)
 
         live("/lists", ProcessesLive)

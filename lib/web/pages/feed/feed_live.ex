@@ -17,6 +17,12 @@ defmodule Bonfire.UI.Coordination.FeedLive do
 
   declare_nav_link(l("Overview"), icon: "heroicons-solid:newspaper")
 
+  declare_settings_nav_link(:extension,
+    href: "/coordination/settings",
+    verb: :tag,
+    scopes: [:user, :instance]
+  )
+
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
       LivePlugs.LoadCurrentAccount,
@@ -55,7 +61,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        sidebar_widgets: [
          users: [
            secondary: [
-              {Bonfire.UI.Coordination.UpcomingTaskLive, []},
+             {Bonfire.UI.Coordination.UpcomingTaskLive, []},
              {Bonfire.Tag.Web.WidgetTagsLive, []}
            ]
          ],
@@ -67,7 +73,6 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        ]
      )}
   end
-
 
   @graphql """
   {

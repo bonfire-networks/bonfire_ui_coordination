@@ -46,18 +46,18 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        reply_to_id: process,
        context_id: ulid(process),
        sidebar_widgets: [
-        users: [
-          secondary: [
+         users: [
+           secondary: [
              {Bonfire.UI.Coordination.UpcomingTaskLive, []},
-            {Bonfire.Tag.Web.WidgetTagsLive, []}
-          ]
-        ],
-        guests: [
-          secondary: [
-            {Bonfire.Tag.Web.WidgetTagsLive, []}
-          ]
-        ]
-      ]
+             {Bonfire.Tag.Web.WidgetTagsLive, []}
+           ]
+         ],
+         guests: [
+           secondary: [
+             {Bonfire.Tag.Web.WidgetTagsLive, []}
+           ]
+         ]
+       ]
      )}
   end
 
