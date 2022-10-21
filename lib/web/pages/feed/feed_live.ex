@@ -2,6 +2,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   use Bonfire.UI.Common.Web, :surface_live_view
   alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Social.Feeds.LiveHandler
+  use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
   declare_extension("Coordination",
     icon: "noto:high-voltage",
@@ -14,7 +15,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
     ]
   )
 
-  declare_nav_link(l("Recent"), icon: "heroicons-solid:newspaper")
+  declare_nav_link(l("Overview"), icon: "heroicons-solid:newspaper")
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
@@ -31,6 +32,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
 
   defp mounted(params, _session, socket) do
     object_types = [ValueFlows.Process, ValueFlows.Planning.Intent, ValueFlows.Proposal]
+    processes = processes(socket)
 
     {:ok,
      socket
@@ -49,9 +51,11 @@ defmodule Bonfire.UI.Coordination.FeedLive do
          l("You can start by following some people, or writing adding some tasks yourself."),
        create_object_type: :task,
        smart_input_prompt: l("Add a task"),
+       processes: processes,
        sidebar_widgets: [
          users: [
            secondary: [
+              {Bonfire.UI.Coordination.UpcomingTaskLive, []},
              {Bonfire.Tag.Web.WidgetTagsLive, []}
            ]
          ],
@@ -61,6 +65,31 @@ defmodule Bonfire.UI.Coordination.FeedLive do
            ]
          ]
        ]
+     )}
+  end
+
+
+  @graphql """
+  {
+    processes {
+      __typename
+      id
+      name
+      note
+      has_end
+      intended_outputs {
+        finished
+      }
+    }
+  }
+  """
+  def processes(params \\ %{}, socket), do: liveql(socket, :processes, params)
+
+  def do_handle_params(%{"tab" => tab}, _url, socket) do
+    {:noreply,
+     assign(
+       socket,
+       selected_tab: tab
      )}
   end
 

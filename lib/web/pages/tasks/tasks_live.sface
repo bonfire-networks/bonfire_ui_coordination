@@ -1,5 +1,7 @@
 <section class="mt-6">
-  <div class="mb-3 text-sm font-semibold text-base-content/70">{@page_title}</div>
+  <div class="pb-3 mb-3 border-b border-base-content/20">
+    <div class="text-2xl font-semibold  text-base-content">{@page_title}</div>
+  </div>
   <ul class="space-y-3">
     <Bonfire.UI.Coordination.TaskPreviewLive
       :if={length(@intents) > 0}

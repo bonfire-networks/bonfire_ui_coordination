@@ -8,7 +8,8 @@ defmodule Bonfire.UI.Coordination.Routes do
         pipe_through(:browser)
 
         live("/", FeedLive)
-
+        live("/:tab", FeedLive)
+        
         live("/favourites", LikesLive)
 
         live("/lists", ProcessesLive)

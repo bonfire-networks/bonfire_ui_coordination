@@ -44,7 +44,20 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        smart_input_prompt: l("Add task to list"),
        process: process,
        reply_to_id: process,
-       context_id: ulid(process)
+       context_id: ulid(process),
+       sidebar_widgets: [
+        users: [
+          secondary: [
+             {Bonfire.UI.Coordination.UpcomingTaskLive, []},
+            {Bonfire.Tag.Web.WidgetTagsLive, []}
+          ]
+        ],
+        guests: [
+          secondary: [
+            {Bonfire.Tag.Web.WidgetTagsLive, []}
+          ]
+        ]
+      ]
      )}
   end
 

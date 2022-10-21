@@ -1,0 +1,19 @@
+<div class="flex w-full max-w-md divide-x rounded-lg shadow-lg pointer-events-auto divide-warning-content/30 bg-warning ring-1 ring-black ring-opacity-5">
+  <div class="flex items-start flex-1 w-0 gap-3 p-4 pr-2">
+    <div class=""><Icon iconify="emojione:spiral-calendar" class="w-6 h-6" /></div>
+    <div class="flex-1 w-full">
+      <p class="text-sm font-medium text-warning-content">Pagare le bollette</p>
+      <p class="text-sm text-warning-content/70">Due in 8 hours</p>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="flex flex-col divide-y divide-warning-content/30">
+      <div class="flex flex-1 h-0">
+        <button type="button" class="flex items-center justify-center w-full px-4 py-1.5 text-sm font-medium text-warning-content border border-transparent rounded-none rounded-tr-lg hover:text-warning-accent focus:z-10 focus:outline-none">View</button>
+      </div>
+      <div class="flex flex-1 h-0">
+        <button type="button" class="flex items-center justify-center w-full px-4 py-1.5 text-sm font-medium text-warning-content/70 border border-transparent rounded-none rounded-br-lg hover:text-warning-content/80 focus:outline-none ">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
