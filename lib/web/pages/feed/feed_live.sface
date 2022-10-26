@@ -1,70 +1,46 @@
-<div class="py-4 pb-0 mt-6 mb-3">
-  <div class="flex items-center justify-between">
-    <div class="text-2xl font-semibold text-base-content">{l("Coordination")}</div>
-  </div>
-  <!-- <div class="pt-3 mt-6 border-b-4 border-base-100 tabs">
-    <LivePatch to="/coordination" class={"-mb-1 tab tab-bordered", "tab-active": @selected_tab == "feed"}>{l "Overview"}</LivePatch> 
-    <LivePatch to="/coordination/lists" class={"-mb-1 tab tab-bordered", "tab-active": @selected_tab == "lists"}>{l "All lists"}</LivePatch>     
-    <LivePatch to="/coordination/team" class={"-mb-1 tab tab-bordered", "tab-active": @selected_tab == "team"}>{l "Team"}</LivePatch> 
-    <LivePatch to="/coordination/settings" class={"-mb-1 tab tab-bordered", "tab-active": @selected_tab == "settings"}>{l "Settings"}</LivePatch> 
-  </div> -->
-</div>
-{#case @selected_tab}
-  {#match "feed"}
-    <Bonfire.UI.Common.InstancePinnedLive
-      object_types={@object_types}
-      load_pointer
-      title={l("Pinned")}
-    />
-
-    <div class="mt-8 text-[15px] font-semibold tracking-wide text-base-content">{l("Recent lists")}</div>
-    <div class="grid grid-cols-3 gap-3 mt-3">
-      <div :for={list <- @processes} class="p-3 border rounded border-base-content/20">
-        <div class="flex items-center gap-2">
-          <div class="rounded w-7 h-7 bg-accent" />
-          <LiveRedirect
-            class="flex-1 text-sm font-semibold link link-hover"
-            to={"/coordination/list/" <> e(list, :id, "")}
-          >
-            {e(list, :name, nil)}
-          </LiveRedirect>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <progress
-            class="flex-1 w-full h-3 progress progress-success"
-            value={e(list, :percentage, "0")}
-            max="100"
-          />
-
-          <div class="text-xs font-medium text-base-content/80">{e(list, :tasks_completed, "0")} of {e(list, :tasks_total, "0")}</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-8 text-[15px] font-semibold tracking-wide text-base-content">{l("Recent activities")}</div>
-    <div class="mt-3">
-      <Bonfire.UI.Social.FeedLive
-        id={e(@feed_id, :my)}
-        feed_id={@feed_id}
-        feed_ids={@feed_ids}
-        page_title={@page_title}
-        page={@page}
-        feedback_title={@feedback_title}
-        feedback_message={@feedback_message}
-        feed={@feed}
-        feed_title={@feed_title}
-        page_info={@page_info}
-        loading={@loading}
+<div class="w-full max-w-screen-lg mx-auto">
+  <Bonfire.UI.Coordination.HeroLive
+    nav_items={@nav_items}
+    page={@page}
+    selected_tab={@selected_tab}
+  />
+  {#case @selected_tab}
+    {#match "feed"}
+      <Bonfire.UI.Common.InstancePinnedLive
+        object_types={@object_types}
+        load_pointer
+        title={l("Top lists")}
       />
-    </div>
-  {#match "lists"}
-    <div>ciao</div>
-  {#match "settings"}
-    <Bonfire.UI.Common.WidgetsLive
-      widgets={Bonfire.Common.SettingsModule.components(:bonfire_ui_coordination)}
-      page={@page}
-      selected_tab={@selected_tab}
-    />
-  {#match _}
-    <div>ciao</div>
-{/case}
+
+      <div class="px-3 mt-8 text-sm font-medium tracking-wide md:px-0 text-base-content/60">{l("Recent activities")}</div>
+      <div class="mt-3">
+        <Bonfire.UI.Social.FeedLive
+          id={e(@feed_id, :my)}
+          feed_id={@feed_id}
+          feed_ids={@feed_ids}
+          page_title={@page_title}
+          page={@page}
+          feedback_title={@feedback_title}
+          feedback_message={@feedback_message}
+          feed={@feed}
+          feed_title={@feed_title}
+          page_info={@page_info}
+          loading={@loading}
+        />
+      </div>
+    {#match "lists"}
+      <Bonfire.UI.Coordination.ProcessesLive id={:all_lists} />
+    {#match "todo"}
+      <Bonfire.UI.Coordination.MyTasksLive id={:my_tasks} />
+    {#match "favourited"}
+      <Bonfire.UI.Coordination.LikesLive current_user={@current_user} id={:my_favourited_tasks} />
+    {#match "settings"}
+      <Bonfire.UI.Common.WidgetsLive
+        widgets={Bonfire.Common.SettingsModule.components(:bonfire_ui_coordination)}
+        page={@page}
+        selected_tab={@selected_tab}
+      />
+    {#match _}
+      <div>ciao</div>
+  {/case}
+</div>

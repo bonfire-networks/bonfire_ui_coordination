@@ -2,16 +2,15 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   use Bonfire.UI.Common.Web, :surface_live_view
   alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Social.Feeds.LiveHandler
-  use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
   declare_extension("Coordination",
     icon: "noto:high-voltage",
     default_nav: [
       Bonfire.UI.Coordination.FeedLive,
-      Bonfire.UI.Coordination.TasksLive,
+      Bonfire.UI.Coordination.MyTasksLive,
       Bonfire.UI.Coordination.LikesLive,
-      Bonfire.UI.Coordination.ProcessesLive,
-      {Bonfire.UI.ValueFlows.ProcessesListLive, process_url: "/coordination/list"}
+      Bonfire.UI.Coordination.ProcessesLive
+      # {Bonfire.UI.ValueFlows.ProcessesListLive, process_url: "/coordination/list"}
     ]
   )
 
@@ -38,14 +37,15 @@ defmodule Bonfire.UI.Coordination.FeedLive do
 
   defp mounted(params, _session, socket) do
     object_types = [ValueFlows.Process, ValueFlows.Planning.Intent, ValueFlows.Proposal]
-    processes = processes(socket)
+    nav_items = Bonfire.Common.ExtensionModule.default_nav(:bonfire_ui_coordination)
 
     {:ok,
      socket
      |> assign(
-       selected_tab: "feed",
-       page: "feed",
+       selected_tab: "Overview",
+       page: "Overview",
        page_title: l("My coordination feed"),
+       nav_items: nav_items,
        feed_id: nil,
        object_types: object_types,
        feed_filters: [
@@ -57,11 +57,9 @@ defmodule Bonfire.UI.Coordination.FeedLive do
          l("You can start by following some people, or writing adding some tasks yourself."),
        create_object_type: :task,
        smart_input_prompt: l("Add a task"),
-       processes: processes,
        sidebar_widgets: [
          users: [
            secondary: [
-             {Bonfire.UI.Coordination.UpcomingTaskLive, []},
              {Bonfire.Tag.Web.WidgetTagsLive, []}
            ]
          ],
@@ -73,22 +71,6 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        ]
      )}
   end
-
-  @graphql """
-  {
-    processes {
-      __typename
-      id
-      name
-      note
-      has_end
-      intended_outputs {
-        finished
-      }
-    }
-  }
-  """
-  def processes(params \\ %{}, socket), do: liveql(socket, :processes, params)
 
   def do_handle_params(%{"tab" => tab}, _url, socket) do
     {:noreply,

@@ -48,7 +48,6 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        sidebar_widgets: [
          users: [
            secondary: [
-             {Bonfire.UI.Coordination.UpcomingTaskLive, []},
              {Bonfire.Tag.Web.WidgetTagsLive, []}
            ]
          ],

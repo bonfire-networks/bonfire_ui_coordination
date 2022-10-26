@@ -1,5 +1,5 @@
 defmodule Bonfire.UI.Coordination.ProcessesLive do
-  use Bonfire.UI.Common.Web, :surface_live_view
+  use Bonfire.UI.Common.Web, :stateful_component
   # use Surface.LiveView
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
@@ -17,23 +17,25 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
 
   # alias Bonfire.UI.Coordination.ResourceWidget
 
-  declare_nav_link(l("Lists"), icon: "heroicons-solid:archive")
+  declare_nav_link(l("Lists"),
+    page: "lists",
+    href: "/coordination/lists",
+    icon: "heroicons-solid:archive"
+  )
 
-  def mount(params, session, socket) do
-    live_plug(params, session, socket, [
-      LivePlugs.LoadCurrentAccount,
-      LivePlugs.LoadCurrentUser,
-      Bonfire.UI.Common.LivePlugs.StaticChanged,
-      Bonfire.UI.Common.LivePlugs.Csrf,
-      Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3
-    ])
-  end
+  # def mount(params, session, socket) do
+  #   live_plug(params, session, socket, [
+  #     LivePlugs.LoadCurrentAccount,
+  #     LivePlugs.LoadCurrentUser,
+  #     Bonfire.UI.Common.LivePlugs.StaticChanged,
+  #     Bonfire.UI.Common.LivePlugs.Csrf,
+  #     Bonfire.UI.Common.LivePlugs.Locale,
+  #     &mounted/3
+  #   ])
+  # end
 
-  defp mounted(_params, _session, socket) do
+  def update(assigns, socket) do
     processes = processes(socket)
-
-    # debug(processes)
 
     {:ok,
      socket
@@ -46,6 +48,23 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
        processes: processes
      )}
   end
+
+  # defp mounted(_params, _session, socket) do
+  #   processes = processes(socket)
+
+  #   # debug(processes)
+
+  #   {:ok,
+  #    socket
+  #    |> assign(
+  #      page_title: "All lists",
+  #      page: "processes",
+  #      #  hide_smart_input: true,
+  #      create_object_type: :process,
+  #      smart_input_prompt: l("Create a list"),
+  #      processes: processes
+  #    )}
+  # end
 
   @graphql """
   {

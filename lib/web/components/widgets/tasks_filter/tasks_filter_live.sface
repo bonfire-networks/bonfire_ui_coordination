@@ -1,5 +1,6 @@
-<Bonfire.UI.Common.WidgetBlockLive widget_title={l("Filters")}>
-  <div class="p-3">
+<Bonfire.UI.Common.WidgetBlockLive class="">
+  <div class="">
+    <div class="pb-2 mb-3 text-sm border-b text-base-content/80 border-base-content/20">{l("Filters")}</div>
     <Form for={:filter} submit="search" change="filter" method="get">
       <fieldset>
         <!-- <legend class="text-sm font-normal text-base-content/70">{l("Search for")}</legend> -->
@@ -11,7 +12,7 @@
             value={e(@filters, "search_string", nil)}
             placeholder={l("Search tasks...")}
             phx-debounce="300"
-            class="w-full h-9 pr-8 text-base rounded-full input bg-base-content/5 text-base-content placeholder-base-content placeholder-opacity-80"
+            class="w-full pr-8 text-sm rounded-full h-9 input bg-base-content/5 text-base-content placeholder-base-content placeholder-opacity-80"
           />
           <button
             type="submit"
@@ -22,8 +23,8 @@
         </div>
       </fieldset>
 
-      <fieldset class="mt-4">
-        <label for="provider" class="text-sm font-normal text-base-content opacity-70">
+      <fieldset class="pt-2 mt-4 border-t border-base-content/20">
+        <label for="provider" class="text-sm font-normal text-base-content/70">
           {l("Assignee")}
         </label>
         <div class="flex mt-1 rounded-md">
@@ -35,22 +36,22 @@
             type="text"
             name="provider"
             id="provider"
-            class="input w-full rounded-md rounded-l-none input-bordered"
+            class="w-full rounded-md rounded-l-none input input-bordered"
           /> -->
           <Bonfire.UI.ValueFlows.AssignItemLive
             field_name={:provider}
             is_editable
             agent={e(@filters, "provider", nil)}
             event_target="body"
-            class="input w-full rounded-md rounded-l-none input-bordered"
+            class="w-full rounded-md rounded-l-none input input-bordered"
             pick_event="filter"
           />
         </div>
       </fieldset>
 
-      <fieldset class="mt-4">
-        <legend class="text-sm font-normal text-base-content/70">{l("Status")}</legend>
-        <div class="flex items-center mt-2 border rounded-lg border-base-content/10 bg-base-100">
+      <fieldset class="pt-2 mt-4 border-t border-base-content/20">
+        <label class="text-sm font-normal text-base-content/70">{l("Status")}</label>
+        <div class="flex flex-col mt-2 border divide-y rounded-lg divide-base-content/10 border-base-content/10 bg-base-100">
           <div class="flex items-center flex-1 p-3">
             <input
               id="all"
@@ -64,7 +65,7 @@
               {l("Any")}
             </label>
           </div>
-          <div class="flex items-center flex-1 p-3 border-l border-base-content/10">
+          <div class="flex items-center flex-1 p-3">
             <input
               id="open"
               name="status"
@@ -77,7 +78,7 @@
               {l("Open")}
             </label>
           </div>
-          <div class="flex items-center flex-1 p-3 border-l border-base-content/10">
+          <div class="flex items-center flex-1 p-3">
             <input
               id="closed"
               name="status"

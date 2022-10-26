@@ -1,4 +1,4 @@
-<div class="flex items-center text-xs text-base-content  text-medium">
+<div class="flex items-center text-xs text-base-content text-medium">
   <div
     x-cloak
     x-data="{ open: false }"
@@ -12,7 +12,7 @@
       x-bind:aria-expanded="open"
       aria-expanded="true"
       type="button"
-      class="flex items-center p-2 -my-2 text-base-content opacity-60 bg-base-100 rounded-full  hover:bg-neutral hover:bg-opacity-30 hover:text-base-content opacity-60 focus:outline-none focus:ring-2 focus:ring-secondary-500"
+      class="btn btn-ghost btn-sm btn-circle"
       id="menu-0-button"
       aria-expanded="false"
       aria-haspopup="true"
@@ -20,7 +20,7 @@
       <span class="sr-only">{l("Open options")}</span>
       <!-- Heroicon name: solid/dots-vertical -->
       <svg
-        class="w-5 h-5"
+        class="w-4 h-4 text-base-content/80"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
@@ -48,7 +48,7 @@
           :if={(!e(@task, :provider, :id, nil) && !e(@task, :provider_id, nil)) ||
             e(@task, :provider, :id, nil) != ulid(@current_user)}
           phx-click="ValueFlows.Planning.Intent:assign:select"
-          class="block w-full px-4 py-2 text-sm text-left text-base-content transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 cursor-pointer"
+          class="block w-full px-4 py-2 text-sm text-left transition duration-150 ease-in-out cursor-pointer text-base-content hover:bg-neutral hover:bg-opacity-30"
           phx-value-id="me"
           phx-value-name="Me"
           phx-value-context_id={"#{@task.id}"}
@@ -56,7 +56,7 @@
         >
           {l("Assign to myself")}
         </div>
-        <!-- <div :if={{!@task.finished}} class="block w-full px-4 py-2 text-sm text-left text-base-content  transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 ">
+        <!-- <div :if={{!@task.finished}} class="block w-full px-4 py-2 text-sm text-left transition duration-150 ease-in-out text-base-content hover:bg-neutral hover:bg-opacity-30 ">
               Set in progress
             </div> -->
 
@@ -64,7 +64,7 @@
           :if={!@task.finished}
           :on-click="ValueFlows.Planning.Intent:status:finished"
           phx-value-id={@task.id}
-          class="block w-full px-4 py-2 text-sm text-left text-base-content  transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 cursor-pointer"
+          class="block w-full px-4 py-2 text-sm text-left transition duration-150 ease-in-out cursor-pointer text-base-content hover:bg-neutral hover:bg-opacity-30"
         >
           {l("Set as completed")}
         </div>
@@ -73,7 +73,7 @@
           :if={@task.finished}
           :on-click="ValueFlows.Planning.Intent:status:open"
           phx-value-id={@task.id}
-          class="block w-full px-4 py-2 text-sm text-left text-base-content  transition duration-150 ease-in-out hover:bg-neutral hover:bg-opacity-30 cursor-pointer"
+          class="block w-full px-4 py-2 text-sm text-left transition duration-150 ease-in-out cursor-pointer text-base-content hover:bg-neutral hover:bg-opacity-30"
         >
           {l("Re-open")}
         </div>

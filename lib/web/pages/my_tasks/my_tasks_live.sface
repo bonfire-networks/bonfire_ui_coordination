@@ -1,0 +1,15 @@
+<section class="mt-6 grid grid-cols-[1fr_260px] gap-8">
+  <ul class="space-y-3">
+    <Bonfire.UI.Coordination.TaskPreviewLive
+      :if={length(@intents) > 0}
+      :for={task <- @intents || []}
+      object={task}
+      show_likes
+    />
+    <Bonfire.UI.Common.EmptyFeed
+      :if={length(@intents) == 0}
+      feedback_title={l("No tasks have been found")}
+    />
+  </ul>
+  <Bonfire.UI.Coordination.TasksFilterLive />
+</section>
