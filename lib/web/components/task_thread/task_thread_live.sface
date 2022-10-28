@@ -1,17 +1,11 @@
-<div class="px-4 pt-6 mt-6 border-t border-base-content/10">
-  <div class="mb-2 text-xs uppercase text-base-content opacity-70 font-regular">
-    {l("Discussion")}
-    <!-- <Bonfire.UI.Social.Activity.ReplyLive
-      permalink={path(@task)}
-      object_id={ulid(@task)}
-      reply_to_text={e(@task, :name, nil)}
-    /> -->
-  </div>
-  <div class="-mx-3">
-    <Bonfire.UI.Social.ThreadLive
-      id={ulid!(@task)}
-      thread_id={ulid(@task)}
-      smart_input_prompt={l("Post a comment...")}
-    />
-  </div>
+<div class="flex items-center gap-4 mt-6">
+  <Icon iconify="akar-icons:chat-dots" class="w-5 h-5" />
+  <div class="text-base font-medium capitalise text-base-content/80">{l("Activities")}</div>
+</div>  
+<div class="-mx-3">
+  <Bonfire.UI.Social.ThreadLive
+    id={ulid!(@task)}
+    thread_id={ulid(@task)}
+    smart_input_prompt={l("Post a comment...")}
+  />
 </div>

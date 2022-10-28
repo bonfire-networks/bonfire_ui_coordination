@@ -1,7 +1,16 @@
-<div class="relative pt-4 text-sm border-t text-base-content/70 border-base-content/30">
-  <div class="flex items-center justify-between mb-2">
-    <span class="block text-sm font-semibold tracking-wide text-base-content opacity-60">{l("Assigned to")}</span>
+<div :if={current_user(@__context__)} class="flex flex-col space-y-4">
+<div class="flex flex-col">
+  <div class="mb-2 text-sm font-medium tracking-wider text-base-content/60">{l "Status"}</div>
+  <Bonfire.UI.Coordination.TaskSetStatusLive
+      redirect_after="/coordination/task/"
+      task_id={@intent.id}
+      finished={@intent.finished}
+    />
   </div>
+
+  <div class="flex flex-col">
+
+  <div class="mb-2 text-sm font-medium tracking-wider text-base-content/60">{l "Assign"}</div>
   <Bonfire.UI.ValueFlows.AssignItemLive
     field_name={:provider}
     is_editable
@@ -11,12 +20,10 @@
     remove_event="ValueFlows.Planning.Intent:assign:unset"
     event_target="body"
   />
-</div>
-
-<div class="relative pt-4 text-sm border-t text-base-content/70 border-base-content/30">
-  <div class="flex items-center justify-between mb-2">
-    <span class="block text-sm font-semibold tracking-wide text-base-content opacity-60">{l("In list")}</span>
   </div>
+<div class="flex flex-col">
+
+  <div class="mb-2 text-sm font-medium tracking-wider text-base-content/60">{l "List"}</div>
   <Bonfire.UI.ValueFlows.SelectProcessLive
     field_name={:output_of_id}
     is_editable
@@ -28,5 +35,8 @@
     event_target="body"
   />
 </div>
-
-<Bonfire.UI.ValueFlows.DueItemLive date={e(@intent, :due, nil)} is_editable />
+  <div class="flex flex-col">
+    <div class="mb-2 text-sm font-medium tracking-wider text-base-content/60">{l "Due"}</div>
+    <Bonfire.UI.ValueFlows.DueItemLive date={e(@intent, :due, nil)} is_editable />
+  </div>
+</div>
