@@ -9,7 +9,7 @@
       <Bonfire.UI.Common.InstancePinnedLive
         object_types={@object_types}
         load_pointer
-        title={l("Top lists")}
+        title={l("Pinned")}
       />
 
       <div class="px-3 mt-8 text-sm font-medium tracking-wide md:px-0 text-base-content/60">{l("Recent activities")}</div>
