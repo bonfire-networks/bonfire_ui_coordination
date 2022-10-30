@@ -1,31 +1,28 @@
 <li class={
-  "px-3 border rounded-lg shadow-sm shadow-base-content/5 bg-base-100 border-base-content/10",
+  "px-2 rounded shadow bg-base-100",
   "border-success/30 bg-success/10": e(@object, :finished, nil)
 }>
-  <div class="flex flex-col items-start py-4">
+  <div class="flex flex-col items-start py-2">
     <div class="flex items-center flex-1 w-full">
       <div class="flex flex-col flex-1">
-        <div class="flex flex-col gap-2 divide-y divide-base-content/10">
-          <div class="flex items-center gap-2">
+        <div class="flex gap-2">
+          <div class="flex items-center flex-1 gap-2">
             <Bonfire.UI.Common.LikeActionLive
               id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, @object)}
               object={@object}
             />
             <LiveRedirect
               to={"/coordination/task/#{e(@object, :id, "")}"}
-              class="text-base flex-1 font-medium cursor-pointer link link-hover"
+              class="flex-1 text-base font-medium cursor-pointer link link-hover"
             >{e(@object, :name, e(@object, :note, l("Untitled task")))}
             </LiveRedirect>
             <span class="mr-2 badge badge-outline badge-success" :if={e(@object, :finished, nil)}>
               {l("Completed")}
             </span>
 
-            <Bonfire.UI.Coordination.TaskActionsMenuLive
-              :if={module_enabled?(Bonfire.UI.Coordination.TaskActionsMenuLive)}
-              task={@object}
-            />
+            
           </div>
-          <div class="flex items-center gap-4 pt-3">
+          <div class="flex items-center gap-4">
             <span :if={length(e(@object, :context, [])) > 0}>
               {l("in")}
               <span :for={scope <- e(@object, :context, [])}>
@@ -64,7 +61,7 @@
                   </LiveRedirect>
                 </div>
               </div>
-              <div class="flex items-center gap-2 text-sm text-base-content/70 text-medium">
+              <div :if={e(@object, :due, nil)} class="flex items-center gap-2 text-sm text-base-content/70 text-medium">
                 <Icon solid="Calendar" class="w-4 h-4 text-base-content/70" />
                 <span>{date_from_now(e(@object, :due, nil)) || l("No due date")}</span>
               </div>
@@ -74,6 +71,10 @@
               </div>
             </div>
           </div>
+          <Bonfire.UI.Coordination.TaskActionsMenuLive
+            :if={module_enabled?(Bonfire.UI.Coordination.TaskActionsMenuLive)}
+            task={@object}
+          />
         </div>
       </div>
     </div>

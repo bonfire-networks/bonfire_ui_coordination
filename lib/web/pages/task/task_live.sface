@@ -1,13 +1,11 @@
-<section class="mt-6 max-w-[768px] mx-auto rounded-md shadow bg-base-100 px-4">
+<section class="md:mt-6 max-w-[768px] mx-auto rounded-md shadow bg-base-100 px-4">
   <Bonfire.UI.Coordination.TaskHeroLive task={@intent} showing_within={@showing_within} />
-  <div class="grid grid-cols-[1fr_250px] mt-6 pb-6 gap-4">
-    <div class="flex flex-col px-2">
-      <Bonfire.UI.ValueFlows.EditDescriptionLive
-        item={@intent}
-        submit_event="ValueFlows.Planning.Intent:update"
-      />
-      <Bonfire.UI.Coordination.TaskThreadLive task={@intent} />
-    </div>
+  <div class="flex flex-col px-2">
     <Bonfire.UI.Coordination.TaskActionsLive intent={@intent} />
+    <Bonfire.UI.ValueFlows.EditDescriptionLive
+      item={@intent}
+      submit_event="ValueFlows.Planning.Intent:update"
+    />
+    <Bonfire.UI.Coordination.TaskThreadLive task={@intent} />
   </div>
 </section>

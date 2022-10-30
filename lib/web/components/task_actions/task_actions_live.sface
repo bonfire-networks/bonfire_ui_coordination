@@ -1,6 +1,7 @@
-<div :if={current_user(@__context__)} class="flex flex-col space-y-4">
-<div class="flex flex-col">
-  <div class="mb-2 text-sm font-medium tracking-wider text-base-content/60">{l "Status"}</div>
+<div :if={current_user(@__context__)} class="flex flex-col py-4 mt-2 mb-6 space-y-2 border-t border-b border-base-content/20">
+<div class="flex items-center gap-4">
+  <Icon iconify="fluent:status-24-filled" class="w-5 h-5" />
+  <div class="sr-only">{l "Status"}</div>
   <Bonfire.UI.Coordination.TaskSetStatusLive
       redirect_after="/coordination/task/"
       task_id={@intent.id}
@@ -8,35 +9,38 @@
     />
   </div>
 
-  <div class="flex flex-col">
-
-  <div class="mb-2 text-sm font-medium tracking-wider text-base-content/60">{l "Assign"}</div>
-  <Bonfire.UI.ValueFlows.AssignItemLive
-    field_name={:provider}
-    is_editable
-    agent={e(@intent, :provider, nil)}
-    context_id={ulid(@intent)}
-    pick_event="ValueFlows.Planning.Intent:assign:select"
-    remove_event="ValueFlows.Planning.Intent:assign:unset"
-    event_target="body"
-  />
+  <div class="flex items-center gap-4">
+    <Icon iconify="heroicons:user-circle-solid" class="w-5 h-5" />
+    <div class="sr-only">{l "Assign"}</div>
+    <Bonfire.UI.ValueFlows.AssignItemLive
+      field_name={:provider}
+      is_editable
+      agent={e(@intent, :provider, nil)}
+      context_id={ulid(@intent)}
+      pick_event="ValueFlows.Planning.Intent:assign:select"
+      remove_event="ValueFlows.Planning.Intent:assign:unset"
+      event_target="body"
+      class="h-9 flex items-center max-w-[240px] px-2 rounded-md cursor-pointer bg-base-content/5 sm:text-sm"
+    />
   </div>
-<div class="flex flex-col">
-
-  <div class="mb-2 text-sm font-medium tracking-wider text-base-content/60">{l "List"}</div>
-  <Bonfire.UI.ValueFlows.SelectProcessLive
-    field_name={:output_of_id}
-    is_editable
-    selected_options={if e(@intent, :output_of_id, nil),
-      do: [{e(@intent, :output_of, :name, "Unknown"), e(@intent, :output_of_id, nil)}]}
-    context_id={ulid(@intent)}
-    pick_event="ValueFlows.Planning.Intent:update:output_of"
-    remove_event="ValueFlows.Planning.Intent:update:output_of"
-    event_target="body"
-  />
-</div>
-  <div class="flex flex-col">
-    <div class="mb-2 text-sm font-medium tracking-wider text-base-content/60">{l "Due"}</div>
+  <div class="flex items-center gap-4">
+    <Icon solid="LightningBolt" class="w-5 h-5 text-base-content/80" />
+    <div class="sr-only">{l "List"}</div>
+    <Bonfire.UI.ValueFlows.SelectProcessLive
+      field_name={:output_of_id}
+      class="h-9 flex items-center max-w-[240px] px-2 rounded-md cursor-pointer bg-base-content/5 sm:text-sm"
+      is_editable
+      selected_options={if e(@intent, :output_of_id, nil),
+        do: [{e(@intent, :output_of, :name, "Unknown"), e(@intent, :output_of_id, nil)}]}
+      context_id={ulid(@intent)}
+      pick_event="ValueFlows.Planning.Intent:update:output_of"
+      remove_event="ValueFlows.Planning.Intent:update:output_of"
+      event_target="body"
+    />
+  </div>
+  <div class="flex items-center gap-4">
+    <Icon solid="heroicons:calendar-solid" class="w-5 h-5 text-base-content/80" />
+    <div class="sr-only">{l "Due date"}</div>
     <Bonfire.UI.ValueFlows.DueItemLive date={e(@intent, :due, nil)} is_editable />
   </div>
 </div>

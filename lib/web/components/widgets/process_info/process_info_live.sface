@@ -1,0 +1,13 @@
+<Bonfire.UI.Common.WidgetBlockLive>
+  <div class="p-3">
+    <span :if={!@process.finished} class="mt-3 badge badge-outline border-base-content/40">
+      {l("Open")}
+    </span>
+    <span :if={@process.finished} class="mt-3 badge badge-accent badge-success">
+      {l("Completed")}
+    </span>
+    <div :if={@process.note} class="!max-w-full mt-3 prose-sm prose">
+      {rich(@process.note)}
+    </div>
+  </div>
+</Bonfire.UI.Common.WidgetBlockLive>

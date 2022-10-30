@@ -1,7 +1,6 @@
 <main class="max-w-screen-lg mx-3 mt-6 md:mx-auto">
   <Bonfire.UI.ValueFlows.ProcessHeroLive process={@process} />
   <section class="flex flex-col">
-    <div class="mt-3 mb-3 text-sm font-medium tracking-wide text-base-content/60">{l("Tasks")}</div>
     <ul class="flex flex-col space-y-2">
       {#if length(e(@process, :intended_outputs, [])) > 0}
         <Bonfire.UI.Coordination.TaskPreviewLive
