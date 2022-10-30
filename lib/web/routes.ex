@@ -8,6 +8,7 @@ defmodule Bonfire.UI.Coordination.Routes do
         pipe_through(:browser)
 
         live("/favourites", LikesLive)
+        live("/todo", MyTasksLive)
 
         # live("/lists", ProcessesLive, as: ValueFlows.Process)
 
@@ -17,6 +18,7 @@ defmodule Bonfire.UI.Coordination.Routes do
 
         live("/tasks", TasksLive, as: ValueFlows.Planning.Intent)
         live("/tasks/:tab", TasksLive)
+
 
         live("/", FeedLive)
         live("/:tab", FeedLive)

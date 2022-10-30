@@ -31,6 +31,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
   defp mounted(%{"id" => id} = _params, _session, socket) do
     process = process(%{id: id}, socket)
     debug(process: process)
+    nav_items = Bonfire.Common.ExtensionModule.default_nav(:bonfire_ui_coordination)
 
     {:ok,
      socket
@@ -39,6 +40,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        page: "process",
        selected_tab: "tasks",
        create_object_type: :task,
+       nav_items: nav_items,
        without_mobile_logged_header: true,
        #  without_sidebar: true,
        smart_input_prompt: l("Add task to list"),

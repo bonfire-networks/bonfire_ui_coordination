@@ -14,7 +14,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
     ]
   )
 
-  declare_nav_link(l("Overview"), icon: "heroicons-solid:newspaper")
+  declare_nav_link(l("Overview"), page: "feed", icon: "heroicons-solid:newspaper")
 
   declare_settings_nav_link(:extension,
     href: "/coordination/settings",

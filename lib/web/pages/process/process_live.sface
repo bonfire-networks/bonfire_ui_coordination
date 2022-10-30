@@ -1,4 +1,9 @@
-<main class="max-w-screen-lg mx-3 mt-6 md:mx-auto">
+<main class="w-full max-w-screen-lg mx-auto">
+  <Bonfire.UI.Coordination.HeroLive
+    nav_items={@nav_items}
+    page={@page}
+    selected_tab={@selected_tab}
+  />
   <Bonfire.UI.ValueFlows.ProcessHeroLive process={@process} />
   <section class="flex flex-col">
     <ul class="flex flex-col space-y-2">

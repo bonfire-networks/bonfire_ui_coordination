@@ -1,4 +1,9 @@
-<section class="mt-6 grid grid-cols-[1fr_260px] gap-8">
+<section class="mt-6">
+  <Bonfire.UI.Coordination.HeroLive
+    nav_items={@nav_items}
+    page={@page}
+    selected_tab={@selected_tab}
+  />
   <ul class="space-y-3">
     <Bonfire.UI.Coordination.TaskPreviewLive
       :if={length(@intents) > 0}
@@ -11,5 +16,5 @@
       feedback_title={l("No tasks have been found")}
     />
   </ul>
-  <Bonfire.UI.Coordination.TasksFilterLive />
+  <!-- <Bonfire.UI.Coordination.TasksFilterLive /> -->
 </section>

@@ -1,5 +1,5 @@
 defmodule Bonfire.UI.Coordination.MyTasksLive do
-  use Bonfire.UI.Common.Web, :stateful_component
+  use Bonfire.UI.Common.Web, :surface_live_view
 
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
@@ -20,8 +20,22 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
     icon: "eva:clipboard-outline"
   )
 
-  def update(assigns, socket) do
+  def mount(params, session, socket) do
+    live_plug(params, session, socket, [
+      LivePlugs.LoadCurrentAccount,
+      LivePlugs.LoadCurrentUser,
+      # LivePlugs.UserRequired,
+      # LivePlugs.LoadCurrentAccountUsers,
+      Bonfire.UI.Common.LivePlugs.StaticChanged,
+      Bonfire.UI.Common.LivePlugs.Csrf,
+      Bonfire.UI.Common.LivePlugs.Locale,
+      &mounted/3
+    ])
+  end
+
+  defp mounted(params, _session, socket) do
     intents = intents(%{"action" => "work", "agent" => "me"}, socket)
+    nav_items = Bonfire.Common.ExtensionModule.default_nav(:bonfire_ui_coordination)
 
     {:ok,
      socket
@@ -30,8 +44,16 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
        page: "todo",
        selected_tab: "todo",
        intents: intents,
+       nav_items: nav_items,
        create_object_type: :task,
-       smart_input_prompt: l("Add a task")
+       smart_input_prompt: l("Add a task"),
+       sidebar_widgets: [
+        users: [
+          secondary: [
+            {Bonfire.UI.Coordination.TasksFilterLive, []}
+          ]
+        ]
+      ]
      )}
   end
 

@@ -1,10 +1,8 @@
-<section class="mt-4 shadow-xl rounded-xl bg-base-100">
-  <div class="flex flex-col divide-y divide-base-content/10 rounded-b-xl">
-    <Bonfire.UI.Social.Activity.ProcessListLive
-      :for={list <- @processes}
-      object={list}
-      process_url="/coordination/list/"
-      showing_within={:process}
-    />
-  </div>
+<section class="grid grid-cols-1 gap-3 mt-4 md:grid-cols-2 tablet-lg:grid-cols-3">
+  <Bonfire.UI.Social.Activity.ProcessListLive
+    :for={list <- @processes}
+    object={list}
+    process_url="/coordination/list/"
+    showing_within={:process}
+  />
 </section>

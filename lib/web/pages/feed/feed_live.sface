@@ -6,11 +6,11 @@
   />
   {#case @selected_tab}
     {#match "feed"}
-      <Bonfire.UI.Common.InstancePinnedLive
+      <!-- <Bonfire.UI.Common.InstancePinnedLive
         object_types={@object_types}
         load_pointer
         title={l("Pinned")}
-      />
+      /> -->
 
       <div class="px-3 mt-8 text-sm font-medium tracking-wide md:px-0 text-base-content/60">{l("Recent activities")}</div>
       <div class="mt-3">
@@ -30,8 +30,8 @@
       </div>
     {#match "lists"}
       <Bonfire.UI.Coordination.ProcessesLive id={:all_lists} />
-    {#match "todo"}
-      <Bonfire.UI.Coordination.MyTasksLive id={:my_tasks} />
+    <!-- {#match "todo"}
+      <Bonfire.UI.Coordination.MyTasksLive id={:my_tasks} /> -->
     {#match "favourited"}
       <Bonfire.UI.Coordination.LikesLive current_user={@current_user} id={:my_favourited_tasks} />
     {#match "settings"}
