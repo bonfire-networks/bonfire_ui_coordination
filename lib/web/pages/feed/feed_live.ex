@@ -64,9 +64,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
            ]
          ],
          guests: [
-           secondary: [
-             {Bonfire.Tag.Web.WidgetTagsLive, []}
-           ]
+           secondary: nil
          ]
        ]
      )}
