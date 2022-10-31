@@ -1,7 +1,5 @@
-<Bonfire.UI.Common.WidgetBlockLive class="">
-  <div class="">
-    <div class="pb-2 mb-3 text-sm border-b text-base-content/80 border-base-content/20">{l("Filters")}</div>
-    <Form for={:filter} submit="search" change="filter" method="get">
+<Bonfire.UI.Common.WidgetBlockLive widget_title={l "Filter"} >
+    <Form for={:filter} submit="search" change="filter" class="p-3" method="get">
       <fieldset>
         <!-- <legend class="text-sm font-normal text-base-content/70">{l("Search for")}</legend> -->
         <div class="relative w-full rounded">
@@ -27,10 +25,7 @@
         <label for="provider" class="text-sm font-normal text-base-content/70">
           {l("Assignee")}
         </label>
-        <div class="flex mt-1 rounded-md">
-          <span class="inline-flex items-center px-3 text-sm border border-r-0 border-base-content/30 text-base-content/60 rounded-l-md bg-base-100 bg-opacity-30">
-            <Icon solid="UserCircle" />
-          </span>
+        <div class="flex w-full mt-1">
           <!-- <input
             value={e(@filters, "provider", nil)}
             type="text"
@@ -43,7 +38,7 @@
             is_editable
             agent={e(@filters, "provider", nil)}
             event_target="body"
-            class="w-full rounded-md rounded-l-none input input-bordered"
+            class="flex items-center w-full px-2 rounded-md cursor-pointer h-9 bg-base-content/5 sm:text-sm"
             pick_event="filter"
           />
         </div>
@@ -183,5 +178,4 @@
       </div>
     </fieldset> -->
     </Form>
-  </div>
 </Bonfire.UI.Common.WidgetBlockLive>

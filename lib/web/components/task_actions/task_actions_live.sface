@@ -1,5 +1,5 @@
-<div :if={current_user(@__context__)} class="flex flex-col py-4 mt-2 mb-6 space-y-2 border-t border-b border-base-content/20">
-<div class="flex items-center gap-4">
+<div :if={current_user(@__context__)} class="flex flex-col pt-2 pb-6 mb-8 space-y-2 border-b border-base-content/20">
+<!-- <div class="flex items-center gap-4">
   <Icon iconify="fluent:status-24-filled" class="w-5 h-5" />
   <div class="sr-only">{l "Status"}</div>
   <Bonfire.UI.Coordination.TaskSetStatusLive
@@ -7,7 +7,7 @@
       task_id={@intent.id}
       finished={@intent.finished}
     />
-  </div>
+  </div> -->
 
   <div class="flex items-center gap-4">
     <Icon iconify="heroicons:user-circle-solid" class="w-5 h-5" />
@@ -39,7 +39,7 @@
     />
   </div>
   <div class="flex items-center gap-4">
-    <Icon solid="heroicons:calendar-solid" class="w-5 h-5 text-base-content/80" />
+    <Icon solid="heroicons:calendar-days-20-solid" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l "Due date"}</div>
     <Bonfire.UI.ValueFlows.DueItemLive date={e(@intent, :due, nil)} is_editable />
   </div>

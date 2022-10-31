@@ -1,4 +1,4 @@
-<div class="flex items-center gap-4 mt-6">
+<div class="flex items-center gap-4 mt-6 mb-3">
   <Icon iconify="akar-icons:chat-dots" class="w-5 h-5" />
   <div class="text-base font-medium capitalise text-base-content/80">{l("Activities")}</div>
 </div>  

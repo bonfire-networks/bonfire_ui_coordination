@@ -8,7 +8,7 @@
   <section class="flex flex-col">
     <ul class="flex flex-col space-y-2">
       {#if length(e(@process, :intended_outputs, [])) > 0}
-        <Bonfire.UI.Coordination.TaskPreviewLive
+        <Bonfire.UI.Social.Activity.IntentTaskLive
           :for={task <- e(@process, :intended_outputs, [])}
           object={task}
           show_likes

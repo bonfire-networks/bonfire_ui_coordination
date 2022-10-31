@@ -1,4 +1,4 @@
-<li class={
+<div class={
   "px-2 rounded shadow bg-base-100",
   "border-success/30 bg-success/10": e(@object, :finished, nil)
 }>
@@ -7,10 +7,20 @@
       <div class="flex flex-col flex-1">
         <div class="flex gap-2">
           <div class="flex items-center flex-1 gap-2">
-            <Bonfire.UI.Common.LikeActionLive
-              id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, @object)}
-              object={@object}
+            <Icon 
+              :if={e(@object, :finished, nil)}
+              iconify="carbon:checkmark-filled"
+              class="w-4 h-4 text-success"
             />
+            <Icon 
+              :if={!e(@object, :finished, nil) and e(@object, :provider, nil)}
+              iconify="carbon:in-progress" 
+              class="w-4 h-4 text-warning" />
+            <Icon 
+              :if={!e(@object, :finished, nil) and !e(@object, :provider, nil)}
+              iconify="carbon:software-resource" 
+              class="w-4 h-4 text-info" />
+            
             <LiveRedirect
               to={"/coordination/task/#{e(@object, :id, "")}"}
               class="flex-1 text-base font-medium cursor-pointer link link-hover"
@@ -36,32 +46,25 @@
               </span>
             </span>
             <div class="flex items-center gap-3">
-              <div
-                :if={!e(@object, :finished, nil) and e(@object, :provider, nil)}
-                class="flex items-center p-1 px-2 rounded-lg bg-base-content/10"
-              >
-                <svg width="14" height="14" class="mr-2" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="6" stroke="#f2c94c" stroke-width="2" fill="none" /><path
-                    fill="#f2c94c"
-                    stroke="none"
-                    d="M 3.5,3.5 L3.5,0 A3.5,3.5 0 0,1 3.5, 7 z"
-                    transform="translate(3.5,3.5)"
-                  /></svg>
-                <div class="flex items-center gap-2 text-sm text-base-content opacity-60">
-                  <span>{l("Assigned to")}</span>
-                  <LiveRedirect
-                    :if={e(@object, :provider, :id, nil)}
-                    to={path(e(@object, :provider, nil))}
-                    class="flex items-center text-xs text-base-content opacity-70 text-medium"
+              <Bonfire.UI.Common.LikeActionLive
+                id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, @object)}
+                object={@object}
+              />
+              <div 
+                class="tooltip"
+                :if={e(@object, :provider, :id, nil)}
+                data-tip={e(@object, :provider, :name, nil)}>
+                <LiveRedirect
+                  to={path(e(@object, :provider, nil))}
+                  class="flex items-center text-xs text-base-content opacity-70 text-medium"
                   >
-                    <Bonfire.UI.Common.AvatarLive
-                      class="inline-block w-6 h-6 rounded-full bg-base-100"
-                      user={@object.provider}
-                    />
-                    <span class="ml-2 text-sm link">{e(@object, :provider, :name, nil)}</span>
-                  </LiveRedirect>
-                </div>
+                  <Bonfire.UI.Common.AvatarLive
+                    class="inline-block w-6 h-6 rounded-full bg-base-content/5"
+                    user={@object.provider}
+                  />
+                </LiveRedirect>
               </div>
-              <div :if={e(@object, :due, nil)} class="flex items-center gap-2 text-sm text-base-content/70 text-medium">
+              <div :if={e(@object, :due, nil)} class="flex items-center gap-2 text-xs text-base-content/70 text-medium">
                 <Icon solid="Calendar" class="w-4 h-4 text-base-content/70" />
                 <span>{date_from_now(e(@object, :due, nil)) || l("No due date")}</span>
               </div>
@@ -79,4 +82,4 @@
       </div>
     </div>
   </div>
-</li>
+</div>

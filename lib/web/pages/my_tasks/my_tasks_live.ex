@@ -35,7 +35,6 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
 
   defp mounted(params, _session, socket) do
     intents = intents(%{"action" => "work", "agent" => "me"}, socket)
-    nav_items = Bonfire.Common.ExtensionModule.default_nav(:bonfire_ui_coordination)
 
     {:ok,
      socket
@@ -44,7 +43,6 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
        page: "todo",
        selected_tab: "todo",
        intents: intents,
-       nav_items: nav_items,
        create_object_type: :task,
        smart_input_prompt: l("Add a task"),
        sidebar_widgets: [

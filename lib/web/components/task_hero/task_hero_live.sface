@@ -3,7 +3,7 @@
     <div class="flex items-start gap-3">
       <Bonfire.UI.Common.BackButtonLive showing_within={@showing_within} />
       <div class="flex flex-col">
-        <div class="flex items-start gap-3 text-lg font-bold text-base-content/80">
+        <div class="flex items-center gap-3 text-lg font-bold text-base-content/80">
           <span :if={length(e(@task, :context, [])) > 0}>
             <LiveRedirect
               :for={scope <- e(@task, :context, [])}
@@ -13,8 +13,7 @@
               {e(scope, :name, "")} :&nbsp;
             </LiveRedirect>
           </span>
-
-          {rich(@task.name)}
+          <div>{rich(@task.name)}</div>
         </div>
         <span :if={@task.output_of} class="flex text-sm text-base-content/70">
           {l("Task in")}
@@ -24,29 +23,36 @@
         </span>
       </div>
     </div>
-    <div class="dropdown dropdown-end">
-      <button tabindex="0" class="btn btn-ghost btn-circle btn-sm">
-        <span class="text-base-content/80">
-          <Icon solid="DotsVertical" class="w-5 h-5" />
-        </span>
-      </button>
-      <ul
-        tabindex="0"
-        class="w-60 z-[110] shadow menu menu-compact dropdown-content bg-neutral rounded dropdown_actions"
-        role="menu"
-        aria-orientation="vertical"
-        aria-labelledby="more-menu"
-        >
-        <li>
-          <!-- DELETE THE TASK -->
-          <Bonfire.UI.Social.Activity.DeleteObjectLive
-            object={@task}
-            creator_id={e(@task, :provider, :id, nil) || e(@task, :receiver, :id, nil)}
-            object_type_readable={l("task")}
-            redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
-          />
-        </li>
-      </ul>
+    <div class="flex items-center gap-2">
+      <Bonfire.UI.Coordination.TaskSetStatusLive
+        redirect_after="/coordination/task/"
+        task_id={@task.id}
+        finished={@task.finished}
+      />
+      <div class="dropdown dropdown-end">
+        <button tabindex="0" class="btn btn-ghost btn-circle btn-sm">
+          <span class="text-base-content/80">
+            <Icon solid="DotsVertical" class="w-5 h-5" />
+          </span>
+        </button>
+        <ul
+          tabindex="0"
+          class="w-60 z-[110] shadow menu menu-compact dropdown-content bg-neutral rounded dropdown_actions"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="more-menu"
+          >
+          <li>
+            <!-- DELETE THE TASK -->
+            <Bonfire.UI.Social.Activity.DeleteObjectLive
+              object={@task}
+              creator_id={e(@task, :provider, :id, nil) || e(@task, :receiver, :id, nil)}
+              object_type_readable={l("task")}
+              redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
+            />
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
