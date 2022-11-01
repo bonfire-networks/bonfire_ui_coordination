@@ -5,7 +5,7 @@
     selected_tab={@selected_tab}
   />
   <Bonfire.UI.ValueFlows.ProcessHeroLive process={@process} />
-  <section class="flex flex-col">
+  <section class="flex flex-col mx-3 md:mx-0">
     <ul class="flex flex-col space-y-2">
       {#if length(e(@process, :intended_outputs, [])) > 0}
         <Bonfire.UI.Social.Activity.IntentTaskLive

@@ -1,5 +1,5 @@
 <div class="relative py-4 md:rounded-t-xl bg-base-100">
-  <div class="z-50 flex items-start justify-between">
+  <div class="z-50 flex flex-col md:flex-row md:items-start md:justify-between">
     <div class="flex items-start gap-3">
       <Bonfire.UI.Common.BackButtonLive showing_within={@showing_within} />
       <div class="flex flex-col">
