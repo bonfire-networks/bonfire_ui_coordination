@@ -5,7 +5,7 @@
   <div class="flex flex-col items-start py-2">
     <div class="flex items-center flex-1 w-full">
       <div class="flex flex-col flex-1">
-        <div class="flex gap-2">
+        <div class="flex items-center gap-2">
           <div class="flex items-center flex-1 gap-2">
             <Icon 
               :if={e(@object, :finished, nil)}

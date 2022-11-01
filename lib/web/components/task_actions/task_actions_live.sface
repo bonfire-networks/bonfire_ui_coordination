@@ -12,7 +12,9 @@
   <div class="flex items-center gap-4">
     <Icon iconify="heroicons:user-circle-solid" class="w-5 h-5" />
     <div class="sr-only">{l "Assign"}</div>
-    <Bonfire.UI.ValueFlows.AssignItemLive
+    <Dynamic.Component
+      :if={module_enabled?(Bonfire.UI.ValueFlows.AssignItemLive, @__context__)}
+      module={Bonfire.UI.ValueFlows.AssignItemLive}
       field_name={:provider}
       is_editable
       agent={e(@intent, :provider, nil)}
@@ -26,7 +28,9 @@
   <div class="flex items-center gap-4">
     <Icon solid="LightningBolt" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l "List"}</div>
-    <Bonfire.UI.ValueFlows.SelectProcessLive
+    <Dynamic.Component
+      :if={module_enabled?(Bonfire.UI.ValueFlows.SelectProcessLive, @__context__)}
+      module={Bonfire.UI.ValueFlows.SelectProcessLive}
       field_name={:output_of_id}
       class="h-9 flex items-center max-w-[240px] px-2 rounded-md cursor-pointer bg-base-content/5 sm:text-sm"
       is_editable
@@ -41,6 +45,9 @@
   <div class="flex items-center gap-4">
     <Icon solid="heroicons:calendar-days-20-solid" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l "Due date"}</div>
-    <Bonfire.UI.ValueFlows.DueItemLive date={e(@intent, :due, nil)} is_editable />
+    <Dynamic.Component
+      :if={module_enabled?(Bonfire.UI.ValueFlows.DueItemLive, @__context__)}
+      module={Bonfire.UI.ValueFlows.DueItemLive}
+      date={e(@intent, :due, nil)} is_editable />
   </div>
 </div>
