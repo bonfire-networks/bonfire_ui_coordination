@@ -2,7 +2,7 @@
   <Icon iconify="akar-icons:chat-dots" class="w-5 h-5" />
   <div class="text-base font-medium capitalise text-base-content/80">{l("Activities")}</div>
 </div>  
-<div class="-mx-3">
+<div class="-mx-3 rounded-lg bg-base-100">
   <Bonfire.UI.Social.ThreadLive
     id={ulid!(@task)}
     thread_id={ulid(@task)}
