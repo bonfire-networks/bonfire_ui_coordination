@@ -30,29 +30,29 @@
         :on-click="ValueFlows.Planning.Intent:status:finished"
         phx-value-id={@task.id}
         class="flex items-center px-4 text-sm text-neutral-content/80"
-        >
+      >
         <Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-neutral-content/80" />
         <span>{l("Set as completed")}</span>
       </button>
     </li>
     <li>
       <button
-          :if={@task.finished}
-          :on-click="ValueFlows.Planning.Intent:status:open"
-          phx-value-id={@task.id}
-          class="flex items-center px-4 text-sm text-neutral-content/80"
-        >
+        :if={@task.finished}
+        :on-click="ValueFlows.Planning.Intent:status:open"
+        phx-value-id={@task.id}
+        class="flex items-center px-4 text-sm text-neutral-content/80"
+      >
         <Icon iconify="carbon:incomplete" class="w-4 h-4 text-neutral-content/80" />
         <span>{l("Re-open")}</span>
       </button>
     </li>
     <li>
-    <Bonfire.UI.Social.Activity.DeleteObjectLive
-      object={@task}
-      creator_id={e(@task, :provider, :id, nil) || e(@task, :receiver, :id, nil)}
-      object_type_readable={l("task")}
-      redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
-    />
+      <Bonfire.UI.Social.Activity.DeleteObjectLive
+        object={@task}
+        creator_id={e(@task, :provider, :id, nil) || e(@task, :receiver, :id, nil)}
+        object_type_readable={l("task")}
+        redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
+      />
     </li>
   </ul>
 </div>

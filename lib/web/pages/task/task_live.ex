@@ -51,17 +51,17 @@ defmodule Bonfire.UI.Coordination.TaskLive do
          without_mobile_logged_header: true,
          #  without_sidebar: true,
          sidebar_widgets: [
-          users: [
-            secondary: [
-              {Bonfire.Tag.Web.WidgetTagsLive, []}
-            ]
-          ],
-          guests: [
-            secondary: [
-              {Bonfire.Tag.Web.WidgetTagsLive, []}
-            ]
-          ]
-          ],
+           users: [
+             secondary: [
+               {Bonfire.Tag.Web.WidgetTagsLive, []}
+             ]
+           ],
+           guests: [
+             secondary: [
+               {Bonfire.Tag.Web.WidgetTagsLive, []}
+             ]
+           ]
+         ],
          intent: intent,
          reply_to_id: intent
 

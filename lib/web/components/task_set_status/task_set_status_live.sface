@@ -1,4 +1,3 @@
-
 <div
   :if={!@finished}
   :on-click="ValueFlows.Planning.Intent:status:finished"

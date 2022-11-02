@@ -19,7 +19,6 @@ defmodule Bonfire.UI.Coordination.Routes do
         live("/tasks", TasksLive, as: ValueFlows.Planning.Intent)
         live("/tasks/:tab", TasksLive)
 
-
         live("/", FeedLive)
         live("/:tab", FeedLive)
       end

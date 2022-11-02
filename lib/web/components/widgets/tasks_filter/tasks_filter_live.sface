@@ -1,95 +1,95 @@
-<Bonfire.UI.Common.WidgetBlockLive widget_title={l "Filter"} >
-    <Form for={:filter} submit="search" change="filter" class="p-3" method="get">
-      <fieldset>
-        <!-- <legend class="text-sm font-normal text-base-content/70">{l("Search for")}</legend> -->
-        <div class="relative w-full rounded">
-          <input
-            type="search"
-            name="search_string"
-            autocomplete="off"
-            value={e(@filters, "search_string", nil)}
-            placeholder={l("Search tasks...")}
-            phx-debounce="300"
-            class="w-full pr-8 text-sm rounded-full h-9 input bg-base-content/5 text-base-content placeholder-base-content placeholder-opacity-80"
-          />
-          <button
-            type="submit"
-            class="absolute top-[2px] right-[8px] z-30 flex items-center pl-1  cursor-pointer btn  btn-sm w-[32px] h-[32px] btn-ghost btn-circle"
-          >
-            <Icon solid="Search" class="w-5 h-5 text-base-content text-opacity-80" />
-          </button>
-        </div>
-      </fieldset>
+<Bonfire.UI.Common.WidgetBlockLive widget_title={l("Filter")}>
+  <Form for={:filter} submit="search" change="filter" class="p-3" method="get">
+    <fieldset>
+      <!-- <legend class="text-sm font-normal text-base-content/70">{l("Search for")}</legend> -->
+      <div class="relative w-full rounded">
+        <input
+          type="search"
+          name="search_string"
+          autocomplete="off"
+          value={e(@filters, "search_string", nil)}
+          placeholder={l("Search tasks...")}
+          phx-debounce="300"
+          class="w-full pr-8 text-sm rounded-full h-9 input bg-base-content/5 text-base-content placeholder-base-content placeholder-opacity-80"
+        />
+        <button
+          type="submit"
+          class="absolute top-[2px] right-[8px] z-30 flex items-center pl-1  cursor-pointer btn  btn-sm w-[32px] h-[32px] btn-ghost btn-circle"
+        >
+          <Icon solid="Search" class="w-5 h-5 text-base-content text-opacity-80" />
+        </button>
+      </div>
+    </fieldset>
 
-      <fieldset class="pt-2 mt-4 border-t border-base-content/20">
-        <label for="provider" class="text-sm font-normal text-base-content/70">
-          {l("Assignee")}
-        </label>
-        <div class="flex w-full mt-1">
-          <!-- <input
+    <fieldset class="pt-2 mt-4 border-t border-base-content/20">
+      <label for="provider" class="text-sm font-normal text-base-content/70">
+        {l("Assignee")}
+      </label>
+      <div class="flex w-full mt-1">
+        <!-- <input
             value={e(@filters, "provider", nil)}
             type="text"
             name="provider"
             id="provider"
             class="w-full rounded-md rounded-l-none input input-bordered"
           /> -->
-          <Bonfire.UI.ValueFlows.AssignItemLive
-            field_name={:provider}
-            is_editable
-            agent={e(@filters, "provider", nil)}
-            event_target="body"
-            class="flex items-center w-full px-2 rounded-md cursor-pointer h-9 bg-base-content/5 sm:text-sm"
-            pick_event="filter"
+        <Bonfire.UI.ValueFlows.AssignItemLive
+          field_name={:provider}
+          is_editable
+          agent={e(@filters, "provider", nil)}
+          event_target="body"
+          class="flex items-center w-full px-2 rounded-md cursor-pointer h-9 bg-base-content/5 sm:text-sm"
+          pick_event="filter"
+        />
+      </div>
+    </fieldset>
+
+    <fieldset class="pt-2 mt-4 border-t border-base-content/20">
+      <label class="text-sm font-normal text-base-content/70">{l("Status")}</label>
+      <div class="flex flex-col mt-2 border divide-y rounded-lg divide-base-content/10 border-base-content/10 bg-base-100">
+        <div class="flex items-center flex-1 p-3">
+          <input
+            id="all"
+            name="status"
+            checked={if !e(@filters, "status", nil), do: "checked"}
+            value=""
+            type="radio"
+            class="w-5 h-5 radio"
           />
+          <label for="all" class="block ml-3 text-sm text-base-content/70">
+            {l("Any")}
+          </label>
         </div>
-      </fieldset>
-
-      <fieldset class="pt-2 mt-4 border-t border-base-content/20">
-        <label class="text-sm font-normal text-base-content/70">{l("Status")}</label>
-        <div class="flex flex-col mt-2 border divide-y rounded-lg divide-base-content/10 border-base-content/10 bg-base-100">
-          <div class="flex items-center flex-1 p-3">
-            <input
-              id="all"
-              name="status"
-              checked={if !e(@filters, "status", nil), do: "checked"}
-              value=""
-              type="radio"
-              class="w-5 h-5 radio"
-            />
-            <label for="all" class="block ml-3 text-sm text-base-content/70">
-              {l("Any")}
-            </label>
-          </div>
-          <div class="flex items-center flex-1 p-3">
-            <input
-              id="open"
-              name="status"
-              value="open"
-              checked={if e(@filters, "status", nil) == "open", do: "checked"}
-              type="radio"
-              class="w-5 h-5 radio"
-            />
-            <label for="open" class="block ml-3 text-sm text-base-content/70">
-              {l("Open")}
-            </label>
-          </div>
-          <div class="flex items-center flex-1 p-3">
-            <input
-              id="closed"
-              name="status"
-              value="closed"
-              checked={if e(@filters, "status", nil) == "closed", do: "checked"}
-              type="radio"
-              class="w-5 h-5 radio"
-            />
-            <label for="closed" class="block ml-3 text-sm text-base-content/70">
-              {l("Closed")}
-            </label>
-          </div>
+        <div class="flex items-center flex-1 p-3">
+          <input
+            id="open"
+            name="status"
+            value="open"
+            checked={if e(@filters, "status", nil) == "open", do: "checked"}
+            type="radio"
+            class="w-5 h-5 radio"
+          />
+          <label for="open" class="block ml-3 text-sm text-base-content/70">
+            {l("Open")}
+          </label>
         </div>
-      </fieldset>
+        <div class="flex items-center flex-1 p-3">
+          <input
+            id="closed"
+            name="status"
+            value="closed"
+            checked={if e(@filters, "status", nil) == "closed", do: "checked"}
+            type="radio"
+            class="w-5 h-5 radio"
+          />
+          <label for="closed" class="block ml-3 text-sm text-base-content/70">
+            {l("Closed")}
+          </label>
+        </div>
+      </div>
+    </fieldset>
 
-      <!-- <fieldset class="mt-4">
+    <!-- <fieldset class="mt-4">
       <legend class="text-sm font-normal text-base-content/70">{l "Sort by"}</legend>
       <div class="mt-2 border rounded-lg border-base-content/10 bg-base-100 ">
         <div class="flex items-center p-3 ">
@@ -143,7 +143,7 @@
       </div>
     </fieldset> -->
 
-      <!-- <fieldset class="mt-4">
+    <!-- <fieldset class="mt-4">
       <legend class="text-sm font-normal text-base-content/70">{l "From"}</legend>
       <div class="flex items-center mt-2 border rounded-lg border-base-content/10 bg-base-100 ">
         <div class="flex items-center flex-1 p-3 ">
@@ -177,5 +177,5 @@
         </div>
       </div>
     </fieldset> -->
-    </Form>
+  </Form>
 </Bonfire.UI.Common.WidgetBlockLive>

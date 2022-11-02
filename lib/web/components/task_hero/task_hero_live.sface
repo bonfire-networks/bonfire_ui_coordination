@@ -41,7 +41,7 @@
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="more-menu"
-          >
+        >
           <li>
             <!-- DELETE THE TASK -->
             <Bonfire.UI.Social.Activity.DeleteObjectLive

@@ -87,15 +87,29 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   # defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
   def handle_params(params, uri, socket) do
     # poor man's hook I guess
-    with {_, socket} <- Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
+    with {_, socket} <-
+           Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket, __MODULE__) do
       undead_params(socket, fn ->
         do_handle_params(params, uri, socket)
       end)
     end
   end
 
-  def handle_event(action, attrs, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
+  def do_handle_event("select_tab", attrs, socket) do
+    do_handle_params(%{"tab" => e(attrs, "name", nil)}, nil, socket)
+  end
+
+  def do_handle_event(action, attrs, socket) do
+    debug(attrs, action)
+    # poor man's hook I guess
+    Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
+  end
+
+  def handle_event(action, attrs, socket) do
+    undead_params(socket, fn ->
+      do_handle_event(action, attrs, socket)
+    end)
+  end
 
   def handle_info(info, socket),
     do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)

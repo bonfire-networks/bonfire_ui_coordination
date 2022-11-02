@@ -46,12 +46,12 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
        create_object_type: :task,
        smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
-        users: [
-          secondary: [
-            {Bonfire.UI.Coordination.TasksFilterLive, []}
-          ]
-        ]
-      ]
+         users: [
+           secondary: [
+             {Bonfire.UI.Coordination.TasksFilterLive, []}
+           ]
+         ]
+       ]
      )}
   end
 

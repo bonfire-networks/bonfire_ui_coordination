@@ -1,8 +1,5 @@
 <section class="mt-6">
-  <Bonfire.UI.Coordination.HeroLive
-    page={@page}
-    selected_tab={@selected_tab}
-  />
+  <Bonfire.UI.Coordination.HeroLive page={@page} selected_tab={@selected_tab} />
   <div class="space-y-3">
     <Bonfire.UI.Social.Activity.IntentTaskLive
       :if={length(@intents) > 0}

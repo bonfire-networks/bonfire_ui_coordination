@@ -1,6 +1,6 @@
-  <div class="relative flex flex-col px-3 mt-6 mb-6 md:px-0">
-    <div class="flex items-center gap-5 text-xl font-semibold text-base-content">
-      <Icon iconify="noto:high-voltage" class="w-5 h-5" />
-      <span>{l("Coordination")}</span>
-    </div>
+<div class="relative flex flex-col px-3 mt-6 mb-6 md:px-0">
+  <div class="flex items-center gap-5 text-xl font-semibold text-base-content">
+    <Icon iconify="noto:high-voltage" class="w-5 h-5" />
+    <span>{l("Coordination")}</span>
   </div>
+</div>

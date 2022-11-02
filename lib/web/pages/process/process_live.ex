@@ -50,8 +50,8 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        sidebar_widgets: [
          users: [
            secondary: [
-              {Bonfire.UI.Coordination.ProcessInfoLive, [process: process]},
-              {Bonfire.Tag.Web.WidgetTagsLive, []}
+             {Bonfire.UI.Coordination.ProcessInfoLive, [process: process]},
+             {Bonfire.Tag.Web.WidgetTagsLive, []}
            ]
          ],
          guests: [

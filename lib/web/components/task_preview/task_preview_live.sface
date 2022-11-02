@@ -7,20 +7,22 @@
       <div class="flex flex-col flex-1">
         <div class="flex items-center gap-2">
           <div class="flex items-center flex-1 gap-2">
-            <Icon 
+            <Icon
               :if={e(@object, :finished, nil)}
               iconify="carbon:checkmark-filled"
               class="w-4 h-4 text-success"
             />
-            <Icon 
+            <Icon
               :if={!e(@object, :finished, nil) and e(@object, :provider, nil)}
-              iconify="carbon:in-progress" 
-              class="w-4 h-4 text-warning" />
-            <Icon 
+              iconify="carbon:in-progress"
+              class="w-4 h-4 text-warning"
+            />
+            <Icon
               :if={!e(@object, :finished, nil) and !e(@object, :provider, nil)}
-              iconify="carbon:software-resource" 
-              class="w-4 h-4 text-info" />
-            
+              iconify="carbon:software-resource"
+              class="w-4 h-4 text-info"
+            />
+
             <LiveRedirect
               to={"/coordination/task/#{e(@object, :id, "")}"}
               class="flex-1 text-base font-medium cursor-pointer link link-hover"
@@ -29,8 +31,6 @@
             <span class="mr-2 badge badge-outline badge-success" :if={e(@object, :finished, nil)}>
               {l("Completed")}
             </span>
-
-            
           </div>
           <div class="flex items-center gap-4">
             <span :if={length(e(@object, :context, [])) > 0}>
@@ -50,21 +50,25 @@
                 id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, @object)}
                 object={@object}
               />
-              <div 
+              <div
                 class="tooltip"
                 :if={e(@object, :provider, :id, nil)}
-                data-tip={e(@object, :provider, :name, nil)}>
+                data-tip={e(@object, :provider, :name, nil)}
+              >
                 <LiveRedirect
                   to={path(e(@object, :provider, nil))}
                   class="flex items-center text-xs text-base-content opacity-70 text-medium"
-                  >
+                >
                   <Bonfire.UI.Common.AvatarLive
                     class="inline-block w-6 h-6 rounded-full bg-base-content/5"
                     user={@object.provider}
                   />
                 </LiveRedirect>
               </div>
-              <div :if={e(@object, :due, nil)} class="flex items-center gap-2 text-xs text-base-content/70 text-medium">
+              <div
+                :if={e(@object, :due, nil)}
+                class="flex items-center gap-2 text-xs text-base-content/70 text-medium"
+              >
                 <Icon solid="Calendar" class="w-4 h-4 text-base-content/70" />
                 <span>{date_from_now(e(@object, :due, nil)) || l("No due date")}</span>
               </div>
