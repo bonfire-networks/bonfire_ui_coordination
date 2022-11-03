@@ -5,11 +5,11 @@ defmodule Bonfire.UI.Coordination.LikesLive do
   alias Bonfire.Me.Users
   alias Bonfire.UI.Me.CreateUserLive
 
-  declare_nav_link(l("Starred"),
-    page: "favourited",
-    href: "/coordination/favourited",
-    icon: "bi:stars"
-  )
+  # declare_nav_link(l("Starred"),
+  #   page: "favourited",
+  #   href: "/coordination/favourited",
+  #   icon: "bi:stars"
+  # )
 
   def update(assigns, socket) do
     %{edges: feed, page_info: page_info} =

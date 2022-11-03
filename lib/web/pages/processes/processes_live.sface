@@ -1,4 +1,15 @@
-<section class="grid grid-cols-1 gap-3 mt-4 md:grid-cols-2 tablet-lg:grid-cols-3">
+<div class="relative flex justify-between p-6 border-b border-base-content/10">
+  <div class="flex items-center gap-3 text-xl font-semibold text-base-content">
+    <Icon iconify="noto:high-voltage" class="w-5 h-5" />
+    <span>{@page_title}</span>
+  </div>
+  <Bonfire.UI.Common.SmartInputButtonLive
+    component={Bonfire.UI.ValueFlows.CreateProcessLive}
+    smart_input_prompt={l("Add a list")}
+    icon="heroicons-solid:pencil-alt"
+  />
+</div>
+<section class="grid grid-cols-1 gap-3 mx-3 mt-6 md:mx-6 md:grid-cols-2 tablet-lg:grid-cols-3">
   <Bonfire.UI.Social.Activity.ProcessListLive
     :for={list <- @processes}
     object={list}

@@ -39,12 +39,12 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
     {:ok,
      socket
      |> assign(
-       page_title: l("Tasks"),
+       page_title: l("Todo"),
        page: "todo",
        selected_tab: "todo",
        intents: intents,
-       create_object_type: :task,
-       smart_input_prompt: l("Add a task"),
+       #  create_object_type: :task,
+       #  smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
          users: [
            secondary: [

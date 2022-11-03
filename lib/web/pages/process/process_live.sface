@@ -1,11 +1,6 @@
-<main class="w-full max-w-screen-lg mx-auto">
-  <Bonfire.UI.Coordination.HeroLive
-    nav_items={@nav_items}
-    page={@page}
-    selected_tab={@selected_tab}
-  />
+<main class="">
   <Bonfire.UI.ValueFlows.ProcessHeroLive process={@process} />
-  <section class="flex flex-col mx-3 md:mx-0">
+  <section class="max-w-screen-md mx-3 lg:mx-auto">
     <ul class="flex flex-col space-y-2">
       {#if length(e(@process, :intended_outputs, [])) > 0}
         <Bonfire.UI.Social.Activity.IntentTaskLive

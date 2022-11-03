@@ -1,6 +1,11 @@
-<div class="relative flex flex-col px-6 pt-6 pb-0 bg-base-100">
+<div class="relative flex justify-between p-6">
   <div class="flex items-center gap-3 text-xl font-semibold text-base-content">
     <Icon iconify="noto:high-voltage" class="w-5 h-5" />
-    <span>{l("Coordination")}</span>
+    <span>{@page_title}</span>
   </div>
+  <Bonfire.UI.Common.SmartInputButtonLive
+    component={Bonfire.UI.Coordination.CreateTaskLive}
+    smart_input_prompt={l("Add a task")}
+    icon="heroicons-solid:pencil-alt"
+  />
 </div>

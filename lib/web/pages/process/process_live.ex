@@ -39,18 +39,17 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        page_title: e(process, :name, nil) || l("List"),
        page: "process",
        selected_tab: "tasks",
-       create_object_type: :task,
+       #  create_object_type: :task,
        nav_items: nav_items,
        without_mobile_logged_header: true,
        #  without_sidebar: true,
-       smart_input_prompt: l("Add task to list"),
+       #  smart_input_prompt: l("Add task to list"),
        process: process,
        reply_to_id: process,
        context_id: ulid(process),
        sidebar_widgets: [
          users: [
            secondary: [
-             {Bonfire.UI.Coordination.ProcessInfoLive, [process: process]},
              {Bonfire.Tag.Web.WidgetTagsLive, []}
            ]
          ],

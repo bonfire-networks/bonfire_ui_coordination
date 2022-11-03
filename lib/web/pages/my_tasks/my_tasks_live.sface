@@ -1,6 +1,16 @@
-<section class="mt-6">
-  <Bonfire.UI.Coordination.HeroLive page={@page} selected_tab={@selected_tab} />
-  <div class="space-y-3">
+<section class="">
+  <div class="relative flex justify-between p-6 border-b border-base-content/10">
+    <div class="flex items-center gap-3 text-xl font-semibold text-base-content">
+      <Icon iconify="noto:high-voltage" class="w-5 h-5" />
+      <span>{@page_title}</span>
+    </div>
+    <Bonfire.UI.Common.SmartInputButtonLive
+      component={Bonfire.UI.Coordination.CreateTaskLive}
+      smart_input_prompt={l("Add a task")}
+      icon="heroicons-solid:pencil-alt"
+    />
+  </div>
+  <div class="mx-6 mt-6 space-y-2">
     <Bonfire.UI.Social.Activity.IntentTaskLive
       :if={length(@intents) > 0}
       :for={task <- @intents || []}

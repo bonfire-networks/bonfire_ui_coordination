@@ -8,7 +8,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
     default_nav: [
       Bonfire.UI.Coordination.FeedLive,
       Bonfire.UI.Coordination.MyTasksLive,
-      Bonfire.UI.Coordination.LikesLive,
+      # Bonfire.UI.Coordination.LikesLive,
       Bonfire.UI.Coordination.ProcessesLive
       # {Bonfire.UI.ValueFlows.ProcessesListLive, process_url: "/coordination/list"}
     ]
@@ -60,8 +60,8 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        feedback_title: l("Your feed is empty"),
        feedback_message:
          l("You can start by following some people, or writing adding some tasks yourself."),
-       create_object_type: :task,
-       smart_input_prompt: l("Add a task"),
+       #  create_object_type: :task,
+       #  smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
          users: [
            secondary: [
