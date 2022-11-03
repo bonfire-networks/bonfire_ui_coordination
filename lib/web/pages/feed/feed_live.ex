@@ -16,11 +16,11 @@ defmodule Bonfire.UI.Coordination.FeedLive do
 
   declare_nav_link(l("Overview"), page: "feed", icon: "heroicons-solid:newspaper")
 
-  declare_settings_nav_link(:extension,
-    href: "/coordination/settings",
-    verb: :tag,
-    scopes: [:user, :instance]
-  )
+  # declare_settings_nav_link(:extension,
+  #   href: "/coordination/settings",
+  #   verb: :tag,
+  #   scopes: [:user, :instance]
+  # )
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
@@ -42,16 +42,21 @@ defmodule Bonfire.UI.Coordination.FeedLive do
     {:ok,
      socket
      |> assign(
-       selected_tab: "Overview",
+       #  selected_tab: "Overview",
        page: "Overview",
        page_title: l("My coordination feed"),
        nav_items: nav_items,
+       feed: nil,
+       page_info: nil,
+       loading: false,
+       feed_title: l("My coordination feed"),
+       feed_component_id: "feeds",
        feed_id: nil,
-       object_types: object_types,
-       feed_filters: [
-         object_type: object_types
-       ],
        feed_ids: nil,
+       object_types: object_types,
+       feed_filters: %{
+         object_type: object_types
+       },
        feedback_title: l("Your feed is empty"),
        feedback_message:
          l("You can start by following some people, or writing adding some tasks yourself."),
@@ -70,6 +75,15 @@ defmodule Bonfire.UI.Coordination.FeedLive do
      )}
   end
 
+  def do_handle_params(%{"tab" => tab} = params, _url, socket)
+      when tab in [nil, "my", "local", "fediverse", "likes"] do
+    {:noreply,
+     assign_generic(
+       socket,
+       LiveHandler.feed_assigns_maybe_async({maybe_to_atom(tab), params}, socket)
+     )}
+  end
+
   def do_handle_params(%{"tab" => tab}, _url, socket) do
     {:noreply,
      assign(
@@ -79,9 +93,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   end
 
   def do_handle_params(_params, _url, socket) do
-    # debug("param")
-
-    {:noreply, assign(socket, LiveHandler.feed_assigns_maybe_async(:default, socket))}
+    do_handle_params(%{"tab" => nil}, nil, socket)
   end
 
   # defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers

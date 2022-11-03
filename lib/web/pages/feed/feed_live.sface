@@ -5,49 +5,20 @@
     selected_tab={@selected_tab}
   />
   {#case @selected_tab}
-    {#match "feed"}
-      <!-- <Bonfire.UI.Common.InstancePinnedLive
-        object_types={@object_types}
-        load_pointer
-        title={l("Pinned")}
-      /> -->
-
-      <!-- <div class="px-3 mt-8 text-sm font-medium tracking-wide md:px-0 text-base-content/60">{l("Recent activities")}</div> -->
-      <div class="">
-        <Bonfire.UI.Social.FeedLive
-          id={e(@feed_id, :my)}
-          feed_id={@feed_id}
-          feed_ids={@feed_ids}
-          page_title={@page_title}
-          page={@page}
-          feedback_title={@feedback_title}
-          feedback_message={@feedback_message}
-          feed={@feed}
-          tabs_class="flex justify-start gap-3 p-4 mb-3 !rounded-t-none rounded-md shadow tabs-boxed tabs bg-base-100"
-          feed_title={@feed_title}
-          page_info={@page_info}
-          loading={@loading}
-        />
-      </div>
     {#match "lists"}
       <Bonfire.UI.Coordination.ProcessesLive id={:all_lists} />
       <!-- {#match "todo"}
       <Bonfire.UI.Coordination.MyTasksLive id={:my_tasks} /> -->
     {#match "favourited"}
       <Bonfire.UI.Coordination.LikesLive current_user={@current_user} id={:my_favourited_tasks} />
-    {#match "settings"}
-      <Bonfire.UI.Common.WidgetsLive
-        widgets={Bonfire.Common.SettingsModule.components(:bonfire_ui_coordination)}
-        page={@page}
-        selected_tab={@selected_tab}
-      />
     {#match _}
       <!-- <div class="px-3 mt-8 text-sm font-medium tracking-wide md:px-0 text-base-content/60">{l("Recent activities")}</div> -->
       <div class="">
         <Bonfire.UI.Social.FeedLive
-          id={e(@feed_id, :my)}
+          id={@feed_component_id}
           feed_id={@feed_id}
           feed_ids={@feed_ids}
+          feed_filters={@feed_filters}
           page_title={@page_title}
           page={@page}
           feedback_title={@feedback_title}
