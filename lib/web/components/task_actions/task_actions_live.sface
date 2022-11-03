@@ -46,7 +46,7 @@
     />
   </div>
   <div class="flex items-center gap-4">
-    <Icon solid="heroicons:calendar-days-20-solid" class="w-5 h-5 text-base-content/80" />
+    <Icon iconify="heroicons:calendar-days-20-solid" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l("Due date")}</div>
     <Dynamic.Component
       :if={module_enabled?(Bonfire.UI.ValueFlows.DueItemLive, @__context__)}
