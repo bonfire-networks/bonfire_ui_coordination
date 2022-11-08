@@ -1,7 +1,12 @@
 <main class="">
   <Bonfire.UI.ValueFlows.ProcessHeroLive process={@process} />
-  <section class="max-w-screen-md mx-3 lg:mx-auto">
-    <ul class="flex flex-col space-y-2">
+  <section class="mx-3 md:mx-6">
+      <Bonfire.UI.Common.SmartInputButtonLive
+        component={Bonfire.UI.Coordination.CreateTaskLive}
+        smart_input_prompt={l("Add task to list")}
+        icon="heroicons-solid:pencil-alt"
+        class="h-[48px] text-sm font-medium px-3 rounded shadow bg-base-100 !bg-base-content/5 mt-3 border-dashed border-2 border-base-content/10 w-full flex items-center gap-4 place-content-center"
+      />
       {#if length(e(@process, :intended_outputs, [])) > 0}
         <Bonfire.UI.Social.Activity.IntentTaskLive
           :for={task <- e(@process, :intended_outputs, [])}
@@ -13,6 +18,5 @@
           <Bonfire.UI.Common.EmptyFeed feedback_title={l("This list has no tasks yet")} />
         </li>
       {/if}
-    </ul>
   </section>
 </main>

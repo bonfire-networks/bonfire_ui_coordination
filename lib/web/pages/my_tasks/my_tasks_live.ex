@@ -17,7 +17,7 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
   declare_nav_link(l("Todo"),
     page: "todo",
     href: "/coordination/todo",
-    icon: "eva:clipboard-outline"
+    icon: "carbon:task-asset-view"
   )
 
   def mount(params, session, socket) do
@@ -42,6 +42,13 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
        page_title: l("Todo"),
        page: "todo",
        selected_tab: "todo",
+       page_header_aside: [
+        {Bonfire.UI.Common.SmartInputButtonLive, [
+          component: Bonfire.UI.Coordination.CreateTaskLive,
+          smart_input_prompt: l("Add a task"),
+          icon: "heroicons-solid:pencil-alt"
+        ]}
+       ],
        intents: intents,
        #  create_object_type: :task,
        #  smart_input_prompt: l("Add a task"),

@@ -14,7 +14,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
     ]
   )
 
-  declare_nav_link(l("Overview"), page: "feed", icon: "heroicons-solid:newspaper")
+  declare_nav_link(l("Overview"), page: "feed", icon: "carbon:home")
 
   # declare_settings_nav_link(:extension,
   #   href: "/coordination/settings",
@@ -49,6 +49,13 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        feed: nil,
        page_info: nil,
        loading: false,
+       page_header_aside: [
+        {Bonfire.UI.Common.SmartInputButtonLive, [
+          component: Bonfire.UI.Coordination.CreateTaskLive,
+          smart_input_prompt: l("Add a task"),
+          icon: "heroicons-solid:pencil-alt"
+        ]}
+       ],
        feed_title: l("My coordination feed"),
        feed_component_id: "feeds",
        feed_id: nil,
