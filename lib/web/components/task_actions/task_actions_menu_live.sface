@@ -26,7 +26,7 @@
     </li>
     <li>
       <button
-        :if={!@task.finished}
+        :if={!e(@task, :finished, nil)}
         :on-click="ValueFlows.Planning.Intent:status:finished"
         phx-value-id={@task.id}
         class="flex items-center px-4 text-sm text-neutral-content/80"
@@ -37,7 +37,7 @@
     </li>
     <li>
       <button
-        :if={@task.finished}
+        :if={e(@task, :finished, nil)}
         :on-click="ValueFlows.Planning.Intent:status:open"
         phx-value-id={@task.id}
         class="flex items-center px-4 text-sm text-neutral-content/80"

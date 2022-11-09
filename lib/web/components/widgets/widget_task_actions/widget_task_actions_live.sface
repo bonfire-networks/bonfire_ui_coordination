@@ -4,7 +4,7 @@
       <Bonfire.UI.Coordination.TaskSetStatusLive
         redirect_after="/coordination/task/"
         task_id={@intent.id}
-        finished={@intent.finished}
+        finished={e(@intent, :finished, nil)}
       />
 
       <Bonfire.UI.Coordination.TaskActionsLive intent={@intent} />
