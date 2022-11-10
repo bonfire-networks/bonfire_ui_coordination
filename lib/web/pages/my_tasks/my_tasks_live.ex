@@ -43,11 +43,12 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
        page: "todo",
        selected_tab: "todo",
        page_header_aside: [
-        {Bonfire.UI.Common.SmartInputButtonLive, [
-          component: Bonfire.UI.Coordination.CreateTaskLive,
-          smart_input_prompt: l("Add a task"),
-          icon: "heroicons-solid:pencil-alt"
-        ]}
+         {Bonfire.UI.Common.SmartInputButtonLive,
+          [
+            component: Bonfire.UI.Coordination.CreateTaskLive,
+            smart_input_prompt: l("Add a task"),
+            icon: "heroicons-solid:pencil-alt"
+          ]}
        ],
        intents: intents,
        #  create_object_type: :task,

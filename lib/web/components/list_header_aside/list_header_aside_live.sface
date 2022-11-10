@@ -1,6 +1,4 @@
 <div class="flex items-center gap-4">
-
-  
   <div class="relative inline-block text-left">
     <div
       x-data="{ 
@@ -37,7 +35,6 @@
         aria-orientation="vertical"
       >
         <div class="py-1" role="none">
-
           <Bonfire.UI.Common.OpenModalLive
             id={Pointers.ULID.generate()}
             title_text={l("Edit list")}

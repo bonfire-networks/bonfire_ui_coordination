@@ -40,14 +40,16 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        page: "process",
        selected_tab: "tasks",
        #  create_object_type: :task,
-       page_header_aside: [{
-        Bonfire.UI.Coordination.ListHeaderAsideLive, 
-        [
-          process: process
-        ]
-       }],
+       page_header_aside: [
+         {
+           Bonfire.UI.Coordination.ListHeaderAsideLive,
+           [
+             process: process
+           ]
+         }
+       ],
        nav_items: nav_items,
-      #  without_mobile_logged_header: true,
+       #  without_mobile_logged_header: true,
        #  without_sidebar: true,
        #  smart_input_prompt: l("Add task to list"),
        process: process,

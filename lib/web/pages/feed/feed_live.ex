@@ -50,11 +50,12 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        page_info: nil,
        loading: false,
        page_header_aside: [
-        {Bonfire.UI.Common.SmartInputButtonLive, [
-          component: Bonfire.UI.Coordination.CreateTaskLive,
-          smart_input_prompt: l("Add a task"),
-          icon: "heroicons-solid:pencil-alt"
-        ]}
+         {Bonfire.UI.Common.SmartInputButtonLive,
+          [
+            component: Bonfire.UI.Coordination.CreateTaskLive,
+            smart_input_prompt: l("Add a task"),
+            icon: "heroicons-solid:pencil-alt"
+          ]}
        ],
        feed_title: l("My coordination feed"),
        feed_component_id: "feeds",

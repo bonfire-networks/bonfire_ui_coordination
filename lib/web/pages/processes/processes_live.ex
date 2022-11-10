@@ -42,22 +42,23 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
     {:ok,
      socket
      |> assign(
-      page_title: l("All lists"),
+       page_title: l("All lists"),
        page: "lists",
        processes: processes,
        page_header_aside: [
-        {Bonfire.UI.Common.SmartInputButtonLive, [
-          component: Bonfire.UI.ValueFlows.CreateProcessLive,
-          smart_input_prompt: l("Add a list"),
-          icon: "heroicons-solid:pencil-alt"
-        ]}
+         {Bonfire.UI.Common.SmartInputButtonLive,
+          [
+            component: Bonfire.UI.ValueFlows.CreateProcessLive,
+            smart_input_prompt: l("Add a list"),
+            icon: "heroicons-solid:pencil-alt"
+          ]}
        ],
        #  create_object_type: :task,
        #  smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
          users: [
            secondary: [
-            {Bonfire.Tag.Web.WidgetTagsLive, []}
+             {Bonfire.Tag.Web.WidgetTagsLive, []}
            ]
          ]
        ]
