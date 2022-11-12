@@ -1,4 +1,4 @@
-<section class="grid grid-cols-1 gap-3 mx-3 mt-6 md:mx-6 md:grid-cols-2 tablet-lg:grid-cols-3">
+<section class="grid grid-cols-1 gap-3 mx-3 mt-6 md:mx-6 ">
   <Bonfire.UI.Social.Activity.ProcessListLive
     :for={list <- @processes}
     object={list}

@@ -14,11 +14,11 @@ defmodule Bonfire.UI.Coordination.TasksLive do
 
   # alias Bonfire.UI.Coordination.ResourceWidget
 
-  # declare_nav_link([
-  #   {l("Assigned to me"), href: "/coordination/tasks?provider=me", icon: "eva:clipboard-outline"},
-  #   {l("Watching"), href: "/coordination/tasks/me", icon: "fluent:bookmark-search-20-filled"}
-  #   # {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
-  # ])
+  declare_nav_link([
+    {l("My tasks"), href: "/coordination/tasks?provider=me", icon: "eva:clipboard-outline"},
+    # {l("Watching"), href: "/coordination/tasks/me", icon: "fluent:bookmark-search-20-filled"}
+    # {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
+  ])
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
@@ -38,15 +38,15 @@ defmodule Bonfire.UI.Coordination.TasksLive do
        page_title: l("Tasks"),
        page: "tasks",
        selected_tab: nil,
-       create_object_type: :task,
-       smart_input_prompt: l("Add a task"),
+      #  create_object_type: :task,
+      #  smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
-         users: [
-           secondary: [
-             {Bonfire.UI.Coordination.TasksFilterLive, []}
-           ]
+        users: [
+         secondary: [
+           {Bonfire.Tag.Web.WidgetTagsLive, []}
          ]
-       ]
+        ]
+      ]
      )}
   end
 
@@ -124,17 +124,10 @@ defmodule Bonfire.UI.Coordination.TasksLive do
     {:noreply,
      socket
      |> assign(
-       page_title: l("Tasks"),
+       page_title: l("My Tasks"),
        page: "tasks",
        selected_tab: nil,
-       intents: intents,
-       sidebar_widgets: [
-         users: [
-           secondary: [
-             {Bonfire.UI.Coordination.TasksFilterLive, filters: params}
-           ]
-         ]
-       ]
+       intents: intents
      )}
   end
 

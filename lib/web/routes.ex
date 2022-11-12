@@ -8,7 +8,7 @@ defmodule Bonfire.UI.Coordination.Routes do
         pipe_through(:browser)
 
         live("/favourites", LikesLive)
-        live("/todo", MyTasksLive)
+        live("/todo", TodoLive)
         live("/lists", ProcessesLive)
 
         # live("/lists", ProcessesLive, as: ValueFlows.Process)

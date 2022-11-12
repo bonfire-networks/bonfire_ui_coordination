@@ -1,4 +1,4 @@
-defmodule Bonfire.UI.Coordination.MyTasksLive do
+defmodule Bonfire.UI.Coordination.TodoLive do
   use Bonfire.UI.Common.Web, :surface_live_view
 
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
@@ -14,7 +14,7 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
 
   # alias Bonfire.UI.Coordination.ResourceWidget
 
-  declare_nav_link(l("Todo"),
+  declare_nav_link(l("All tasks"),
     page: "todo",
     href: "/coordination/todo",
     icon: "carbon:task-asset-view"
@@ -34,30 +34,22 @@ defmodule Bonfire.UI.Coordination.MyTasksLive do
   end
 
   defp mounted(params, _session, socket) do
-    intents = intents(%{"action" => "work", "agent" => "me"}, socket)
+    intents = intents(%{"action" => "work"}, socket)
 
     {:ok,
      socket
      |> assign(
-       page_title: l("Todo"),
+       page_title: l("All tasks"),
        page: "todo",
        selected_tab: "todo",
-       page_header_aside: [
-         {Bonfire.UI.Common.SmartInputButtonLive,
-          [
-            component: Bonfire.UI.Coordination.CreateTaskLive,
-            smart_input_prompt: l("Add a task"),
-            icon: "heroicons-solid:pencil-alt"
-          ]}
-       ],
        intents: intents,
        #  create_object_type: :task,
        #  smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
          users: [
-           secondary: [
-             {Bonfire.UI.Coordination.TasksFilterLive, []}
-           ]
+          secondary: [
+            {Bonfire.Tag.Web.WidgetTagsLive, []}
+          ]
          ]
        ]
      )}
