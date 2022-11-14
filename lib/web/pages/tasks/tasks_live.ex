@@ -1,6 +1,6 @@
 defmodule Bonfire.UI.Coordination.TasksLive do
   use Bonfire.UI.Common.Web, :surface_live_view
-
+  alias Bonfire.Social.Feeds.LiveHandler
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
   alias Bonfire.UI.ValueFlows.IntentCreateActivityLive
@@ -14,11 +14,26 @@ defmodule Bonfire.UI.Coordination.TasksLive do
 
   # alias Bonfire.UI.Coordination.ResourceWidget
 
-  declare_nav_link([
-    {l("My tasks"), href: "/coordination/tasks?provider=me", icon: "eva:clipboard-outline"}
-    # {l("Watching"), href: "/coordination/tasks/me", icon: "fluent:bookmark-search-20-filled"}
-    # {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
-  ])
+
+  declare_extension("Coordination",
+    icon: "noto:high-voltage",
+    default_nav: [
+      # Bonfire.UI.Coordination.TodoLive,
+      Bonfire.UI.Coordination.TasksLive,
+      Bonfire.UI.Coordination.FeedLive,
+      Bonfire.UI.Coordination.LikesLive,
+      Bonfire.UI.Coordination.ProcessesLive
+      # {Bonfire.UI.ValueFlows.ProcessesListLive, process_url: "/coordination/list"}
+    ]
+  )
+
+  declare_nav_link(l("Overview"), page: "tasks", icon: "carbon:home")
+
+  # declare_nav_link([
+  #   {l("My tasks"), href: "/coordination/tasks?provider=me", icon: "eva:clipboard-outline"}
+  #   # {l("Watching"), href: "/coordination/tasks/me", icon: "fluent:bookmark-search-20-filled"}
+  #   # {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
+  # ])
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
@@ -38,6 +53,15 @@ defmodule Bonfire.UI.Coordination.TasksLive do
        page_title: l("Tasks"),
        page: "tasks",
        selected_tab: nil,
+       page_header_aside: [
+        {Bonfire.UI.Common.SmartInputButtonLive,
+         [
+           component: Bonfire.UI.Coordination.CreateTaskLive,
+           smart_input_prompt: l("Add a task"),
+           icon: "heroicons-solid:pencil-alt"
+         ]}
+      ],
+
        #  create_object_type: :task,
        #  smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
@@ -113,9 +137,9 @@ defmodule Bonfire.UI.Coordination.TasksLive do
      )}
   end
 
-  def do_handle_params(params, _url, socket) do
+  def do_handle_params(%{"tab" => "closed" = tab} = params, _url, socket) do
     intents =
-      %{filters: merge_filters(params, %{"action" => "work"})}
+      %{filters: merge_filters(params, %{"action" => "work", "finished" => true})}
       # |> debug()
       |> intents(socket)
 
@@ -124,7 +148,25 @@ defmodule Bonfire.UI.Coordination.TasksLive do
     {:noreply,
      socket
      |> assign(
-       page_title: l("My Tasks"),
+       page_title: l("closed Tasks"),
+       page: "tasks",
+       selected_tab: tab,
+       intents: intents
+     )}
+  end
+
+  def do_handle_params(params, _url, socket) do
+    intents =
+      %{filters: merge_filters(params, %{"action" => "work", "finished" => false})}
+      # |> debug()
+      |> intents(socket)
+
+    # |> debug()
+
+    {:noreply,
+     socket
+     |> assign(
+       page_title: l("Open Tasks"),
        page: "tasks",
        selected_tab: nil,
        intents: intents

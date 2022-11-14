@@ -4,19 +4,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   alias Bonfire.Social.Feeds.LiveHandler
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
-  declare_extension("Coordination",
-    icon: "noto:high-voltage",
-    default_nav: [
-      Bonfire.UI.Coordination.FeedLive,
-      # Bonfire.UI.Coordination.TodoLive,
-      Bonfire.UI.Coordination.TasksLive,
-      # Bonfire.UI.Coordination.LikesLive,
-      Bonfire.UI.Coordination.ProcessesLive
-      # {Bonfire.UI.ValueFlows.ProcessesListLive, process_url: "/coordination/list"}
-    ]
-  )
-
-  declare_nav_link(l("Overview"), page: "feed", icon: "carbon:home")
+  declare_nav_link(l("Timeline"), href: "/coordination/timeline", page: "feed", icon: "gg:feed")
 
   # declare_settings_nav_link(:extension,
   #   href: "/coordination/settings",
@@ -37,30 +25,20 @@ defmodule Bonfire.UI.Coordination.FeedLive do
     ])
   end
 
+
+ 
   defp mounted(params, _session, socket) do
     object_types = [ValueFlows.Process, ValueFlows.Planning.Intent, ValueFlows.Proposal]
-    nav_items = Bonfire.Common.ExtensionModule.default_nav(:bonfire_ui_coordination)
-    intents = intents(%{"action" => "work"}, socket)
-
+    
     {:ok,
      socket
      |> assign(
-       selected_tab: "tasks",
-       page: "Overview",
-       page_title: l("All tasks"),
-       nav_items: nav_items,
-       intents: intents,
+       selected_tab: "feed",
+       page: "feed",
+       page_title: l("Timeline"),
        feed: nil,
        page_info: nil,
        loading: false,
-       page_header_aside: [
-         {Bonfire.UI.Common.SmartInputButtonLive,
-          [
-            component: Bonfire.UI.Coordination.CreateTaskLive,
-            smart_input_prompt: l("Add a task"),
-            icon: "heroicons-solid:pencil-alt"
-          ]}
-       ],
        feed_title: l("My coordination feed"),
        feed_component_id: "feeds",
        feed_id: nil,
@@ -87,91 +65,6 @@ defmodule Bonfire.UI.Coordination.FeedLive do
      )}
   end
 
-  @intent_fields Bonfire.UI.Coordination.ProcessLive.intent_fields()
-  # TODO: pagination with intentsPages
-  # filter:{
-  #   agent: "me",
-  #   # provider: "me",
-  #   # receiver: "me",
-  #   status: "open"
-  #   # startDate: nil,
-  #   # endDate: nil,
-  #   # action:"work",
-  #   # finished: false,
-  #   # tagIds: []
-  # }
-  @filters [
-    "agent",
-    "provider",
-    "receiver",
-    "status",
-    "action",
-    "start_date",
-    "end_date",
-    "finished",
-    "tag_ids",
-    "search_string"
-  ]
-  @graphql """
-  query($filters: IntentSearchParams) {
-    intents(filter: $filters, limit: 200)
-      #{@intent_fields}
-  }
-  """
-  def intents(params \\ %{}, socket), do: liveql(socket, :intents, params)
-
-  defp merge_filters(params, extra) do
-    Map.merge(filter_filters(params), extra)
-    |> debug()
-  end
-
-  defp filter_filters(params) do
-    params
-    |> Map.filter(fn
-      {_, ""} -> false
-      {name, _} when name in @filters -> true
-      _ -> false
-    end)
-  end
-
-  defp do_filter(
-         %{
-           "field" => field,
-           "id" => value
-         } = attrs,
-         socket
-       ) do
-    do_filter(Map.put(%{}, field, value), socket)
-  end
-
-  defp do_filter(attrs, socket) do
-    debug(attrs)
-
-    params =
-      attrs
-      |> Map.filter(fn
-        {_, ""} -> false
-        {name, _} when name in @filters -> true
-        _ -> false
-      end)
-      # |> debug()
-      |> URI.encode_query()
-
-    {:noreply, patch_to(socket, current_url(socket) <> "?" <> params)}
-  end
-
-  def handle_event("filter", %{"_target" => ["search_string"]} = attrs, socket) do
-    debug("ignore")
-    {:noreply, socket}
-  end
-
-  def handle_event("filter", attrs, socket) do
-    do_filter(attrs, socket)
-  end
-
-  def handle_event("search", attrs, socket) do
-    do_filter(attrs, socket)
-  end
 
   def do_handle_params(%{"tab" => tab} = params, _url, socket)
       when tab in [nil, "my", "local", "fediverse", "likes"] do
@@ -190,12 +83,12 @@ defmodule Bonfire.UI.Coordination.FeedLive do
      )}
   end
 
-  def do_handle_params(%{"timeline" => tab}, _url, socket) do
+  def do_handle_params(_params, _url, socket) do
     do_handle_params(%{"tab" => nil}, nil, socket)
   end
 
   def do_handle_params(_nil, _url, socket) do
-    {:noreply, assign(socket, selected_tab: "tasks")}
+    {:noreply, assign(socket, selected_tab: "feed")}
   end
 
   # defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers

@@ -1,4 +1,4 @@
-<div class="rounded-lg bg-base-100">
+<div class="">
   <Bonfire.UI.Social.ThreadLive
     id={ulid!(@task)}
     thread_id={ulid(@task)}

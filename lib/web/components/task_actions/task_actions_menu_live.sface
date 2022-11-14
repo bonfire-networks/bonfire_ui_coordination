@@ -1,4 +1,4 @@
-<div class="dropdown dropdown-end relative z-[900]">
+<div class="relative dropdown dropdown-end">
   <button tabindex="0" class="btn btn-ghost btn-square btn-xs">
     <Icon solid="DotsHorizontal" class="w-4 h-4 text-base-content/70" />
   </button>

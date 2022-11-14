@@ -10,7 +10,7 @@ defmodule Bonfire.UI.Coordination.Routes do
         live("/favourites", LikesLive)
         live("/todo", TodoLive)
         live("/lists", ProcessesLive)
-
+        live("/timeline", FeedLive)
         # live("/lists", ProcessesLive, as: ValueFlows.Process)
 
         live("/list/:id", ProcessLive, as: ValueFlows.Process)
@@ -20,8 +20,8 @@ defmodule Bonfire.UI.Coordination.Routes do
         live("/tasks", TasksLive, as: ValueFlows.Planning.Intent)
         live("/tasks/:tab", TasksLive)
 
-        live("/", FeedLive)
-        live("/:tab", FeedLive)
+        live("/", TasksLive)
+        live("/:tab", TasksLive)
       end
     end
   end
