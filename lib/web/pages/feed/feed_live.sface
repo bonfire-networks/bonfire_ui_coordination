@@ -1,74 +1,67 @@
 <div class="flex w-full gap-4 px-6 border-b tabs_nav_profile tabs border-base-content/10">
   <div class={"tab", "tab-active": @selected_tab == "tasks"}>
-    <LivePatch to="/coordination">Tasks</LivePatch>
+    <LivePatch to={~p"/coordination"}>Tasks</LivePatch>
   </div>
   <div class={"tab", "tab-active": @selected_tab == "timeline"}>
-  <LivePatch to="/coordination/timeline">Timeline</LivePatch></div>
+    <LivePatch to={~p"/coordination/timeline"}>Timeline</LivePatch></div>
 </div>
 {#case @selected_tab}
   {#match "timeline"}
-      <Bonfire.UI.Social.FeedLive
-        id={@feed_component_id}
-        feed_id={@feed_id}
-        feed_ids={@feed_ids}
-        feed_filters={@feed_filters}
-        page_title={@page_title}
-        page={@page}
-        feedback_title={@feedback_title}
-        feedback_message={@feedback_message}
-        feed={@feed}
-        tabs_class="tabs_nav tabs bg-base-100 rounded-md gap-3 shadow my-3"
-        feed_title={@feed_title}
-        page_info={@page_info}
-        loading={@loading}
-      />
+    <Bonfire.UI.Social.FeedLive
+      id={@feed_component_id}
+      feed_id={@feed_id}
+      feed_ids={@feed_ids}
+      feed_filters={@feed_filters}
+      page_title={@page_title}
+      page={@page}
+      feedback_title={@feedback_title}
+      feedback_message={@feedback_message}
+      feed={@feed}
+      tabs_class="tabs_nav tabs bg-base-100 rounded-md gap-3 shadow my-3"
+      feed_title={@feed_title}
+      page_info={@page_info}
+      loading={@loading}
+    />
   {#match _}
-  <div class="m-3 rounded shadow md:m-6">
-    <div class="flex items-center justify-between p-4 bg-base-content/5 ">
-      <div class="relative max-w-md rounded">
-        <input
-          type="search"
-          name="search_string"
-          autocomplete="off"
-          placeholder={l("Search tasks...")}
-          phx-debounce="300"
-          class="max-w-md pr-8 text-sm h-9 input bg-base-content/5 text-base-content placeholder-base-content placeholder-opacity-80"
-        />
-        <button
-          type="submit"
-          class="absolute top-[2px] right-[8px] z-30 flex items-center pl-1  cursor-pointer btn  btn-sm w-[32px] h-[32px] btn-ghost btn-circle"
-        >
-          <Icon solid="Search" class="w-5 h-5 text-base-content text-opacity-80" />
-        </button>
-      </div>
-      
-    </div>
-    <div class="flex items-center justify-between px-4 py-4 bg-base-content/10">
-      <div class="flex items-center gap-6">
-        <div class="flex items-center gap-2">
-          <Icon
-            iconify="carbon:software-resource"
-            class="w-4 h-4 text-info"
+    <div class="m-3 rounded shadow md:m-6">
+      <div class="flex items-center justify-between p-4 bg-base-content/5">
+        <div class="relative max-w-md rounded">
+          <input
+            type="search"
+            name="search_string"
+            autocomplete="off"
+            placeholder={l("Search tasks...")}
+            phx-debounce="300"
+            class="max-w-md pr-8 text-sm h-9 input bg-base-content/5 text-base-content placeholder-base-content placeholder-opacity-80"
           />
-          <span class="text-sm font-semibold">100 Open</span>
-        </div>
-        <div class="flex items-center gap-2"> 
-          <Icon
-            iconify="carbon:checkmark-filled"
-            class="w-4 h-4 text-success"
-          />
-          <span class="text-sm">83 Closed</span>
+          <button
+            type="submit"
+            class="absolute top-[2px] right-[8px] z-30 flex items-center pl-1  cursor-pointer btn  btn-sm w-[32px] h-[32px] btn-ghost btn-circle"
+          >
+            <Icon solid="Search" class="w-5 h-5 text-base-content text-opacity-80" />
+          </button>
         </div>
       </div>
-      <div class="flex items-center gap-6">
-        <div class="text-sm text-base-content/80">
-          <span>Assignee</span>
+      <div class="flex items-center justify-between px-4 py-4 bg-base-content/10">
+        <div class="flex items-center gap-6">
+          <div class="flex items-center gap-2">
+            <Icon iconify="carbon:software-resource" class="w-4 h-4 text-info" />
+            <span class="text-sm font-semibold">100 Open</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-success" />
+            <span class="text-sm">83 Closed</span>
+          </div>
         </div>
-        <div class="text-sm text-base-content/80">
-          <span>Sort</span>
+        <div class="flex items-center gap-6">
+          <div class="text-sm text-base-content/80">
+            <span>Assignee</span>
+          </div>
+          <div class="text-sm text-base-content/80">
+            <span>Sort</span>
+          </div>
         </div>
       </div>
-    </div>
     </div>
     <div class="mx-3 md:mx-6">
       <Bonfire.UI.Social.Activity.IntentTaskLive
@@ -83,5 +76,4 @@
       />
     </div>
     <!-- <div class="px-3 mt-8 text-sm font-medium tracking-wide md:px-0 text-base-content/60">{l("Recent activities")}</div> -->
-
 {/case}

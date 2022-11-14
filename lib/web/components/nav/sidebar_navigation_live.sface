@@ -1,7 +1,7 @@
 <div class="flex flex-col mt-1 space-y-1">
   <LivePatch
     :if={ulid(@current_user)}
-    to="/my-tasks"
+    to={~p"/my-tasks"}
     class={
       "rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group    focus:outline-none focus:text-primary-content-900  text-primary-content-600",
       " text-primary-content-800  ": @page == "my_tasks"

@@ -1,19 +1,19 @@
 <div class="m-3 rounded shadow md:m-6">
-  <div class="grid grid-cols-1 tablet:grid-cols-[1fr_300px] gap-4 bg-base-content/5 ">
+  <div class="grid grid-cols-1 tablet:grid-cols-[1fr_300px] gap-4 bg-base-content/5">
     <div class="relative flex items-start justify-between flex-1 p-4">
       <div class="flex flex-col">
         <div class="text-2xl font-semibold text-base-content">{rich(@task.name)}</div>
         <span :if={@task.output_of} class="flex text-sm text-base-content/70">
           {l("Task in")}
-          <LiveRedirect to={"/coordination/list/" <> @task.output_of.id} class="ml-1 link inline_flex">
+          <LiveRedirect to={~p"/coordination/list/" <> @task.output_of.id} class="ml-1 link inline_flex">
             {rich(@task.output_of.name)}
           </LiveRedirect>
         </span>
         <span
-            :if={String.length(e(@task, :note, "")) > 0}
-            class="mt-3 text-base font-normal prose text-base-content/70"
-          >{e(@task, :note, "")}</span>
-         <div class="flex items-center gap-3 mt-4">
+          :if={String.length(e(@task, :note, "")) > 0}
+          class="mt-3 text-base font-normal prose text-base-content/70"
+        >{e(@task, :note, "")}</span>
+        <div class="flex items-center gap-3 mt-4">
           <Bonfire.Boundaries.Web.BoundaryIconLive
             with_label
             id={ComponentID.new(Bonfire.Boundaries.Web.BoundaryIconLive, @task)}
@@ -25,12 +25,11 @@
           <span :if={@task.finished} class="badge badge-accent badge-success">
             {l("Completed")}
           </span> -->
-          <div class={"flex items-center gap-1 text-xs p-2 py-1 rounded text-medium"}>
+          <div class="flex items-center gap-1 text-xs p-2 py-1 rounded text-medium">
             <Icon solid="Calendar" class="w-4 h-4" />
             <span>{date_from_now(e(@task, :due, nil)) || l("No due date")}</span>
           </div>
           <Bonfire.UI.Social.Activity.InstanceIconLive object={@task} />
-          
         </div>
       </div>
       <!-- <div class="flex items-center justify-end gap-2">
@@ -60,11 +59,8 @@
         </div>
       </div> -->
     </div>
-    <div class="flex flex-col gap-3 p-4 bg-base-100">  
-
+    <div class="flex flex-col gap-3 p-4 bg-base-100">
       <Bonfire.UI.Coordination.TaskActionsLive intent={@task} />
-
-
     </div>
   </div>
   <div class="flex items-center justify-between px-4 py-4 bg-base-content/10">
@@ -72,12 +68,9 @@
       <div class="flex items-center gap-2">
         <span class="text-sm font-semibold">Activities</span>
       </div>
-      
     </div>
-    
   </div>
 </div>
-
 
 <!-- <div class="relative py-4 md:rounded-t-xl bg-base-100">
   <div class="z-50 flex flex-col md:flex-row md:items-start md:justify-between">
@@ -88,7 +81,7 @@
           <span :if={length(e(@task, :context, [])) > 0}>
             <LiveRedirect
               :for={scope <- e(@task, :context, [])}
-              to={"/coordination/task/#{scope.id}"}
+              to={~p"/coordination/task/#{scope.id}"}
               class="text-sm font-medium cursor-pointer text-base-content/70 link link-hover"
             >
               {e(scope, :name, "")} :&nbsp;
@@ -98,7 +91,7 @@
         </div>
         <span :if={@task.output_of} class="flex text-sm text-base-content/70">
           {l("Task in")}
-          <LiveRedirect to={"/coordination/list/" <> @task.output_of.id} class="ml-1 link inline_flex">
+          <LiveRedirect to={~p"/coordination/list/" <> @task.output_of.id} class="ml-1 link inline_flex">
             {rich(@task.output_of.name)}
           </LiveRedirect>
         </span>

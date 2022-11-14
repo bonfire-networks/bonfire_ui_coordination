@@ -47,9 +47,9 @@ defmodule Bonfire.UI.Coordination.TodoLive do
        #  smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
          users: [
-          secondary: [
-            {Bonfire.Tag.Web.WidgetTagsLive, []}
-          ]
+           secondary: [
+             {Bonfire.Tag.Web.WidgetTagsLive, []}
+           ]
          ]
        ]
      )}

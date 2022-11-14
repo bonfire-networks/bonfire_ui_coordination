@@ -15,7 +15,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   declare_nav_link([
-    {l("My tasks"), href: "/coordination/tasks?provider=me", icon: "eva:clipboard-outline"},
+    {l("My tasks"), href: "/coordination/tasks?provider=me", icon: "eva:clipboard-outline"}
     # {l("Watching"), href: "/coordination/tasks/me", icon: "fluent:bookmark-search-20-filled"}
     # {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
   ])
@@ -38,15 +38,15 @@ defmodule Bonfire.UI.Coordination.TasksLive do
        page_title: l("Tasks"),
        page: "tasks",
        selected_tab: nil,
-      #  create_object_type: :task,
-      #  smart_input_prompt: l("Add a task"),
+       #  create_object_type: :task,
+       #  smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
-        users: [
-         secondary: [
-           {Bonfire.Tag.Web.WidgetTagsLive, []}
+         users: [
+           secondary: [
+             {Bonfire.Tag.Web.WidgetTagsLive, []}
+           ]
          ]
-        ]
-      ]
+       ]
      )}
   end
 

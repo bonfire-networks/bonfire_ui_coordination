@@ -1,8 +1,4 @@
-<div
-  :if={current_user(@__context__)}
-  class="flex flex-col pt-2 space-y-2"
->
-
+<div :if={current_user(@__context__)} class="flex flex-col pt-2 space-y-2">
   <div class="w-full mb-4">
     <Bonfire.UI.Coordination.TaskSetStatusLive
       redirect_after="/coordination/task/"
@@ -66,7 +62,7 @@
 
   <Bonfire.UI.Social.Activity.DeleteObjectLive
     object={@intent}
-    open_btn_class={"items-center mt-2 w-full normal-case cursor-pointer btn btn-error btn-xs place-content-center"}
+    open_btn_class="items-center mt-2 w-full normal-case cursor-pointer btn btn-error btn-xs place-content-center"
     creator_id={e(@intent, :provider, :id, nil) || e(@intent, :receiver, :id, nil)}
     object_type_readable={l("intent")}
     redirect_after={"/coordination/list/" <> e(@intent, :output_of, :id, "")}

@@ -87,7 +87,6 @@ defmodule Bonfire.UI.Coordination.FeedLive do
      )}
   end
 
-
   @intent_fields Bonfire.UI.Coordination.ProcessLive.intent_fields()
   # TODO: pagination with intentsPages
   # filter:{
@@ -173,8 +172,6 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   def handle_event("search", attrs, socket) do
     do_filter(attrs, socket)
   end
-
-
 
   def do_handle_params(%{"tab" => tab} = params, _url, socket)
       when tab in [nil, "my", "local", "fediverse", "likes"] do
