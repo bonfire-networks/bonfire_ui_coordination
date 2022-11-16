@@ -9,7 +9,8 @@ defmodule Bonfire.UI.Coordination.Routes do
 
         live("/favourites", LikesLive)
         live("/todo", TodoLive)
-        live("/lists", ProcessesLive)
+        live("/milestones", ProcessesLive)
+        live("/labels", LabelsLive)
         live("/timeline", FeedLive)
         # live("/lists", ProcessesLive, as: ValueFlows.Process)
 

@@ -1,4 +1,4 @@
-<div :if={current_user(@__context__)} class="flex flex-wrap items-center gap-4 pt-4">
+<div :if={current_user(@__context__)} class="max-w-[240px] w-full ">
 
   <!-- <div class="flex items-center gap-4">
   <Icon iconify="fluent:status-24-filled" class="w-5 h-5" />
@@ -10,7 +10,8 @@
     />
   </div> -->
 
-  <div class="flex items-center gap-4">
+  <div class="flex items-center gap-4 mb-3">
+    <Icon iconify="carbon:user-avatar-filled" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l("Assign")}</div>
     <Dynamic.Component
       :if={module_enabled?(Bonfire.UI.ValueFlows.AssignItemLive, @__context__)}
@@ -25,9 +26,9 @@
       class="h-9 flex items-center max-w-[240px] px-2 rounded-md cursor-pointer bg-base-content/5 sm:text-sm"
     />
   </div>
-  <div class="flex items-center gap-4">
-    <Icon solid="LightningBolt" class="w-5 h-5 text-base-content/80" />
-    <div class="sr-only">{l("List")}</div>
+  <div class="flex items-center gap-4 mb-3">
+    <Icon iconify="lucide:milestone" class="w-5 h-5 text-base-content/80" />
+    <div class="sr-only">{l("Milestone")}</div>
     <Dynamic.Component
       :if={module_enabled?(Bonfire.UI.ValueFlows.SelectProcessLive, @__context__)}
       module={Bonfire.UI.ValueFlows.SelectProcessLive}

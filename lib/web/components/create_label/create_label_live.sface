@@ -1,0 +1,51 @@
+<div x-cloak class="relative p-4 bg-base-100">
+  <Form
+    for={e(@__context__, ValueFlows.Planning.Intent, :changeset, nil) ||
+      if module_enabled?(ValueFlows.Planning.Intent),
+        do: ValueFlows.Planning.Intent.validate_changeset(),
+        else: :intent}
+    opts={autocomplete: "off"}
+    submit="ValueFlows.Planning.Intent:create"
+    change="validate"
+  >
+
+    <!-- <HiddenInput :if={@output_of_id} name="output_of_id" value={@output_of_id} /> -->
+    <div class={"flex flex-col items-baseline gap-3", "!items-center !flex-row": e(@flex, false)}>
+      <Field name={:color}>
+        <Label class="block text-sm text-base-content opacity-70 font-regular">{l("Color")}</Label>
+      
+        <div>
+            <input class={"h-8", "w-20": !@flex} type="color" id="color" name="color" :value="color">
+        </div>
+      </Field>
+
+      <Field class={"flex-1 w-full": !@flex} name={:name}>
+        <Label class="block text-sm text-base-content opacity-70 font-regular">
+            {l("Label name")}
+        </Label>
+        <TextInput class="w-full h-8 input input-bordered" />
+      </Field>
+      
+      <Field class="flex-1 w-full" name={:description}>
+        <Label class="block text-sm text-base-content opacity-70 font-regular">{l("Description")}</Label>
+        <TextInput class="w-full h-8 input input-bordered" />
+      </Field>
+    </div>
+
+    
+
+    
+
+    <!-- <div class="mt-2 -mx-4">
+      <Bonfire.UI.Common.InputBoundariesLive
+        create_object_type={:label}
+        to_boundaries={@to_boundaries}
+        open_boundaries={@open_boundaries}
+      />
+    </div> -->
+    
+    <div class="flex items-center w-full mt-2">
+      <button type="submit" class="w-full btn btn-primary">{l("Create")}</button>
+    </div>
+  </Form>
+</div>

@@ -1,4 +1,4 @@
-defmodule Bonfire.UI.Coordination.ProcessesLive do
+defmodule Bonfire.UI.Coordination.LabelsLive do
   use Bonfire.UI.Common.Web, :surface_live_view
   # use Surface.LiveView
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
@@ -16,12 +16,6 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
   alias Bonfire.UI.Me.CreateUserLive
 
   # alias Bonfire.UI.Coordination.ResourceWidget
-
-  declare_nav_link(l("milestones"),
-    page: "milestones",
-    href: "/coordination/milestones",
-    icon: "lucide:milestone"
-  )
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
@@ -42,8 +36,8 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
     {:ok,
      socket
      |> assign(
-       page_title: l("milestones"),
-       page: "milestones",
+       page_title: l("labels"),
+       page: "labels",
        processes: processes,
       #  page_header_aside: [
       #    {Bonfire.UI.Common.SmartInputButtonLive,
@@ -53,8 +47,8 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
       #       icon: "heroicons-solid:pencil-alt"
       #     ]}
       #  ],
-        create_object_type: :process,
-        smart_input_prompt: l("New milestone"),
+        create_object_type: :label,
+        smart_input_prompt: l("New label"),
        sidebar_widgets: [
          users: [
            secondary: [

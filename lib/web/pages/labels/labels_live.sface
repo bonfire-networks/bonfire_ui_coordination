@@ -1,0 +1,59 @@
+<!-- <div class="flex flex-col items-center justify-between gap-2 px-4 border-b md:flex-row border-base-content/10">
+  <div class="flex items-center gap-3 tabs_nav_profile tabs">
+    <LivePatch to="/coordination" class={"flex h-[2.75rem] items-center gap-2 tab text-base-content/70"}>
+      <Icon iconify="lucide:milestone" class="w-4 h-4 text-info" />
+      <span class="text-sm">{l "Open"}</span>
+    </LivePatch>
+    <LivePatch to="/coordination/closed" class={"flex h-[2.75rem] tab items-center gap-2 text-base-content/70"}>
+      <Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-success" />
+      <span class="text-sm">{l "Closed"}</span>
+    </LivePatch>
+  </div>
+</div> -->
+<section class="grid grid-cols-1 divide-y divide-base-content/10">
+  <div 
+    x-data="{edit: false}"
+    class="">
+  <div
+    class="flex items-start justify-between p-3">
+    <div class="flex flex-col gap-1">
+      <span class="badge badge-accent">Label name</span>
+      <div class="text-sm text-base-content/70">label description</div>
+    </div>
+    <div class="flex gap-4">
+      <button @click="edit = !edit" class="text-sm font-medium link text-base-content/80 link-hover">{l "Edit"}</button>
+      <button class="text-sm font-medium link link-hover link-error ">{l "Delete"}</button>
+    </div>
+  </div>
+  <div x-show="edit" x-collapse>
+   <Bonfire.UI.Coordination.CreateLabelLive 
+    flex
+    />
+  </div>
+  </div>
+
+  <div class="flex items-start justify-between p-3">
+    <div class="flex flex-col gap-1">
+      <span class="badge badge-accent">Label name</span>
+      <div class="text-sm text-base-content/70">label description</div>
+    </div>
+    <div class="flex gap-4">
+      <button class="text-sm font-medium link text-base-content/80 link-hover">{l "Edit"}</button>
+      <button class="text-sm font-medium link link-hover link-error ">{l "Delete"}</button>
+    </div>
+  </div>
+
+  <div class="flex items-start justify-between p-3">
+    <div class="flex flex-col gap-1">
+      <span class="badge badge-accent">Label name</span>
+      <div class="text-sm text-base-content/70">label description</div>
+    </div>
+    <div class="flex gap-4">
+      <button class="text-sm font-medium link text-base-content/80 link-hover">{l "Edit"}</button>
+      <button class="text-sm font-medium link link-hover link-error ">{l "Delete"}</button>
+    </div>
+  </div>
+
+  
+
+</section>

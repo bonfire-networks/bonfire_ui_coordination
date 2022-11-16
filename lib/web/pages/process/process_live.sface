@@ -1,6 +1,6 @@
 <main class="">
   <Bonfire.UI.ValueFlows.ProcessHeroLive process={@process} />
-  <section class="mx-3 md:mx-6">
+  <section class="mx-3 mt-3">
     {#if length(e(@process, :intended_outputs, [])) > 0}
       <Bonfire.UI.Social.Activity.IntentTaskLive
         :for={task <- e(@process, :intended_outputs, [])}

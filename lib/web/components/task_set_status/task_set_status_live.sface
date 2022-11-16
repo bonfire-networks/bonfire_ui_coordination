@@ -1,17 +1,21 @@
-<div
-  :if={!@finished}
-  :on-click="ValueFlows.Planning.Intent:status:finished"
-  phx-value-id={@task_id}
-  phx-value-redirect_after={@redirect_after}
-  class="items-center w-full normal-case cursor-pointer btn btn-info btn-xs place-content-center"
->
-  <span>{l("Set as completed")}</span>
+<div :if={!@finished} class="flex items-center gap-2 place-content-center">
+  <div class="flex-1 rounded-full badge-lg badge badge-info">{l("Open")}</div>
+
+  <!-- <button
+    :on-click="ValueFlows.Planning.Intent:status:finished"
+    phx-value-id={@task_id}
+    phx-value-redirect_after={@redirect_after}
+    type="button"
+    class="items-center normal-case cursor-pointer btn-xs border-base-content/40 btn btn-outline place-content-center"
+  >
+    {l("Close")}
+  </button> -->
 </div>
 
 <div :if={@finished} class="flex items-center gap-2 place-content-center">
-  <div class="flex-1 badge-lg badge badge-success">{l("Task completed")}</div>
+  <div class="flex-1 rounded-full badge-lg badge badge-success">{l("Closed")}</div>
 
-  <button
+  <!-- <button
     :on-click="ValueFlows.Planning.Intent:status:unfinished"
     phx-value-id={@task_id}
     phx-value-redirect_after={@redirect_after}
@@ -19,5 +23,5 @@
     class="items-center normal-case cursor-pointer btn-xs border-base-content/40 btn btn-outline place-content-center"
   >
     {l("Re-open")}
-  </button>
+  </button> -->
 </div>

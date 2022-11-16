@@ -1,20 +1,33 @@
-<div class="m-3 rounded shadow md:m-6">
+<div class="">
 
-  <div class="flex flex-col items-center justify-between gap-2 px-4 md:flex-row bg-base-content/10">
-    <div class="flex items-center gap-6 tabs_nav_profile tabs">
+  <div class="flex flex-col items-center justify-between gap-2 px-4 border-b md:flex-row border-base-content/10">
+    <div class="flex items-center gap-3 tabs_nav_profile tabs">
       <LivePatch to="/coordination" class={"flex h-[2.75rem] items-center gap-2 tab text-base-content/70", "tab-active font-semibold !text-base-content/100": @selected_tab != "closed"}>
         <Icon iconify="carbon:software-resource" class="w-4 h-4 text-info" />
-        <span class="text-sm">100 Open</span>
+        <span class="text-sm">{l "Open"}</span>
       </LivePatch>
       <LivePatch to="/coordination/closed" class={"flex h-[2.75rem] tab items-center gap-2 text-base-content/70", "tab-active font-semibold !text-base-content/100": @selected_tab == "closed"}>
         <Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-success" />
-        <span class="text-sm">83 Closed</span>
+        <span class="text-sm">{l "Closed"}</span>
       </LivePatch>
     </div>
-    
+    <div class="flex items-center border divide-x rounded-lg divide-base-content/20 border-base-content/20">
+      <LiveRedirect 
+        to="/coordination/labels" 
+        class="flex items-center flex-1 w-full px-4 py-2 text-sm text-center cursor-pointer hover:bg-base-content/5">
+        <Icon iconify="mdi:label-outline" class="w-4 h-4 mr-2" />
+        <span>{"Labels"}</span>
+      </LiveRedirect>
+      <LiveRedirect 
+        to="/coordination/milestones" 
+        class="flex items-center flex-1 w-full px-4 py-2 text-sm text-center cursor-pointer hover:bg-base-content/5">
+        <Icon iconify="lucide:milestone" class="w-4 h-4 mr-2" />
+        <span>{"Milestones"}</span>
+      </LiveRedirect>
+    </div>
   </div>
 
-    <div class="flex flex-col items-center justify-between gap-2 p-4 md:flex-row bg-base-content/5">
+    <div class="flex flex-col items-center justify-between gap-2 m-3 md:m-6 md:flex-row">
       <Form for={:filter} submit="search" change="filter" method="get">
         <div class="relative max-w-md rounded">
           <input
