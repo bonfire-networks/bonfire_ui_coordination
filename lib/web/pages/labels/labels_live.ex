@@ -39,16 +39,16 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
        page_title: l("labels"),
        page: "labels",
        processes: processes,
-      #  page_header_aside: [
-      #    {Bonfire.UI.Common.SmartInputButtonLive,
-      #     [
-      #       component: Bonfire.UI.ValueFlows.CreateProcessLive,
-      #       smart_input_prompt: l("Add a list"),
-      #       icon: "heroicons-solid:pencil-alt"
-      #     ]}
-      #  ],
-        create_object_type: :label,
-        smart_input_prompt: l("New label"),
+       #  page_header_aside: [
+       #    {Bonfire.UI.Common.SmartInputButtonLive,
+       #     [
+       #       component: Bonfire.UI.ValueFlows.CreateProcessLive,
+       #       smart_input_prompt: l("Add a list"),
+       #       icon: "heroicons-solid:pencil-alt"
+       #     ]}
+       #  ],
+       create_object_type: :label,
+       smart_input_prompt: l("New label"),
        sidebar_widgets: [
          users: [
            secondary: [

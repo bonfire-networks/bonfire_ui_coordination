@@ -3,6 +3,7 @@ defmodule Bonfire.UI.Coordination.TaskPreviewLive do
   alias Surface.Components.LivePatch
 
   prop object, :any, required: true
+  prop is_editable?, :boolean, default: false
 
   # FIXME! update no longer works in stateless
   def update(assigns, socket) do

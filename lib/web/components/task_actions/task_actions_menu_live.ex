@@ -3,4 +3,5 @@ defmodule Bonfire.UI.Coordination.TaskActionsMenuLive do
   alias Surface.Components.LivePatch
 
   prop task, :map, required: true
+  prop is_editable?, :boolean, default: false
 end

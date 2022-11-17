@@ -1,6 +1,7 @@
 <Bonfire.UI.ValueFlows.CreateIntentLive
   output_of_id={if @__context__[:current_view] == Bonfire.UI.Coordination.ProcessLive, do: @context_id}
   in_scope_of={if @__context__[:current_view] == Bonfire.UI.Coordination.TaskLive, do: @context_id}
+  process_prompt={l("Select a milestone...")}
   name_prompt={l("Enter a name for the task")}
   smart_input_opts={@smart_input_opts}
   action="work"

@@ -3,4 +3,5 @@ defmodule Bonfire.UI.Coordination.TaskHeroLive do
 
   prop task, :map
   prop showing_within, :any, default: :task
+  prop is_editable?, :boolean, default: false
 end

@@ -1,5 +1,4 @@
-<div :if={current_user(@__context__)} class="max-w-[240px] w-full ">
-
+<div :if={current_user(@__context__)} class="max-w-[240px] w-full">
   <!-- <div class="flex items-center gap-4">
   <Icon iconify="fluent:status-24-filled" class="w-5 h-5" />
   <div class="sr-only">{l "Status"}</div>
@@ -17,7 +16,8 @@
       :if={module_enabled?(Bonfire.UI.ValueFlows.AssignItemLive, @__context__)}
       module={Bonfire.UI.ValueFlows.AssignItemLive}
       field_name={:provider}
-      is_editable
+      label={if @is_editable?, do: l("Assign to... "), else: l("Not assigned")}
+      is_editable={@is_editable?}
       agent={e(@intent, :provider, nil)}
       context_id={ulid(@intent)}
       pick_event="ValueFlows.Planning.Intent:assign:select"
@@ -33,8 +33,9 @@
       :if={module_enabled?(Bonfire.UI.ValueFlows.SelectProcessLive, @__context__)}
       module={Bonfire.UI.ValueFlows.SelectProcessLive}
       field_name={:output_of_id}
+      label={if @is_editable?, do: l("Select a milestone..."), else: l("No milestone set")}
       class="h-9 flex items-center max-w-[240px] px-2 rounded-md cursor-pointer bg-base-content/5 sm:text-sm"
-      is_editable
+      is_editable={@is_editable?}
       selected_options={if e(@intent, :output_of_id, nil),
         do: [{e(@intent, :output_of, :name, "Unknown"), e(@intent, :output_of_id, nil)}]}
       context_id={ulid(@intent)}
@@ -50,7 +51,7 @@
       :if={module_enabled?(Bonfire.UI.ValueFlows.DueItemLive, @__context__)}
       module={Bonfire.UI.ValueFlows.DueItemLive}
       date={e(@intent, :due, nil)}
-      is_editable
+      is_editable={@is_editable?}
     />
   </div>
 </div>

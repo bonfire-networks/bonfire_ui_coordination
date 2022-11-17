@@ -3,6 +3,8 @@ defmodule Bonfire.UI.Coordination.Integration do
 
   def mailer, do: Bonfire.Common.Config.get!(:mailer_module)
 
-  # TODO: put in config
-  def remote_tag_id, do: "https://bonjour.bonfire.cafe/pub/actors/Task"
+  def remote_tag_prefix, do: nil
+
+  # def remote_tag_prefix, do: "https://bonjour.bonfire.cafe/pub/actors/" # TODO: put in config
+  def remote_tag_id, do: "#{remote_tag_prefix}Task"
 end

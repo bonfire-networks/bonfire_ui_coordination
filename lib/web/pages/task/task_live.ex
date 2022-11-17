@@ -29,13 +29,13 @@ defmodule Bonfire.UI.Coordination.TaskLive do
 
   defp mounted(%{"id" => id} = params, _session, socket) do
     intent = intent(%{id: id}, socket)
-
-    # debug(intent)
+    debug(intent, "theintent")
 
     if !intent || intent == %{intent: nil} do
       {:error, :not_found}
     else
       id = ulid(intent)
+      current_user = current_user(socket)
 
       {:ok,
        socket
@@ -63,12 +63,14 @@ defmodule Bonfire.UI.Coordination.TaskLive do
            ]
          ],
          intent: intent,
+         is_editable?:
+           not is_nil(current_user) and Bonfire.Boundaries.can?(current_user, :edit, intent),
          reply_to_id: intent
 
          # resource: resource,
        )
        |> assign_global(
-         my_processes: Bonfire.UI.ValueFlows.ProcessesListLive.my_processes(current_user(socket))
+         my_processes: Bonfire.UI.ValueFlows.ProcessesListLive.my_processes(current_user)
        )}
     end
   end
@@ -105,6 +107,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
           id
           name
         }
+        tags
       }
     }
   """

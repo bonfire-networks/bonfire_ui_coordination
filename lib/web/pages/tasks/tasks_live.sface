@@ -1,94 +1,106 @@
 <div class="">
-
   <div class="flex flex-col items-center justify-between gap-2 px-4 border-b md:flex-row border-base-content/10">
     <div class="flex items-center gap-3 tabs_nav_profile tabs">
-      <LivePatch to="/coordination" class={"flex h-[2.75rem] items-center gap-2 tab text-base-content/70", "tab-active font-semibold !text-base-content/100": @selected_tab != "closed"}>
+      <LivePatch
+        to="/coordination"
+        class={
+          "flex h-[2.75rem] items-center gap-2 tab text-base-content/70",
+          "tab-active font-semibold !text-base-content/100": @selected_tab != "closed"
+        }
+      >
         <Icon iconify="carbon:software-resource" class="w-4 h-4 text-info" />
-        <span class="text-sm">{l "Open"}</span>
+        <span class="text-sm">{l("Open")}</span>
       </LivePatch>
-      <LivePatch to="/coordination/closed" class={"flex h-[2.75rem] tab items-center gap-2 text-base-content/70", "tab-active font-semibold !text-base-content/100": @selected_tab == "closed"}>
+      <LivePatch
+        to="/coordination/closed"
+        class={
+          "flex h-[2.75rem] tab items-center gap-2 text-base-content/70",
+          "tab-active font-semibold !text-base-content/100": @selected_tab == "closed"
+        }
+      >
         <Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-success" />
-        <span class="text-sm">{l "Closed"}</span>
+        <span class="text-sm">{l("Closed")}</span>
       </LivePatch>
     </div>
     <div class="flex items-center border divide-x rounded-lg divide-base-content/20 border-base-content/20">
-      <LiveRedirect 
-        to="/coordination/labels" 
-        class="flex items-center flex-1 w-full px-4 py-2 text-sm text-center cursor-pointer hover:bg-base-content/5">
+      <LiveRedirect
+        to="/labels"
+        class="flex items-center flex-1 w-full px-4 py-2 text-sm text-center cursor-pointer hover:bg-base-content/5"
+      >
         <Icon iconify="mdi:label-outline" class="w-4 h-4 mr-2" />
         <span>{"Labels"}</span>
       </LiveRedirect>
-      <LiveRedirect 
-        to="/coordination/milestones" 
-        class="flex items-center flex-1 w-full px-4 py-2 text-sm text-center cursor-pointer hover:bg-base-content/5">
+      <LiveRedirect
+        to="/coordination/milestones"
+        class="flex items-center flex-1 w-full px-4 py-2 text-sm text-center cursor-pointer hover:bg-base-content/5"
+      >
         <Icon iconify="lucide:milestone" class="w-4 h-4 mr-2" />
         <span>{"Milestones"}</span>
       </LiveRedirect>
     </div>
   </div>
 
-    <div class="flex flex-col items-center justify-between gap-2 m-3 md:m-6 md:flex-row">
-      <Form for={:filter} submit="search" change="filter" method="get">
-        <div class="relative max-w-md rounded">
-          <input
-            type="search"
-            name="search_string"
-            autocomplete="off"
-            placeholder={l("Search tasks...")}
-            phx-debounce="300"
-            class="max-w-md pr-8 text-sm h-9 input bg-base-content/5 text-base-content placeholder-base-content placeholder-opacity-80"
-          />
-          <button
-            type="submit"
-            class="absolute top-[2px] right-[8px] z-30 flex items-center pl-1  cursor-pointer btn  btn-sm w-[32px] h-[32px] btn-ghost btn-circle"
-          >
-            <Icon solid="Search" class="w-5 h-5 text-base-content text-opacity-80" />
-          </button>
-        </div>
-      </Form>
-
-      <div class="flex items-center gap-6">
-        <div class="text-sm dropdown dropdown-end text-base-content/80">
-          <button tabindex="0" class="flex items-center gap-2 capitalize btn btn-ghost btn-sm">
-            <span>{l "Assignee"}</span>
-            <Icon iconify="pepicons:triangle-down-filled" class="w-3 h-3 text-base-content/70" />
-          </button>
-          <ul
-            tabindex="0"
-            class="!block w-60 z-[910] relative shadow menu menu-compact dropdown-content bg-neutral rounded dropdown_actions"
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="more-menu"
-          >
-            <Bonfire.UI.ValueFlows.AssignItemLive
-              field_name={:provider}
-              is_editable
-              agent={"provider"}
-              event_target="body"
-              class="flex items-center w-full px-2 rounded-md cursor-pointer h-9 bg-base-content/5 sm:text-sm"
-              pick_event="filter"
-            />
-          </ul>
-        </div>
-        <div class="text-sm dropdown dropdown-end text-base-content/80">
-          <button tabindex="0" class="flex items-center gap-2 capitalize btn btn-ghost btn-sm">
-            <span>{l "Sort"}</span>
-            <Icon iconify="pepicons:triangle-down-filled" class="w-3 h-3 text-base-content/70" />
-          </button>
-          <ul
-            tabindex="0"
-            class="!block w-60 z-[910] relative shadow menu menu-compact dropdown-content bg-neutral rounded dropdown_actions"
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="more-menu"
-          >
-            <li><LivePatch to="#">{l "Newest"}</LivePatch></li>
-            <li><LivePatch to="#">{l "Oldest"}</LivePatch></li>
-          </ul>
-        </div>
+  <div class="flex flex-col items-center justify-between gap-2 m-3 md:m-6 md:flex-row">
+    <Form for={:filter} submit="search" change="filter" method="get">
+      <div class="relative max-w-md rounded">
+        <input
+          type="search"
+          name="search_string"
+          autocomplete="off"
+          placeholder={l("Search tasks...")}
+          phx-debounce="300"
+          class="max-w-md pr-8 text-sm h-9 input bg-base-content/5 text-base-content placeholder-base-content placeholder-opacity-80"
+        />
+        <button
+          type="submit"
+          class="absolute top-[2px] right-[8px] z-30 flex items-center pl-1  cursor-pointer btn  btn-sm w-[32px] h-[32px] btn-ghost btn-circle"
+        >
+          <Icon solid="Search" class="w-5 h-5 text-base-content text-opacity-80" />
+        </button>
       </div>
+    </Form>
+
+    <div class="flex items-center gap-6">
+      <div class="text-sm dropdown dropdown-end text-base-content/80">
+        <button tabindex="0" class="flex items-center gap-2 capitalize btn btn-ghost btn-sm">
+          <span>{l("Assignee")}</span>
+          <Icon iconify="pepicons:triangle-down-filled" class="w-3 h-3 text-base-content/70" />
+        </button>
+        <ul
+          tabindex="0"
+          class="!block w-60 z-[910] relative shadow menu menu-compact dropdown-content bg-neutral rounded dropdown_actions"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="more-menu"
+        >
+          <Bonfire.UI.ValueFlows.AssignItemLive
+            field_name={:provider}
+            is_editable
+            agent="provider"
+            event_target="body"
+            class="flex items-center w-full px-2 rounded-md cursor-pointer h-9 bg-base-content/5 sm:text-sm"
+            pick_event="filter"
+          />
+        </ul>
+      </div>
+      <div class="text-sm dropdown dropdown-end text-base-content/80">
+        <button tabindex="0" class="flex items-center gap-2 capitalize btn btn-ghost btn-sm">
+          <span>{l("Sort")}</span>
+          <Icon iconify="pepicons:triangle-down-filled" class="w-3 h-3 text-base-content/70" />
+        </button>
+        <ul
+          tabindex="0"
+          class="!block w-60 z-[910] relative shadow menu menu-compact dropdown-content bg-neutral rounded dropdown_actions"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="more-menu"
+        >
+          <li><LivePatch to="#">{l("Newest")}</LivePatch></li>
+          <li><LivePatch to="#">{l("Oldest")}</LivePatch></li>
+        </ul>
+      </div>
+    </div>
   </div>
-  
 </div>
 <section class="m-3 md:m-6">
   <ul class="space-y-3">

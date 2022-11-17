@@ -11,35 +11,19 @@
   </div>
 </div> -->
 <section class="grid grid-cols-1 divide-y divide-base-content/10">
-  <div 
-    x-data="{edit: false}"
-    class="">
-  <div
-    class="flex items-start justify-between p-3">
-    <div class="flex flex-col gap-1">
-      <span class="badge badge-accent">Label name</span>
-      <div class="text-sm text-base-content/70">label description</div>
+  <div x-data="{edit: false}" class="">
+    <div class="flex items-start justify-between p-3">
+      <div class="flex flex-col gap-1">
+        <span class="badge badge-accent">Label name</span>
+        <div class="text-sm text-base-content/70">label description</div>
+      </div>
+      <div class="flex gap-4">
+        <button @click="edit = !edit" class="text-sm font-medium link text-base-content/80 link-hover">{l("Edit")}</button>
+        <button class="text-sm font-medium link link-hover link-error">{l("Delete")}</button>
+      </div>
     </div>
-    <div class="flex gap-4">
-      <button @click="edit = !edit" class="text-sm font-medium link text-base-content/80 link-hover">{l "Edit"}</button>
-      <button class="text-sm font-medium link link-hover link-error ">{l "Delete"}</button>
-    </div>
-  </div>
-  <div x-show="edit" x-collapse>
-   <Bonfire.UI.Coordination.CreateLabelLive 
-    flex
-    />
-  </div>
-  </div>
-
-  <div class="flex items-start justify-between p-3">
-    <div class="flex flex-col gap-1">
-      <span class="badge badge-accent">Label name</span>
-      <div class="text-sm text-base-content/70">label description</div>
-    </div>
-    <div class="flex gap-4">
-      <button class="text-sm font-medium link text-base-content/80 link-hover">{l "Edit"}</button>
-      <button class="text-sm font-medium link link-hover link-error ">{l "Delete"}</button>
+    <div x-show="edit" x-collapse>
+      <Bonfire.UI.Coordination.CreateLabelLive flex />
     </div>
   </div>
 
@@ -49,11 +33,19 @@
       <div class="text-sm text-base-content/70">label description</div>
     </div>
     <div class="flex gap-4">
-      <button class="text-sm font-medium link text-base-content/80 link-hover">{l "Edit"}</button>
-      <button class="text-sm font-medium link link-hover link-error ">{l "Delete"}</button>
+      <button class="text-sm font-medium link text-base-content/80 link-hover">{l("Edit")}</button>
+      <button class="text-sm font-medium link link-hover link-error">{l("Delete")}</button>
     </div>
   </div>
 
-  
-
+  <div class="flex items-start justify-between p-3">
+    <div class="flex flex-col gap-1">
+      <span class="badge badge-accent">Label name</span>
+      <div class="text-sm text-base-content/70">label description</div>
+    </div>
+    <div class="flex gap-4">
+      <button class="text-sm font-medium link text-base-content/80 link-hover">{l("Edit")}</button>
+      <button class="text-sm font-medium link link-hover link-error">{l("Delete")}</button>
+    </div>
+  </div>
 </section>

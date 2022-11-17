@@ -17,7 +17,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
 
   # alias Bonfire.UI.Coordination.ResourceWidget
 
-  declare_nav_link(l("milestones"),
+  declare_nav_link(l("Milestones"),
     page: "milestones",
     href: "/coordination/milestones",
     icon: "lucide:milestone"
@@ -45,16 +45,16 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
        page_title: l("milestones"),
        page: "milestones",
        processes: processes,
-      #  page_header_aside: [
-      #    {Bonfire.UI.Common.SmartInputButtonLive,
-      #     [
-      #       component: Bonfire.UI.ValueFlows.CreateProcessLive,
-      #       smart_input_prompt: l("Add a list"),
-      #       icon: "heroicons-solid:pencil-alt"
-      #     ]}
-      #  ],
-        create_object_type: :process,
-        smart_input_prompt: l("New milestone"),
+       #  page_header_aside: [
+       #    {Bonfire.UI.Common.SmartInputButtonLive,
+       #     [
+       #       component: Bonfire.UI.ValueFlows.CreateProcessLive,
+       #       smart_input_prompt: l("Add a list"),
+       #       icon: "heroicons-solid:pencil-alt"
+       #     ]}
+       #  ],
+       create_object_type: :process,
+       smart_input_prompt: l("New milestone"),
        sidebar_widgets: [
          users: [
            secondary: [

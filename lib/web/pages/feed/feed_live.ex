@@ -25,11 +25,9 @@ defmodule Bonfire.UI.Coordination.FeedLive do
     ])
   end
 
-
- 
   defp mounted(params, _session, socket) do
     object_types = [ValueFlows.Process, ValueFlows.Planning.Intent, ValueFlows.Proposal]
-    
+
     {:ok,
      socket
      |> assign(
@@ -64,7 +62,6 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        ]
      )}
   end
-
 
   def do_handle_params(%{"tab" => tab} = params, _url, socket)
       when tab in [nil, "my", "local", "fediverse", "likes"] do

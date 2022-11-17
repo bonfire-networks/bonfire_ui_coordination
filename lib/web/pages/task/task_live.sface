@@ -1,4 +1,8 @@
-<Bonfire.UI.Coordination.TaskHeroLive task={@intent} showing_within={@showing_within} />
+<Bonfire.UI.Coordination.TaskHeroLive
+  task={@intent}
+  is_editable?={@is_editable?}
+  showing_within={@showing_within}
+/>
 <!-- <div class="flex flex-col px-2">
   <Bonfire.UI.Coordination.TaskActionsLive intent={@intent} />
   <Bonfire.UI.ValueFlows.EditDescriptionLive
@@ -7,11 +11,10 @@
   />
 </div> -->
 <div class="mx-3">
-
   <div class="flex items-center justify-between px-4 pt-4">
     <div class="flex items-center gap-6">
       <div class="flex items-center gap-2">
-        <span class="text-sm font-semibold">{l "Activities"}</span>
+        <span class="text-sm font-semibold">{l("Activities")}</span>
       </div>
     </div>
   </div>
