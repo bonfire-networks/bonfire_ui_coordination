@@ -1,28 +1,17 @@
 defmodule Bonfire.UI.Coordination.LabelsLive do
   use Bonfire.UI.Common.Web, :surface_live_view
-  # use Surface.LiveView
-  use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
-  alias Bonfire.UI.Social.HashtagsLive
-  alias Bonfire.UI.Social.ParticipantsLive
-
-  alias Bonfire.UI.ValueFlows.IntentCreateActivityLive
-  alias Bonfire.UI.ValueFlows.CreateMilestoneLive
-
-  alias Bonfire.UI.ValueFlows.FiltersLive
+  alias Bonfire.Classify.Web.CategoryLive.SubcategoriesLive
+  alias Bonfire.Classify.Web.CommunityLive.CommunityCollectionsLive
+  alias Bonfire.Classify.Web.CollectionLive.CollectionResourcesLive
 
   alias Bonfire.UI.Me.LivePlugs
-  alias Bonfire.Me.Users
-  alias Bonfire.UI.Me.CreateUserLive
-
-  # alias Bonfire.UI.Coordination.ResourceWidget
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
-      # LivePlugs.UserRequired,
-      # LivePlugs.LoadCurrentAccountUsers,
+      # LivePlugs.LoadCurrentUserCircles,
       Bonfire.UI.Common.LivePlugs.StaticChanged,
       Bonfire.UI.Common.LivePlugs.Csrf,
       Bonfire.UI.Common.LivePlugs.Locale,
@@ -30,27 +19,74 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
     ])
   end
 
+  def label_id, do: System.get_env("LABEL_CATEGORY", "7CATEG0RYTHATC0NTA1N1ABE1S")
+
   defp mounted(params, _session, socket) do
-    processes = processes(socket)
+    current_user = current_user(socket)
+
+    label_category = label_id()
+
+    id =
+      if !is_nil(params["id"]) and params["id"] != "" do
+        params["id"]
+      else
+        if !is_nil(params["username"]) and params["username"] != "" do
+          params["username"]
+        else
+          label_category
+        end
+      end
+
+    {:ok, category} =
+      with {:error, :not_found} <-
+             Bonfire.Classify.Categories.get(id, [:default_incl_deleted]) do
+        Bonfire.Classify.Categories.create(current_user, %{
+          id: label_category,
+          name: "Labels",
+          without_character: true
+        })
+      end
+
+    # TODO: query children with boundaries
+    {:ok, subcategories} =
+      Bonfire.Classify.GraphQL.CategoryResolver.category_children(
+        %{id: ulid!(category)},
+        %{limit: 15},
+        %{context: %{current_user: current_user}}
+      )
+      |> debug("subcategories")
+
+    name = e(category, :profile, :name, l("Untitled topic"))
+    object_boundary = Bonfire.Boundaries.Controlleds.get_preset_on_object(category)
 
     {:ok,
-     socket
-     |> assign(
-       page_title: l("labels"),
+     assign(
+       socket,
        page: "labels",
-       processes: processes,
-       #  page_header_aside: [
-       #    {Bonfire.UI.Common.SmartInputButtonLive,
-       #     [
-       #       component: Bonfire.UI.ValueFlows.CreateProcessLive,
-       #       smart_input_prompt: l("Add a list"),
-       #       icon: "heroicons-solid:pencil-alt"
-       #     ]}
-       #  ],
+       object_type: nil,
+       feed: nil,
+       tab_id: nil,
        create_object_type: :label,
        smart_input_prompt: l("New label"),
+       category: category,
+       canonical_url: canonical_url(category),
+       name: name,
+       page_title: name,
+       interaction_type: l("follow"),
+       subcategories: subcategories.edges,
+       #  current_context: category,
+       #  context_id: ulid(category),
+       #  reply_to_id: category,
+       object_boundary: object_boundary,
+       #  create_object_type: :category,
+       #  smart_input_prompt: l("Create a sub-topic"),
        sidebar_widgets: [
          users: [
+           secondary: [
+             {Bonfire.Tag.Web.WidgetTagsLive, []}
+           ]
+         ],
+         guests: [
            secondary: [
              {Bonfire.Tag.Web.WidgetTagsLive, []}
            ]
@@ -59,28 +95,58 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
      )}
   end
 
-  @graphql """
-  {
-    processes {
-      __typename
-      id
-      name
-      note
-      has_end
-      intended_outputs {
-        id
-        finished
-      }
-    }
-  }
-  """
-  def processes(params \\ %{}, socket), do: liveql(socket, :processes, params)
+  def tab(selected_tab) do
+    case maybe_to_atom(selected_tab) do
+      tab when is_atom(tab) -> tab
+      _ -> :timeline
+    end
 
-  defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
+    # |> debug
+  end
+
+  def do_handle_params(%{"tab" => tab, "tab_id" => tab_id}, _url, socket) do
+    # debug(id)
+    {:noreply,
+     assign(socket,
+       selected_tab: tab,
+       tab_id: tab_id
+     )}
+  end
+
+  def do_handle_params(%{"tab" => tab}, _url, socket) do
+    {:noreply,
+     assign(socket,
+       selected_tab: tab
+     )}
+
+    # nothing defined
+  end
+
+  def do_handle_params(params, _url, socket) do
+    # default tab
+    do_handle_params(
+      Map.merge(params || %{}, %{"tab" => "timeline"}),
+      nil,
+      socket
+    )
+  end
+
+  def handle_params(params, uri, socket) do
+    # poor man's hook I guess
+    with {_, socket} <-
+           Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
+      undead_params(socket, fn ->
+        do_handle_params(params, uri, socket)
+      end)
+    end
+  end
 
   def handle_event(action, attrs, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
-
-  def handle_info(info, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_event(
+        action,
+        attrs,
+        socket,
+        __MODULE__
+      )
 end

@@ -24,7 +24,7 @@
     </div>
     <div class="flex items-center border divide-x rounded-lg divide-base-content/20 border-base-content/20">
       <LiveRedirect
-        to="/labels"
+        to="/coordination/labels"
         class="flex items-center flex-1 w-full px-4 py-2 text-sm text-center cursor-pointer hover:bg-base-content/5"
       >
         <Icon iconify="mdi:label-outline" class="w-4 h-4 mr-2" />
