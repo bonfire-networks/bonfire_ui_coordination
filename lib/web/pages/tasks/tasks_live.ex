@@ -20,7 +20,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
       # Bonfire.UI.Coordination.TodoLive,
       Bonfire.UI.Coordination.TasksLive,
       Bonfire.UI.Coordination.FeedLive,
-      Bonfire.UI.Coordination.LikesLive,
+      # Bonfire.UI.Coordination.LikesLive,
       Bonfire.UI.Coordination.ProcessesLive
       # {Bonfire.UI.ValueFlows.ProcessesListLive, process_url: "/coordination/list"}
     ]

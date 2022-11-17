@@ -1,5 +1,5 @@
 <div class="flex flex-col items-center justify-between gap-2 px-4 border-b md:flex-row border-base-content/10">
-  <div class="flex items-center gap-3 tabs_nav_profile tabs">
+  <!-- <div class="flex items-center gap-3 tabs_nav_profile tabs">
     <LivePatch
       to="/coordination"
       class="flex h-[2.75rem] items-center gap-2 tab text-base-content/70"
@@ -14,7 +14,7 @@
       <Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-success" />
       <span class="text-sm">{l("Closed")}</span>
     </LivePatch>
-  </div>
+  </div> -->
 </div>
 <section class="grid grid-cols-1 gap-3 divide-y divide-base-content/10">
   <Bonfire.UI.Social.Activity.ProcessListLive
