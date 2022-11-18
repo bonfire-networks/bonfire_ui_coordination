@@ -39,6 +39,10 @@ defmodule Bonfire.UI.Coordination.TaskLive do
 
       {:ok,
        socket
+       |> assign_global(
+         category_link_prefix: "/coordination/tasks?tag_ids[]=",
+         my_processes: Bonfire.UI.ValueFlows.ProcessesListLive.my_processes(current_user)
+       )
        |> assign(
          page_title: e(intent, :name, nil) || l("Task"),
          page: "task",
@@ -68,9 +72,6 @@ defmodule Bonfire.UI.Coordination.TaskLive do
          reply_to_id: intent
 
          # resource: resource,
-       )
-       |> assign_global(
-         my_processes: Bonfire.UI.ValueFlows.ProcessesListLive.my_processes(current_user)
        )}
     end
   end

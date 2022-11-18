@@ -15,6 +15,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   declare_extension("Coordination",
+    href: ~p"/coordination/tasks/me",
     icon: "noto:high-voltage",
     default_nav: [
       # Bonfire.UI.Coordination.TodoLive,
@@ -26,13 +27,14 @@ defmodule Bonfire.UI.Coordination.TasksLive do
     ]
   )
 
-  declare_nav_link(l("Tasks"), page: "tasks", icon: "carbon:home")
+  # declare_nav_link(l("Tasks"), page: "tasks", icon: "carbon:home")
 
-  # declare_nav_link([
-  #   {l("My tasks"), href: "/coordination/tasks?provider=me", icon: "eva:clipboard-outline"}
-  #   # {l("Watching"), href: "/coordination/tasks/me", icon: "fluent:bookmark-search-20-filled"}
-  #   # {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
-  # ])
+  declare_nav_link([
+    {l("Tasks"), href: ~p"/coordination/tasks/me", icon: "carbon:home"},
+    {l("To Do"),
+     href: ~p"/coordination/tasks?provider=me&status=open", icon: "eva:clipboard-outline"},
+    {l("Discover tasks"), icon: "heroicons-solid:lightning-bolt"}
+  ])
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
@@ -48,6 +50,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   defp mounted(_params, _session, socket) do
     {:ok,
      socket
+     |> assign_global(category_link_prefix: "/coordination/tasks?tag_ids[]=")
      |> assign(
        page_title: l("Tasks"),
        page: "tasks",
@@ -60,7 +63,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
        #      icon: "heroicons-solid:pencil-alt"
        #    ]}
        # ],
-
+       filters: [],
        create_object_type: :task,
        smart_input_prompt: l("Add a task"),
        sidebar_widgets: [
@@ -106,14 +109,11 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   """
   def intents(params \\ %{}, socket), do: liveql(socket, :intents, params)
 
-  defp merge_filters(params, extra) do
-    Map.merge(filter_filters(params), extra)
-    |> debug()
-  end
-
   def do_handle_params(%{"tab" => "me" = tab} = params, _url, socket) do
+    filters = merge_filters(params, %{"action" => "work", "agent" => "me"})
+
     intents =
-      %{filters: merge_filters(params, %{"action" => "work", "agent" => "me"})}
+      %{filters: filters}
       # |> debug()
       |> intents(socket)
 
@@ -122,23 +122,26 @@ defmodule Bonfire.UI.Coordination.TasksLive do
     {:noreply,
      socket
      |> assign(
-       page_title: l("Watched Tasks"),
+       page_title: l("Tasks relevant to me"),
        page: "tasks",
        selected_tab: tab,
        intents: intents,
-       sidebar_widgets: [
-         users: [
-           secondary: [
-             {Bonfire.UI.Coordination.TasksFilterLive, filters: params}
-           ]
-         ]
-       ]
+       filters: filters
+       #  sidebar_widgets: [
+       #    users: [
+       #      secondary: [
+       #        {Bonfire.UI.Coordination.TasksFilterLive, filters: params}
+       #      ]
+       #    ]
+       #  ]
      )}
   end
 
   def do_handle_params(%{"tab" => "closed" = tab} = params, _url, socket) do
+    filters = merge_filters(params, %{"action" => "work", "finished" => true})
+
     intents =
-      %{filters: merge_filters(params, %{"action" => "work", "finished" => true})}
+      %{filters: filters}
       # |> debug()
       |> intents(socket)
 
@@ -147,16 +150,19 @@ defmodule Bonfire.UI.Coordination.TasksLive do
     {:noreply,
      socket
      |> assign(
-       page_title: l("closed Tasks"),
+       page_title: l("Closed Tasks"),
        page: "tasks",
        selected_tab: tab,
-       intents: intents
+       intents: intents,
+       filters: filters
      )}
   end
 
   def do_handle_params(params, _url, socket) do
+    filters = merge_filters(params, %{"action" => "work", "finished" => false})
+
     intents =
-      %{filters: merge_filters(params, %{"action" => "work", "finished" => false})}
+      %{filters: filters}
       # |> debug()
       |> intents(socket)
 
@@ -168,8 +174,15 @@ defmodule Bonfire.UI.Coordination.TasksLive do
        page_title: l("Open Tasks"),
        page: "tasks",
        selected_tab: nil,
-       intents: intents
+       intents: intents,
+       filters: filters
      )}
+  end
+
+  defp merge_filters(params, extra) do
+    filter_filters(params)
+    |> Map.merge(extra)
+    |> debug()
   end
 
   defp filter_filters(params) do

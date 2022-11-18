@@ -3,7 +3,7 @@
   <Icon iconify="fluent:status-24-filled" class="w-5 h-5" />
   <div class="sr-only">{l "Status"}</div>
   <Bonfire.UI.Coordination.TaskSetStatusLive
-      redirect_after="/coordination/task/"
+      redirect_after={~p"/coordination/task/"}
       task_id={@intent.id}
       finished={e(@intent, :finished, nil)}
     />

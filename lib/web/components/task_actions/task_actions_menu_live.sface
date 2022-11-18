@@ -51,7 +51,7 @@
         object={@task}
         creator_id={e(@task, :provider, :id, nil) || e(@task, :receiver, :id, nil)}
         object_type_readable={l("task")}
-        redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
+        redirect_after={~p"/coordination/list/" <> e(@task, :output_of, :id, "")}
       />
     </li>
   </ul>

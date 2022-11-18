@@ -28,7 +28,7 @@
                 :if={!@task.finished}
                 :on-click="ValueFlows.Planning.Intent:status:finished"
                 phx-value-id={@task.id}
-                phx-value-redirect_after="/coordination/task/"
+                phx-value-redirect_after={~p"/coordination/task/"}
                 type="button"
                 class="items-center m-2 normal-case cursor-pointer btn-sm btn-success btn place-content-center"
               >
@@ -39,7 +39,7 @@
                 :if={@task.finished}
                 :on-click="ValueFlows.Planning.Intent:status:unfinished"
                 phx-value-id={@task.id}
-                phx-value-redirect_after="/coordination/task/"
+                phx-value-redirect_after={~p"/coordination/task/"}
                 type="button"
                 class="items-center m-2 normal-case cursor-pointer btn-sm btn place-content-center"
               >
@@ -51,7 +51,7 @@
                 object={@task}
                 creator_id={e(@task, :provider, :id, nil) || e(@task, :receiver, :id, nil)}
                 object_type_readable={l("task")}
-                redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
+                redirect_after={~p"/coordination/list/" <> e(@task, :output_of, :id, "")}
               />
             </li>
           </ul>
@@ -61,7 +61,7 @@
 
     <div class="flex items-center gap-2 mt-2">
       <Bonfire.UI.Coordination.TaskSetStatusLive
-        redirect_after="/coordination/task/"
+        redirect_after={~p"/coordination/task/"}
         task_id={@task.id}
         finished={@task.finished}
       />
@@ -100,9 +100,10 @@
         <div class="my-4">
           <div class="mb-2 text-xs font-semibold text-base-content/70">{l("Labels & Topics")}</div>
           <div class="flex items-center gap-3">
+            <!-- to={"/+#{e(tag, :character, :username, nil) || tag.id}"} -->
             <LinkLive
               :for={tag <- e(@task, :tags, [])}
-              to={"/+#{e(tag, :character, :username, nil) || tag.id}"}
+              to={e(@__context__, :category_link_prefix, ~p"/coordination/tasks?tag_ids[]=") <> tag.id}
               class="badge badge-info"
             >{e(tag, :profile, :name, nil) || e(tag, :character, :username, nil)}</LinkLive>
             <Bonfire.Classify.Web.TagModalLive :if={@is_editable?} object={@task}>
@@ -148,7 +149,7 @@
     </div>
     <div class="flex items-center gap-2">
       <Bonfire.UI.Coordination.TaskSetStatusLive
-        redirect_after="/coordination/task/"
+        redirect_after={~p"/coordination/task/"}
         task_id={@task.id}
         finished={@task.finished}
       />
@@ -170,7 +171,7 @@
               object={@task}
               creator_id={e(@task, :provider, :id, nil) || e(@task, :receiver, :id, nil)}
               object_type_readable={l("task")}
-              redirect_after={"/coordination/list/" <> e(@task, :output_of, :id, "")}
+              redirect_after={~p"/coordination/list/" <> e(@task, :output_of, :id, "")}
             />
           </li>
         </ul>

@@ -2,7 +2,7 @@
   <div class="w-full h-full p-4">
     <div :if={current_user(@__context__)} class="flex flex-col space-y-4">
       <Bonfire.UI.Coordination.TaskSetStatusLive
-        redirect_after="/coordination/task/"
+        redirect_after={~p"/coordination/task/"}
         task_id={@intent.id}
         finished={e(@intent, :finished, nil)}
       />

@@ -10,26 +10,41 @@
     </LivePatch>
   </div>
 </div> -->
-<section 
+<section
   :if={Enum.count(@subcategories) > 0}
-  class="grid grid-cols-1 divide-y divide-base-content/10">
-
-  <div 
-    :for={category <- @subcategories}
-    x-data="{edit: false}" class="">
+  class="grid grid-cols-1 divide-y divide-base-content/10"
+>
+  <div :for={category <- @subcategories} x-data="{edit: false}" class="">
     <div class="flex items-start justify-between p-3">
       <div class="flex flex-col gap-1">
-        <span class="badge badge-accent">{e(category, :profile, :name, l("Untitled topic"))}</span>
+        <LinkLive
+          to={e(@__context__, :category_link_prefix, ~p"/coordination/tasks?tag_ids[]=") <> category.id}
+          class="badge badge-info"
+        >
+          {e(category, :profile, :name, l("Untitled topic"))}
+        </LinkLive>
         <div class="text-sm text-base-content/70">{e(category, :profile, :summary, "")}</div>
       </div>
       <div class="flex gap-4">
-        <button @click="edit = !edit" class="text-sm font-medium link text-base-content/80 link-hover">{l("Edit")}</button>
-        <button class="text-sm font-medium link link-hover link-error">{l("Delete")}</button>
+        <Bonfire.UI.Common.LikeActionLive
+          id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, ulid(category))}
+          object={category}
+        />
+
+        <!-- <button @click="edit = !edit" class="text-sm font-medium link text-base-content/80 link-hover">{l("Edit")}</button> -->
+        <Bonfire.UI.Social.Activity.DeleteObjectLive
+          object={category}
+          creator_id={e(category, :created, :creator, nil) || e(category, :created, :creator_id, nil)}
+          object_type_readable={l("label")}
+          redirect_after={~p"/coordination/labels"}
+          open_btn_class="text-sm font-medium link link-hover link-error"
+          hide_text
+        />
+        <!-- <button class="text-sm font-medium link link-hover link-error">{l("Delete")}</button> -->
       </div>
     </div>
     <div x-show="edit" x-collapse>
       <Bonfire.UI.Coordination.CreateLabelLive flex />
     </div>
   </div>
-
 </section>

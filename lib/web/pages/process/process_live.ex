@@ -35,6 +35,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
 
     {:ok,
      socket
+     |> assign_global(category_link_prefix: "/coordination/tasks?tag_ids[]=")
      |> assign(
        page_title: e(process, :name, nil) || l("List"),
        page: "process",

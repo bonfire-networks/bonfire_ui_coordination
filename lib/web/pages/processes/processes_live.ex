@@ -41,6 +41,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
 
     {:ok,
      socket
+     |> assign_global(category_link_prefix: "/coordination/tasks?tag_ids[]=")
      |> assign(
        page_title: l("milestones"),
        page: "milestones",

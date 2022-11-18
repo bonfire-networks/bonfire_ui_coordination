@@ -60,8 +60,9 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
     object_boundary = Bonfire.Boundaries.Controlleds.get_preset_on_object(category)
 
     {:ok,
-     assign(
-       socket,
+     socket
+     |> assign_global(category_link_prefix: "/coordination/tasks?tag_ids[]=")
+     |> assign(
        page: "labels",
        object_type: nil,
        feed: nil,

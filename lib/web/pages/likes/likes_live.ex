@@ -22,6 +22,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
 
     {:ok,
      socket
+     |> assign_global(category_link_prefix: "/coordination/tasks?tag_ids[]=")
      |> assign(
        showing_within: :likes,
        loading: false,
