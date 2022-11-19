@@ -3,13 +3,7 @@
   is_editable?={@is_editable?}
   showing_within={@showing_within}
 />
-<!-- <div class="flex flex-col px-2">
-  <Bonfire.UI.Coordination.TaskActionsLive intent={@intent} />
-  <Bonfire.UI.ValueFlows.EditDescriptionLive
-    item={@intent}
-    submit_event="ValueFlows.Planning.Intent:update"
-  />
-</div> -->
+
 <div class="mx-3">
   <div class="flex items-center justify-between px-4 pt-4">
     <div class="flex items-center gap-6">

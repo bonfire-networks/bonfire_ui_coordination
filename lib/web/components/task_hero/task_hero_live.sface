@@ -112,10 +112,17 @@
           </div>
         </div>
 
-        <span
+        <!-- <span
           :if={String.length(e(@task, :note, "")) > 0}
           class="mt-3 text-base font-normal prose text-base-content/70"
-        >{e(@task, :note, "")}</span>
+        >{e(@task, :note, "")}</span> -->
+        <div :if={true} class="flex flex-col px-2 mt-3">
+          <Bonfire.UI.ValueFlows.EditDescriptionLive
+            item={@task}
+            is_editable?={@is_editable?}
+            submit_event="ValueFlows.Planning.Intent:update"
+          />
+        </div>
       </div>
       <Bonfire.UI.Coordination.TaskActionsLive is_editable?={@is_editable?} intent={@task} />
     </div>
