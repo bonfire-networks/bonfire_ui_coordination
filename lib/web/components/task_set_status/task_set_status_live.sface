@@ -1,5 +1,5 @@
 <div :if={!@finished} class="flex items-center gap-2 place-content-center">
-  <div class="flex-1 rounded-full badge-lg badge badge-info">{l("Open")}</div>
+  <div class="flex-1 rounded-full badge badge-info">{l("Open")}</div>
 
   <!-- <button
     :on-click="ValueFlows.Planning.Intent:status:finished"
@@ -13,7 +13,7 @@
 </div>
 
 <div :if={@finished} class="flex items-center gap-2 place-content-center">
-  <div class="flex-1 rounded-full badge-lg badge badge-success">{l("Closed")}</div>
+  <div class="flex-1 rounded-full  badge badge-success">{l("Closed")}</div>
 
   <!-- <button
     :on-click="ValueFlows.Planning.Intent:status:unfinished"
