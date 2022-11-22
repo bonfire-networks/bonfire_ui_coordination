@@ -110,7 +110,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   def intents(params \\ %{}, socket), do: liveql(socket, :intents, params)
 
   def do_handle_params(%{"tab" => "me" = tab} = params, _url, socket) do
-    filters = merge_filters(params, %{"action" => "work", "agent" => "me"})
+    filters = merge_filters(params, %{"action" => "work", "finished" => false, "agent" => "me"})
 
     intents =
       %{filters: filters}

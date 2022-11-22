@@ -8,7 +8,7 @@
   feedback_title={@feedback_title}
   feedback_message={@feedback_message}
   feed={@feed}
-  tabs_class="tabs_nav tabs bg-base-100 rounded-md gap-3 shadow my-3"
+  tabs_class="tabs_nav tabs gap-3 my-3"
   feed_title={@feed_title}
   page_info={@page_info}
   loading={@loading}
