@@ -29,7 +29,8 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
   end
 
   defp mounted(%{"id" => id} = _params, _session, socket) do
-    process = process(%{id: id}, socket)
+    process = process_filtered(%{id: id, intent_filter: %{"status" => "open"}}, socket)
+
     debug(process: process)
     nav_items = Bonfire.Common.ExtensionModule.default_nav(:bonfire_ui_coordination)
 
@@ -39,7 +40,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
      |> assign(
        page_title: e(process, :name, nil) || l("List"),
        page: "process",
-       selected_tab: "tasks",
+       selected_tab: "open",
        create_object_type: :task,
        smart_input_prompt: l("New task"),
        nav_items: nav_items,
@@ -55,9 +56,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
            ]
          ],
          guests: [
-           secondary: [
-             {Bonfire.Tag.Web.WidgetTagsLive, []}
-           ]
+           secondary: nil
          ]
        ]
      )}
@@ -141,7 +140,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
   # defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
   def do_handle_params(%{"filter" => status}, _, %{assigns: %{process: process}} = socket) do
     process = process_filtered(%{id: process.id, intent_filter: %{"status" => status}}, socket)
-    {:noreply, socket |> assign(process: process)}
+    {:noreply, socket |> assign(process: process, selected_tab: status)}
   end
 
   def do_handle_params(params, attrs, socket), do: {:noreply, socket}
