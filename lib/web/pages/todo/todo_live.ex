@@ -128,24 +128,42 @@ defmodule Bonfire.UI.Coordination.TodoLive do
     {:noreply, patch_to(socket, current_url(socket) <> "?" <> params)}
   end
 
-  def handle_event("filter", %{"_target" => ["search_string"]} = attrs, socket) do
+  def do_handle_event("filter", %{"_target" => ["search_string"]} = attrs, socket) do
     debug("ignore")
     {:noreply, socket}
   end
 
-  def handle_event("filter", attrs, socket) do
+  def do_handle_event("filter", attrs, socket) do
     do_filter(attrs, socket)
   end
 
-  def handle_event("search", attrs, socket) do
+  def do_handle_event("search", attrs, socket) do
     do_filter(attrs, socket)
   end
 
-  def handle_event(action, attrs, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
-
-  defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
+  def handle_params(params, uri, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
+        socket,
+        __MODULE__
+      )
 
   def handle_info(info, socket),
     do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+
+  def handle_event(
+        action,
+        attrs,
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__,
+          &do_handle_event/3
+        )
 end

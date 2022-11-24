@@ -65,7 +65,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
        # ],
        filters: [],
        create_object_type: :task,
-       smart_input_prompt: l("Add a task"),
+       smart_input_opts: [prompt: l("Add a task")],
        sidebar_widgets: [
          users: [
            secondary: [
@@ -194,16 +194,6 @@ defmodule Bonfire.UI.Coordination.TasksLive do
     end)
   end
 
-  def handle_params(params, uri, socket) do
-    # poor man's hook I guess
-    with {_, socket} <-
-           Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
-      undead_params(socket, fn ->
-        do_handle_params(params, uri, socket)
-      end)
-    end
-  end
-
   defp do_filter(
          %{
            "field" => field,
@@ -230,22 +220,43 @@ defmodule Bonfire.UI.Coordination.TasksLive do
     {:noreply, patch_to(socket, current_url(socket) <> "?" <> params)}
   end
 
-  def handle_event("filter", %{"_target" => ["search_string"]} = attrs, socket) do
+  def do_handle_event("filter", %{"_target" => ["search_string"]} = attrs, socket) do
     debug("ignore")
     {:noreply, socket}
   end
 
-  def handle_event("filter", attrs, socket) do
+  def do_handle_event("filter", attrs, socket) do
     do_filter(attrs, socket)
   end
 
-  def handle_event("search", attrs, socket) do
+  def do_handle_event("search", attrs, socket) do
     do_filter(attrs, socket)
   end
 
-  def handle_event(action, attrs, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
+  def handle_params(params, uri, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
+        socket,
+        __MODULE__,
+        &do_handle_params/3
+      )
 
   def handle_info(info, socket),
     do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+
+  def handle_event(
+        action,
+        attrs,
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__,
+          &do_handle_event/3
+        )
 end

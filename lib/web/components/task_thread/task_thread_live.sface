@@ -2,6 +2,6 @@
   <Bonfire.UI.Social.ThreadLive
     id={ulid!(@task)}
     thread_id={ulid(@task)}
-    smart_input_prompt={l("Post a comment...")}
+    smart_input_opts={[prompt: l("Post a comment...")]}
   />
 </div>

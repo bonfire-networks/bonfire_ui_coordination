@@ -31,7 +31,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
        hide_tabs: true,
        page_title: l("Important tasks"),
        create_object_type: :task,
-       smart_input_prompt: l("Add a task"),
+       smart_input_opts: [prompt: l("Add a task")],
        feed: Bonfire.Social.Feeds.LiveHandler.preloads(feed, socket),
        page_info: page_info
      )}
@@ -48,7 +48,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
   #      page: "likes",
   #      page_title: l("Important tasks"),
   #      create_object_type: :task,
-  #      smart_input_prompt: l("Add a task")
+  #      smart_input_opts: [prompt: l("Add a task")]
   #    )}
   # end
 
@@ -71,20 +71,28 @@ defmodule Bonfire.UI.Coordination.LikesLive do
   #    )}
   # end
 
-  # def handle_params(params, uri, socket) do
-  #   # poor man's hook I guess
-  #   with {_, socket} <-
-  #          Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
-  #     undead_params(socket, fn ->
-  #       do_handle_params(params, uri, socket)
-  #     end)
-  #   end
-  # end
+  def handle_params(params, uri, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
+        socket,
+        __MODULE__
+      )
 
-  def handle_event(action, attrs, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
-
-  defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
+  def handle_event(
+        action,
+        attrs,
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__
+          # &do_handle_event/3
+        )
 
   def handle_info(info, socket),
     do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)

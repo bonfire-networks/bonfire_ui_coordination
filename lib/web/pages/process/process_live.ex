@@ -42,9 +42,8 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        page: "process",
        selected_tab: "open",
        create_object_type: :task,
-       smart_input_prompt: l("New task"),
+       smart_input_opts: [prompt: l("New task")],
        nav_items: nav_items,
-       #  without_mobile_logged_header: true,
        #  without_sidebar: true,
        process: process,
        reply_to_id: process,
@@ -145,16 +144,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
 
   def do_handle_params(params, attrs, socket), do: {:noreply, socket}
 
-  def handle_params(params, uri, socket) do
-    # poor man's hook I guess
-    with {_, socket} <- Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
-      undead_params(socket, fn ->
-        do_handle_params(params, uri, socket)
-      end)
-    end
-  end
-
-  def handle_event(
+  def do_handle_event(
         "search",
         %{"key" => "Enter", "value" => search_term} = attrs,
         %{assigns: %{process: process}} = socket
@@ -165,13 +155,33 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
     {:noreply, socket |> assign(process: process)}
   end
 
-  def handle_event("search", attrs, socket) do
+  def do_handle_event("search", attrs, socket) do
     {:noreply, socket}
   end
 
-  def handle_event(action, attrs, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
+  def handle_params(params, uri, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
+        socket,
+        __MODULE__
+      )
 
   def handle_info(info, socket),
     do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+
+  def handle_event(
+        action,
+        attrs,
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__,
+          &do_handle_event/3
+        )
 end

@@ -68,7 +68,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
        feed: nil,
        tab_id: nil,
        create_object_type: :label,
-       smart_input_prompt: l("New label"),
+       smart_input_opts: [prompt: l("New label")],
        category: category,
        canonical_url: canonical_url(category),
        name: name,
@@ -80,7 +80,6 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
        #  reply_to_id: category,
        object_boundary: object_boundary,
        #  create_object_type: :category,
-       #  smart_input_prompt: l("Create a sub-topic"),
        sidebar_widgets: [
          users: [
            secondary: [
@@ -132,22 +131,29 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
     )
   end
 
-  def handle_params(params, uri, socket) do
-    # poor man's hook I guess
-    with {_, socket} <-
-           Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
-      undead_params(socket, fn ->
-        do_handle_params(params, uri, socket)
-      end)
-    end
-  end
-
-  def handle_event(action, attrs, socket),
+  def handle_params(params, uri, socket),
     do:
-      Bonfire.UI.Common.LiveHandlers.handle_event(
-        action,
-        attrs,
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
         socket,
         __MODULE__
       )
+
+  def handle_info(info, socket),
+    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+
+  def handle_event(
+        action,
+        attrs,
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__
+          # &do_handle_event/3
+        )
 end

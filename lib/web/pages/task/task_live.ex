@@ -51,8 +51,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
          #  create_object_type: :task, # TODO: ability to reply to a task with a task
          context_id: id,
          #  reply_to_id: id,
-         smart_input_prompt: l("Reply to this task"),
-         #  without_mobile_logged_header: true,
+         smart_input_opts: [prompt: l("Reply to this task")],
          #  without_sidebar: true,
          sidebar_widgets: [
            users: [
@@ -114,11 +113,29 @@ defmodule Bonfire.UI.Coordination.TaskLive do
   """
   def intent(params \\ %{}, socket), do: liveql(socket, :intent, params)
 
-  # defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
-
-  def handle_event(action, attrs, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
+  def handle_params(params, uri, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
+        socket,
+        __MODULE__
+      )
 
   def handle_info(info, socket),
     do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
+
+  def handle_event(
+        action,
+        attrs,
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__
+          # &do_handle_event/3
+        )
 end

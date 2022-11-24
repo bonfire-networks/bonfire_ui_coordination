@@ -19,7 +19,7 @@
     <div class="flex items-center w-auto">
       <Bonfire.UI.Common.SmartInputButtonLive
         component={Bonfire.UI.Coordination.CreateTaskLive}
-        smart_input_prompt={l("Add a task")}
+        smart_input_opts={[prompt: l("Add a task")]}
         icon="heroicons-solid:pencil-alt"
       />
     </div>
