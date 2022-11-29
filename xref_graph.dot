@@ -1,0 +1,47 @@
+digraph "xref graph" {
+  "lib/coordination/test_driven.ex"
+  "lib/integration.ex"
+  "lib/web/components/create_label/create_label_live.ex"
+  "lib/web/components/create_task/create_task_container_live.ex"
+  "lib/web/components/create_task/create_task_container_live.ex" -> "lib/web/components/create_task/create_task_live.ex" [label="(export)"]
+  "lib/web/components/create_task/create_task_live.ex" -> "lib/integration.ex"
+  "lib/web/components/create_task/create_task_live.ex" -> "lib/web/pages/process/process_live.ex"
+  "lib/web/components/create_task/create_task_live.ex" -> "lib/web/pages/task/task_live.ex"
+  "lib/web/pages/task/task_live.ex" -> "lib/web/components/task_hero/task_hero_live.ex" [label="(export)"]
+  "lib/web/components/task_hero/task_hero_live.ex" -> "lib/web/components/task_actions/task_actions_live.ex" [label="(export)"]
+  "lib/web/components/task_hero/task_hero_live.ex" -> "lib/web/components/task_set_status/task_set_status_live.ex" [label="(export)"]
+  "lib/web/pages/task/task_live.ex" -> "lib/web/components/task_thread/task_thread_live.ex" [label="(export)"]
+  "lib/web/components/create_task/create_task_live.ex"
+  "lib/web/components/nav/lists_navigation_live.ex"
+  "lib/web/components/nav/sidebar_navigation_live.ex"
+  "lib/web/components/nav/sidebar_navigation_live.ex" -> "lib/web/pages/processes/processes_live.ex"
+  "lib/web/components/settings/team_live.ex"
+  "lib/web/components/task_actions/task_actions_live.ex"
+  "lib/web/components/task_actions/task_actions_menu_live.ex"
+  "lib/web/components/task_hero/task_hero_live.ex"
+  "lib/web/components/task_preview/task_preview_live.ex"
+  "lib/web/components/task_preview/task_preview_live.ex" -> "lib/web/components/task_actions/task_actions_menu_live.ex" [label="(export)"]
+  "lib/web/components/task_set_status/task_set_status_live.ex"
+  "lib/web/components/task_thread/task_thread_live.ex"
+  "lib/web/components/widgets/process_info/process_info_live.ex"
+  "lib/web/components/widgets/tasks_filter/tasks_filter_live.ex"
+  "lib/web/components/widgets/upcoming_task/upcoming_task_live.ex"
+  "lib/web/components/widgets/widget_task_actions/widget_task_actions_live.ex"
+  "lib/web/components/widgets/widget_task_actions/widget_task_actions_live.ex" -> "lib/web/components/task_actions/task_actions_live.ex" [label="(export)"]
+  "lib/web/components/widgets/widget_task_actions/widget_task_actions_live.ex" -> "lib/web/components/task_set_status/task_set_status_live.ex" [label="(export)"]
+  "lib/web/pages/feed/feed_live.ex"
+  "lib/web/pages/labels/labels_live.ex"
+  "lib/web/pages/labels/labels_live.ex" -> "lib/web/components/create_label/create_label_live.ex" [label="(export)"]
+  "lib/web/pages/likes/likes_live.ex"
+  "lib/web/pages/process/process_live.ex"
+  "lib/web/pages/processes/processes_live.ex"
+  "lib/web/pages/task/task_live.ex"
+  "lib/web/pages/tasks/tasks_live.ex"
+  "lib/web/pages/tasks/tasks_live.ex" -> "lib/web/pages/feed/feed_live.ex"
+  "lib/web/pages/tasks/tasks_live.ex" -> "lib/web/pages/process/process_live.ex" [label="(compile)"]
+  "lib/web/pages/tasks/tasks_live.ex" -> "lib/web/pages/processes/processes_live.ex"
+  "lib/web/pages/todo/todo_live.ex"
+  "lib/web/pages/todo/todo_live.ex" -> "lib/web/components/create_task/create_task_live.ex"
+  "lib/web/pages/todo/todo_live.ex" -> "lib/web/pages/process/process_live.ex" [label="(compile)"]
+  "lib/web/routes.ex"
+}
