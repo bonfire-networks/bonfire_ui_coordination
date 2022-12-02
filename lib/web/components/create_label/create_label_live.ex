@@ -6,6 +6,6 @@ defmodule Bonfire.UI.Coordination.CreateLabelLive do
   # unused but workaround surface "invalid value for property" issue
   prop textarea_container_class, :css_class
   prop flex, :boolean, default: false
-  prop to_boundaries, :list, default: nil
+  prop to_boundaries, :list, default: []
   prop open_boundaries, :boolean, default: false
 end

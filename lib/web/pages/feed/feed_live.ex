@@ -114,7 +114,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
           action,
           attrs,
           socket,
-          __MODULE__
-          # &do_handle_event/3
+          __MODULE__,
+          &do_handle_event/3
         )
 end
