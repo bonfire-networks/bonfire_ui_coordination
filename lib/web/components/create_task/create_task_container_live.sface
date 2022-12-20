@@ -6,11 +6,11 @@
         x-data="{
           open: false
         }"
-        @click.outside="open=false"
+        x-on:click.outside="open=false"
       >
         <div
           class="flex items-center justify-start p-3 m-2 space-x-3 rounded cursor-pointer"
-          @click="open = ! open"
+          x-on:click="open = ! open"
         >
           <Icon outline="Plus" class="w-4 h-4" />
           <div class="text-sm font-semibold">{if @context_id, do: l("Add a task")}</div>

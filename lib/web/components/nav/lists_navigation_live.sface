@@ -4,7 +4,7 @@
   <!-- <div class="flex items-center ml-4 space-x-2">
     <div x-data="{ open: false }" @keydown.window.escape="open = false">
       <button
-        @click="open=true"
+        x-on:click="open=true"
         type="button"
         class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500"
       >
@@ -28,7 +28,7 @@
             x-transition:leave-end="opacity-0"
             x-description="Background overlay, show/hide based on modal state."
             class="fixed inset-0 transition-opacity bg-base-100 bg-opacity-40"
-            @click="open = false"
+            x-on:click="open = false"
             aria-hidden="true"
           />
           <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>

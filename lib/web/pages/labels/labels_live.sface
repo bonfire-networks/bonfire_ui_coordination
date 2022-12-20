@@ -31,7 +31,7 @@
           object={category}
         />
 
-        <!-- <button @click="edit = !edit" class="text-sm font-medium link text-base-content/80 link-hover">{l("Edit")}</button> -->
+        <!-- <button x-on:click="edit = !edit" class="text-sm font-medium link text-base-content/80 link-hover">{l("Edit")}</button> -->
         <Bonfire.UI.Social.Activity.DeleteObjectLive
           object={category}
           creator_id={e(category, :created, :creator, nil) || e(category, :created, :creator_id, nil)}
