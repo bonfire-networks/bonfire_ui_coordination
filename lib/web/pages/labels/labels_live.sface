@@ -28,7 +28,7 @@
       <div class="flex gap-4">
         <Bonfire.UI.Common.LikeActionLive
           id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, ulid(category))}
-          object={category}
+          object_id={ulid(category)}
         />
 
         <!-- <button x-on:click="edit = !edit" class="text-sm font-medium link text-base-content/80 link-hover">{l("Edit")}</button> -->
