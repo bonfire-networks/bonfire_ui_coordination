@@ -32,7 +32,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
        page_title: l("Important tasks"),
        create_object_type: :task,
        smart_input_opts: [prompt: l("Add a task")],
-       feed: Bonfire.Social.Feeds.LiveHandler.preloads(feed, socket),
+       feed: feed,
        page_info: page_info
      )}
   end
@@ -66,7 +66,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
   #   {:noreply,
   #    socket
   #    |> assign(
-  #      feed: Bonfire.Social.Feeds.LiveHandler.preloads(feed, socket),
+  #      feed: feed,
   #      page_info: page_info
   #    )}
   # end
