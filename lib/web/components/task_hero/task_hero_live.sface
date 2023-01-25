@@ -85,7 +85,7 @@
               "bg-error text-error-content": Date.diff(e(@task, :due, nil), Date.utc_today()) < 0
             }>
               <Icon solid="Calendar" class="w-4 h-4" />
-              <span>{date_from_now(e(@task, :due, nil)) || l("No due date")}</span>
+              <span>{DatesTimes.date_from_now(e(@task, :due, nil)) || l("No due date")}</span>
             </div>
           </div>
 
