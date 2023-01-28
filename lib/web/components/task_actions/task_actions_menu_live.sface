@@ -12,7 +12,7 @@
     <li>
       <button
         :if={(!e(@task, :provider, :id, nil) && !e(@task, :provider_id, nil)) ||
-          e(@task, :provider, :id, nil) != ulid(@current_user)}
+          e(@task, :provider, :id, nil) != current_user_id(@__context__)}
         phx-click="ValueFlows.Planning.Intent:assign:select"
         class="flex items-center px-4 text-sm text-neutral-content/80"
         phx-value-id="me"

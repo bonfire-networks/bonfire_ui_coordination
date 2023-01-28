@@ -1,6 +1,6 @@
 <div class="flex flex-col mt-1 space-y-1">
   <LivePatch
-    :if={ulid(@current_user)}
+    :if={current_user_id(@__context__)}
     to={~p"/my-tasks"}
     class={
       "rounded-lg w-full flex items-center p-1.5 text-sm font-regular transition duration-150 ease-in-out group    focus:outline-none focus:text-primary-content-900  text-primary-content-600",
