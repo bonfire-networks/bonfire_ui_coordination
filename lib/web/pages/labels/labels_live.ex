@@ -68,7 +68,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
        feed: nil,
        tab_id: nil,
        create_object_type: :label,
-       smart_input_opts: [prompt: l("New label")],
+       smart_input_opts: %{prompt: l("New label")},
        category: category,
        canonical_url: canonical_url(category),
        name: name,

@@ -55,7 +55,7 @@ defmodule Bonfire.UI.Coordination.ProcessesLive do
        #     ]}
        #  ],
        create_object_type: :process,
-       smart_input_opts: [prompt: l("New milestone")],
+       smart_input_opts: %{prompt: l("New milestone")},
        sidebar_widgets: [
          users: [
            secondary: [

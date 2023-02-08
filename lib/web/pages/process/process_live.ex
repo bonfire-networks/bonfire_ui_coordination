@@ -42,7 +42,7 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        page: "process",
        selected_tab: "open",
        create_object_type: :task,
-       smart_input_opts: [prompt: l("New task")],
+       smart_input_opts: %{prompt: l("New task")},
        nav_items: nav_items,
        #  without_sidebar: true,
        process: process,

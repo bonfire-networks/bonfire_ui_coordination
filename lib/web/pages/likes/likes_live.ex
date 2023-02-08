@@ -31,7 +31,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
        hide_tabs: true,
        page_title: l("Important tasks"),
        create_object_type: :task,
-       smart_input_opts: [prompt: l("Add a task")],
+       smart_input_opts: %{prompt: l("Add a task")},
        feed: feed,
        page_info: page_info
      )}
@@ -48,7 +48,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
   #      page: "likes",
   #      page_title: l("Important tasks"),
   #      create_object_type: :task,
-  #      smart_input_opts: [prompt: l("Add a task")]
+  #      smart_input_opts: %{prompt: l("Add a task")}
   #    )}
   # end
 
