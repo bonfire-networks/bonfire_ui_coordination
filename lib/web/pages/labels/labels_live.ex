@@ -1,7 +1,7 @@
 defmodule Bonfire.UI.Coordination.LabelsLive do
   use Bonfire.UI.Common.Web, :surface_live_view
 
-  alias Bonfire.Classify.Web.CategoryLive.SubcategoriesLive
+  alias Bonfire.UI.Topics.CategoryLive.SubcategoriesLive
   alias Bonfire.Classify.Web.CommunityLive.CommunityCollectionsLive
   alias Bonfire.Classify.Web.CollectionLive.CollectionResourcesLive
 
