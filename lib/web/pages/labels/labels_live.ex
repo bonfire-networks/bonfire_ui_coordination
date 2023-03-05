@@ -39,7 +39,10 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
 
     {:ok, category} =
       with {:error, :not_found} <-
-             Bonfire.Classify.Categories.get(id, [:default_incl_deleted]) do
+             Bonfire.Classify.Categories.get(id, [
+               :default_incl_deleted,
+               current_user: current_user(socket)
+             ]) do
         Bonfire.Classify.Categories.create(current_user, %{
           id: label_category,
           name: "Labels",
