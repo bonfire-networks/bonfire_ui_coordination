@@ -5,23 +5,9 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
   alias Bonfire.Classify.Web.CommunityLive.CommunityCollectionsLive
   alias Bonfire.Classify.Web.CollectionLive.CollectionResourcesLive
 
-  alias Bonfire.UI.Me.LivePlugs
+  on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
-  def mount(params, session, socket) do
-    live_plug(params, session, socket, [
-      LivePlugs.LoadCurrentAccount,
-      LivePlugs.LoadCurrentUser,
-      # LivePlugs.LoadCurrentUserCircles,
-      Bonfire.UI.Common.LivePlugs.StaticChanged,
-      Bonfire.UI.Common.LivePlugs.Csrf,
-      Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3
-    ])
-  end
-
-  def label_id, do: System.get_env("LABEL_CATEGORY", "7CATEG0RYTHATC0NTA1N1ABE1S")
-
-  defp mounted(params, _session, socket) do
+  def mount(params, _session, socket) do
     current_user = current_user(socket)
 
     label_category = label_id()
@@ -97,6 +83,8 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
        ]
      )}
   end
+
+  def label_id, do: System.get_env("LABEL_CATEGORY", "7CATEG0RYTHATC0NTA1N1ABE1S")
 
   def tab(selected_tab) do
     case maybe_to_atom(selected_tab) do

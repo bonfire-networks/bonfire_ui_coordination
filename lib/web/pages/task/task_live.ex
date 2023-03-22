@@ -10,24 +10,14 @@ defmodule Bonfire.UI.Coordination.TaskLive do
 
   alias Bonfire.UI.ValueFlows.FiltersLive
 
-  alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.UI.Me.CreateUserLive
 
   # alias Bonfire.UI.Coordination.ResourceWidget
 
-  def mount(params, session, socket) do
-    live_plug(params, session, socket, [
-      LivePlugs.LoadCurrentAccount,
-      LivePlugs.LoadCurrentUser,
-      Bonfire.UI.Common.LivePlugs.StaticChanged,
-      Bonfire.UI.Common.LivePlugs.Csrf,
-      Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3
-    ])
-  end
+  on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
-  defp mounted(%{"id" => id} = params, _session, socket) do
+  def mount(%{"id" => id} = params, _session, socket) do
     intent = intent(%{id: id}, socket)
     debug(intent, "theintent")
 
@@ -75,7 +65,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
     end
   end
 
-  defp mounted(_, %{"params" => params} = _session, socket) do
+  def mount(_, %{"params" => params} = _session, socket) do
     mounted(params, nil, socket)
   end
 

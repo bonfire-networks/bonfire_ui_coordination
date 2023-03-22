@@ -1,7 +1,6 @@
 defmodule Bonfire.UI.Coordination.LikesLive do
   use Bonfire.UI.Common.Web, :stateful_component
 
-  alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.UI.Me.CreateUserLive
 
@@ -37,7 +36,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
      )}
   end
 
-  # defp mounted(params, _session, socket) do
+  # def mount(params, _session, socket) do
   #   {:ok,
   #    socket
   #    |> assign(
