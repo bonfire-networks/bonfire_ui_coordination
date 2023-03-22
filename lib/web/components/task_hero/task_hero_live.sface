@@ -5,7 +5,7 @@
       <div class="flex items-center justify-end gap-2">
         <Bonfire.Boundaries.Web.BoundaryIconLive
           with_label
-          id={ComponentID.new(Bonfire.Boundaries.Web.BoundaryIconLive, @task)}
+          id={ComponentID.new(Bonfire.Boundaries.Web.BoundaryIconLive, id(@task), __MODULE__)}
           object={@task}
         />
         <Bonfire.UI.Social.Activity.InstanceIconLive object={@task} />
@@ -92,7 +92,11 @@
           <div :if={e(@task, :provider, nil)} class="">
             <span class="mb-2 text-xs font-semibold text-base-content/70">{l("Assigned")}</span>
             <div class="flex items-center gap-2">
-              <Bonfire.UI.Common.AvatarLive class="w-8 h-8" user={e(@task, :provider, nil)} />
+              <Bonfire.UI.Common.AvatarLive
+                parent_id={id(@task)}
+                class="w-8 h-8"
+                user={e(@task, :provider, nil)}
+              />
               <span class="text-sm font-medium text-base-content/80">{e(@task, :provider, :name, nil)}</span>
             </div>
           </div>
@@ -106,7 +110,7 @@
               to={e(@__context__, :category_link_prefix, ~p"/coordination/tasks?tag_ids[]=") <> tag.id}
               class="badge badge-info"
             >{e(tag, :profile, :name, nil) || e(tag, :character, :username, nil)}</LinkLive>
-            <Bonfire.Classify.Web.TagModalLive :if={@is_editable?} object={@task}>
+            <Bonfire.Classify.Web.TagModalLive :if={@is_editable?} object={@task} parent_id="task_hero">
               <span class="badge badge-success">+</span>
             </Bonfire.Classify.Web.TagModalLive>
           </div>

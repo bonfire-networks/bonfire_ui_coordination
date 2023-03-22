@@ -47,7 +47,7 @@
             </span>
             <div class="flex items-center gap-3">
               <Bonfire.UI.Common.LikeActionLive
-                id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, ulid(@object))}
+                id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, id(@object), __MODULE__)}
                 object_id={ulid(@object)}
               />
               <div
@@ -60,6 +60,7 @@
                   class="flex items-center text-xs text-base-content opacity-70 text-medium"
                 >
                   <Bonfire.UI.Common.AvatarLive
+                    parent_id={id(@object)}
                     class="inline-block w-6 h-6 rounded-full bg-base-content/5"
                     user={@object.provider}
                   />

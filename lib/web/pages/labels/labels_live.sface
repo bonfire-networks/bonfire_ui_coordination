@@ -27,7 +27,7 @@
       </div>
       <div class="flex gap-4">
         <Bonfire.UI.Common.LikeActionLive
-          id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, ulid(category))}
+          id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, id(category), __MODULE__)}
           object_id={ulid(category)}
         />
 
