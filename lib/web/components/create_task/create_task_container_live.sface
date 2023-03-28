@@ -12,7 +12,7 @@
           class="flex items-center justify-start p-3 m-2 space-x-3 rounded cursor-pointer"
           x-on:click="open = ! open"
         >
-          <Icon outline="Plus" class="w-4 h-4" />
+          <#Icon outline="Plus" class="w-4 h-4" />
           <div class="text-sm font-semibold">{if @context_id, do: l("Add a task")}</div>
         </div>
         <div class="" x-collapse x-show="open">

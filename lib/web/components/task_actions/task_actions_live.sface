@@ -1,6 +1,6 @@
 <div :if={current_user(@__context__)} class="max-w-[240px] w-full">
   <!-- <div class="flex items-center gap-4">
-  <Icon iconify="fluent:status-24-filled" class="w-5 h-5" />
+  <#Icon iconify="fluent:status-24-filled" class="w-5 h-5" />
   <div class="sr-only">{l "Status"}</div>
   <Bonfire.UI.Coordination.TaskSetStatusLive
       redirect_after={~p"/coordination/task/"}
@@ -10,7 +10,7 @@
   </div> -->
 
   <div class="flex items-center gap-4 mb-3">
-    <Icon iconify="carbon:user-avatar-filled" class="w-5 h-5 text-base-content/80" />
+    <#Icon iconify="carbon:user-avatar-filled" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l("Assign")}</div>
     <Dynamic.Component
       :if={module_enabled?(Bonfire.UI.ValueFlows.AssignItemLive, @__context__)}
@@ -27,7 +27,7 @@
     />
   </div>
   <div class="flex items-center gap-4 mb-3">
-    <Icon iconify="lucide:milestone" class="w-5 h-5 text-base-content/80" />
+    <#Icon iconify="lucide:milestone" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l("Milestone")}</div>
     <Dynamic.Component
       :if={module_enabled?(Bonfire.UI.ValueFlows.SelectProcessLive, @__context__)}
@@ -45,7 +45,7 @@
     />
   </div>
   <div class="flex items-center gap-4">
-    <Icon iconify="heroicons:calendar-days-20-solid" class="w-5 h-5 text-base-content/80" />
+    <#Icon iconify="heroicons:calendar-days-20-solid" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l("Due date")}</div>
     <Dynamic.Component
       :if={module_enabled?(Bonfire.UI.ValueFlows.DueItemLive, @__context__)}

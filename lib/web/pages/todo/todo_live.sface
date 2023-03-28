@@ -13,7 +13,7 @@
         type="submit"
         class="absolute top-[2px] right-[8px] z-30 flex items-center pl-1  cursor-pointer btn  btn-sm w-[32px] h-[32px] btn-ghost btn-circle"
       >
-        <Icon solid="Search" class="w-5 h-5 text-base-content text-opacity-80" />
+        <#Icon solid="Search" class="w-5 h-5 text-base-content text-opacity-80" />
       </button>
     </div>
     <div class="flex items-center w-auto">
@@ -27,11 +27,11 @@
   <div class="flex items-center justify-between px-4 py-4 bg-base-content/10">
     <div class="flex items-center gap-6">
       <div class="flex items-center gap-2">
-        <Icon iconify="carbon:software-resource" class="w-4 h-4 text-info" />
+        <#Icon iconify="carbon:software-resource" class="w-4 h-4 text-info" />
         <span class="text-sm font-semibold">100 Open</span>
       </div>
       <div class="flex items-center gap-2">
-        <Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-success" />
+        <#Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-success" />
         <span class="text-sm">83 Closed</span>
       </div>
     </div>

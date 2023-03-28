@@ -7,17 +7,17 @@
       <div class="flex flex-col flex-1">
         <div class="flex items-center gap-2">
           <div class="flex items-center flex-1 gap-2">
-            <Icon
+            <#Icon
               :if={e(@object, :finished, nil)}
               iconify="carbon:checkmark-filled"
               class="w-4 h-4 text-success"
             />
-            <Icon
+            <#Icon
               :if={!e(@object, :finished, nil) and e(@object, :provider, nil)}
               iconify="carbon:in-progress"
               class="w-4 h-4 text-warning"
             />
-            <Icon
+            <#Icon
               :if={!e(@object, :finished, nil) and !e(@object, :provider, nil)}
               iconify="carbon:software-resource"
               class="w-4 h-4 text-info"
@@ -70,12 +70,12 @@
                 :if={e(@object, :due, nil)}
                 class="flex items-center gap-2 text-xs text-base-content/70 text-medium"
               >
-                <Icon solid="Calendar" class="w-4 h-4 text-base-content/70" />
+                <#Icon solid="Calendar" class="w-4 h-4 text-base-content/70" />
                 <span>{DatesTimes.date_from_now(e(@object, :due, nil)) || l("No due date")}</span>
               </div>
 
               <div :if={e(@object, :note, nil)}>
-                <Icon outline="Document" class="w-5 h-5 text-base-content/70" />
+                <#Icon outline="Document" class="w-5 h-5 text-base-content/70" />
               </div>
             </div>
           </div>

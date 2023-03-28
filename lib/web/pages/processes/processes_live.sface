@@ -4,14 +4,14 @@
       to="/coordination"
       class="flex h-[2.75rem] items-center gap-2 tab text-base-content/70"
     >
-      <Icon iconify="lucide:milestone" class="w-4 h-4 text-info" />
+      <#Icon iconify="lucide:milestone" class="w-4 h-4 text-info" />
       <span class="text-sm">{l("Open")}</span>
     </LivePatch>
     <LivePatch
       to="/coordination/closed"
       class="flex h-[2.75rem] tab items-center gap-2 text-base-content/70"
     >
-      <Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-success" />
+      <#Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-success" />
       <span class="text-sm">{l("Closed")}</span>
     </LivePatch>
   </div> -->

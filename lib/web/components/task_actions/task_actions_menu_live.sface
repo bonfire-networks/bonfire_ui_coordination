@@ -1,6 +1,6 @@
 <div :if={@is_editable?} class="relative dropdown dropdown-end">
   <button tabindex="0" class="btn btn-ghost btn-square btn-xs">
-    <Icon solid="DotsHorizontal" class="w-4 h-4 text-base-content/70" />
+    <#Icon solid="DotsHorizontal" class="w-4 h-4 text-base-content/70" />
   </button>
   <ul
     tabindex="0"
@@ -20,7 +20,7 @@
         phx-value-context_id={"#{@task.id}"}
         phx-value-field="provider"
       >
-        <Icon iconify="carbon:user-avatar-filled" class="w-4 h-4 text-neutral-content/80" />
+        <#Icon iconify="carbon:user-avatar-filled" class="w-4 h-4 text-neutral-content/80" />
         <span>{l("Assign to myself")}</span>
       </button>
     </li>
@@ -31,7 +31,7 @@
         phx-value-id={@task.id}
         class="flex items-center px-4 text-sm text-neutral-content/80"
       >
-        <Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-neutral-content/80" />
+        <#Icon iconify="carbon:checkmark-filled" class="w-4 h-4 text-neutral-content/80" />
         <span>{l("Set as completed")}</span>
       </button>
     </li>
@@ -42,7 +42,7 @@
         phx-value-id={@task.id}
         class="flex items-center px-4 text-sm text-neutral-content/80"
       >
-        <Icon iconify="carbon:incomplete" class="w-4 h-4 text-neutral-content/80" />
+        <#Icon iconify="carbon:incomplete" class="w-4 h-4 text-neutral-content/80" />
         <span>{l("Re-open")}</span>
       </button>
     </li>

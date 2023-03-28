@@ -1,6 +1,6 @@
 <div class="flex w-full max-w-md divide-x rounded-lg shadow-lg pointer-events-auto divide-warning-content/30 bg-warning ring-1 ring-black ring-opacity-5">
   <div class="flex items-start flex-1 w-0 gap-3 p-4 pr-2">
-    <div class=""><Icon iconify="emojione:spiral-calendar" class="w-6 h-6" /></div>
+    <div class=""><#Icon iconify="emojione:spiral-calendar" class="w-6 h-6" /></div>
     <div class="flex-1 w-full">
       <p class="text-sm font-medium text-warning-content">Pagare le bollette</p>
       <p class="text-sm text-warning-content/70">Due in 8 hours</p>
