@@ -41,7 +41,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
          #  create_object_type: :task, # TODO: ability to reply to a task with a task
          context_id: id,
          #  reply_to_id: id,
-         smart_input_opts: %{prompt: l("Reply to this task")},
+         #  smart_input_opts: %{prompt: l("Reply to this task")},
          #  without_sidebar: true,
          sidebar_widgets: [
            users: [
@@ -57,8 +57,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
          ],
          intent: intent,
          is_editable?:
-           not is_nil(current_user) and Bonfire.Boundaries.can?(current_user, :edit, intent),
-         reply_to_id: intent
+           not is_nil(current_user) and Bonfire.Boundaries.can?(current_user, :edit, intent)
 
          # resource: resource,
        )}

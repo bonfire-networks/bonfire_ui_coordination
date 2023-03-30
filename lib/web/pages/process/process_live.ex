@@ -31,13 +31,13 @@ defmodule Bonfire.UI.Coordination.ProcessLive do
        page_title: e(process, :name, nil) || l("List"),
        page: "process",
        selected_tab: "open",
-       create_object_type: :task,
-       smart_input_opts: %{prompt: l("New task")},
+       #  create_object_type: :task,
+       #  smart_input_opts: %{prompt: l("New task")},
        nav_items: nav_items,
        #  without_sidebar: true,
        process: process,
-       reply_to_id: process,
-       context_id: ulid(process),
+       #  reply_to_id: process,
+       context_id: id(process),
        sidebar_widgets: [
          users: [
            secondary: [
