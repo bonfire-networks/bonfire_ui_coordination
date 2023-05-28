@@ -55,9 +55,9 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   def do_handle_params(%{"tab" => tab} = params, _url, socket)
       when tab in [nil, "my", "local", "fediverse", "likes"] do
     {:noreply,
-     assign_generic(
+     assign(
        socket,
-       LiveHandler.feed_assigns_maybe_async({maybe_to_atom(tab), params}, socket)
+       LiveHandler.feed_default_assigns({maybe_to_atom(tab), params}, socket)
      )}
   end
 
