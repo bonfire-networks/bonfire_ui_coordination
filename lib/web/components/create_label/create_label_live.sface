@@ -9,32 +9,33 @@
     change="validate"
   >
     <!-- <HiddenInput :if={@output_of_id} name="output_of_id" value={@output_of_id} /> -->
-    <div class={"flex flex-col items-baseline gap-3", "!items-center !flex-row": e(@flex, false)}>
-      <Field name={:color}>
-        <Label class="block text-sm text-base-content opacity-70 font-regular">{l("Color")}</Label>
-
-        <div>
-          <input class={"h-8", "w-20": !@flex} type="color" id="color" name="color" :value="color">
-        </div>
-      </Field>
-
-      <Field class={"flex-1 w-full": !@flex} name={:name}>
-        <Label class="block text-sm text-base-content opacity-70 font-regular">
-          {l("Label name")}
-        </Label>
-        <TextInput class="w-full h-8 input input-bordered" />
-      </Field>
-
-      <Field class="flex-1 w-full" name={:description}>
-        <Label class="block text-sm text-base-content opacity-70 font-regular">{l("Description")}</Label>
-        <TextInput class="w-full h-8 input input-bordered" />
-      </Field>
-    </div>
 
     <Bonfire.UI.Common.InputControlsLive
       create_object_type={:process}
       to_boundaries={@to_boundaries}
       open_boundaries={@open_boundaries}
-    />
+    >
+      <div class={"flex flex-col items-baseline gap-3", "!items-center !flex-row": e(@flex, false)}>
+        <Field name={:color}>
+          <Label class="block text-sm text-base-content opacity-70 font-regular">{l("Color")}</Label>
+
+          <div>
+            <input class={"h-8", "w-20": !@flex} type="color" id="color" name="color" :value="color">
+          </div>
+        </Field>
+
+        <Field class={"flex-1 w-full": !@flex} name={:name}>
+          <Label class="block text-sm text-base-content opacity-70 font-regular">
+            {l("Label name")}
+          </Label>
+          <TextInput class="w-full h-8 input input-bordered" />
+        </Field>
+
+        <Field class="flex-1 w-full" name={:description}>
+          <Label class="block text-sm text-base-content opacity-70 font-regular">{l("Description")}</Label>
+          <TextInput class="w-full h-8 input input-bordered" />
+        </Field>
+      </div>
+    </Bonfire.UI.Common.InputControlsLive>
   </Form>
 </div>
