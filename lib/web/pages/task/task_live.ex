@@ -65,7 +65,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
   end
 
   def mount(_, %{"params" => params} = _session, socket) do
-    mounted(params, nil, socket)
+    mount(params, nil, socket)
   end
 
   @graphql """

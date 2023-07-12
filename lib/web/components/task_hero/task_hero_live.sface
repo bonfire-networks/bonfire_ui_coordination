@@ -47,7 +47,9 @@
               </button>
             </li>
             <li>
-              <Bonfire.UI.Social.Activity.DeleteObjectLive
+              <Dynamic.Component
+                :if={module_enabled?(Bonfire.UI.Social.Activity.DeleteObjectLive, @__context__)}
+                module={Bonfire.UI.Social.Activity.DeleteObjectLive}
                 object={@task}
                 creator_id={e(@task, :provider, :id, nil) || e(@task, :receiver, :id, nil)}
                 object_type_readable={l("task")}
@@ -178,7 +180,9 @@
           aria-labelledby="more-menu"
         >
           <li>
-           <Bonfire.UI.Social.Activity.DeleteObjectLive
+           <Dynamic.Component
+        :if={module_enabled?(Bonfire.UI.Social.Activity.DeleteObjectLive, @__context__)}
+        module={Bonfire.UI.Social.Activity.DeleteObjectLive}
               object={@task}
               creator_id={e(@task, :provider, :id, nil) || e(@task, :receiver, :id, nil)}
               object_type_readable={l("task")}
