@@ -16,6 +16,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   declare_extension("Coordination",
     href: ~p"/coordination/tasks/me",
     icon: "noto:high-voltage",
+    emoji: "⚡️",
     default_nav: [
       # Bonfire.UI.Coordination.TodoLive,
       Bonfire.UI.Coordination.TasksLive,
