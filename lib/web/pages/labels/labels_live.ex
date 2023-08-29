@@ -8,7 +8,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
   on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
   def mount(params, _session, socket) do
-    current_user = current_user(socket)
+    current_user = current_user(socket.assigns)
 
     label_category = label_id()
 
@@ -27,7 +27,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
       with {:error, :not_found} <-
              Bonfire.Classify.Categories.get(id, [
                :default_incl_deleted,
-               current_user: current_user(socket)
+               current_user: current_user(socket.assigns)
              ]) do
         Bonfire.Classify.Categories.create(current_user, %{
           id: label_category,
