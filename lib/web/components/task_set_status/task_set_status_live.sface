@@ -1,7 +1,7 @@
 <div :if={!@finished} class="flex items-center gap-2 place-content-center">
   <div class="flex-1 rounded-full badge badge-info">{l("Open")}</div>
 
-  <!-- <button
+  {!-- <button
     :on-click="ValueFlows.Planning.Intent:status:finished"
     phx-value-id={@task_id}
     phx-value-redirect_after={@redirect_after}
@@ -9,13 +9,13 @@
     class="items-center normal-case cursor-pointer btn-xs border-base-content/40 btn btn-outline place-content-center"
   >
     {l("Close")}
-  </button> -->
+  </button> --}
 </div>
 
 <div :if={@finished} class="flex items-center gap-2 place-content-center">
   <div class="flex-1 rounded-full  badge badge-success">{l("Closed")}</div>
 
-  <!-- <button
+  {!-- <button
     :on-click="ValueFlows.Planning.Intent:status:unfinished"
     phx-value-id={@task_id}
     phx-value-redirect_after={@redirect_after}
@@ -23,5 +23,5 @@
     class="items-center normal-case cursor-pointer btn-xs border-base-content/40 btn btn-outline place-content-center"
   >
     {l("Re-open")}
-  </button> -->
+  </button> --}
 </div>

@@ -1,7 +1,7 @@
 <div class="flex items-center p-3 border-b border-base-content/10 rounded-t-xl">
   <div class="flex-1 text-lg font-bold text-base-content/80">{l("All lists")}</div>
 
-  <!-- <div class="flex items-center ml-4 space-x-2">
+  {!-- <div class="flex items-center ml-4 space-x-2">
     <div x-data="{ open: false }" @keydown.window.escape="open = false">
       <button
         x-on:click="open=true"
@@ -51,5 +51,5 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div> --}
 </div>

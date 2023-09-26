@@ -8,7 +8,7 @@
     submit="ValueFlows.Planning.Intent:create"
     change="validate"
   >
-    <!-- <HiddenInput :if={@output_of_id} name="output_of_id" value={@output_of_id} /> -->
+    {!-- <HiddenInput :if={@output_of_id} name="output_of_id" value={@output_of_id} /> --}
 
     <Bonfire.UI.Common.InputControlsLive
       create_object_type={:process}

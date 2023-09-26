@@ -1,4 +1,4 @@
-<!-- <div class="flex flex-col items-center justify-between gap-2 px-4 border-b md:flex-row border-base-content/10">
+{!-- <div class="flex flex-col items-center justify-between gap-2 px-4 border-b md:flex-row border-base-content/10">
   <div class="flex items-center gap-3 tabs_nav_profile tabs">
     <LivePatch to="/coordination" class={"flex h-[2.75rem] items-center gap-2 tab text-base-content/70"}>
       <#Icon iconify="lucide:milestone" class="w-4 h-4 text-info" />
@@ -9,7 +9,7 @@
       <span class="text-sm">{l "Closed"}</span>
     </LivePatch>
   </div>
-</div> -->
+</div> --}
 <section
   :if={Enum.count(@subcategories) > 0}
   class="grid grid-cols-1 divide-y divide-base-content/10"
@@ -31,7 +31,7 @@
           object_id={ulid(category)}
         />
 
-        <!-- <button x-on:click="edit = !edit" class="text-sm font-medium link text-base-content/80 link-hover">{l("Edit")}</button> -->
+        {!-- <button x-on:click="edit = !edit" class="text-sm font-medium link text-base-content/80 link-hover">{l("Edit")}</button> --}
         <Dynamic.Component
           :if={module_enabled?(Bonfire.UI.Social.Activity.DeleteObjectLive, @__context__)}
           module={Bonfire.UI.Social.Activity.DeleteObjectLive}
@@ -42,7 +42,7 @@
           open_btn_class="text-sm font-medium link link-hover link-error"
           hide_text
         />
-        <!-- <button class="text-sm font-medium link link-hover link-error">{l("Delete")}</button> -->
+        {!-- <button class="text-sm font-medium link link-hover link-error">{l("Delete")}</button> --}
       </div>
     </div>
     <div x-show="edit" x-collapse>
