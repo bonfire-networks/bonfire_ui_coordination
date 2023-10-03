@@ -9,7 +9,7 @@
   feedback_message={@feedback_message}
   feed={@feed}
   tabs_class="mb-3 flex items-center gap-8 border-b border-base-content/10"
-  tab_class="feed_tab text-sm cursor-pointer hover:bg-base-content/5 font-medium tracking-wide text-base-content/60 p-3"
+  tab_class="nav_tab text-sm cursor-pointer hover:bg-base-content/5 font-medium tracking-wide text-base-content/60 p-3"
   feed_title={@feed_title}
   page_info={@page_info}
   loading={@loading}
