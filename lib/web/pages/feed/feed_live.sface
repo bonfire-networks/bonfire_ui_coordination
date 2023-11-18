@@ -1,5 +1,5 @@
 <Bonfire.UI.Social.FeedLive
-  id={@feed_component_id}
+  id={ComponentID.new(Bonfire.UI.Social.FeedLive, @feed_ids || @feed_id, __MODULE__)}
   feed_id={@feed_id}
   feed_ids={@feed_ids}
   feed_filters={@feed_filters}

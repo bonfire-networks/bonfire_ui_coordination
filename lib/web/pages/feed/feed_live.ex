@@ -27,7 +27,6 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        page_info: nil,
        loading: false,
        feed_title: l("My coordination feed"),
-       feed_component_id: :feeds,
        feed_id: nil,
        feed_ids: nil,
        object_types: object_types,
