@@ -10,4 +10,7 @@ defmodule Bonfire.UI.Coordination.CreateTaskLive do
 
   prop to_boundaries, :any, default: nil
   prop open_boundaries, :boolean, default: false
+
+  @behaviour Bonfire.UI.Common.SmartInputModule
+  def smart_input_module, do: [:task]
 end
