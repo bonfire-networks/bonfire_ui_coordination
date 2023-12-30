@@ -79,11 +79,7 @@
               </div>
             </div>
           </div>
-          <Bonfire.UI.Coordination.TaskActionsMenuLive
-            :if={module_enabled?(Bonfire.UI.Coordination.TaskActionsMenuLive)}
-            task={@object}
-            is_editable?={@is_editable?}
-          />
+          <Bonfire.UI.Coordination.TaskActionsMenuLive task={@object} is_editable?={@is_editable?} />
         </div>
       </div>
     </div>

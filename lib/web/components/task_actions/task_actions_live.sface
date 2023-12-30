@@ -12,9 +12,8 @@
   <div class="flex items-center gap-4 mb-3">
     <#Icon iconify="carbon:user-avatar-filled" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l("Assign")}</div>
-    <Dynamic.Component
-      :if={module_enabled?(Bonfire.UI.ValueFlows.AssignItemLive, @__context__)}
-      module={Bonfire.UI.ValueFlows.AssignItemLive}
+    <StatelessComponent
+      module={maybe_component(Bonfire.UI.ValueFlows.AssignItemLive, @__context__)}
       field_name={:provider}
       label={if @is_editable?, do: l("Assign to... "), else: l("Not assigned")}
       is_editable={@is_editable?}
@@ -29,9 +28,8 @@
   <div class="flex items-center gap-4 mb-3">
     <#Icon iconify="lucide:milestone" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l("Milestone")}</div>
-    <Dynamic.Component
-      :if={module_enabled?(Bonfire.UI.ValueFlows.SelectProcessLive, @__context__)}
-      module={Bonfire.UI.ValueFlows.SelectProcessLive}
+    <StatelessComponent
+      module={maybe_component(Bonfire.UI.ValueFlows.SelectProcessLive, @__context__)}
       field_name={:output_of_id}
       label={if @is_editable?, do: l("Select a milestone..."), else: l("No milestone set")}
       class="h-9 flex items-center max-w-[240px] px-2 rounded-md cursor-pointer bg-base-content/5 sm:text-sm"
@@ -47,9 +45,8 @@
   <div class="flex items-center gap-4">
     <#Icon iconify="heroicons:calendar-days-20-solid" class="w-5 h-5 text-base-content/80" />
     <div class="sr-only">{l("Due date")}</div>
-    <Dynamic.Component
-      :if={module_enabled?(Bonfire.UI.ValueFlows.DueItemLive, @__context__)}
-      module={Bonfire.UI.ValueFlows.DueItemLive}
+    <StatelessComponent
+      module={maybe_component(Bonfire.UI.ValueFlows.DueItemLive, @__context__)}
       date={e(@intent, :due, nil)}
       is_editable={@is_editable?}
     />
