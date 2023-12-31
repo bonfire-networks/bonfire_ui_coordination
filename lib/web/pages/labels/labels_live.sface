@@ -26,8 +26,9 @@
         <div class="text-sm text-base-content/70">{e(category, :profile, :summary, "")}</div>
       </div>
       <div class="flex gap-4">
-        <Bonfire.UI.Social.LikeActionLive
-          id={ComponentID.new(Bonfire.UI.Social.LikeActionLive, id(category), __MODULE__)}
+        <StatefulComponent
+          module={maybe_component(Bonfire.UI.Reactions.LikeActionLive, @__context__)}
+          id={ComponentID.new(Bonfire.UI.Reactions.LikeActionLive, id(category), __MODULE__)}
           object_id={ulid(category)}
         />
 

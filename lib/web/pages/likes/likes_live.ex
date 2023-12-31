@@ -31,6 +31,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
        page_title: l("Important tasks"),
        create_object_type: :task,
        smart_input_opts: %{prompt: l("Add a task")},
+       feed_name: :likes,
        feed: feed,
        page_info: page_info
      )}

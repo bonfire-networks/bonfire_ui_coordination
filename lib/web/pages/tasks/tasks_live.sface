@@ -132,7 +132,7 @@
 </div>
 <section class="m-3 md:m-6">
   <ul class="space-y-3">
-    <Bonfire.UI.Social.Activity.IntentTaskLive
+    <Bonfire.UI.ValueFlows.Preview.IntentTaskLive
       :if={length(@intents) > 0}
       :for={task <- @intents || []}
       object={task}

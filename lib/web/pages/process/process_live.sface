@@ -2,7 +2,7 @@
   <Bonfire.UI.ValueFlows.ProcessHeroLive selected_tab={@selected_tab} process={@process} />
   <section class="mx-3 mt-3">
     {#if length(e(@process, :intended_outputs, [])) > 0}
-      <Bonfire.UI.Social.Activity.IntentTaskLive
+      <Bonfire.UI.ValueFlows.Preview.IntentTaskLive
         :for={task <- e(@process, :intended_outputs, [])}
         object={task}
         show_likes

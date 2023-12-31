@@ -17,7 +17,7 @@
   </div> --}
 </div>
 <section class="grid grid-cols-1 gap-3 divide-y divide-base-content/10">
-  <Bonfire.UI.Social.Activity.ProcessListLive
+  <Bonfire.UI.ValueFlows.Preview.ProcessListLive
     :for={list <- @processes}
     object={list}
     process_url="/coordination/list/"

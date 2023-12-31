@@ -1,4 +1,5 @@
-<Bonfire.UI.Social.FeedLive
+<StatelessComponent
+  module={maybe_component(Bonfire.UI.Social.FeedLive, @__context__)}
   id={ComponentID.new(Bonfire.UI.Social.FeedLive, @feed_ids || @feed_id, __MODULE__)}
   feed_id={@feed_id}
   feed_ids={@feed_ids}
