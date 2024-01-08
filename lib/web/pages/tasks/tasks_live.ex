@@ -55,6 +55,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
        #    ]}
        # ],
        filters: [],
+       intents: [],
        create_object_type: :task,
        smart_input_opts: %{prompt: l("Add a task")},
        sidebar_widgets: [
