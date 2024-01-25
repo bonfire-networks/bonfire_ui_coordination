@@ -7,6 +7,8 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
 
   on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
+  def label_id, do: "1ABE1SC1ASS1FYC00RD1NAT10N"
+
   def mount(params, _session, socket) do
     current_user = current_user(socket.assigns)
 
@@ -29,11 +31,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
                :default_incl_deleted,
                current_user: current_user(socket.assigns)
              ]) do
-        Bonfire.Classify.Categories.create(current_user, %{
-          id: label_category,
-          name: "Labels",
-          without_character: true
-        })
+        Bonfire.Label.Labels.get_or_create(label_category, "Coordination Labels")
       end
 
     # TODO: query children with boundaries
@@ -83,8 +81,6 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
        ]
      )}
   end
-
-  def label_id, do: System.get_env("LABEL_CATEGORY", "7CATEG0RYTHATC0NTA1N1ABE1S")
 
   def tab(selected_tab) do
     case maybe_to_atom(selected_tab) do

@@ -112,9 +112,9 @@
               to={e(@__context__, :category_link_prefix, ~p"/coordination/tasks?tag_ids[]=") <> tag.id}
               class="badge badge-info"
             >{e(tag, :profile, :name, nil) || e(tag, :character, :username, nil)}</LinkLive>
-            <Bonfire.Classify.Web.TagModalLive :if={@is_editable?} object={@task} parent_id="task_hero">
+            <Bonfire.Tag.Web.TagModalLive :if={@is_editable?} object={@task} parent_id="task_hero">
               <span class="badge badge-success">+</span>
-            </Bonfire.Classify.Web.TagModalLive>
+            </Bonfire.Tag.Web.TagModalLive>
           </div>
         </div>
 
