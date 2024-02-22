@@ -1,6 +1,5 @@
 defmodule Bonfire.UI.Coordination.TaskPreviewLive do
   use Bonfire.UI.Common.Web, :stateless_component
-  alias Surface.Components.LivePatch
 
   prop object, :any, required: true
   prop is_editable?, :boolean, default: false

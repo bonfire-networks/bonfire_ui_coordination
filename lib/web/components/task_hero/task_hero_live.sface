@@ -69,9 +69,9 @@
       />
       <span :if={@task.output_of} class="flex text-sm text-base-content/70">
         {l("Task in")}
-        <LiveRedirect to={~p"/coordination/list/" <> @task.output_of.id} class="ml-1 link inline_flex">
+        <LinkLive to={~p"/coordination/list/" <> @task.output_of.id} class="ml-1 link inline_flex">
           {rich(@task.output_of.name)}
-        </LiveRedirect>
+        </LinkLive>
       </span>
     </div>
 
@@ -142,21 +142,21 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-3 text-lg font-bold text-base-content/80">
           <span :if={length(e(@task, :context, [])) > 0}>
-            <LiveRedirect
+            <LinkLive
               :for={scope <- e(@task, :context, [])}
               to={~p"/coordination/task/#{scope.id}"}
               class="text-sm font-medium cursor-pointer text-base-content/70 link link-hover"
             >
               {e(scope, :name, "")} :&nbsp;
-            </LiveRedirect>
+            </LinkLive>
           </span>
           <div>{rich(@task.name)}</div>
         </div>
         <span :if={@task.output_of} class="flex text-sm text-base-content/70">
           {l("Task in")}
-          <LiveRedirect to={~p"/coordination/list/" <> @task.output_of.id} class="ml-1 link inline_flex">
+          <LinkLive to={~p"/coordination/list/" <> @task.output_of.id} class="ml-1 link inline_flex">
             {rich(@task.output_of.name)}
-          </LiveRedirect>
+          </LinkLive>
         </span>
       </div>
     </div>
