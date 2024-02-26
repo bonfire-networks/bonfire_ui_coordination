@@ -91,7 +91,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
     # |> debug
   end
 
-  def do_handle_params(%{"tab" => tab, "tab_id" => tab_id}, _url, socket) do
+  def handle_params(%{"tab" => tab, "tab_id" => tab_id}, _url, socket) do
     # debug(id)
     {:noreply,
      assign(socket,
@@ -100,7 +100,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => tab}, _url, socket) do
+  def handle_params(%{"tab" => tab}, _url, socket) do
     {:noreply,
      assign(socket,
        selected_tab: tab
@@ -109,38 +109,12 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
     # nothing defined
   end
 
-  def do_handle_params(params, _url, socket) do
+  def handle_params(params, _url, socket) do
     # default tab
-    do_handle_params(
+    handle_params(
       Map.merge(params || %{}, %{"tab" => "timeline"}),
       nil,
       socket
     )
   end
-
-  def handle_params(params, uri, socket),
-    do:
-      Bonfire.UI.Common.LiveHandlers.handle_params(
-        params,
-        uri,
-        socket,
-        __MODULE__
-      )
-
-  def handle_info(info, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
-
-  def handle_event(
-        action,
-        attrs,
-        socket
-      ),
-      do:
-        Bonfire.UI.Common.LiveHandlers.handle_event(
-          action,
-          attrs,
-          socket,
-          __MODULE__
-          # &do_handle_event/3
-        )
 end

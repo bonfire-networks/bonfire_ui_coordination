@@ -101,7 +101,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   """
   def intents(params \\ %{}, socket), do: liveql(socket, :intents, params)
 
-  def do_handle_params(%{"tab" => "me" = tab} = params, _url, socket) do
+  def handle_params(%{"tab" => "me" = tab} = params, _url, socket) do
     filters = merge_filters(params, %{"action" => "work", "finished" => false, "agent" => "me"})
 
     intents =
@@ -129,7 +129,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => "closed" = tab} = params, _url, socket) do
+  def handle_params(%{"tab" => "closed" = tab} = params, _url, socket) do
     filters = merge_filters(params, %{"action" => "work", "finished" => true})
 
     intents =
@@ -150,7 +150,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
      )}
   end
 
-  def do_handle_params(params, _url, socket) do
+  def handle_params(params, _url, socket) do
     filters = merge_filters(params, %{"action" => "work", "finished" => false})
 
     intents =
@@ -212,43 +212,16 @@ defmodule Bonfire.UI.Coordination.TasksLive do
     {:noreply, patch_to(socket, current_url(socket) <> "?" <> params)}
   end
 
-  def do_handle_event("filter", %{"_target" => ["search_string"]} = attrs, socket) do
+  def handle_event("filter", %{"_target" => ["search_string"]} = attrs, socket) do
     debug("ignore")
     {:noreply, socket}
   end
 
-  def do_handle_event("filter", attrs, socket) do
+  def handle_event("filter", attrs, socket) do
     do_filter(attrs, socket)
   end
 
-  def do_handle_event("search", attrs, socket) do
+  def handle_event("search", attrs, socket) do
     do_filter(attrs, socket)
   end
-
-  def handle_params(params, uri, socket),
-    do:
-      Bonfire.UI.Common.LiveHandlers.handle_params(
-        params,
-        uri,
-        socket,
-        __MODULE__,
-        &do_handle_params/3
-      )
-
-  def handle_info(info, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
-
-  def handle_event(
-        action,
-        attrs,
-        socket
-      ),
-      do:
-        Bonfire.UI.Common.LiveHandlers.handle_event(
-          action,
-          attrs,
-          socket,
-          __MODULE__,
-          &do_handle_event/3
-        )
 end

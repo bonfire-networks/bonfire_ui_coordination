@@ -51,7 +51,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => tab} = params, _url, socket)
+  def handle_params(%{"tab" => tab} = params, _url, socket)
       when tab in [nil, "my", "local", "fediverse", "likes"] do
     {:noreply,
      assign(
@@ -60,7 +60,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => tab}, _url, socket) do
+  def handle_params(%{"tab" => tab}, _url, socket) do
     {:noreply,
      assign(
        socket,
@@ -68,41 +68,15 @@ defmodule Bonfire.UI.Coordination.FeedLive do
      )}
   end
 
-  def do_handle_params(_params, _url, socket) do
-    do_handle_params(%{"tab" => nil}, nil, socket)
+  def handle_params(_params, _url, socket) do
+    handle_params(%{"tab" => nil}, nil, socket)
   end
 
-  def do_handle_params(_nil, _url, socket) do
+  def handle_params(_nil, _url, socket) do
     {:noreply, assign(socket, selected_tab: "feed")}
   end
 
-  def do_handle_event("select_tab", attrs, socket) do
-    do_handle_params(%{"tab" => e(attrs, "name", nil)}, nil, socket)
+  def handle_event("select_tab", attrs, socket) do
+    handle_params(%{"tab" => e(attrs, "name", nil)}, nil, socket)
   end
-
-  def handle_params(params, uri, socket),
-    do:
-      Bonfire.UI.Common.LiveHandlers.handle_params(
-        params,
-        uri,
-        socket,
-        __MODULE__
-      )
-
-  def handle_info(info, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
-
-  def handle_event(
-        action,
-        attrs,
-        socket
-      ),
-      do:
-        Bonfire.UI.Common.LiveHandlers.handle_event(
-          action,
-          attrs,
-          socket,
-          __MODULE__,
-          &do_handle_event/3
-        )
 end
