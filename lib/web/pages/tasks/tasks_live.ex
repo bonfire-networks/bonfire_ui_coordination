@@ -14,7 +14,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
   # alias Bonfire.UI.Coordination.ResourceWidget
 
   declare_extension("Coordination",
-    href: ~p"/coordination/tasks/me",
+    href: "/coordination/tasks/me",
     icon: "noto:high-voltage",
     emoji: "⚡️",
     description: l("Coordinate tasks across federated teams."),
