@@ -17,6 +17,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
     href: ~p"/coordination/tasks/me",
     icon: "noto:high-voltage",
     emoji: "⚡️",
+    description: l("Coordinate tasks across federated teams."),
     default_nav: [
       # Bonfire.UI.Coordination.TodoLive,
       Bonfire.UI.Coordination.TasksLive,
