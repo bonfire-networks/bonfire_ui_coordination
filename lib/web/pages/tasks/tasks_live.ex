@@ -15,7 +15,7 @@ defmodule Bonfire.UI.Coordination.TasksLive do
 
   declare_extension("Coordination",
     href: "/coordination/tasks/me",
-    icon: "noto:high-voltage",
+    icon: "vscode-icons:file-type-volt",
     emoji: "⚡️",
     description: l("Coordinate tasks across federated teams."),
     default_nav: [
