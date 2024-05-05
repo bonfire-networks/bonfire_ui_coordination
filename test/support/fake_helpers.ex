@@ -6,5 +6,5 @@ defmodule Bonfire.UI.Coordination.Test.FakeHelpers do
 
   import ExUnit.Assertions
 
-  import Bonfire.UI.Coordination.Integration
+  import Bonfire.UI.Coordination
 end

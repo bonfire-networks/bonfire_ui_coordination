@@ -6,7 +6,7 @@
   smart_input_opts={@smart_input_opts}
   action="work"
   intent_url="/coordination/task/"
-  default_tag={Bonfire.UI.Coordination.Integration.remote_tag_id()}
+  default_tag={Bonfire.UI.Coordination.remote_tag_id()}
   to_boundaries={@to_boundaries}
   open_boundaries={@open_boundaries}
   textarea_class={@textarea_class}

@@ -17,7 +17,7 @@ defmodule Bonfire.UI.Coordination.ChannelCase do
 
   use ExUnit.CaseTemplate
 
-  import Bonfire.UI.Coordination.Integration
+  import Bonfire.UI.Coordination
 
   using do
     quote do
