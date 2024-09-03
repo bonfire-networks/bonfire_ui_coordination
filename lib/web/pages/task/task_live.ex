@@ -24,7 +24,7 @@ defmodule Bonfire.UI.Coordination.TaskLive do
     if !intent || intent == %{intent: nil} do
       {:error, :not_found}
     else
-      id = ulid(intent)
+      id = uid(intent)
       current_user = current_user(socket.assigns)
 
       {:ok,

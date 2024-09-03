@@ -18,7 +18,7 @@
       label={if @is_editable?, do: l("Assign to... "), else: l("Not assigned")}
       is_editable={@is_editable?}
       agent={e(@intent, :provider, nil)}
-      context_id={ulid(@intent)}
+      context_id={uid(@intent)}
       pick_event="ValueFlows.Planning.Intent:assign:select"
       remove_event="ValueFlows.Planning.Intent:assign:unset"
       event_target="body"
@@ -36,7 +36,7 @@
       is_editable={@is_editable?}
       selected_options={if e(@intent, :output_of_id, nil),
         do: [{e(@intent, :output_of, :name, "Unknown"), e(@intent, :output_of_id, nil)}]}
-      context_id={ulid(@intent)}
+      context_id={uid(@intent)}
       pick_event="ValueFlows.Planning.Intent:update:output_of"
       remove_event="ValueFlows.Planning.Intent:update:output_of"
       event_target="body"

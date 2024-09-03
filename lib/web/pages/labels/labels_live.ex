@@ -37,7 +37,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
     # TODO: query children with boundaries
     {:ok, subcategories} =
       Bonfire.Classify.GraphQL.CategoryResolver.category_children(
-        %{id: ulid!(category)},
+        %{id: uid!(category)},
         %{limit: 15},
         %{context: %{current_user: current_user}}
       )
@@ -63,7 +63,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
        interaction_type: l("follow"),
        subcategories: subcategories.edges,
        #  current_context: category,
-       #  context_id: ulid(category),
+       #  context_id: uid(category),
        #  reply_to_id: category,
        object_boundary: object_boundary,
        #  create_object_type: :category,
