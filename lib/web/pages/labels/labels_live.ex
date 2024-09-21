@@ -10,7 +10,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
   def label_id, do: "1ABE1SC1ASS1FYC00RD1NAT10N"
 
   def mount(params, _session, socket) do
-    current_user = current_user(socket.assigns)
+    current_user = current_user(assigns(socket))
 
     label_category = label_id()
 
@@ -29,7 +29,7 @@ defmodule Bonfire.UI.Coordination.LabelsLive do
       with {:error, :not_found} <-
              Bonfire.Classify.Categories.get(id, [
                :default_incl_deleted,
-               current_user: current_user(socket.assigns)
+               current_user: current_user(assigns(socket))
              ]) do
         Bonfire.Label.Labels.get_or_create(label_category, "Coordination Labels")
       end
