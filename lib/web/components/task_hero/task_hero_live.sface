@@ -3,7 +3,7 @@
     <div class="flex justify-between">
       <div class="text-2xl font-semibold text-base-content">{rich(@task.name)}</div>
       <div class="flex items-center justify-end gap-2">
-        <Bonfire.Boundaries.Web.BoundaryIconLive
+        <Bonfire.UI.Boundaries.Web.BoundaryIconLive
           with_label
           id={"boundary_#{id(@task)}"}
           object={@task}
