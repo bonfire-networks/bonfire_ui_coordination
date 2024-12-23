@@ -31,7 +31,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
        feed_ids: nil,
        object_types: object_types,
        feed_filters: %{
-         object_type: object_types
+         object_types: object_types
        },
        feedback_title: l("Your feed is empty"),
        feedback_message:

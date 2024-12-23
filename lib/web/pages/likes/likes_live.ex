@@ -14,7 +14,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
     %{edges: feed, page_info: page_info} =
       Bonfire.Social.Likes.list_my(
         current_user: current_user_required!(assigns),
-        object_type: [ValueFlows.Planning.Intent]
+        object_types: [ValueFlows.Planning.Intent]
       )
 
     # |> debug()
@@ -58,7 +58,7 @@ defmodule Bonfire.UI.Coordination.LikesLive do
   #   %{edges: feed, page_info: page_info} =
   #     Bonfire.Social.Likes.list_my(
   #       current_user: current_user,
-  #       object_type: [ValueFlows.Planning.Intent, ValueFlows.Proposal]
+  #       object_types: [ValueFlows.Planning.Intent, ValueFlows.Proposal]
   #     )
 
   #   # |> debug()
