@@ -52,7 +52,7 @@ defmodule Bonfire.UI.Coordination.FeedLive do
   end
 
   def handle_params(%{"tab" => tab} = params, _url, socket)
-      when tab in [nil, "my", "local", "fediverse", "likes"] do
+      when tab in [nil, "my", "local", "remote", "likes"] do
     {:noreply,
      assign(
        socket,
