@@ -23,6 +23,8 @@ defmodule Bonfire.UI.Coordination.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       # import Bonfire.UI.Coordination.DataCase
+
+      @moduletag :backend
     end
   end
 
